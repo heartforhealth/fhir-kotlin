@@ -42,6 +42,24 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Organization(
 
+    // ============================================================
+    // ============================================================
+    /**
+     * DomainResource + Resource requirements
+     * These are required for all resources
+     */
+    override var id: String? = null,
+    override var resourceType: ResourceType? = ResourceType.Organization,
+    override var meta: Meta? = null,
+    override var implicitRules: String? = null,
+    override var language: String? = null,
+    override var text: Narrative? = null,
+    override var contained: MutableList<Resource>? = null,
+    override var extension: MutableList<Extension>? = null,
+    override var modifierExtension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
 
     /**
      * Identifier for the organization that is used to identify the organization across multiple disparate systems.
@@ -95,11 +113,8 @@ data class Organization(
     var endpoint: MutableList<Reference?>? = null
 
 
-) : DomainResource() {
+) : DomainResource {
 
-//    override fun fhirType(): String {
-//        return "Organization"
-//    }
 
 }
 

@@ -1,9 +1,7 @@
 package io.h4h.fhir.r4.base
 
-import kotlinx.serialization.SerialName
+
 import kotlinx.serialization.Serializable
-
-
 
 
 
@@ -60,6 +58,9 @@ enum class AddressUse {
 
 }
 
+
+
+
 @Serializable
 enum class AddressType {
     /**
@@ -88,7 +89,6 @@ enum class AddressType {
             PHYSICAL -> "physical"
             BOTH -> "both"
             NULL -> null
-            else -> null
         }
     }
 
@@ -98,7 +98,6 @@ enum class AddressType {
             PHYSICAL -> "http://hl7.org/fhir/address-type"
             BOTH -> "http://hl7.org/fhir/address-type"
             NULL -> null
-            else -> null
         }
 
     val definition: String?
@@ -107,7 +106,6 @@ enum class AddressType {
             PHYSICAL -> "A physical address that can be visited."
             BOTH -> "An address that is both physical and postal."
             NULL -> null
-            else -> null
         }
     val display: String?
         get() = when (this) {
@@ -115,7 +113,6 @@ enum class AddressType {
             PHYSICAL -> "Physical"
             BOTH -> "Postal & Physical"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -184,7 +181,6 @@ enum class ContactPointSystem {
             SMS -> "sms"
             OTHER -> "other"
             NULL -> null
-            else -> null
         }
     }
 
@@ -198,7 +194,6 @@ enum class ContactPointSystem {
             SMS -> "http://hl7.org/fhir/contact-point-system"
             OTHER -> "http://hl7.org/fhir/contact-point-system"
             NULL -> null
-            else -> null
         }
     }
 
@@ -212,7 +207,6 @@ enum class ContactPointSystem {
             SMS -> "A contact that can be used for sending an sms message (e.g. mobile phones, some landlines)."
             OTHER -> "A contact that is not a phone, fax, page or email address and is not expressible as a URL.  E.g. Internal mail address.  This SHOULD NOT be used for contacts that are expressible as a URL (e.g. Skype, Twitter, Facebook, etc.)  Extensions may be used to distinguish \"other\" contact types."
             NULL -> null
-            else -> null
         }
 
     val display: String?
@@ -225,7 +219,6 @@ enum class ContactPointSystem {
             SMS -> "SMS"
             OTHER -> "Other"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -286,7 +279,6 @@ enum class ContactPointUse {
             OLD -> "old"
             MOBILE -> "mobile"
             NULL -> null
-            else -> null
         }
     }
 
@@ -298,7 +290,6 @@ enum class ContactPointUse {
             OLD -> "http://hl7.org/fhir/contact-point-use"
             MOBILE -> "http://hl7.org/fhir/contact-point-use"
             NULL -> null
-            else -> null
         }
     }
 
@@ -310,7 +301,6 @@ enum class ContactPointUse {
             OLD -> "This contact point is no longer in use (or was never correct, but retained for records)."
             MOBILE -> "A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business."
             NULL -> null
-            else -> null
         }
 
     val display: String?
@@ -321,7 +311,6 @@ enum class ContactPointUse {
             OLD -> "Old"
             MOBILE -> "Mobile"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -392,7 +381,6 @@ enum class DayOfWeek {
             SAT -> "sat"
             SUN -> "sun"
             NULL -> null
-            else -> null
         }
     }
 
@@ -406,7 +394,6 @@ enum class DayOfWeek {
             SAT -> "http://hl7.org/fhir/days-of-week"
             SUN -> "http://hl7.org/fhir/days-of-week"
             NULL -> null
-            else -> null
         }
 
 
@@ -420,7 +407,6 @@ enum class DayOfWeek {
             SAT -> "Saturday."
             SUN -> "Sunday."
             NULL -> null
-            else -> null
         }
 
 
@@ -434,7 +420,6 @@ enum class DayOfWeek {
             SAT -> "Saturday"
             SUN -> "Sunday"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -508,7 +493,6 @@ enum class DaysOfWeek {
             SAT -> "sat"
             SUN -> "sun"
             NULL -> null
-            else -> null
         }
     }
 
@@ -522,7 +506,6 @@ enum class DaysOfWeek {
             SAT -> "http://hl7.org/fhir/days-of-week"
             SUN -> "http://hl7.org/fhir/days-of-week"
             NULL -> null
-            else -> null
         }
 
 
@@ -536,7 +519,6 @@ enum class DaysOfWeek {
             SAT -> "Saturday."
             SUN -> "Sunday."
             NULL -> null
-            else -> null
         }
 
 
@@ -550,7 +532,6 @@ enum class DaysOfWeek {
             SAT -> "Saturday"
             SUN -> "Sunday"
             NULL -> null
-            else -> null
         }
 
 //    companion object {
@@ -737,7 +718,6 @@ enum class EventTiming {
             PCD -> "PCD"
             PCV -> "PCV"
             NULL -> null
-            else -> null
         }
     }
 
@@ -770,7 +750,6 @@ enum class EventTiming {
             PCD -> "http://terminology.hl7.org/CodeSystem/v3-TimingEvent"
             PCV -> "http://terminology.hl7.org/CodeSystem/v3-TimingEvent"
             NULL -> null
-            else -> null
         }
 
 
@@ -803,7 +782,6 @@ enum class EventTiming {
             PCD -> ""
             PCV -> ""
             NULL -> null
-            else -> null
         }
 
 
@@ -836,7 +814,6 @@ enum class EventTiming {
             PCD -> "PCD"
             PCV -> "PCV"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -940,7 +917,6 @@ enum class EncounterStatus {
             ENTEREDINERROR -> "entered-in-error"
             UNKNOWN -> "unknown"
             NULL -> null
-            else -> null
         }
     }
 
@@ -956,7 +932,6 @@ enum class EncounterStatus {
             ENTEREDINERROR -> "http://hl7.org/fhir/encounter-status"
             UNKNOWN -> "http://hl7.org/fhir/encounter-status"
             NULL -> null
-            else -> null
         }
 
 
@@ -972,7 +947,6 @@ enum class EncounterStatus {
             ENTEREDINERROR -> "This instance should not have been part of this patient's medical record."
             UNKNOWN -> "The encounter status is unknown. Note that \"unknown\" is a value of last resort and every attempt should be made to provide a meaningful value other than \"unknown\"."
             NULL -> null
-            else -> null
         }
 
 
@@ -988,7 +962,6 @@ enum class EncounterStatus {
             ENTEREDINERROR -> "Entered in Error"
             UNKNOWN -> "Unknown"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -1050,7 +1023,6 @@ enum class EncounterLocationStatus {
             RESERVED -> "reserved"
             COMPLETED -> "completed"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1062,7 +1034,6 @@ enum class EncounterLocationStatus {
             RESERVED -> "http://hl7.org/fhir/encounter-location-status"
             COMPLETED -> "http://hl7.org/fhir/encounter-location-status"
             NULL -> null
-            else -> null
         }
 
 
@@ -1073,7 +1044,6 @@ enum class EncounterLocationStatus {
             RESERVED -> "This location is held empty for this patient."
             COMPLETED -> "The patient was at this location during the period specified.\r\rNot to be used when the patient is currently at the location."
             NULL -> null
-            else -> null
         }
 
 
@@ -1084,7 +1054,6 @@ enum class EncounterLocationStatus {
             RESERVED -> "Reserved"
             COMPLETED -> "Completed"
             NULL -> null
-            else -> null
         }
 
 //    companion object {
@@ -1148,7 +1117,6 @@ enum class EndpointStatus {
             ENTEREDINERROR -> "entered-in-error"
             TEST -> "test"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1161,7 +1129,6 @@ enum class EndpointStatus {
             ENTEREDINERROR -> "http://hl7.org/fhir/endpoint-status"
             TEST -> "http://hl7.org/fhir/endpoint-status"
             NULL -> null
-            else -> null
         }
 
     val definition: String?
@@ -1173,7 +1140,6 @@ enum class EndpointStatus {
             ENTEREDINERROR -> "This instance should not have been part of this patient's medical record."
             TEST -> "This endpoint is not intended for production usage."
             NULL -> null
-            else -> null
         }
 
     val display: String?
@@ -1185,7 +1151,6 @@ enum class EndpointStatus {
             ENTEREDINERROR -> "Entered in error"
             TEST -> "Test"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -1257,7 +1222,6 @@ enum class EpisodeOfCareStatus {
             CANCELLED -> "cancelled"
             ENTEREDINERROR -> "entered-in-error"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1271,7 +1235,6 @@ enum class EpisodeOfCareStatus {
             CANCELLED -> "http://hl7.org/fhir/episode-of-care-status"
             ENTEREDINERROR -> "http://hl7.org/fhir/episode-of-care-status"
             NULL -> null
-            else -> null
         }
 
 
@@ -1285,7 +1248,6 @@ enum class EpisodeOfCareStatus {
             CANCELLED -> "The episode of care was cancelled, or withdrawn from service, often selected during the planned stage as the patient may have gone elsewhere, or the circumstances have changed and the organization is unable to provide the care. It indicates that services terminated outside the planned/expected workflow."
             ENTEREDINERROR -> "This instance should not have been part of this patient's medical record."
             NULL -> null
-            else -> null
         }
 
 
@@ -1299,7 +1261,6 @@ enum class EpisodeOfCareStatus {
             CANCELLED -> "Cancelled"
             ENTEREDINERROR -> "Entered in Error"
             NULL -> null
-            else -> null
         }
 
 //    companion object {
@@ -1348,7 +1309,6 @@ enum class FHIRSubstanceStatus {
             INACTIVE -> "inactive"
             ENTEREDINERROR -> "entered-in-error"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1358,7 +1318,6 @@ enum class FHIRSubstanceStatus {
             INACTIVE -> "http://hl7.org/fhir/substance-status"
             ENTEREDINERROR -> "http://hl7.org/fhir/substance-status"
             NULL -> null
-            else -> null
         }
 
 
@@ -1368,7 +1327,6 @@ enum class FHIRSubstanceStatus {
             INACTIVE -> "The substance is considered for reference, but not for use."
             ENTEREDINERROR -> "The substance was entered in error."
             NULL -> null
-            else -> null
         }
 
 
@@ -1378,7 +1336,6 @@ enum class FHIRSubstanceStatus {
             INACTIVE -> "Inactive"
             ENTEREDINERROR -> "Entered in Error"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -1435,7 +1392,6 @@ enum class IdentifierUse {
             SECONDARY -> "secondary"
             OLD -> "old"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1447,7 +1403,6 @@ enum class IdentifierUse {
             SECONDARY -> "http://hl7.org/fhir/identifier-use"
             OLD -> "http://hl7.org/fhir/identifier-use"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1459,7 +1414,6 @@ enum class IdentifierUse {
             SECONDARY -> "An identifier that was assigned in secondary use - it serves to identify the object in a relative context, but cannot be consistently assigned to the same object again in a different context."
             OLD -> "The identifier id no longer considered valid, but may be relevant for search purposes.  E.g. Changes to identifier schemes, account merges, etc."
             NULL -> null
-            else -> null
         }
     val display: String?
         get() = when (this) {
@@ -1469,7 +1423,6 @@ enum class IdentifierUse {
             SECONDARY -> "Secondary"
             OLD -> "Old"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -1516,7 +1469,6 @@ enum class LocationStatus {
             SUSPENDED -> "suspended"
             INACTIVE -> "inactive"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1526,7 +1478,6 @@ enum class LocationStatus {
             SUSPENDED -> "http://hl7.org/fhir/location-status"
             INACTIVE -> "http://hl7.org/fhir/location-status"
             NULL -> null
-            else -> null
         }
 
 
@@ -1536,7 +1487,6 @@ enum class LocationStatus {
             SUSPENDED -> "The location is temporarily closed."
             INACTIVE -> "The location is no longer used."
             NULL -> null
-            else -> null
         }
 
 
@@ -1546,7 +1496,6 @@ enum class LocationStatus {
             SUSPENDED -> "Suspended"
             INACTIVE -> "Inactive"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -1586,7 +1535,6 @@ enum class LocationMode {
             INSTANCE -> "instance"
             KIND -> "kind"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1595,7 +1543,6 @@ enum class LocationMode {
             INSTANCE -> "http://hl7.org/fhir/location-mode"
             KIND -> "http://hl7.org/fhir/location-mode"
             NULL -> null
-            else -> null
         }
 
 
@@ -1604,7 +1551,6 @@ enum class LocationMode {
             INSTANCE -> "The Location resource represents a specific instance of a location (e.g. Operating Theatre 1A)."
             KIND -> "The Location represents a class of locations (e.g. Any Operating Theatre) although this class of locations could be constrained within a specific boundary (such as organization, or parent location, address etc.)."
             NULL -> null
-            else -> null
         }
 
 
@@ -1613,7 +1559,6 @@ enum class LocationMode {
             INSTANCE -> "Instance"
             KIND -> "Kind"
             NULL -> null
-            else -> null
         }
 
 //    companion object {
@@ -1681,7 +1626,6 @@ enum class NameUse {
             OLD -> "old"
             MAIDEN -> "maiden"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1695,7 +1639,6 @@ enum class NameUse {
             OLD -> "http://hl7.org/fhir/name-use"
             MAIDEN -> "http://hl7.org/fhir/name-use"
             NULL -> null
-            else -> null
         }
     val definition: String?
         get() = when (this) {
@@ -1707,7 +1650,6 @@ enum class NameUse {
             OLD -> "This name is no longer in use (or was never correct, but retained for records)."
             MAIDEN -> "A name used prior to changing name because of marriage. This name use is for use by applications that collect and store names that were used prior to a marriage. Marriage naming customs vary greatly around the world, and are constantly changing. This term is not gender specific. The use of this term does not imply any particular history for a person's name."
             NULL -> null
-            else -> null
         }
     val display: String?
         get() = when (this) {
@@ -1719,7 +1661,6 @@ enum class NameUse {
             OLD -> "Old"
             MAIDEN -> "Name changed for Marriage"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -1774,7 +1715,6 @@ enum class NarrativeStatus {
             ADDITIONAL -> "additional"
             EMPTY -> "empty"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1785,7 +1725,6 @@ enum class NarrativeStatus {
             ADDITIONAL -> "http://hl7.org/fhir/narrative-status"
             EMPTY -> "http://hl7.org/fhir/narrative-status"
             NULL -> null
-            else -> null
         }
 
 
@@ -1796,7 +1735,6 @@ enum class NarrativeStatus {
             ADDITIONAL -> "The contents of the narrative may contain additional information not found in the structured data. Note that there is no computable way to determine what the extra information is, other than by human inspection."
             EMPTY -> "The contents of the narrative are some equivalent of \"No human-readable text provided in this case\"."
             NULL -> null
-            else -> null
         }
 
 
@@ -1807,7 +1745,6 @@ enum class NarrativeStatus {
             ADDITIONAL -> "Additional"
             EMPTY -> "Empty"
             NULL -> null
-            else -> null
         }
 
 }
@@ -1870,7 +1807,6 @@ enum class ObservationStatus {
             cancelled -> "The observation is unavailable because the measurement was not started or not completed (also sometimes called \"aborted\")."
             `entered-in-error` -> "The observation has been withdrawn following previous final release.  This electronic record should never have existed, though it is possible that real-world decisions were based on it. (If real-world activity has occurred, the status should be \"cancelled\" rather than \"entered-in-error\".)."
             unknown -> "The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which."
-            else -> null
         }
 
 
@@ -1884,7 +1820,6 @@ enum class ObservationStatus {
             cancelled -> "Cancelled"
             `entered-in-error` -> "Entered in Error"
             unknown -> "Unknown"
-            else -> null
         }
 
 //
@@ -1899,8 +1834,7 @@ enum class ObservationStatus {
 //                "cancelled" -> CANCELLED
 //                "entered-in-error" -> ENTEREDINERROR
 //                "unknown" -> UNKNOWN
-//                else -> null
-//            }
+//    //            }
 //
 //        }
 //    }
@@ -1946,7 +1880,6 @@ enum class ProvenanceEntityRole {
             SOURCE -> "source"
             REMOVAL -> "removal"
             NULL -> null
-            else -> null
         }
     }
 
@@ -1958,7 +1891,6 @@ enum class ProvenanceEntityRole {
             SOURCE -> "http://hl7.org/fhir/provenance-entity-role"
             REMOVAL -> "http://hl7.org/fhir/provenance-entity-role"
             NULL -> null
-            else -> null
         }
 
     val definition: String?
@@ -1969,7 +1901,6 @@ enum class ProvenanceEntityRole {
             SOURCE -> "A primary source for a topic refers to something produced by some agent with direct experience and knowledge about the topic, at the time of the topic's study, without benefit from hindsight."
             REMOVAL -> "A derivation for which the entity is removed from accessibility usually through the use of the Delete operation."
             NULL -> null
-            else -> null
         }
 
     val display: String?
@@ -1980,7 +1911,6 @@ enum class ProvenanceEntityRole {
             SOURCE -> "Source"
             REMOVAL -> "Removal"
             NULL -> null
-            else -> null
         }
 
 //    companion object {
@@ -2033,7 +1963,6 @@ enum class QuantityComparator {
             GREATER_OR_EQUAL -> ">="
             GREATER_THAN -> ">"
             NULL -> null
-            else -> null
         }
     }
 
@@ -2044,7 +1973,6 @@ enum class QuantityComparator {
             GREATER_OR_EQUAL -> "http://hl7.org/fhir/quantity-comparator"
             GREATER_THAN -> "http://hl7.org/fhir/quantity-comparator"
             NULL -> null
-            else -> null
         }
     }
 
@@ -2055,7 +1983,6 @@ enum class QuantityComparator {
             GREATER_OR_EQUAL -> "The actual value is greater than or equal to the given value."
             GREATER_THAN -> "The actual value is greater than the given value."
             NULL -> null
-            else -> null
         }
 
     val display: String?
@@ -2065,7 +1992,6 @@ enum class QuantityComparator {
             GREATER_OR_EQUAL -> "Greater or Equal to"
             GREATER_THAN -> "Greater than"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -2083,9 +2009,158 @@ enum class QuantityComparator {
 //        }
 }
 
+
 @Serializable
 enum class ResourceType {
-    Account, ActivityDefinition, AdverseEvent, AllergyIntolerance, Appointment, AppointmentResponse, AuditEvent, Basic, Binary, BiologicallyDerivedProduct, BodyStructure, Bundle, CapabilityStatement, CarePlan, CareTeam, CatalogEntry, ChargeItem, ChargeItemDefinition, Claim, ClaimResponse, ClinicalImpression, CodeSystem, Communication, CommunicationRequest, CompartmentDefinition, Composition, ConceptMap, Condition, Consent, Contract, Coverage, CoverageEligibilityRequest, CoverageEligibilityResponse, DetectedIssue, Device, DeviceDefinition, DeviceMetric, DeviceRequest, DeviceUseStatement, DiagnosticReport, DocumentManifest, DocumentReference, EffectEvidenceSynthesis, Encounter, Endpoint, EnrollmentRequest, EnrollmentResponse, EpisodeOfCare, EventDefinition, Evidence, EvidenceVariable, ExampleScenario, ExplanationOfBenefit, FamilyMemberHistory, Flag, Goal, GraphDefinition, Group, GuidanceResponse, HealthcareService, ImagingStudy, Immunization, ImmunizationEvaluation, ImmunizationRecommendation, ImplementationGuide, InsurancePlan, Invoice, Library, Linkage, List, Location, Measure, MeasureReport, Media, Medication, MedicationAdministration, MedicationDispense, MedicationKnowledge, MedicationRequest, MedicationStatement, MedicinalProduct, MedicinalProductAuthorization, MedicinalProductContraindication, MedicinalProductIndication, MedicinalProductIngredient, MedicinalProductInteraction, MedicinalProductManufactured, MedicinalProductPackaged, MedicinalProductPharmaceutical, MedicinalProductUndesirableEffect, MessageDefinition, MessageHeader, MolecularSequence, NamingSystem, NutritionOrder, Observation, ObservationDefinition, OperationDefinition, OperationOutcome, Organization, OrganizationAffiliation, Parameters, Patient, PaymentNotice, PaymentReconciliation, Person, PlanDefinition, Practitioner, PractitionerRole, Procedure, Provenance, Questionnaire, QuestionnaireResponse, RelatedPerson, RequestGroup, ResearchDefinition, ResearchElementDefinition, ResearchStudy, ResearchSubject, RiskAssessment, RiskEvidenceSynthesis, Schedule, SearchParameter, ServiceRequest, Slot, Specimen, SpecimenDefinition, StructureDefinition, StructureMap, Subscription, Substance, SubstanceNucleicAcid, SubstancePolymer, SubstanceProtein, SubstanceReferenceInformation, SubstanceSourceMaterial, SubstanceSpecification, SupplyDelivery, SupplyRequest, Task, TerminologyCapabilities, TestReport, TestScript, ValueSet, VerificationResult, VisionPrescription;
+
+    Account,
+    ActivityDefinition,
+    AdverseEvent,
+    AllergyIntolerance,
+    Appointment,
+    AppointmentResponse,
+    AuditEvent,
+    Basic,
+    Binary,
+    BiologicallyDerivedProduct,
+    BodyStructure,
+    Bundle,
+    CapabilityStatement,
+    CarePlan,
+    CareTeam,
+    CatalogEntry,
+    ChargeItem,
+    ChargeItemDefinition,
+    Claim,
+    ClaimResponse,
+    ClinicalImpression,
+    CodeSystem,
+    Communication,
+    CommunicationRequest,
+    CompartmentDefinition,
+    Composition,
+    ConceptMap,
+    Condition,
+    Consent,
+    Contract,
+    Coverage,
+    CoverageEligibilityRequest,
+    CoverageEligibilityResponse,
+    DetectedIssue,
+    Device,
+    DeviceDefinition,
+    DeviceMetric,
+    DeviceRequest,
+    DeviceUseStatement,
+    DiagnosticReport,
+    DocumentManifest,
+    DocumentReference,
+    EffectEvidenceSynthesis,
+    Encounter,
+    Endpoint,
+    EnrollmentRequest,
+    EnrollmentResponse,
+    EpisodeOfCare,
+    EventDefinition,
+    Evidence,
+    EvidenceVariable,
+    ExampleScenario,
+    ExplanationOfBenefit,
+    FamilyMemberHistory,
+    Flag,
+    Goal,
+    GraphDefinition,
+    Group,
+    GuidanceResponse,
+    HealthcareService,
+    ImagingStudy,
+    Immunization,
+    ImmunizationEvaluation,
+    ImmunizationRecommendation,
+    ImplementationGuide,
+    InsurancePlan,
+    Invoice,
+    Library,
+    Linkage,
+    List,
+    Location,
+    Measure,
+    MeasureReport,
+    Media,
+    Medication,
+    MedicationAdministration,
+    MedicationDispense,
+    MedicationKnowledge,
+    MedicationRequest,
+    MedicationStatement,
+    MedicinalProduct,
+    MedicinalProductAuthorization,
+    MedicinalProductContraindication,
+    MedicinalProductIndication,
+    MedicinalProductIngredient,
+    MedicinalProductInteraction,
+    MedicinalProductManufactured,
+    MedicinalProductPackaged,
+    MedicinalProductPharmaceutical,
+    MedicinalProductUndesirableEffect,
+    MessageDefinition,
+    MessageHeader,
+    MolecularSequence,
+    NamingSystem,
+    NutritionOrder,
+    Observation,
+    ObservationDefinition,
+    OperationDefinition,
+    OperationOutcome,
+    Organization,
+    OrganizationAffiliation,
+    Parameters,
+    Patient,
+    PaymentNotice,
+    PaymentReconciliation,
+    Person,
+    PlanDefinition,
+    Practitioner,
+    PractitionerRole,
+    Procedure,
+    Provenance,
+    Questionnaire,
+    QuestionnaireResponse,
+    RelatedPerson,
+    RequestGroup,
+    ResearchDefinition,
+    ResearchElementDefinition,
+    ResearchStudy,
+    ResearchSubject,
+    RiskAssessment,
+    RiskEvidenceSynthesis,
+    Schedule,
+    SearchParameter,
+    ServiceRequest,
+    Slot,
+    Specimen,
+    SpecimenDefinition,
+    StructureDefinition,
+    StructureMap,
+    Subscription,
+    Substance,
+    SubstanceNucleicAcid,
+    SubstancePolymer,
+    SubstanceProtein,
+    SubstanceReferenceInformation,
+    SubstanceSourceMaterial,
+    SubstanceSpecification,
+    SupplyDelivery,
+    SupplyRequest,
+    Task,
+    TerminologyCapabilities,
+    TestReport,
+    TestScript,
+    ValueSet,
+    VerificationResult,
+    VisionPrescription;
+
+
 
     val path: String?
         get() {
@@ -2237,7 +2312,6 @@ enum class ResourceType {
                 VerificationResult -> "verificationresult"
                 VisionPrescription -> "visionprescription"
             }
-            return null
         }
 
 //    companion object {
@@ -2446,7 +2520,6 @@ enum class ServiceRequestStatus {
             ENTEREDINERROR -> "entered-in-error"
             UNKNOWN -> "unknown"
             NULL -> null
-            else -> null
         }
     }
 
@@ -2460,7 +2533,6 @@ enum class ServiceRequestStatus {
             ENTEREDINERROR -> "http://hl7.org/fhir/request-status"
             UNKNOWN -> "http://hl7.org/fhir/request-status"
             NULL -> null
-            else -> null
         }
 
 
@@ -2474,7 +2546,6 @@ enum class ServiceRequestStatus {
             ENTEREDINERROR -> "This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be \"revoked\" rather than \"entered-in-error\".)."
             UNKNOWN -> "The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which."
             NULL -> null
-            else -> null
         }
 
 
@@ -2488,7 +2559,6 @@ enum class ServiceRequestStatus {
             ENTEREDINERROR -> "Entered in Error"
             UNKNOWN -> "Unknown"
             NULL -> null
-            else -> null
         }
 
 //    companion object {
@@ -2573,7 +2643,6 @@ enum class ServiceRequestIntent {
             INSTANCEORDER -> "instance-order"
             OPTION -> "option"
             NULL -> null
-            else -> null
         }
     }
 
@@ -2589,7 +2658,6 @@ enum class ServiceRequestIntent {
             INSTANCEORDER -> "http://hl7.org/fhir/request-intent"
             OPTION -> "http://hl7.org/fhir/request-intent"
             NULL -> null
-            else -> null
         }
     val definition: String?
         get() = when (this) {
@@ -2603,7 +2671,6 @@ enum class ServiceRequestIntent {
             INSTANCEORDER -> "An order created in fulfillment of a broader order that represents the authorization for a single activity occurrence.  E.g. The administration of a single dose of a drug."
             OPTION -> "The request represents a component or option for a RequestGroup that establishes timing, conditionality and/or other constraints among a set of requests.  Refer to [[[RequestGroup]]] for additional information on how this status is used."
             NULL -> null
-            else -> null
         }
 
 
@@ -2619,7 +2686,6 @@ enum class ServiceRequestIntent {
             INSTANCEORDER -> "Instance Order"
             OPTION -> "Option"
             NULL -> null
-            else -> null
         }
 
 //    companion object {
@@ -2676,7 +2742,6 @@ enum class ServiceRequestPriority {
             ASAP -> "asap"
             STAT -> "stat"
             NULL -> null
-            else -> null
         }
     }
 
@@ -2687,7 +2752,6 @@ enum class ServiceRequestPriority {
             ASAP -> "http://hl7.org/fhir/request-priority"
             STAT -> "http://hl7.org/fhir/request-priority"
             NULL -> null
-            else -> null
         }
 
 
@@ -2698,7 +2762,6 @@ enum class ServiceRequestPriority {
             ASAP -> "The request should be actioned as soon as possible - higher priority than urgent."
             STAT -> "The request should be actioned immediately - highest possible priority.  E.g. an emergency."
             NULL -> null
-            else -> null
         }
 
 
@@ -2709,7 +2772,6 @@ enum class ServiceRequestPriority {
             ASAP -> "ASAP"
             STAT -> "STAT"
             NULL -> null
-            else -> null
         }
 
 //    companion object {
@@ -2761,7 +2823,6 @@ enum class SpecimenStatus {
             UNSATISFACTORY -> "unsatisfactory"
             ENTEREDINERROR -> "entered-in-error"
             NULL -> null
-            else -> null
         }
     }
 
@@ -2772,7 +2833,6 @@ enum class SpecimenStatus {
             UNSATISFACTORY -> "http://hl7.org/fhir/specimen-status"
             ENTEREDINERROR -> "http://hl7.org/fhir/specimen-status"
             NULL -> null
-            else -> null
         }
 
 
@@ -2783,7 +2843,6 @@ enum class SpecimenStatus {
             UNSATISFACTORY -> "The specimen cannot be used because of a quality issue such as a broken container, contamination, or too old."
             ENTEREDINERROR -> "The specimen was entered in error and therefore nullified."
             NULL -> null
-            else -> null
         }
 
     val display: String?
@@ -2793,7 +2852,6 @@ enum class SpecimenStatus {
             UNSATISFACTORY -> "Unsatisfactory"
             ENTEREDINERROR -> "Entered in Error"
             NULL -> null
-            else -> null
         }
 
 //        companion object {
@@ -2863,7 +2921,6 @@ enum class UnitsOfTime {
             MO -> "mo"
             A -> "a"
             NULL -> null
-            else -> null
         }
     }
 
@@ -2877,7 +2934,6 @@ enum class UnitsOfTime {
             MO -> "http://unitsofmeasure.org"
             A -> "http://unitsofmeasure.org"
             NULL -> null
-            else -> null
         }
     val definition: String?
         get() = when (this) {
@@ -2889,7 +2945,6 @@ enum class UnitsOfTime {
             MO -> ""
             A -> ""
             NULL -> null
-            else -> null
         }
     val display: String?
         get() = when (this) {
@@ -2901,7 +2956,6 @@ enum class UnitsOfTime {
             MO -> "month"
             A -> "year"
             NULL -> null
-            else -> null
         }
 
 //        companion object {

@@ -45,15 +45,23 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Observation(
 
-//    override var id: String? = null,
-//    override var resourceType: ResourceType? = null,
-//    override var meta: Meta? = null,
-//    override var implicitRules: String? = null,
-//    override var language: String? = null,
-//    override var text: Narrative? = null,
-//    override var contained: MutableList<Resource>? = null,
-//    override var extension: MutableList<Extension>? = null,
-//    override var modifierExtension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
+    /**
+     * DomainResource + Resource requirements
+     * These are required for all resources
+     */
+    override var id: String? = null,
+    override var resourceType: ResourceType? = ResourceType.Observation,
+    override var meta: Meta? = null,
+    override var implicitRules: String? = null,
+    override var language: String? = null,
+    override var text: Narrative? = null,
+    override var contained: MutableList<Resource>? = null,
+    override var extension: MutableList<Extension>? = null,
+    override var modifierExtension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * A unique identifier assigned to this observation.
@@ -200,11 +208,8 @@ data class Observation(
     var component: MutableList<ObservationComponentComponent>? = null
 
 
-) : DomainResource() {
+) : DomainResource {
 
-//    override fun fhirType(): String {
-//        return "Observation"
-//    }
 
 }
 

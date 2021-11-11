@@ -40,6 +40,24 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ServiceRequest(
 
+    // ============================================================
+    // ============================================================
+    /**
+     * DomainResource + Resource requirements
+     * These are required for all resources
+     */
+    override var id: String? = null,
+    override var resourceType: ResourceType? = ResourceType.ServiceRequest,
+    override var meta: Meta? = null,
+    override var implicitRules: String? = null,
+    override var language: String? = null,
+    override var text: Narrative? = null,
+    override var contained: MutableList<Resource>? = null,
+    override var extension: MutableList<Extension>? = null,
+    override var modifierExtension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
 
     /**
      * Identifiers assigned to this order instance by the orderer and/or the receiver and/or order fulfiller.
@@ -227,10 +245,7 @@ data class ServiceRequest(
      */
     var relevantHistory: MutableList<Reference>? = null
 
-) : DomainResource() {
+) : DomainResource {
 
-//    override fun fhirType(): String {
-//        return "ServiceRequest"
-//    }
 
 }

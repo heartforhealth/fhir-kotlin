@@ -42,6 +42,25 @@ import kotlinx.serialization.Serializable
 data class Condition(
 
 
+    // ============================================================
+    // ============================================================
+    /**
+     * DomainResource + Resource requirements
+     * These are required for all resources
+     */
+    override var id: String? = null,
+    override var resourceType: ResourceType? = ResourceType.Condition,
+    override var meta: Meta? = null,
+    override var implicitRules: String? = null,
+    override var language: String? = null,
+    override var text: Narrative? = null,
+    override var contained: MutableList<Resource>? = null,
+    override var extension: MutableList<Extension>? = null,
+    override var modifierExtension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
+
     /**
      * Business identifiers assigned to this condition by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */
@@ -145,11 +164,9 @@ data class Condition(
     var note: MutableList<Annotation>? = null
 
 
-) : DomainResource() {
+) : DomainResource {
 
-//    override fun fhirType(): String {
-//        return "Condition"
-//    }
+
 
 }
 

@@ -2,6 +2,7 @@ package io.h4h.fhir.r4.extensions
 
 import io.h4h.fhir.r4.Observation
 import io.h4h.fhir.r4.base.FhirException
+import io.h4h.fhir.r4.base.Reference
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 

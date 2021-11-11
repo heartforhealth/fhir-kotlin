@@ -42,6 +42,25 @@ import kotlinx.serialization.Serializable
 data class Substance(
 
 
+    // ============================================================
+    // ============================================================
+    /**
+     * DomainResource + Resource requirements
+     * These are required for all resources
+     */
+    override var id: String? = null,
+    override var resourceType: ResourceType? = ResourceType.Substance,
+    override var meta: Meta? = null,
+    override var implicitRules: String? = null,
+    override var language: String? = null,
+    override var text: Narrative? = null,
+    override var contained: MutableList<Resource>? = null,
+    override var extension: MutableList<Extension>? = null,
+    override var modifierExtension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
+
     /**
      * Unique identifier for the substance.
      */
@@ -81,11 +100,8 @@ data class Substance(
     var ingredient: MutableList<SubstanceIngredientComponent>? = null
 
 
-) : DomainResource() {
+) : DomainResource {
 
-//    override fun fhirType(): String {
-//        return "Substance"
-//    }
 
 }
 

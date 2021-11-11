@@ -76,8 +76,6 @@ data class Identifier(
 
 ) {
 
-//    override fun fhirType(): String {
-//        return "Identifier"
-//    }
+
 
 }

@@ -2,7 +2,7 @@
 
 **Disclaimer: ALPHA-quality!**
 
-The library provides 🔥 HL7 FHIR Resources converted to Kotlin `data class`-es, having the official [Java HAPI FHIR implementation](https://github.com/hapifhir/hapi-fhir) as a base reference. The aim is to be in-line with the HAPI implementation.
+The library provides 🔥 HL7 FHIR Resources converted to Kotlin `data class`-es, having the official [Java HAPI FHIR implementation](https://github.com/hapifhir/org.hl7.fhir.core) as a base reference. The aim is to be in-line with the HAPI implementation.
 
 
 ### FHIR versions
@@ -22,7 +22,6 @@ The data classes are prepared for [Kotlin reflectionless serialization](https://
 
 - Java `BigDecimal` type was replaced with a lesser suitable alternative - Kotlin's `Double`, for the lack of a better alternative that supports serialization out of the box. The issue with `BigDecimal` is that it's not easily serializable to/from JSON, we couldn't find a suitable `BigDecimalSerializer`. If you happen to know a way, please open an issue.
 - Enumerations still need refactoring: UPPERCASE to lowercase
-- Cannot instantiate fields belonging to `DomainResource` or `Resource`
 - There are no tests implemented
 
 ### Copyright

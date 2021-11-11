@@ -41,6 +41,24 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Encounter(
 
+    // ============================================================
+    // ============================================================
+    /**
+     * DomainResource + Resource requirements
+     * These are required for all resources
+     */
+    override var id: String? = null,
+    override var resourceType: ResourceType? = ResourceType.Encounter,
+    override var meta: Meta? = null,
+    override var implicitRules: String? = null,
+    override var language: String? = null,
+    override var text: Narrative? = null,
+    override var contained: MutableList<Resource>? = null,
+    override var extension: MutableList<Extension>? = null,
+    override var modifierExtension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
 
     /**
      * Identifier(s) by which this encounter is known.
@@ -164,7 +182,13 @@ data class Encounter(
      */
     var partOf: Reference? = null
 
-)
+) : DomainResource {
+
+
+
+}
+
+
 
 @Serializable
 data class StatusHistoryComponent(

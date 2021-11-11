@@ -1,4 +1,4 @@
-package io.h4h.fhir.r4
+package io.h4h.fhir.r4.base
 
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable

@@ -1,6 +1,5 @@
 package io.h4h.fhir.r4.base
 
-import kotlinx.serialization.Serializable
 
 
 /*
@@ -39,34 +38,34 @@ import kotlinx.serialization.Serializable
  * This is the base resource type for everything.
  */
 
-@Serializable
-abstract class Resource {
+
+interface Resource {
     /**
      * The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
      */
 
-    open var id: String? = null
+    var id: String?
 
     /**
      * Resource type
      */
-    open var resourceType: ResourceType? = null
+    var resourceType: ResourceType?
 
     /**
      * The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.
      */
-    open var meta: Meta? = null
+    var meta: Meta?
 
     /**
      * A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.
      */
-    open var implicitRules: String? = null
+    var implicitRules: String?
 
     /**
      * The base language in which the resource is written.
      */
     //@Binding(valueSet = "http://hl7.org/fhir/ValueSet/languages")
-    open var language: String? = null
+    var language: String?
 
 
 }

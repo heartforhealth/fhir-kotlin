@@ -42,6 +42,24 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Endpoint(
 
+    // ============================================================
+    // ============================================================
+    /**
+     * DomainResource + Resource requirements
+     * These are required for all resources
+     */
+    override var id: String? = null,
+    override var resourceType: ResourceType? = ResourceType.Endpoint,
+    override var meta: Meta? = null,
+    override var implicitRules: String? = null,
+    override var language: String? = null,
+    override var text: Narrative? = null,
+    override var contained: MutableList<Resource>? = null,
+    override var extension: MutableList<Extension>? = null,
+    override var modifierExtension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Identifier for the organization that is used to identify the endpoint across multiple disparate systems.
      */
@@ -102,10 +120,7 @@ data class Endpoint(
     var header: MutableList<String>? = null
 
 
-) : DomainResource() {
+) : DomainResource {
 
-//    override fun fhirType(): String {
-//        return "Endpoint"
-//    }
 
 }

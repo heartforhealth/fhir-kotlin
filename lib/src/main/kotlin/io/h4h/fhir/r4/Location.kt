@@ -40,6 +40,25 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Location(
 
+
+    // ============================================================
+    // ============================================================
+    /**
+     * DomainResource + Resource requirements
+     * These are required for all resources
+     */
+    override var id: String? = null,
+    override var resourceType: ResourceType? = ResourceType.Location,
+    override var meta: Meta? = null,
+    override var implicitRules: String? = null,
+    override var language: String? = null,
+    override var text: Narrative? = null,
+    override var contained: MutableList<Resource>? = null,
+    override var extension: MutableList<Extension>? = null,
+    override var modifierExtension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Unique code or number identifying the location to its users.
      */
@@ -130,11 +149,9 @@ data class Location(
      */
     var endpoint: MutableList<Reference>? = null
 
-) : DomainResource() {
+) : DomainResource {
 
-//    override fun fhirType(): String {
-//        return "Location"
-//    }
+
 }
 
 @Serializable

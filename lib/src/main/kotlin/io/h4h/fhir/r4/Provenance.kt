@@ -41,6 +41,24 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Provenance(
 
+    // ============================================================
+    // ============================================================
+    /**
+     * DomainResource + Resource requirements
+     * These are required for all resources
+     */
+    override var id: String? = null,
+    override var resourceType: ResourceType? = ResourceType.Provenance,
+    override var meta: Meta? = null,
+    override var implicitRules: String? = null,
+    override var language: String? = null,
+    override var text: Narrative? = null,
+    override var contained: MutableList<Resource>? = null,
+    override var extension: MutableList<Extension>? = null,
+    override var modifierExtension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.
      */
@@ -94,7 +112,7 @@ data class Provenance(
      */
     var signature: MutableList<Signature>? = null,
 
-    ) : DomainResource() {
+    ) : DomainResource {
 
 }
 
