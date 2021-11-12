@@ -25,7 +25,7 @@ plugins {
 }
 
 
-/*
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
@@ -37,7 +37,7 @@ publishing {
         }
     }
 }
-*/
+
 
 
 repositories {
