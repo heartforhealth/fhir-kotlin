@@ -7,7 +7,7 @@
  */
 
 
-
+group = "io.h4h"
 version = "0.1.0"
 
 
@@ -18,9 +18,27 @@ plugins {
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+    // Publish to Maven repository
+    `maven-publish`
 
     kotlin("plugin.serialization") version "1.5.31"
 }
+
+
+/*
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "io.h4h"
+            artifactId = "fhir-kotlin"
+            // version = "1.1"
+
+            from(components["java"])
+        }
+    }
+}
+*/
+
 
 repositories {
     // Use Maven Central for resolving dependencies.
