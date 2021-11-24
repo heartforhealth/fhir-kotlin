@@ -8,20 +8,20 @@
 
 
 group = "io.h4h"
-version = "0.1.0"
+version = "0.1.1"
 
 
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.5.31"
+    id("org.jetbrains.kotlin.jvm") version "1.6.0"
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
     // Publish to Maven repository
     `maven-publish`
 
-    kotlin("plugin.serialization") version "1.5.31"
+    kotlin("plugin.serialization") version "1.6.0"
 }
 
 

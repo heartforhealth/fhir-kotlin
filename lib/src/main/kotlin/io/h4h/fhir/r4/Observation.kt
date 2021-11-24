@@ -205,7 +205,7 @@ data class Observation(
     /**
      * Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.
      */
-    var component: MutableList<ObservationComponentComponent>? = null
+    var component: MutableList<ObservationComponent>? = null
 
 
 ) : DomainResource {
@@ -215,7 +215,7 @@ data class Observation(
 
 
 @Serializable
-data class ObservationComponentComponent(
+data class ObservationComponent(
 
     /**
      * Describes what was observed. Sometimes this is called the observation "code".

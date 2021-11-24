@@ -1,6 +1,7 @@
 package io.h4h.fhir.r4.base
 
 import kotlinx.serialization.Serializable
+import kotlin.Annotation
 
 
 /*
@@ -47,55 +48,54 @@ data class Extension(
     /**
      * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
      */
+    // var valueAge: Age? = null,
+    var valueAnnotation: Annotation? = null,
+    var valueAddress: Address? = null,
+    // var valueAttachment: Attachment? = null,
     var valueBase64Binary: String? = null,
     var valueBoolean: Boolean? = null,
     var valueCanonical: String? = null,
     var valueCode: String? = null,
+    var valueCodeableConcept: CodeableConcept? = null,
+    var valueCoding: Coding? = null,
+    var valueContactPoint: ContactPoint? = null,
+    // var valueCount: Count? = null,
+    // var valueContactDetail: ContactDetail? = null,
+    // var valueContributor: Contributor? = null,
+    // var valueDataRequirement: DataRequirement? = null,
     var valueDate: String? = null,
     var valueDateTime: String? = null,
     var valueDecimal: Double? = null,
+    // var valueDosage: Dosage? = null,
+    // var valueDistance: Distance? = null,
+    // var valueDuration: Duration? = null,
+    // var valueExpression: Expression? = null,
+    var valueHumanName: HumanName? = null,
     var valueId: String? = null,
+    var valueIdentifier: Identifier? = null,
     var valueInstant: String? = null,
     var valueInteger: Int? = null,
     var valueMarkdown: String? = null,
+    var valueMeta: Meta? = null,
+    // var valueMoney: Money? = null,
     var valueOid: String? = null,
+    // var valueParameterDefinition: ParameterDefinition? = null,
+    var valuePeriod: Period? = null,
     var valuePositiveInt: Int? = null,
+    var valueQuantity: Quantity? = null,
+    var valueRange: Range? = null,
+    // var valueRelatedArtifact: RelatedArtifact? = null,
+    var valueRatio: Ratio? = null,
+    var valueReference: Reference? = null,
+    var valueSampledData: SampledData? = null,
+    var valueSignature: Signature? = null,
+    var valueTiming: Timing? = null,
     var valueTime: String? = null,
+    // var valueTriggerDefinition: TriggerDefinition? = null,
     var valueUnsignedInt: Int? = null,
     var valueUri: String? = null,
     var valueUrl: String? = null,
-    var valueAddress: Address? = null
+    // var valueUsageContext: UsageContext? = null
 
-    // TODO:
-    //    "valueAge" : { Age }
-    //    "valueAnnotation" : { Annotation }
-    //    "valueAttachment" : { Attachment }
-    //    "valueCodeableConcept" : { CodeableConcept }
-    //    "valueCoding" : { Coding }
-    //    "valueContactPoint" : { ContactPoint }
-    //    "valueCount" : { Count }
-    //    "valueDistance" : { Distance }
-    //    "valueDuration" : { Duration }
-    //    "valueHumanName" : { HumanName }
-    //    "valueIdentifier" : { Identifier }
-    //    "valueMoney" : { Money }
-    //    "valuePeriod" : { Period }
-    //    "valueQuantity" : { Quantity }
-    //    "valueRange" : { Range }
-    //    "valueRatio" : { Ratio }
-    //    "valueReference" : { Reference }
-    //    "valueSampledData" : { SampledData }
-    //    "valueSignature" : { Signature }
-    //    "valueTiming" : { Timing }
-    //    "valueContactDetail" : { ContactDetail }
-    //    "valueContributor" : { Contributor }
-    //    "valueDataRequirement" : { DataRequirement }
-    //    "valueExpression" : { Expression }
-    //    "valueParameterDefinition" : { ParameterDefinition }
-    //    "valueRelatedArtifact" : { RelatedArtifact }
-    //    "valueTriggerDefinition" : { TriggerDefinition }
-    //    "valueUsageContext" : { UsageContext }
-    //    "valueDosage" : { Dosage }
-    //    "valueMeta" : { Meta }
 
 )
