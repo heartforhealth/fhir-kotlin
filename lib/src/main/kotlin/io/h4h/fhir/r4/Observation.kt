@@ -2,6 +2,7 @@ package io.h4h.fhir.r4
 
 
 import io.h4h.fhir.r4.base.*
+import io.h4h.fhir.r4.base.Annotation
 import kotlinx.serialization.Serializable
 
 /*
