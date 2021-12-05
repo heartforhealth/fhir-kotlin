@@ -1,5 +1,6 @@
 package io.h4h.fhir.r4.base
 
+
 import kotlinx.serialization.Serializable
 
 
@@ -34,45 +35,42 @@ import kotlinx.serialization.Serializable
 // Generated on Tue, May 12, 2020 07:26+1000 for FHIR v4.0.1
 
 
+
 /**
- * The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.
+ * A description of a triggering event. Triggering events can be named events, data events, or periodic, as determined by the type element.
  */
 
 @Serializable
-data class Meta(
+data class TriggerDefinition(
 
     /**
-     * The version specific identifier, as it appears in the version portion of the URL. This value changes when the resource is created, updated, or deleted.
+     * The type of triggering event.
      */
-    var versionId: String? = null,
+    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/trigger-type")
+    var type: TriggerType? = null,
 
     /**
-     * When the resource last changed - e.g. when the version changed.
-     * An instant in time in the format YYYY-MM-DDThh:mm:ss.sss+zz:zz (e.g. 2015-02-07T13:28:17.239+02:00 or 2017-01-01T00:00:00Z)
-     * InstantType
+     * A formal name for the event. This may be an absolute URI that identifies the event formally (e.g. from a trigger registry), or a simple relative URI that identifies the event in a local context.
      */
-    var lastUpdated: String? = null,
+    var name: String? = null,
 
     /**
-     * A uri that identifies the source system of the resource. This provides a minimal amount of [[[Provenance]]] information that can be used to track or differentiate the source of information in the resource. The source may identify another FHIR server, document, message, database, etc.
+     * The timing of the event (if this is a periodic trigger).
      */
-    var source: String? = null,
+    var timingTiming: Timing? = null,
+    var timingReference: Reference? = null,
+    var timingDate: String? = null,
+    var timingDateTime: String? = null,
+
 
     /**
-     * A list of profiles (references to [[[StructureDefinition]]] resources) that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]].
+     * The triggering data of the event (if this is a data trigger). If more than one data is requirement is specified, then all the data requirements must be true.
      */
-    var profile: List<String>? = null,
+    var data: List<DataRequirement>? = null,
 
     /**
-     * Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.
+     * A boolean-valued expression that is evaluated in the context of the container of the trigger definition and returns whether or not the trigger fires.
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/security-labels")
-    var security: List<Coding>? = null,
-
-    /**
-     * Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.
-     */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/common-tags")
-    var tag: List<Coding>? = null
+    var condition: Expression? = null
 
 )

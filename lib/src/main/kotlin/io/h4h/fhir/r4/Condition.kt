@@ -54,9 +54,9 @@ data class Condition(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -64,7 +64,7 @@ data class Condition(
     /**
      * Business identifiers assigned to this condition by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * The clinical status of the condition.
@@ -82,7 +82,7 @@ data class Condition(
      * A category assigned to the condition.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-category")
-    var category: MutableList<CodeableConcept>? = null,
+    var category: List<CodeableConcept>? = null,
 
     /**
      * A subjective assessment of the severity of the condition as evaluated by the clinician.
@@ -100,7 +100,7 @@ data class Condition(
      * The anatomical location where this condition manifests itself.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/body-site")
-    var bodySite: MutableList<CodeableConcept>? = null,
+    var bodySite: List<CodeableConcept>? = null,
 
     /**
      * Indicates the patient or group who the condition record is associated with.
@@ -151,17 +151,17 @@ data class Condition(
     /**
      * Clinical stage or grade of a condition. May include formal severity assessments.
      */
-    var stage: MutableList<ConditionStageComponent>? = null,
+    var stage: List<ConditionStageComponent>? = null,
 
     /**
      * Supporting evidence / manifestations that are the basis of the Condition's verification status, such as evidence that confirmed or refuted the condition.
      */
-    var evidence: MutableList<ConditionEvidenceComponent>? = null,
+    var evidence: List<ConditionEvidenceComponent>? = null,
 
     /**
      * Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis.
      */
-    var note: MutableList<Annotation>? = null
+    var note: List<Annotation>? = null
 
 
 ) : DomainResource {
@@ -183,7 +183,7 @@ data class ConditionStageComponent(
     /**
      * Reference to a formal record of the evidence on which the staging assessment is based.
      */
-    var assessment: MutableList<Reference>? = null,
+    var assessment: List<Reference>? = null,
 
     /**
      * The kind of staging, such as pathological or clinical staging.
@@ -201,11 +201,11 @@ data class ConditionEvidenceComponent(
      * A manifestation or symptom that led to the recording of this condition.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/manifestation-or-symptom")
-    var code: MutableList<CodeableConcept>? = null,
+    var code: List<CodeableConcept>? = null,
 
     /**
      * Links to other relevant information, including pathology reports.
      */
-    var detail: MutableList<Reference>? = null
+    var detail: List<Reference>? = null
 
 )

@@ -53,9 +53,9 @@ data class Encounter(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -63,7 +63,7 @@ data class Encounter(
     /**
      * Identifier(s) by which this encounter is known.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * planned | arrived | triaged | in-progress | onleave | finished | cancelled +.
@@ -74,7 +74,7 @@ data class Encounter(
     /**
      * The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
      */
-    var statusHistory: MutableList<StatusHistoryComponent>? = null,
+    var statusHistory: List<StatusHistoryComponent>? = null,
 
     /**
      * Concepts representing classification of patient encounter such as ambulatory (outpatient), inpatient, emergency, home health or others due to local variations.
@@ -85,13 +85,13 @@ data class Encounter(
     /**
      * The class history permits the tracking of the encounters transitions without needing to go  through the resource history.  This would be used for a case where an admission starts of as an emergency encounter, then transitions into an inpatient scenario. Doing this and not restarting a new encounter ensures that any lab/diagnostic results can more easily follow the patient and not require re-processing and not get lost or cancelled during a kind of discharge from emergency to inpatient.
      */
-    var classHistory: MutableList<ClassHistoryComponent>? = null,
+    var classHistory: List<ClassHistoryComponent>? = null,
 
     /**
      * Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/encounter-type")
-    var type: MutableList<CodeableConcept>? = null,
+    var type: List<CodeableConcept>? = null,
 
     /**
      * Broad categorization of the service that is to be provided (e.g. cardiology).
@@ -113,22 +113,22 @@ data class Encounter(
     /**
      * Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).
      */
-    var episodeOfCare: MutableList<Reference>? = null,
+    var episodeOfCare: List<Reference>? = null,
 
     /**
      * The request this encounter satisfies (e.g. incoming referral or procedure request).
      */
-    var basedOn: MutableList<Reference>? = null,
+    var basedOn: List<Reference>? = null,
 
     /**
      * The list of people responsible for providing the service.
      */
-    var participant: MutableList<EncounterParticipantComponent>? = null,
+    var participant: List<EncounterParticipantComponent>? = null,
 
     /**
      * The appointment that scheduled this encounter.
      */
-    var appointment: MutableList<Reference>? = null,
+    var appointment: List<Reference>? = null,
 
     /**
      * The start and end time of the encounter.
@@ -144,23 +144,23 @@ data class Encounter(
      * Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/encounter-reason")
-    var reasonCode: MutableList<CodeableConcept>? = null,
+    var reasonCode: List<CodeableConcept>? = null,
 
     /**
      * Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.
      */
-    var reasonReference: MutableList<Reference>? = null,
+    var reasonReference: List<Reference>? = null,
 
 
     /**
      * The list of diagnosis relevant to this encounter.
      */
-    var diagnosis: MutableList<DiagnosisComponent>? = null,
+    var diagnosis: List<DiagnosisComponent>? = null,
 
     /**
      * The set of accounts that may be used for billing for this Encounter.
      */
-    var account: MutableList<Reference>? = null,
+    var account: List<Reference>? = null,
 
     /**
      * Details about the admission to a healthcare service.
@@ -170,7 +170,7 @@ data class Encounter(
     /**
      * List of locations where  the patient has been during this encounter.
      */
-    var location: MutableList<EncounterLocationComponent>? = null,
+    var location: List<EncounterLocationComponent>? = null,
 
     /**
      * The organization that is primarily responsible for this Encounter's services. This MAY be the same as the organization on the Patient record, however it could be different, such as if the actor performing the services was from an external organization (which may be billed seperately) for an external consultation.  Refer to the example bundle showing an abbreviated set of Encounters for a colonoscopy.
@@ -228,7 +228,7 @@ data class EncounterParticipantComponent(
      * Role of participant in encounter.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/encounter-participant-type")
-    var type: MutableList<CodeableConcept>? = null,
+    var type: List<CodeableConcept>? = null,
 
     /**
      * The period of time that the specified participant participated in the encounter. These can overlap or be sub-sets of the overall encounter's period.
@@ -271,19 +271,19 @@ data class EncounterHospitalizationComponent(
      * Diet preferences reported by the patient.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/encounter-diet")
-    var dietPreference: MutableList<CodeableConcept>? = null,
+    var dietPreference: List<CodeableConcept>? = null,
 
     /**
      * Special courtesies (VIP, board member).
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/encounter-special-courtesy")
-    var specialCourtesy: MutableList<CodeableConcept>? = null,
+    var specialCourtesy: List<CodeableConcept>? = null,
 
     /**
      * Any special requests that have been made for this hospitalization encounter, such as the provision of specific equipment or other things.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/encounter-special-arrangements")
-    var specialArrangement: MutableList<CodeableConcept>? = null,
+    var specialArrangement: List<CodeableConcept>? = null,
 
     /**
      * Location/organization to which the patient is discharged.

@@ -53,16 +53,16 @@ data class Location(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
     /**
      * Unique code or number identifying the location to its users.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * The status property covers the general availability of the resource, not the current value which may be covered by the operationStatus, or by a schedule/slots if they are configured for the location.
@@ -84,7 +84,7 @@ data class Location(
     /**
      * A list of alternate names that the location is known as, or was known as, in the past.
      */
-    var alias: MutableList<String>? = null,
+    var alias: List<String>? = null,
 
     /**
      * Description of the Location, which helps in finding or referencing the place.
@@ -101,12 +101,12 @@ data class Location(
      * Indicates the type of function performed at the location.
      */
     // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType")
-    var type: MutableList<CodeableConcept>? = null,
+    var type: List<CodeableConcept>? = null,
 
     /**
      * The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.
      */
-    var telecom: MutableList<ContactPoint>? = null,
+    var telecom: List<ContactPoint>? = null,
 
     /**
      * Physical location.
@@ -137,7 +137,7 @@ data class Location(
     /**
      * What days/times during a week is this location usually open.
      */
-    var hoursOfOperation: MutableList<LocationHoursOfOperationComponent>? = null,
+    var hoursOfOperation: List<LocationHoursOfOperationComponent>? = null,
 
     /**
      * A description of when the locations opening ours are different to normal, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as detailed in the opening hours Times.
@@ -147,7 +147,7 @@ data class Location(
     /**
      * Technical endpoints providing access to services operated for the location.
      */
-    var endpoint: MutableList<Reference>? = null
+    var endpoint: List<Reference>? = null
 
 ) : DomainResource {
 
@@ -181,7 +181,7 @@ data class LocationHoursOfOperationComponent(
      * Indicates which days of the week are available between the start and end Times.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/days-of-week")
-    var daysOfWeek: MutableList<DaysOfWeek>? = null,
+    var daysOfWeek: List<DaysOfWeek>? = null,
 
     /**
      * The Location is open all day.

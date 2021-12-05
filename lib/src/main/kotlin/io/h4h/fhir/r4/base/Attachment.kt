@@ -2,7 +2,6 @@ package io.h4h.fhir.r4.base
 
 import kotlinx.serialization.Serializable
 
-
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
@@ -35,44 +34,52 @@ import kotlinx.serialization.Serializable
 
 
 /**
- * The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.
+ * For referring to data content defined in other formats.
  */
 
 @Serializable
-data class Meta(
+data class Attachment(
+    
+    /**
+     * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.
+     */
+    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/mimetypes")
+    var contentType: String? = null,
 
     /**
-     * The version specific identifier, as it appears in the version portion of the URL. This value changes when the resource is created, updated, or deleted.
+     * The human language of the content. The value can be any valid value according to BCP 47.
      */
-    var versionId: String? = null,
+    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/languages")
+    var language: String? = null,
 
     /**
-     * When the resource last changed - e.g. when the version changed.
-     * An instant in time in the format YYYY-MM-DDThh:mm:ss.sss+zz:zz (e.g. 2015-02-07T13:28:17.239+02:00 or 2017-01-01T00:00:00Z)
-     * InstantType
+     * The actual data of the attachment - a sequence of bytes, base64 encoded.
      */
-    var lastUpdated: String? = null,
+    var data: String? = null,
 
     /**
-     * A uri that identifies the source system of the resource. This provides a minimal amount of [[[Provenance]]] information that can be used to track or differentiate the source of information in the resource. The source may identify another FHIR server, document, message, database, etc.
+     * A location where the data can be accessed.
      */
-    var source: String? = null,
+    var url: String? = null,
 
     /**
-     * A list of profiles (references to [[[StructureDefinition]]] resources) that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]].
+     * The number of bytes of data that make up this attachment (before base64 encoding, if that is done).
      */
-    var profile: List<String>? = null,
+    var size: Int? = null,
 
     /**
-     * Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.
+     * The calculated hash of the data using SHA-1. Represented using base64.
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/security-labels")
-    var security: List<Coding>? = null,
+    var hash: String? = null,
 
     /**
-     * Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.
+     * A label or set of text to display in place of the data.
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/common-tags")
-    var tag: List<Coding>? = null
+    var title: String? = null,
+
+    /**
+     * The date that the attachment was first created.
+     */
+    var creation: String? = null
 
 )

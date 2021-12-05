@@ -33,47 +33,32 @@ import kotlinx.serialization.Serializable
 */
 // Generated on Tue, May 12, 2020 07:26+1000 for FHIR v4.0.1
 
+
 /**
- * A human's name with the ability to identify parts and usage.
+ * Specifies contact information for a person or organization.
  */
 
 @Serializable
-data class HumanName(
+data class ContactDetail(
+
+    // ============================================================
+    // ============================================================
+    /**
+     * Element requirements
+     */
+    override var id: String? = null,
+    override var extension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
-     * Identifies the purpose for this name.
+     * The name of an individual to contact.
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/name-use")
-    var use: NameUse? = null,
+    var name: String? = null,
 
     /**
-     * Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.
+     * The contact details for the individual (if a name was provided) or the organization.
      */
-    var text: String? = null,
+    var telecom: List<ContactPoint>? = null
 
-    /**
-     * The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
-     */
-    var family: String? = null,
-
-    /**
-     * Given name.
-     */
-    var given: List<String>? = null,
-
-    /**
-     * Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.
-     */
-    var prefix: List<String>? = null,
-
-    /**
-     * Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.
-     */
-    var suffix: List<String>? = null,
-
-    /**
-     * Indicates the period of time when this name was valid for the named person.
-     */
-    var period: Period? = null
-
-)
+) : Element

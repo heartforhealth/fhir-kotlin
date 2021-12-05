@@ -54,9 +54,9 @@ data class Organization(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -64,7 +64,7 @@ data class Organization(
     /**
      * Identifier for the organization that is used to identify the organization across multiple disparate systems.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * Whether the organization's record is still in active use.
@@ -75,7 +75,7 @@ data class Organization(
      * The kind(s) of organization that this is.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/organization-type")
-    var type: MutableList<CodeableConcept>? = null,
+    var type: List<CodeableConcept>? = null,
 
     /**
      * A name associated with the organization.
@@ -85,17 +85,17 @@ data class Organization(
     /**
      * A list of alternate names that the organization is known as, or was known as in the past.
      */
-    var alias: MutableList<String>? = null,
+    var alias: List<String>? = null,
 
     /**
      * A contact detail for the organization.
      */
-    var telecom: MutableList<ContactPoint>? = null,
+    var telecom: List<ContactPoint>? = null,
 
     /**
      * An address for the organization.
      */
-    var address: MutableList<Address>? = null,
+    var address: List<Address>? = null,
 
     /**
      * The organization of which this organization forms a part.
@@ -105,18 +105,15 @@ data class Organization(
     /**
      * Contact for the organization for a certain purpose.
      */
-    var contact: MutableList<OrganizationContactComponent>? = null,
+    var contact: List<OrganizationContactComponent>? = null,
 
     /**
      * Technical endpoints providing access to services operated for the organization.
      */
-    var endpoint: MutableList<Reference?>? = null
+    var endpoint: List<Reference?>? = null
 
 
-) : DomainResource {
-
-
-}
+) : DomainResource
 
 
 @Serializable
@@ -136,7 +133,7 @@ data class OrganizationContactComponent(
     /**
      * A contact detail (e.g. a telephone number or an email address) by which the party may be contacted.
      */
-    var telecom: MutableList<ContactPoint>? = null,
+    var telecom: List<ContactPoint>? = null,
 
     /**
      * Visiting or postal addresses for the contact.

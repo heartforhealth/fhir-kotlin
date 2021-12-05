@@ -44,7 +44,7 @@ data class Timing(
     /**
      * Identifies specific times when the event occurs.
      */
-    var event: MutableList<String>? = null,
+    var event: List<String>? = null,
 
     /**
      * A set of rules that describe when the event is scheduled.
@@ -125,18 +125,18 @@ data class TimingRepeatComponent(
      * If one or more days of week is provided, then the action happens only on the specified day(s).
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/days-of-week")
-    var dayOfWeek: MutableList<DayOfWeek>? = null,
+    var dayOfWeek: List<DayOfWeek>? = null,
 
     /**
      * Specified time of day for action to take place.
      */
-    var timeOfDay: MutableList<String>? = null,
+    var timeOfDay: List<String>? = null,
 
     /**
      * An approximate time period during the day, potentially linked to an event of daily living that indicates when the action should occur.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/event-timing")
-    var `when`: MutableList<EventTiming>? = null,
+    var `when`: List<EventTiming>? = null,
 
     /**
      * The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event.

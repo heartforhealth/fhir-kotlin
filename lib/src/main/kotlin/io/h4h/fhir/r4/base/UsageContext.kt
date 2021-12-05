@@ -2,7 +2,6 @@ package io.h4h.fhir.r4.base
 
 import kotlinx.serialization.Serializable
 
-
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
@@ -33,47 +32,25 @@ import kotlinx.serialization.Serializable
 */
 // Generated on Tue, May 12, 2020 07:26+1000 for FHIR v4.0.1
 
+
+
 /**
- * A human's name with the ability to identify parts and usage.
+ * Specifies clinical/business/etc. metadata that can be used to retrieve, index and/or categorize an artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care).
  */
 
 @Serializable
-data class HumanName(
+data class UsageContext(
 
     /**
-     * Identifies the purpose for this name.
+     * A code that identifies the type of context being specified by this usage context.
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/name-use")
-    var use: NameUse? = null,
+    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/usage-context-type")
+    var code: Coding? = null,
 
     /**
-     * Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.
+     * A value that defines the context specified in this context of use. The interpretation of the value is defined by the code.
      */
-    var text: String? = null,
-
-    /**
-     * The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
-     */
-    var family: String? = null,
-
-    /**
-     * Given name.
-     */
-    var given: List<String>? = null,
-
-    /**
-     * Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.
-     */
-    var prefix: List<String>? = null,
-
-    /**
-     * Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.
-     */
-    var suffix: List<String>? = null,
-
-    /**
-     * Indicates the period of time when this name was valid for the named person.
-     */
-    var period: Period? = null
+    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/use-context")
+    var value: Element? = null
 
 )

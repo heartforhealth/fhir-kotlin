@@ -53,16 +53,16 @@ data class Provenance(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
     /**
      * The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.
      */
-    var target: MutableList<Reference>? = null,
+    var target: List<Reference>? = null,
 
     /**
      * The period during which the activity occurred.
@@ -78,7 +78,7 @@ data class Provenance(
     /**
      * Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.
      */
-    var policy: MutableList<String>? = null,
+    var policy: List<String>? = null,
 
     /**
      * Where the activity occurred, if relevant.
@@ -89,7 +89,7 @@ data class Provenance(
      * The reason that the activity was taking place.
      */
     // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v3-PurposeOfUse")
-    var reason: MutableList<CodeableConcept>? = null,
+    var reason: List<CodeableConcept>? = null,
 
     /**
      * An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
@@ -100,17 +100,17 @@ data class Provenance(
     /**
      * An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place.
      */
-    var agent: MutableList<ProvenanceAgentComponent>? = null,
+    var agent: List<ProvenanceAgentComponent>? = null,
 
     /**
      * An entity used in this activity.
      */
-    var entity: MutableList<ProvenanceEntityComponent>? = null,
+    var entity: List<ProvenanceEntityComponent>? = null,
 
     /**
      * A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated.
      */
-    var signature: MutableList<Signature>? = null,
+    var signature: List<Signature>? = null,
 
     ) : DomainResource {
 
@@ -130,7 +130,7 @@ data class ProvenanceAgentComponent(
      * The function of the agent with respect to the activity. The security role enabling the agent with respect to the activity.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/security-role-type")
-    var role: MutableList<CodeableConcept>? = null,
+    var role: List<CodeableConcept>? = null,
 
     /**
      * The individual, device or organization that participated in the event.
@@ -162,6 +162,6 @@ data class ProvenanceEntityComponent(
     /**
      * The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity.
      */
-    var agent: MutableList<ProvenanceAgentComponent>? = null
+    var agent: List<ProvenanceAgentComponent>? = null
 
 )

@@ -53,9 +53,9 @@ data class EpisodeOfCare(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -63,7 +63,7 @@ data class EpisodeOfCare(
     /**
      * The EpisodeOfCare may be known by different identifiers for different contexts of use, such as when an external agency is tracking the Episode for funding purposes.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * planned | waitlist | active | onhold | finished | cancelled.
@@ -74,18 +74,18 @@ data class EpisodeOfCare(
     /**
      * The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).
      */
-    var statusHistory: MutableList<EpisodeOfCareStatusHistoryComponent>? = null,
+    var statusHistory: List<EpisodeOfCareStatusHistoryComponent>? = null,
 
     /**
      * A classification of the type of episode of care; e.g. specialist referral, disease management, type of funded care.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/episodeofcare-type")
-    var type: MutableList<CodeableConcept>? = null,
+    var type: List<CodeableConcept>? = null,
 
     /**
      * The list of diagnosis relevant to this episode of care.
      */
-    var diagnosis: MutableList<DiagnosisComponent>? = null,
+    var diagnosis: List<DiagnosisComponent>? = null,
 
     /**
      * The patient who is the focus of this episode of care.
@@ -105,7 +105,7 @@ data class EpisodeOfCare(
     /**
      * Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals.
      */
-    var referralRequest: MutableList<Reference>? = null,
+    var referralRequest: List<Reference>? = null,
 
     /**
      * The practitioner that is the care manager/care coordinator for this patient.
@@ -115,12 +115,12 @@ data class EpisodeOfCare(
     /**
      * The list of practitioners that may be facilitating this episode of care for specific purposes.
      */
-    var team: MutableList<Reference>? = null,
+    var team: List<Reference>? = null,
 
     /**
      * The set of accounts that may be used for billing for this EpisodeOfCare.
      */
-    var account: MutableList<Reference>? = null
+    var account: List<Reference>? = null
 
 
 ) : DomainResource {

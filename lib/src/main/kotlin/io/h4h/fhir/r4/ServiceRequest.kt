@@ -52,9 +52,9 @@ data class ServiceRequest(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -62,27 +62,27 @@ data class ServiceRequest(
     /**
      * Identifiers assigned to this order instance by the orderer and/or the receiver and/or order fulfiller.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * The URL pointing to a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this ServiceRequest.
      */
-    var instantiatesCanonical: MutableList<String>? = null,
+    var instantiatesCanonical: List<String>? = null,
 
     /**
      * The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this ServiceRequest.
      */
-    var instantiatesUri: MutableList<String>? = null,
+    var instantiatesUri: List<String>? = null,
 
     /**
      * Plan/proposal/order fulfilled by this request.
      */
-    var basedOn: MutableList<Reference>? = null,
+    var basedOn: List<Reference>? = null,
 
     /**
      * The request takes the place of the referenced completed or terminated request(s).
      */
-    var replaces: MutableList<Reference>? = null,
+    var replaces: List<Reference>? = null,
 
     /**
      * A shared identifier common to all service requests that were authorized more or less simultaneously by a single author, representing the composite or group identifier.
@@ -105,7 +105,7 @@ data class ServiceRequest(
      * A code that classifies the service for searching, sorting and display purposes (e.g. "Surgical Procedure").
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/servicerequest-category")
-    var category: MutableList<CodeableConcept>? = null,
+    var category: List<CodeableConcept>? = null,
 
     /**
      * Indicates how quickly the ServiceRequest should be addressed with respect to other requests.
@@ -128,7 +128,7 @@ data class ServiceRequest(
      * Additional details and instructions about the how the services are to be delivered.   For example, and order for a urinary catheter may have an order detail for an external or indwelling catheter, or an order for a bandage may require additional instructions specifying how the bandage should be applied.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/servicerequest-orderdetail")
-    var orderDetail: MutableList<CodeableConcept>? = null,
+    var orderDetail: List<CodeableConcept>? = null,
 
     /**
      * An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction).
@@ -185,55 +185,55 @@ data class ServiceRequest(
     /**
      * The desired performer for doing the requested service.  For example, the surgeon, dermatopathologist, endoscopist, etc.
      */
-    var performer: MutableList<Reference>? = null,
+    var performer: List<Reference>? = null,
 
     /**
      * The preferred location(s) where the procedure should actually happen in coded or free text form. E.g. at home or nursing day care center.
      */
     // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType")
-    var locationCode: MutableList<CodeableConcept>? = null,
+    var locationCode: List<CodeableConcept>? = null,
 
     /**
      * A reference to the the preferred location(s) where the procedure should actually happen. E.g. at home or nursing day care center.
      */
-    var locationReference: MutableList<Reference>? = null,
+    var locationReference: List<Reference>? = null,
 
     /**
      * An explanation or justification for why this service is being requested in coded or textual form.   This is often for billing purposes.  May relate to the resources referred to in `supportingInfo`.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/procedure-reason")
-    var reasonCode: MutableList<CodeableConcept>? = null,
+    var reasonCode: List<CodeableConcept>? = null,
 
     /**
      * Indicates another resource that provides a justification for why this service is being requested.   May relate to the resources referred to in `supportingInfo`.
      */
-    var reasonReference: MutableList<Reference>? = null,
+    var reasonReference: List<Reference>? = null,
 
     /**
      * Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be needed for delivering the requested service.
      */
-    var insurance: MutableList<Reference>? = null,
+    var insurance: List<Reference>? = null,
 
     /**
      * Additional clinical information about the patient or specimen that may influence the services or their interpretations.     This information includes diagnosis, clinical findings and other observations.  In laboratory ordering these are typically referred to as "ask at order entry questions (AOEs)".  This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order. For example,  reporting the amount of inspired oxygen for blood gas measurements.
      */
-    var supportingInfo: MutableList<Reference>? = null,
+    var supportingInfo: List<Reference>? = null,
 
     /**
      * One or more specimens that the laboratory procedure will use.
      */
-    var specimen: MutableList<Reference>? = null,
+    var specimen: List<Reference>? = null,
 
     /**
      * Anatomic location where the procedure should be performed. This is the target site.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/body-site")
-    var bodySite: MutableList<CodeableConcept>? = null,
+    var bodySite: List<CodeableConcept>? = null,
 
     /**
      * Any other notes and comments made about the service request. For example, internal billing notes.
      */
-    var note: MutableList<Annotation>? = null,
+    var note: List<Annotation>? = null,
 
     /**
      * Instructions in terms that are understood by the patient or consumer.
@@ -243,7 +243,7 @@ data class ServiceRequest(
     /**
      * Key events in the history of the request.
      */
-    var relevantHistory: MutableList<Reference>? = null
+    var relevantHistory: List<Reference>? = null
 
 ) : DomainResource {
 

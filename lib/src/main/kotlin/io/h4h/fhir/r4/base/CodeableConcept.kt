@@ -42,7 +42,7 @@ data class CodeableConcept(
     /**
      * A reference to a code defined by a terminology system.
      */
-    var coding: MutableList<Coding>? = null,
+    var coding: List<Coding>? = null,
 
     /**
      * A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.

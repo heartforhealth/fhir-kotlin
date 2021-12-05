@@ -54,9 +54,9 @@ data class Substance(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -64,7 +64,7 @@ data class Substance(
     /**
      * Unique identifier for the substance.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * A code to indicate if the substance is actively used.
@@ -76,7 +76,7 @@ data class Substance(
      * A code that classifies the general type of substance.  This is used  for searching, sorting and display purposes.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/substance-category")
-    var category: MutableList<CodeableConcept>? = null,
+    var category: List<CodeableConcept>? = null,
 
     /**
      * A code (or set of codes) that identify this substance.
@@ -92,12 +92,12 @@ data class Substance(
     /**
      * Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance.
      */
-    var instance: MutableList<SubstanceInstanceComponent>? = null,
+    var instance: List<SubstanceInstanceComponent>? = null,
 
     /**
      * A substance can be composed of other substances.
      */
-    var ingredient: MutableList<SubstanceIngredientComponent>? = null
+    var ingredient: List<SubstanceIngredientComponent>? = null
 
 
 ) : DomainResource {

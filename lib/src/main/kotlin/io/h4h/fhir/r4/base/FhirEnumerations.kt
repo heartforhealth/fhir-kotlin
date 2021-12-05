@@ -4,10 +4,686 @@ package io.h4h.fhir.r4.base
 import kotlinx.serialization.Serializable
 
 
+@Serializable
+enum class ActionConditionKind : CodeableEnumeration {
+
+    /**
+     * The condition describes whether or not a given action is applicable.
+     */
+    APPLICABILITY,
+
+    /**
+     * The condition is a starting condition for the action.
+     */
+    START,
+
+    /**
+     * The condition is a stop, or exit condition for the action.
+     */
+    STOP,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            APPLICABILITY -> "applicability"
+            START -> "start"
+            STOP -> "stop"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            APPLICABILITY -> "http://hl7.org/fhir/action-condition-kind"
+            START -> "http://hl7.org/fhir/action-condition-kind"
+            STOP -> "http://hl7.org/fhir/action-condition-kind"
+            NULL -> null
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                APPLICABILITY -> "The condition describes whether or not a given action is applicable."
+                START -> "The condition is a starting condition for the action."
+                STOP -> "The condition is a stop, or exit condition for the action."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                APPLICABILITY -> "Applicability"
+                START -> "Start"
+                STOP -> "Stop"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): ActionConditionKind? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("applicability" == codeString) return APPLICABILITY
+//            if ("start" == codeString) return START
+//            if ("stop" == codeString) return STOP
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ActionConditionKind code '$codeString'")
+//        }
+//    }
+}
 
 
 @Serializable
-enum class AddressUse {
+enum class ActionRelationshipType : CodeableEnumeration {
+
+    /**
+     * The action must be performed before the start of the related action.
+     */
+    BEFORESTART,
+
+    /**
+     * The action must be performed before the related action.
+     */
+    BEFORE,
+
+    /**
+     * The action must be performed before the end of the related action.
+     */
+    BEFOREEND,
+
+    /**
+     * The action must be performed concurrent with the start of the related action.
+     */
+    CONCURRENTWITHSTART,
+
+    /**
+     * The action must be performed concurrent with the related action.
+     */
+    CONCURRENT,
+
+    /**
+     * The action must be performed concurrent with the end of the related action.
+     */
+    CONCURRENTWITHEND,
+
+    /**
+     * The action must be performed after the start of the related action.
+     */
+    AFTERSTART,
+
+    /**
+     * The action must be performed after the related action.
+     */
+    AFTER,
+
+    /**
+     * The action must be performed after the end of the related action.
+     */
+    AFTEREND,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            BEFORESTART -> "before-start"
+            BEFORE -> "before"
+            BEFOREEND -> "before-end"
+            CONCURRENTWITHSTART -> "concurrent-with-start"
+            CONCURRENT -> "concurrent"
+            CONCURRENTWITHEND -> "concurrent-with-end"
+            AFTERSTART -> "after-start"
+            AFTER -> "after"
+            AFTEREND -> "after-end"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() {
+            return when (this) {
+                BEFORESTART -> "http://hl7.org/fhir/action-relationship-type"
+                BEFORE -> "http://hl7.org/fhir/action-relationship-type"
+                BEFOREEND -> "http://hl7.org/fhir/action-relationship-type"
+                CONCURRENTWITHSTART -> "http://hl7.org/fhir/action-relationship-type"
+                CONCURRENT -> "http://hl7.org/fhir/action-relationship-type"
+                CONCURRENTWITHEND -> "http://hl7.org/fhir/action-relationship-type"
+                AFTERSTART -> "http://hl7.org/fhir/action-relationship-type"
+                AFTER -> "http://hl7.org/fhir/action-relationship-type"
+                AFTEREND -> "http://hl7.org/fhir/action-relationship-type"
+                NULL -> null
+            }
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                BEFORESTART -> "The action must be performed before the start of the related action."
+                BEFORE -> "The action must be performed before the related action."
+                BEFOREEND -> "The action must be performed before the end of the related action."
+                CONCURRENTWITHSTART -> "The action must be performed concurrent with the start of the related action."
+                CONCURRENT -> "The action must be performed concurrent with the related action."
+                CONCURRENTWITHEND -> "The action must be performed concurrent with the end of the related action."
+                AFTERSTART -> "The action must be performed after the start of the related action."
+                AFTER -> "The action must be performed after the related action."
+                AFTEREND -> "The action must be performed after the end of the related action."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                BEFORESTART -> "Before Start"
+                BEFORE -> "Before"
+                BEFOREEND -> "Before End"
+                CONCURRENTWITHSTART -> "Concurrent With Start"
+                CONCURRENT -> "Concurrent"
+                CONCURRENTWITHEND -> "Concurrent With End"
+                AFTERSTART -> "After Start"
+                AFTER -> "After"
+                AFTEREND -> "After End"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): ActionRelationshipType? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("before-start" == codeString) return BEFORESTART
+//            if ("before" == codeString) return BEFORE
+//            if ("before-end" == codeString) return BEFOREEND
+//            if ("concurrent-with-start" == codeString) return CONCURRENTWITHSTART
+//            if ("concurrent" == codeString) return CONCURRENT
+//            if ("concurrent-with-end" == codeString) return CONCURRENTWITHEND
+//            if ("after-start" == codeString) return AFTERSTART
+//            if ("after" == codeString) return AFTER
+//            if ("after-end" == codeString) return AFTEREND
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ActionRelationshipType code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class ActionParticipantType : CodeableEnumeration {
+
+    /**
+     * The participant is the patient under evaluation.
+     */
+    PATIENT,
+
+    /**
+     * The participant is a practitioner involved in the patient's care.
+     */
+    PRACTITIONER,
+
+    /**
+     * The participant is a person related to the patient.
+     */
+    RELATEDPERSON,
+
+    /**
+     * The participant is a system or device used in the care of the patient.
+     */
+    DEVICE,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            PATIENT -> "patient"
+            PRACTITIONER -> "practitioner"
+            RELATEDPERSON -> "related-person"
+            DEVICE -> "device"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() {
+            return when (this) {
+                PATIENT -> "http://hl7.org/fhir/action-participant-type"
+                PRACTITIONER -> "http://hl7.org/fhir/action-participant-type"
+                RELATEDPERSON -> "http://hl7.org/fhir/action-participant-type"
+                DEVICE -> "http://hl7.org/fhir/action-participant-type"
+                NULL -> null
+            }
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                PATIENT -> "The participant is the patient under evaluation."
+                PRACTITIONER -> "The participant is a practitioner involved in the patient's care."
+                RELATEDPERSON -> "The participant is a person related to the patient."
+                DEVICE -> "The participant is a system or device used in the care of the patient."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                PATIENT -> "Patient"
+                PRACTITIONER -> "Practitioner"
+                RELATEDPERSON -> "Related Person"
+                DEVICE -> "Device"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): ActionParticipantType? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("patient" == codeString) return PATIENT
+//            if ("practitioner" == codeString) return PRACTITIONER
+//            if ("related-person" == codeString) return RELATEDPERSON
+//            if ("device" == codeString) return DEVICE
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ActionParticipantType code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class ActionGroupingBehavior : CodeableEnumeration {
+
+    /**
+     * Any group marked with this behavior should be displayed as a visual group to the end user.
+     */
+    VISUALGROUP,
+
+    /**
+     * A group with this behavior logically groups its sub-elements, and may be shown as a visual group to the end user, but it is not required to do so.
+     */
+    LOGICALGROUP,
+
+    /**
+     * A group of related alternative actions is a sentence group if the target referenced by the action is the same in all the actions and each action simply constitutes a different variation on how to specify the details for the target. For example, two actions that could be in a SentenceGroup are "aspirin, 500 mg, 2 times per day" and "aspirin, 300 mg, 3 times per day". In both cases, aspirin is the target referenced by the action, and the two actions represent different options for how aspirin might be ordered for the patient. Note that a SentenceGroup would almost always have an associated selection behavior of "AtMostOne", unless it's a required action, in which case, it would be "ExactlyOne".
+     */
+    SENTENCEGROUP,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            VISUALGROUP -> "visual-group"
+            LOGICALGROUP -> "logical-group"
+            SENTENCEGROUP -> "sentence-group"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() {
+            return when (this) {
+                VISUALGROUP -> "http://hl7.org/fhir/action-grouping-behavior"
+                LOGICALGROUP -> "http://hl7.org/fhir/action-grouping-behavior"
+                SENTENCEGROUP -> "http://hl7.org/fhir/action-grouping-behavior"
+                NULL -> null
+            }
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                VISUALGROUP -> "Any group marked with this behavior should be displayed as a visual group to the end user."
+                LOGICALGROUP -> "A group with this behavior logically groups its sub-elements, and may be shown as a visual group to the end user, but it is not required to do so."
+                SENTENCEGROUP -> "A group of related alternative actions is a sentence group if the target referenced by the action is the same in all the actions and each action simply constitutes a different variation on how to specify the details for the target. For example, two actions that could be in a SentenceGroup are \"aspirin, 500 mg, 2 times per day\" and \"aspirin, 300 mg, 3 times per day\". In both cases, aspirin is the target referenced by the action, and the two actions represent different options for how aspirin might be ordered for the patient. Note that a SentenceGroup would almost always have an associated selection behavior of \"AtMostOne\", unless it's a required action, in which case, it would be \"ExactlyOne\"."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                VISUALGROUP -> "Visual Group"
+                LOGICALGROUP -> "Logical Group"
+                SENTENCEGROUP -> "Sentence Group"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): ActionGroupingBehavior? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("visual-group" == codeString) return VISUALGROUP
+//            if ("logical-group" == codeString) return LOGICALGROUP
+//            if ("sentence-group" == codeString) return SENTENCEGROUP
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ActionGroupingBehavior code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class ActionSelectionBehavior : CodeableEnumeration {
+
+    /**
+     * Any number of the actions in the group may be chosen, from zero to all.
+     */
+    ANY,
+
+    /**
+     * All the actions in the group must be selected as a single unit.
+     */
+    ALL,
+
+    /**
+     * All the actions in the group are meant to be chosen as a single unit: either all must be selected by the end user, or none may be selected.
+     */
+    ALLORNONE,
+
+    /**
+     * The end user must choose one and only one of the selectable actions in the group. The user SHALL NOT choose none of the actions in the group.
+     */
+    EXACTLYONE,
+
+    /**
+     * The end user may choose zero or at most one of the actions in the group.
+     */
+    ATMOSTONE,
+
+    /**
+     * The end user must choose a minimum of one, and as many additional as desired.
+     */
+    ONEORMORE,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            ANY -> "any"
+            ALL -> "all"
+            ALLORNONE -> "all-or-none"
+            EXACTLYONE -> "exactly-one"
+            ATMOSTONE -> "at-most-one"
+            ONEORMORE -> "one-or-more"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() {
+            return when (this) {
+                ANY -> "http://hl7.org/fhir/action-selection-behavior"
+                ALL -> "http://hl7.org/fhir/action-selection-behavior"
+                ALLORNONE -> "http://hl7.org/fhir/action-selection-behavior"
+                EXACTLYONE -> "http://hl7.org/fhir/action-selection-behavior"
+                ATMOSTONE -> "http://hl7.org/fhir/action-selection-behavior"
+                ONEORMORE -> "http://hl7.org/fhir/action-selection-behavior"
+                NULL -> null
+            }
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                ANY -> "Any number of the actions in the group may be chosen, from zero to all."
+                ALL -> "All the actions in the group must be selected as a single unit."
+                ALLORNONE -> "All the actions in the group are meant to be chosen as a single unit: either all must be selected by the end user, or none may be selected."
+                EXACTLYONE -> "The end user must choose one and only one of the selectable actions in the group. The user SHALL NOT choose none of the actions in the group."
+                ATMOSTONE -> "The end user may choose zero or at most one of the actions in the group."
+                ONEORMORE -> "The end user must choose a minimum of one, and as many additional as desired."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                ANY -> "Any"
+                ALL -> "All"
+                ALLORNONE -> "All Or None"
+                EXACTLYONE -> "Exactly One"
+                ATMOSTONE -> "At Most One"
+                ONEORMORE -> "One Or More"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): ActionSelectionBehavior? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("any" == codeString) return ANY
+//            if ("all" == codeString) return ALL
+//            if ("all-or-none" == codeString) return ALLORNONE
+//            if ("exactly-one" == codeString) return EXACTLYONE
+//            if ("at-most-one" == codeString) return ATMOSTONE
+//            if ("one-or-more" == codeString) return ONEORMORE
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ActionSelectionBehavior code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class ActionRequiredBehavior : CodeableEnumeration {
+
+    /**
+     * An action with this behavior must be included in the actions processed by the end user; the end user SHALL NOT choose not to include this action.
+     */
+    MUST,
+
+    /**
+     * An action with this behavior may be included in the set of actions processed by the end user.
+     */
+    COULD,
+
+    /**
+     * An action with this behavior must be included in the set of actions processed by the end user, unless the end user provides documentation as to why the action was not included.
+     */
+    MUSTUNLESSDOCUMENTED,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            MUST -> "must"
+            COULD -> "could"
+            MUSTUNLESSDOCUMENTED -> "must-unless-documented"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() {
+            return when (this) {
+                MUST -> "http://hl7.org/fhir/action-required-behavior"
+                COULD -> "http://hl7.org/fhir/action-required-behavior"
+                MUSTUNLESSDOCUMENTED -> "http://hl7.org/fhir/action-required-behavior"
+                NULL -> null
+            }
+        }
+    override val definition: String?
+        get() {
+            return when (this) {
+                MUST -> "An action with this behavior must be included in the actions processed by the end user; the end user SHALL NOT choose not to include this action."
+                COULD -> "An action with this behavior may be included in the set of actions processed by the end user."
+                MUSTUNLESSDOCUMENTED -> "An action with this behavior must be included in the set of actions processed by the end user, unless the end user provides documentation as to why the action was not included."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                MUST -> "Must"
+                COULD -> "Could"
+                MUSTUNLESSDOCUMENTED -> "Must Unless Documented"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): ActionRequiredBehavior? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("must" == codeString) return MUST
+//            if ("could" == codeString) return COULD
+//            if ("must-unless-documented" == codeString) return MUSTUNLESSDOCUMENTED
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ActionRequiredBehavior code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class ActionPrecheckBehavior : CodeableEnumeration {
+
+    /**
+     * An action with this behavior is one of the most frequent action that is, or should be, included by an end user, for the particular context in which the action occurs. The system displaying the action to the end user should consider "pre-checking" such an action as a convenience for the user.
+     */
+    YES,
+
+    /**
+     * An action with this behavior is one of the less frequent actions included by the end user, for the particular context in which the action occurs. The system displaying the actions to the end user would typically not "pre-check" such an action.
+     */
+    NO,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            YES -> "yes"
+            NO -> "no"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() {
+            return when (this) {
+                YES -> "http://hl7.org/fhir/action-precheck-behavior"
+                NO -> "http://hl7.org/fhir/action-precheck-behavior"
+                NULL -> null
+            }
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                YES -> "An action with this behavior is one of the most frequent action that is, or should be, included by an end user, for the particular context in which the action occurs. The system displaying the action to the end user should consider \"pre-checking\" such an action as a convenience for the user."
+                NO -> "An action with this behavior is one of the less frequent actions included by the end user, for the particular context in which the action occurs. The system displaying the actions to the end user would typically not \"pre-check\" such an action."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                YES -> "Yes"
+                NO -> "No"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): ActionPrecheckBehavior? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("yes" == codeString) return YES
+//            if ("no" == codeString) return NO
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ActionPrecheckBehavior code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class ActionCardinalityBehavior : CodeableEnumeration {
+
+    /**
+     * The action may only be selected one time.
+     */
+    SINGLE,
+
+    /**
+     * The action may be selected multiple times.
+     */
+    MULTIPLE,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            SINGLE -> "single"
+            MULTIPLE -> "multiple"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() {
+            return when (this) {
+                SINGLE -> "http://hl7.org/fhir/action-cardinality-behavior"
+                MULTIPLE -> "http://hl7.org/fhir/action-cardinality-behavior"
+                NULL -> null
+            }
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                SINGLE -> "The action may only be selected one time."
+                MULTIPLE -> "The action may be selected multiple times."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                SINGLE -> "Single"
+                MULTIPLE -> "Multiple"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): ActionCardinalityBehavior? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("single" == codeString) return SINGLE
+//            if ("multiple" == codeString) return MULTIPLE
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ActionCardinalityBehavior code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class AddressUse : CodeableEnumeration {
+
     /**
      * A communication address at a home.
      */
@@ -34,11 +710,11 @@ enum class AddressUse {
     billing;
 
 
-    fun toCode() = this.name
+    override fun toCode() = this.name
 
-    val system: String = "http://hl7.org/fhir/address-use"
+    override val system: String? = "http://hl7.org/fhir/address-use"
 
-    val definition: String
+    override val definition: String?
         get() = when (this) {
             home -> "A communication address at a home."
             work -> "An office address. First choice for business related contacts during business hours."
@@ -47,7 +723,7 @@ enum class AddressUse {
             billing -> "An address to be used to send bills, invoices, receipts etc."
         }
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             home -> "Home"
             work -> "Work"
@@ -59,10 +735,8 @@ enum class AddressUse {
 }
 
 
-
-
 @Serializable
-enum class AddressType {
+enum class AddressType : CodeableEnumeration {
     /**
      * Mailing addresses - PO Boxes and care-of addresses.
      */
@@ -83,7 +757,7 @@ enum class AddressType {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             POSTAL -> "postal"
             PHYSICAL -> "physical"
@@ -92,7 +766,7 @@ enum class AddressType {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             POSTAL -> "http://hl7.org/fhir/address-type"
             PHYSICAL -> "http://hl7.org/fhir/address-type"
@@ -100,14 +774,14 @@ enum class AddressType {
             NULL -> null
         }
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             POSTAL -> "Mailing addresses - PO Boxes and care-of addresses."
             PHYSICAL -> "A physical address that can be visited."
             BOTH -> "An address that is both physical and postal."
             NULL -> null
         }
-    val display: String?
+    override val display: String?
         get() = when (this) {
             POSTAL -> "Postal"
             PHYSICAL -> "Physical"
@@ -129,8 +803,467 @@ enum class AddressType {
 //        }
 }
 
+
 @Serializable
-enum class ContactPointSystem {
+enum class CarePlanStatus : CodeableEnumeration {
+    /**
+     * The request has been created but is not yet complete or ready for action.
+     */
+    DRAFT,
+
+    /**
+     * The request is in force and ready to be acted upon.
+     */
+    ACTIVE,
+
+    /**
+     * The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future.
+     */
+    ONHOLD,
+
+    /**
+     * The request (and any implicit authorization to act) has been terminated prior to the known full completion of the intended actions.  No further activity should occur.
+     */
+    REVOKED,
+
+    /**
+     * The activity described by the request has been fully performed.  No further activity will occur.
+     */
+    COMPLETED,
+
+    /**
+     * This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be "revoked" rather than "entered-in-error".).
+     */
+    ENTEREDINERROR,
+
+    /**
+     * The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which.
+     */
+    UNKNOWN,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            DRAFT -> "draft"
+            ACTIVE -> "active"
+            ONHOLD -> "on-hold"
+            REVOKED -> "revoked"
+            COMPLETED -> "completed"
+            ENTEREDINERROR -> "entered-in-error"
+            UNKNOWN -> "unknown"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            DRAFT -> "http://hl7.org/fhir/request-status"
+            ACTIVE -> "http://hl7.org/fhir/request-status"
+            ONHOLD -> "http://hl7.org/fhir/request-status"
+            REVOKED -> "http://hl7.org/fhir/request-status"
+            COMPLETED -> "http://hl7.org/fhir/request-status"
+            ENTEREDINERROR -> "http://hl7.org/fhir/request-status"
+            UNKNOWN -> "http://hl7.org/fhir/request-status"
+            NULL -> null
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                DRAFT -> "The request has been created but is not yet complete or ready for action."
+                ACTIVE -> "The request is in force and ready to be acted upon."
+                ONHOLD -> "The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future."
+                REVOKED -> "The request (and any implicit authorization to act) has been terminated prior to the known full completion of the intended actions.  No further activity should occur."
+                COMPLETED -> "The activity described by the request has been fully performed.  No further activity will occur."
+                ENTEREDINERROR -> "This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be \"revoked\" rather than \"entered-in-error\".)."
+                UNKNOWN -> "The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                DRAFT -> "Draft"
+                ACTIVE -> "Active"
+                ONHOLD -> "On Hold"
+                REVOKED -> "Revoked"
+                COMPLETED -> "Completed"
+                ENTEREDINERROR -> "Entered in Error"
+                UNKNOWN -> "Unknown"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): CarePlanStatus? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("draft" == codeString) return DRAFT
+//            if ("active" == codeString) return ACTIVE
+//            if ("on-hold" == codeString) return ONHOLD
+//            if ("revoked" == codeString) return REVOKED
+//            if ("completed" == codeString) return COMPLETED
+//            if ("entered-in-error" == codeString) return ENTEREDINERROR
+//            if ("unknown" == codeString) return UNKNOWN
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown CarePlanStatus code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class CarePlanIntent : CodeableEnumeration {
+
+    /**
+     * null
+     */
+    PROPOSAL,
+
+    /**
+     * null
+     */
+    PLAN,
+
+    /**
+     * null
+     */
+    ORDER,
+
+    /**
+     * null
+     */
+    OPTION,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            PROPOSAL -> "proposal"
+            PLAN -> "plan"
+            ORDER -> "order"
+            OPTION -> "option"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() {
+            return when (this) {
+                PROPOSAL -> "http://hl7.org/fhir/request-intent"
+                PLAN -> "http://hl7.org/fhir/request-intent"
+                ORDER -> "http://hl7.org/fhir/request-intent"
+                OPTION -> "http://hl7.org/fhir/request-intent"
+                NULL -> null
+            }
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                PROPOSAL -> ""
+                PLAN -> ""
+                ORDER -> ""
+                OPTION -> ""
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                PROPOSAL -> "proposal"
+                PLAN -> "plan"
+                ORDER -> "order"
+                OPTION -> "option"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): CarePlanIntent? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("proposal" == codeString) return PROPOSAL
+//            if ("plan" == codeString) return PLAN
+//            if ("order" == codeString) return ORDER
+//            if ("option" == codeString) return OPTION
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown CarePlanIntent code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class CarePlanActivityKind : CodeableEnumeration {
+
+    /**
+     * null
+     */
+    APPOINTMENT,
+
+    /**
+     * null
+     */
+    COMMUNICATIONREQUEST,
+
+    /**
+     * null
+     */
+    DEVICEREQUEST,
+
+    /**
+     * null
+     */
+    MEDICATIONREQUEST,
+
+    /**
+     * null
+     */
+    NUTRITIONORDER,
+
+    /**
+     * null
+     */
+    TASK,
+
+    /**
+     * null
+     */
+    SERVICEREQUEST,
+
+    /**
+     * null
+     */
+    VISIONPRESCRIPTION,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            APPOINTMENT -> "Appointment"
+            COMMUNICATIONREQUEST -> "CommunicationRequest"
+            DEVICEREQUEST -> "DeviceRequest"
+            MEDICATIONREQUEST -> "MedicationRequest"
+            NUTRITIONORDER -> "NutritionOrder"
+            TASK -> "Task"
+            SERVICEREQUEST -> "ServiceRequest"
+            VISIONPRESCRIPTION -> "VisionPrescription"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() {
+            return when (this) {
+                APPOINTMENT -> "http://hl7.org/fhir/resource-types"
+                COMMUNICATIONREQUEST -> "http://hl7.org/fhir/resource-types"
+                DEVICEREQUEST -> "http://hl7.org/fhir/resource-types"
+                MEDICATIONREQUEST -> "http://hl7.org/fhir/resource-types"
+                NUTRITIONORDER -> "http://hl7.org/fhir/resource-types"
+                TASK -> "http://hl7.org/fhir/resource-types"
+                SERVICEREQUEST -> "http://hl7.org/fhir/resource-types"
+                VISIONPRESCRIPTION -> "http://hl7.org/fhir/resource-types"
+                NULL -> null
+            }
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                APPOINTMENT -> ""
+                COMMUNICATIONREQUEST -> ""
+                DEVICEREQUEST -> ""
+                MEDICATIONREQUEST -> ""
+                NUTRITIONORDER -> ""
+                TASK -> ""
+                SERVICEREQUEST -> ""
+                VISIONPRESCRIPTION -> ""
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                APPOINTMENT -> "Appointment"
+                COMMUNICATIONREQUEST -> "CommunicationRequest"
+                DEVICEREQUEST -> "DeviceRequest"
+                MEDICATIONREQUEST -> "MedicationRequest"
+                NUTRITIONORDER -> "NutritionOrder"
+                TASK -> "Task"
+                SERVICEREQUEST -> "ServiceRequest"
+                VISIONPRESCRIPTION -> "VisionPrescription"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): CarePlanActivityKind? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("Appointment" == codeString) return APPOINTMENT
+//            if ("CommunicationRequest" == codeString) return COMMUNICATIONREQUEST
+//            if ("DeviceRequest" == codeString) return DEVICEREQUEST
+//            if ("MedicationRequest" == codeString) return MEDICATIONREQUEST
+//            if ("NutritionOrder" == codeString) return NUTRITIONORDER
+//            if ("Task" == codeString) return TASK
+//            if ("ServiceRequest" == codeString) return SERVICEREQUEST
+//            if ("VisionPrescription" == codeString) return VISIONPRESCRIPTION
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown CarePlanActivityKind code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class CarePlanActivityStatus : CodeableEnumeration {
+
+    /**
+     * Care plan activity is planned but no action has yet been taken.
+     */
+    NOTSTARTED,
+
+    /**
+     * Appointment or other booking has occurred but activity has not yet begun.
+     */
+    SCHEDULED,
+
+    /**
+     * Care plan activity has been started but is not yet complete.
+     */
+    INPROGRESS,
+
+    /**
+     * Care plan activity was started but has temporarily ceased with an expectation of resumption at a future time.
+     */
+    ONHOLD,
+
+    /**
+     * Care plan activity has been completed (more or less) as planned.
+     */
+    COMPLETED,
+
+    /**
+     * The planned care plan activity has been withdrawn.
+     */
+    CANCELLED,
+
+    /**
+     * The planned care plan activity has been ended prior to completion after the activity was started.
+     */
+    STOPPED,
+
+    /**
+     * The current state of the care plan activity is not known.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which one.
+     */
+    UNKNOWN,
+
+    /**
+     * Care plan activity was entered in error and voided.
+     */
+    ENTEREDINERROR,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            NOTSTARTED -> "not-started"
+            SCHEDULED -> "scheduled"
+            INPROGRESS -> "in-progress"
+            ONHOLD -> "on-hold"
+            COMPLETED -> "completed"
+            CANCELLED -> "cancelled"
+            STOPPED -> "stopped"
+            UNKNOWN -> "unknown"
+            ENTEREDINERROR -> "entered-in-error"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() {
+            return when (this) {
+                NOTSTARTED -> "http://hl7.org/fhir/care-plan-activity-status"
+                SCHEDULED -> "http://hl7.org/fhir/care-plan-activity-status"
+                INPROGRESS -> "http://hl7.org/fhir/care-plan-activity-status"
+                ONHOLD -> "http://hl7.org/fhir/care-plan-activity-status"
+                COMPLETED -> "http://hl7.org/fhir/care-plan-activity-status"
+                CANCELLED -> "http://hl7.org/fhir/care-plan-activity-status"
+                STOPPED -> "http://hl7.org/fhir/care-plan-activity-status"
+                UNKNOWN -> "http://hl7.org/fhir/care-plan-activity-status"
+                ENTEREDINERROR -> "http://hl7.org/fhir/care-plan-activity-status"
+                NULL -> null
+            }
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                NOTSTARTED -> "Care plan activity is planned but no action has yet been taken."
+                SCHEDULED -> "Appointment or other booking has occurred but activity has not yet begun."
+                INPROGRESS -> "Care plan activity has been started but is not yet complete."
+                ONHOLD -> "Care plan activity was started but has temporarily ceased with an expectation of resumption at a future time."
+                COMPLETED -> "Care plan activity has been completed (more or less) as planned."
+                CANCELLED -> "The planned care plan activity has been withdrawn."
+                STOPPED -> "The planned care plan activity has been ended prior to completion after the activity was started."
+                UNKNOWN -> "The current state of the care plan activity is not known.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which one."
+                ENTEREDINERROR -> "Care plan activity was entered in error and voided."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                NOTSTARTED -> "Not Started"
+                SCHEDULED -> "Scheduled"
+                INPROGRESS -> "In Progress"
+                ONHOLD -> "On Hold"
+                COMPLETED -> "Completed"
+                CANCELLED -> "Cancelled"
+                STOPPED -> "Stopped"
+                UNKNOWN -> "Unknown"
+                ENTEREDINERROR -> "Entered in Error"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): CarePlanActivityStatus? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("not-started" == codeString) return NOTSTARTED
+//            if ("scheduled" == codeString) return SCHEDULED
+//            if ("in-progress" == codeString) return INPROGRESS
+//            if ("on-hold" == codeString) return ONHOLD
+//            if ("completed" == codeString) return COMPLETED
+//            if ("cancelled" == codeString) return CANCELLED
+//            if ("stopped" == codeString) return STOPPED
+//            if ("unknown" == codeString) return UNKNOWN
+//            if ("entered-in-error" == codeString) return ENTEREDINERROR
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown CarePlanActivityStatus code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class ContactPointSystem : CodeableEnumeration {
+
     /**
      * The value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.
      */
@@ -171,7 +1304,7 @@ enum class ContactPointSystem {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             PHONE -> "phone"
             FAX -> "fax"
@@ -184,8 +1317,8 @@ enum class ContactPointSystem {
         }
     }
 
-    fun getSystem(): String? {
-        return when (this) {
+    override val system: String?
+        get() = when (this) {
             PHONE -> "http://hl7.org/fhir/contact-point-system"
             FAX -> "http://hl7.org/fhir/contact-point-system"
             EMAIL -> "http://hl7.org/fhir/contact-point-system"
@@ -195,9 +1328,8 @@ enum class ContactPointSystem {
             OTHER -> "http://hl7.org/fhir/contact-point-system"
             NULL -> null
         }
-    }
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             PHONE -> "The value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required."
             FAX -> "The value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required."
@@ -209,7 +1341,7 @@ enum class ContactPointSystem {
             NULL -> null
         }
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             PHONE -> "Phone"
             FAX -> "Fax"
@@ -239,8 +1371,10 @@ enum class ContactPointSystem {
 //        }
 }
 
+
 @Serializable
-enum class ContactPointUse {
+enum class ContactPointUse : CodeableEnumeration {
+
     /**
      * A communication contact point at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available.
      */
@@ -271,7 +1405,7 @@ enum class ContactPointUse {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             HOME -> "home"
             WORK -> "work"
@@ -282,8 +1416,8 @@ enum class ContactPointUse {
         }
     }
 
-    fun getSystem(): String? {
-        return when (this) {
+    override val system: String?
+        get() = when (this) {
             HOME -> "http://hl7.org/fhir/contact-point-use"
             WORK -> "http://hl7.org/fhir/contact-point-use"
             TEMP -> "http://hl7.org/fhir/contact-point-use"
@@ -291,9 +1425,8 @@ enum class ContactPointUse {
             MOBILE -> "http://hl7.org/fhir/contact-point-use"
             NULL -> null
         }
-    }
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             HOME -> "A communication contact point at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available."
             WORK -> "An office contact point. First choice for business related contacts during business hours."
@@ -303,7 +1436,7 @@ enum class ContactPointUse {
             NULL -> null
         }
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             HOME -> "Home"
             WORK -> "Work"
@@ -329,8 +1462,9 @@ enum class ContactPointUse {
 //        }
 }
 
+
 @Serializable
-enum class DayOfWeek {
+enum class DayOfWeek : CodeableEnumeration {
     /**
      * Monday.
      */
@@ -371,7 +1505,7 @@ enum class DayOfWeek {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             MON -> "mon"
             TUE -> "tue"
@@ -384,7 +1518,7 @@ enum class DayOfWeek {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             MON -> "http://hl7.org/fhir/days-of-week"
             TUE -> "http://hl7.org/fhir/days-of-week"
@@ -397,7 +1531,7 @@ enum class DayOfWeek {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             MON -> "Monday."
             TUE -> "Tuesday."
@@ -410,7 +1544,7 @@ enum class DayOfWeek {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             MON -> "Monday"
             TUE -> "Tuesday"
@@ -440,8 +1574,9 @@ enum class DayOfWeek {
 //        }
 }
 
+
 @Serializable
-enum class DaysOfWeek {
+enum class DaysOfWeek : CodeableEnumeration {
     /**
      * Monday.
      */
@@ -483,7 +1618,7 @@ enum class DaysOfWeek {
     NULL;
 
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             MON -> "mon"
             TUE -> "tue"
@@ -496,7 +1631,7 @@ enum class DaysOfWeek {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             MON -> "http://hl7.org/fhir/days-of-week"
             TUE -> "http://hl7.org/fhir/days-of-week"
@@ -509,7 +1644,7 @@ enum class DaysOfWeek {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             MON -> "Monday."
             TUE -> "Tuesday."
@@ -522,7 +1657,7 @@ enum class DaysOfWeek {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             MON -> "Monday"
             TUE -> "Tuesday"
@@ -552,8 +1687,9 @@ enum class DaysOfWeek {
 //    }
 }
 
+
 @Serializable
-enum class EventTiming {
+enum class EventTiming : CodeableEnumeration {
     /**
      * Event occurs during the morning. The exact time is unspecified and established by institution convention or patient interpretation.
      */
@@ -689,7 +1825,7 @@ enum class EventTiming {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             MORN -> "MORN"
             MORN_EARLY -> "MORN.early"
@@ -721,7 +1857,7 @@ enum class EventTiming {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             MORN -> "http://hl7.org/fhir/event-timing"
             MORN_EARLY -> "http://hl7.org/fhir/event-timing"
@@ -753,7 +1889,7 @@ enum class EventTiming {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             MORN -> "Event occurs during the morning. The exact time is unspecified and established by institution convention or patient interpretation."
             MORN_EARLY -> "Event occurs during the early morning. The exact time is unspecified and established by institution convention or patient interpretation."
@@ -785,7 +1921,7 @@ enum class EventTiming {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             MORN -> "Morning"
             MORN_EARLY -> "Early Morning"
@@ -854,7 +1990,7 @@ enum class EventTiming {
 }
 
 @Serializable
-enum class EncounterStatus {
+enum class EncounterStatus : CodeableEnumeration {
     /**
      * The Encounter has not yet started.
      */
@@ -905,7 +2041,7 @@ enum class EncounterStatus {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             PLANNED -> "planned"
             ARRIVED -> "arrived"
@@ -920,7 +2056,7 @@ enum class EncounterStatus {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             PLANNED -> "http://hl7.org/fhir/encounter-status"
             ARRIVED -> "http://hl7.org/fhir/encounter-status"
@@ -935,7 +2071,7 @@ enum class EncounterStatus {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             PLANNED -> "The Encounter has not yet started."
             ARRIVED -> "The Patient is present for the encounter, however is not currently meeting with a practitioner."
@@ -950,7 +2086,7 @@ enum class EncounterStatus {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             PLANNED -> "Planned"
             ARRIVED -> "Arrived"
@@ -984,8 +2120,9 @@ enum class EncounterStatus {
 //        }
 }
 
+
 @Serializable
-enum class EncounterLocationStatus {
+enum class EncounterLocationStatus : CodeableEnumeration {
     /**
      * The patient is planned to be moved to this location at some point in the future.
      */
@@ -1016,7 +2153,7 @@ enum class EncounterLocationStatus {
     NULL;
 
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             PLANNED -> "planned"
             ACTIVE -> "active"
@@ -1027,7 +2164,7 @@ enum class EncounterLocationStatus {
     }
 
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             PLANNED -> "http://hl7.org/fhir/encounter-location-status"
             ACTIVE -> "http://hl7.org/fhir/encounter-location-status"
@@ -1037,7 +2174,7 @@ enum class EncounterLocationStatus {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             PLANNED -> "The patient is planned to be moved to this location at some point in the future."
             ACTIVE -> "The patient is currently at this location, or was between the period specified.\r\rA system may update these records when the patient leaves the location to either reserved, or completed."
@@ -1047,7 +2184,7 @@ enum class EncounterLocationStatus {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             PLANNED -> "Planned"
             ACTIVE -> "Active"
@@ -1071,8 +2208,9 @@ enum class EncounterLocationStatus {
 //    }
 }
 
+
 @Serializable
-enum class EndpointStatus {
+enum class EndpointStatus : CodeableEnumeration {
     /**
      * This endpoint is expected to be active and can be used.
      */
@@ -1108,7 +2246,7 @@ enum class EndpointStatus {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             ACTIVE -> "active"
             SUSPENDED -> "suspended"
@@ -1120,7 +2258,7 @@ enum class EndpointStatus {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             ACTIVE -> "http://hl7.org/fhir/endpoint-status"
             SUSPENDED -> "http://hl7.org/fhir/endpoint-status"
@@ -1131,7 +2269,7 @@ enum class EndpointStatus {
             NULL -> null
         }
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             ACTIVE -> "This endpoint is expected to be active and can be used."
             SUSPENDED -> "This endpoint is temporarily unavailable."
@@ -1142,7 +2280,7 @@ enum class EndpointStatus {
             NULL -> null
         }
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             ACTIVE -> "Active"
             SUSPENDED -> "Suspended"
@@ -1170,8 +2308,9 @@ enum class EndpointStatus {
 //        }
 }
 
+
 @Serializable
-enum class EpisodeOfCareStatus {
+enum class EpisodeOfCareStatus : CodeableEnumeration {
     /**
      * This episode of care is planned to start at the date specified in the period.start. During this status, an organization may perform assessments to determine if the patient is eligible to receive services, or be organizing to make resources available to provide care services.
      */
@@ -1212,7 +2351,7 @@ enum class EpisodeOfCareStatus {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             PLANNED -> "planned"
             WAITLIST -> "waitlist"
@@ -1225,7 +2364,7 @@ enum class EpisodeOfCareStatus {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             PLANNED -> "http://hl7.org/fhir/episode-of-care-status"
             WAITLIST -> "http://hl7.org/fhir/episode-of-care-status"
@@ -1238,7 +2377,7 @@ enum class EpisodeOfCareStatus {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             PLANNED -> "This episode of care is planned to start at the date specified in the period.start. During this status, an organization may perform assessments to determine if the patient is eligible to receive services, or be organizing to make resources available to provide care services."
             WAITLIST -> "This episode has been placed on a waitlist, pending the episode being made active (or cancelled)."
@@ -1251,7 +2390,7 @@ enum class EpisodeOfCareStatus {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             PLANNED -> "Planned"
             WAITLIST -> "Waitlist"
@@ -1281,8 +2420,78 @@ enum class EpisodeOfCareStatus {
 //    }
 }
 
+
 @Serializable
-enum class FHIRSubstanceStatus {
+enum class ExpressionLanguage : CodeableEnumeration {
+
+    /**
+     * Clinical Quality Language.
+     */
+    TEXT_CQL,
+
+    /**
+     * FHIRPath.
+     */
+    TEXT_FHIRPATH,
+
+    /**
+     * FHIR's RESTful query syntax - typically independent of base URL.
+     */
+    APPLICATION_XFHIRQUERY,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            TEXT_CQL -> "text/cql"
+            TEXT_FHIRPATH -> "text/fhirpath"
+            APPLICATION_XFHIRQUERY -> "application/x-fhir-query"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            TEXT_CQL -> "http://hl7.org/fhir/expression-language"
+            TEXT_FHIRPATH -> "http://hl7.org/fhir/expression-language"
+            APPLICATION_XFHIRQUERY -> "http://hl7.org/fhir/expression-language"
+            NULL -> null
+        }
+
+    override val definition: String?
+        get() = when (this) {
+            TEXT_CQL -> "Clinical Quality Language."
+            TEXT_FHIRPATH -> "FHIRPath."
+            APPLICATION_XFHIRQUERY -> "FHIR's RESTful query syntax - typically independent of base URL."
+            NULL -> null
+        }
+
+    override val display: String?
+        get() = when (this) {
+            TEXT_CQL -> "CQL"
+            TEXT_FHIRPATH -> "FHIRPath"
+            APPLICATION_XFHIRQUERY -> "FHIR Query"
+            NULL -> null
+        }
+
+//        companion object {
+//            @Throws(FHIRException::class)
+//            fun fromCode(codeString: String?): ExpressionLanguage? {
+//                if (codeString == null || "" == codeString) return null
+//                if ("text/cql" == codeString) return TEXT_CQL
+//                if ("text/fhirpath" == codeString) return TEXT_FHIRPATH
+//                if ("application/x-fhir-query" == codeString) return APPLICATION_XFHIRQUERY
+//                return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ExpressionLanguage code '$codeString'")
+//            }
+//        }
+}
+
+
+@Serializable
+enum class FHIRSubstanceStatus : CodeableEnumeration {
     /**
      * The substance is considered for use or reference.
      */
@@ -1303,7 +2512,7 @@ enum class FHIRSubstanceStatus {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             ACTIVE -> "active"
             INACTIVE -> "inactive"
@@ -1312,7 +2521,7 @@ enum class FHIRSubstanceStatus {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             ACTIVE -> "http://hl7.org/fhir/substance-status"
             INACTIVE -> "http://hl7.org/fhir/substance-status"
@@ -1321,7 +2530,7 @@ enum class FHIRSubstanceStatus {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             ACTIVE -> "The substance is considered for use or reference."
             INACTIVE -> "The substance is considered for reference, but not for use."
@@ -1330,7 +2539,7 @@ enum class FHIRSubstanceStatus {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             ACTIVE -> "Active"
             INACTIVE -> "Inactive"
@@ -1352,8 +2561,140 @@ enum class FHIRSubstanceStatus {
 //        }
 }
 
+
 @Serializable
-enum class IdentifierUse {
+enum class FilterOperator : CodeableEnumeration {
+    /**
+     * The specified property of the code equals the provided value.
+     */
+    EQUAL,
+
+    /**
+     * Includes all concept ids that have a transitive is-a relationship with the concept Id provided as the value, including the provided concept itself (include descendant codes and self).
+     */
+    ISA,
+
+    /**
+     * Includes all concept ids that have a transitive is-a relationship with the concept Id provided as the value, excluding the provided concept itself i.e. include descendant codes only).
+     */
+    DESCENDENTOF,
+
+    /**
+     * The specified property of the code does not have an is-a relationship with the provided value.
+     */
+    ISNOTA,
+
+    /**
+     * The specified property of the code  matches the regex specified in the provided value.
+     */
+    REGEX,
+
+    /**
+     * The specified property of the code is in the set of codes or concepts specified in the provided value (comma separated list).
+     */
+    IN,
+
+    /**
+     * The specified property of the code is not in the set of codes or concepts specified in the provided value (comma separated list).
+     */
+    NOTIN,
+
+    /**
+     * Includes all concept ids that have a transitive is-a relationship from the concept Id provided as the value, including the provided concept itself (i.e. include ancestor codes and self).
+     */
+    GENERALIZES,
+
+    /**
+     * The specified property of the code has at least one value (if the specified value is true; if the specified value is false, then matches when the specified property of the code has no values).
+     */
+    EXISTS,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            EQUAL -> "="
+            ISA -> "is-a"
+            DESCENDENTOF -> "descendent-of"
+            ISNOTA -> "is-not-a"
+            REGEX -> "regex"
+            IN -> "in"
+            NOTIN -> "not-in"
+            GENERALIZES -> "generalizes"
+            EXISTS -> "exists"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            EQUAL -> "http://hl7.org/fhir/filter-operator"
+            ISA -> "http://hl7.org/fhir/filter-operator"
+            DESCENDENTOF -> "http://hl7.org/fhir/filter-operator"
+            ISNOTA -> "http://hl7.org/fhir/filter-operator"
+            REGEX -> "http://hl7.org/fhir/filter-operator"
+            IN -> "http://hl7.org/fhir/filter-operator"
+            NOTIN -> "http://hl7.org/fhir/filter-operator"
+            GENERALIZES -> "http://hl7.org/fhir/filter-operator"
+            EXISTS -> "http://hl7.org/fhir/filter-operator"
+            NULL -> null
+        }
+
+
+    override val definition: String?
+        get() = when (this) {
+            EQUAL -> "The specified property of the code equals the provided value."
+            ISA -> "Includes all concept ids that have a transitive is-a relationship with the concept Id provided as the value, including the provided concept itself (include descendant codes and self)."
+            DESCENDENTOF -> "Includes all concept ids that have a transitive is-a relationship with the concept Id provided as the value, excluding the provided concept itself i.e. include descendant codes only)."
+            ISNOTA -> "The specified property of the code does not have an is-a relationship with the provided value."
+            REGEX -> "The specified property of the code  matches the regex specified in the provided value."
+            IN -> "The specified property of the code is in the set of codes or concepts specified in the provided value (comma separated list)."
+            NOTIN -> "The specified property of the code is not in the set of codes or concepts specified in the provided value (comma separated list)."
+            GENERALIZES -> "Includes all concept ids that have a transitive is-a relationship from the concept Id provided as the value, including the provided concept itself (i.e. include ancestor codes and self)."
+            EXISTS -> "The specified property of the code has at least one value (if the specified value is true; if the specified value is false, then matches when the specified property of the code has no values)."
+            NULL -> null
+        }
+
+
+    override val display: String?
+        get() = when (this) {
+            EQUAL -> "Equals"
+            ISA -> "Is A (by subsumption)"
+            DESCENDENTOF -> "Descendent Of (by subsumption)"
+            ISNOTA -> "Not (Is A) (by subsumption)"
+            REGEX -> "Regular Expression"
+            IN -> "In Set"
+            NOTIN -> "Not in Set"
+            GENERALIZES -> "Generalizes (by Subsumption)"
+            EXISTS -> "Exists"
+            NULL -> null
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): FilterOperator? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("=" == codeString) return EQUAL
+//            if ("is-a" == codeString) return ISA
+//            if ("descendent-of" == codeString) return DESCENDENTOF
+//            if ("is-not-a" == codeString) return ISNOTA
+//            if ("regex" == codeString) return REGEX
+//            if ("in" == codeString) return IN
+//            if ("not-in" == codeString) return NOTIN
+//            if ("generalizes" == codeString) return GENERALIZES
+//            if ("exists" == codeString) return EXISTS
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown FilterOperator code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class IdentifierUse : CodeableEnumeration {
+
     /**
      * The identifier recommended for display and use in real-world interactions.
      */
@@ -1384,7 +2725,7 @@ enum class IdentifierUse {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             USUAL -> "usual"
             OFFICIAL -> "official"
@@ -1395,8 +2736,8 @@ enum class IdentifierUse {
         }
     }
 
-    fun getSystem(): String? {
-        return when (this) {
+    override val system: String?
+        get() = when (this) {
             USUAL -> "http://hl7.org/fhir/identifier-use"
             OFFICIAL -> "http://hl7.org/fhir/identifier-use"
             TEMP -> "http://hl7.org/fhir/identifier-use"
@@ -1404,9 +2745,8 @@ enum class IdentifierUse {
             OLD -> "http://hl7.org/fhir/identifier-use"
             NULL -> null
         }
-    }
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             USUAL -> "The identifier recommended for display and use in real-world interactions."
             OFFICIAL -> "The identifier considered to be most trusted for the identification of this item. Sometimes also known as \"primary\" and \"main\". The determination of \"official\" is subjective and implementation guides often provide additional guidelines for use."
@@ -1415,7 +2755,7 @@ enum class IdentifierUse {
             OLD -> "The identifier id no longer considered valid, but may be relevant for search purposes.  E.g. Changes to identifier schemes, account merges, etc."
             NULL -> null
         }
-    val display: String?
+    override val display: String?
         get() = when (this) {
             USUAL -> "Usual"
             OFFICIAL -> "Official"
@@ -1441,8 +2781,9 @@ enum class IdentifierUse {
 //        }
 }
 
+
 @Serializable
-enum class LocationStatus {
+enum class LocationStatus : CodeableEnumeration {
     /**
      * The location is operational.
      */
@@ -1463,7 +2804,7 @@ enum class LocationStatus {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             ACTIVE -> "active"
             SUSPENDED -> "suspended"
@@ -1472,7 +2813,7 @@ enum class LocationStatus {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             ACTIVE -> "http://hl7.org/fhir/location-status"
             SUSPENDED -> "http://hl7.org/fhir/location-status"
@@ -1481,7 +2822,7 @@ enum class LocationStatus {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             ACTIVE -> "The location is operational."
             SUSPENDED -> "The location is temporarily closed."
@@ -1490,7 +2831,7 @@ enum class LocationStatus {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             ACTIVE -> "Active"
             SUSPENDED -> "Suspended"
@@ -1512,8 +2853,9 @@ enum class LocationStatus {
 //        }
 }
 
+
 @Serializable
-enum class LocationMode {
+enum class LocationMode : CodeableEnumeration {
     /**
      * The Location resource represents a specific instance of a location (e.g. Operating Theatre 1A).
      */
@@ -1530,7 +2872,7 @@ enum class LocationMode {
     NULL;
 
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             INSTANCE -> "instance"
             KIND -> "kind"
@@ -1538,7 +2880,7 @@ enum class LocationMode {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             INSTANCE -> "http://hl7.org/fhir/location-mode"
             KIND -> "http://hl7.org/fhir/location-mode"
@@ -1546,7 +2888,7 @@ enum class LocationMode {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             INSTANCE -> "The Location resource represents a specific instance of a location (e.g. Operating Theatre 1A)."
             KIND -> "The Location represents a class of locations (e.g. Any Operating Theatre) although this class of locations could be constrained within a specific boundary (such as organization, or parent location, address etc.)."
@@ -1554,7 +2896,7 @@ enum class LocationMode {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             INSTANCE -> "Instance"
             KIND -> "Kind"
@@ -1574,8 +2916,9 @@ enum class LocationMode {
 //    }
 }
 
+
 @Serializable
-enum class NameUse {
+enum class NameUse : CodeableEnumeration {
     /**
      * Known as/conventional/the one you normally use.
      */
@@ -1616,7 +2959,7 @@ enum class NameUse {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             USUAL -> "usual"
             OFFICIAL -> "official"
@@ -1629,7 +2972,7 @@ enum class NameUse {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             USUAL -> "http://hl7.org/fhir/name-use"
             OFFICIAL -> "http://hl7.org/fhir/name-use"
@@ -1640,7 +2983,7 @@ enum class NameUse {
             MAIDEN -> "http://hl7.org/fhir/name-use"
             NULL -> null
         }
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             USUAL -> "Known as/conventional/the one you normally use."
             OFFICIAL -> "The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called \"legal name\"."
@@ -1651,7 +2994,7 @@ enum class NameUse {
             MAIDEN -> "A name used prior to changing name because of marriage. This name use is for use by applications that collect and store names that were used prior to a marriage. Marriage naming customs vary greatly around the world, and are constantly changing. This term is not gender specific. The use of this term does not imply any particular history for a person's name."
             NULL -> null
         }
-    val display: String?
+    override val display: String?
         get() = when (this) {
             USUAL -> "Usual"
             OFFICIAL -> "Official"
@@ -1681,8 +3024,9 @@ enum class NameUse {
 //        }
 }
 
+
 @Serializable
-enum class NarrativeStatus {
+enum class NarrativeStatus : CodeableEnumeration {
     /**
      * The contents of the narrative are entirely generated from the core elements in the content.
      */
@@ -1708,7 +3052,7 @@ enum class NarrativeStatus {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             GENERATED -> "generated"
             EXTENSIONS -> "extensions"
@@ -1718,7 +3062,7 @@ enum class NarrativeStatus {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             GENERATED -> "http://hl7.org/fhir/narrative-status"
             EXTENSIONS -> "http://hl7.org/fhir/narrative-status"
@@ -1728,7 +3072,7 @@ enum class NarrativeStatus {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             GENERATED -> "The contents of the narrative are entirely generated from the core elements in the content."
             EXTENSIONS -> "The contents of the narrative are entirely generated from the core elements in the content and some of the content is generated from extensions. The narrative SHALL reflect the impact of all modifier extensions."
@@ -1738,7 +3082,7 @@ enum class NarrativeStatus {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             GENERATED -> "Generated"
             EXTENSIONS -> "Extensions"
@@ -1749,8 +3093,230 @@ enum class NarrativeStatus {
 
 }
 
+
 @Serializable
-enum class ObservationStatus {
+enum class ObservationDataType : CodeableEnumeration {
+    /**
+     * A measured amount.
+     */
+    QUANTITY,
+
+    /**
+     * A coded concept from a reference terminology and/or text.
+     */
+    CODEABLECONCEPT,
+
+    /**
+     * A sequence of Unicode characters.
+     */
+    STRING,
+
+    /**
+     * true or false.
+     */
+    BOOLEAN,
+
+    /**
+     * A signed integer.
+     */
+    INTEGER,
+
+    /**
+     * A set of values bounded by low and high.
+     */
+    RANGE,
+
+    /**
+     * A ratio of two Quantity values - a numerator and a denominator.
+     */
+    RATIO,
+
+    /**
+     * A series of measurements taken by a device.
+     */
+    SAMPLEDDATA,
+
+    /**
+     * A time during the day, in the format hh:mm:ss.
+     */
+    TIME,
+
+    /**
+     * A date, date-time or partial date (e.g. just year or year + month) as used in human communication.
+     */
+    DATETIME,
+
+    /**
+     * A time range defined by start and end date/time.
+     */
+    PERIOD,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+
+    override fun toCode(): String? {
+        return when (this) {
+            QUANTITY -> "Quantity"
+            CODEABLECONCEPT -> "CodeableConcept"
+            STRING -> "string"
+            BOOLEAN -> "boolean"
+            INTEGER -> "integer"
+            RANGE -> "Range"
+            RATIO -> "Ratio"
+            SAMPLEDDATA -> "SampledData"
+            TIME -> "time"
+            DATETIME -> "dateTime"
+            PERIOD -> "Period"
+            NULL -> null
+        }
+    }
+
+
+    override val system: String?
+        get() = when (this) {
+            QUANTITY -> "http://hl7.org/fhir/permitted-data-type"
+            CODEABLECONCEPT -> "http://hl7.org/fhir/permitted-data-type"
+            STRING -> "http://hl7.org/fhir/permitted-data-type"
+            BOOLEAN -> "http://hl7.org/fhir/permitted-data-type"
+            INTEGER -> "http://hl7.org/fhir/permitted-data-type"
+            RANGE -> "http://hl7.org/fhir/permitted-data-type"
+            RATIO -> "http://hl7.org/fhir/permitted-data-type"
+            SAMPLEDDATA -> "http://hl7.org/fhir/permitted-data-type"
+            TIME -> "http://hl7.org/fhir/permitted-data-type"
+            DATETIME -> "http://hl7.org/fhir/permitted-data-type"
+            PERIOD -> "http://hl7.org/fhir/permitted-data-type"
+            NULL -> null
+        }
+
+
+    override val definition: String?
+        get() = when (this) {
+            QUANTITY -> "A measured amount."
+            CODEABLECONCEPT -> "A coded concept from a reference terminology and/or text."
+            STRING -> "A sequence of Unicode characters."
+            BOOLEAN -> "true or false."
+            INTEGER -> "A signed integer."
+            RANGE -> "A set of values bounded by low and high."
+            RATIO -> "A ratio of two Quantity values - a numerator and a denominator."
+            SAMPLEDDATA -> "A series of measurements taken by a device."
+            TIME -> "A time during the day, in the format hh:mm:ss."
+            DATETIME -> "A date, date-time or partial date (e.g. just year or year + month) as used in human communication."
+            PERIOD -> "A time range defined by start and end date/time."
+            NULL -> null
+        }
+
+
+    override val display: String?
+        get() = when (this) {
+            QUANTITY -> "Quantity"
+            CODEABLECONCEPT -> "CodeableConcept"
+            STRING -> "string"
+            BOOLEAN -> "boolean"
+            INTEGER -> "integer"
+            RANGE -> "Range"
+            RATIO -> "Ratio"
+            SAMPLEDDATA -> "SampledData"
+            TIME -> "time"
+            DATETIME -> "dateTime"
+            PERIOD -> "Period"
+            NULL -> null
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): ObservationDataType? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("Quantity" == codeString) return QUANTITY
+//            if ("CodeableConcept" == codeString) return CODEABLECONCEPT
+//            if ("string" == codeString) return STRING
+//            if ("boolean" == codeString) return BOOLEAN
+//            if ("integer" == codeString) return INTEGER
+//            if ("Range" == codeString) return RANGE
+//            if ("Ratio" == codeString) return RATIO
+//            if ("SampledData" == codeString) return SAMPLEDDATA
+//            if ("time" == codeString) return TIME
+//            if ("dateTime" == codeString) return DATETIME
+//            if ("Period" == codeString) return PERIOD
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ObservationDataType code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class ObservationRangeCategory : CodeableEnumeration {
+    /**
+     * Reference (Normal) Range for Ordinal and Continuous Observations.
+     */
+    REFERENCE,
+
+    /**
+     * Critical Range for Ordinal and Continuous Observations.
+     */
+    CRITICAL,
+
+    /**
+     * Absolute Range for Ordinal and Continuous Observations. Results outside this range are not possible.
+     */
+    ABSOLUTE,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            REFERENCE -> "reference"
+            CRITICAL -> "critical"
+            ABSOLUTE -> "absolute"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            REFERENCE -> "http://hl7.org/fhir/observation-range-category"
+            CRITICAL -> "http://hl7.org/fhir/observation-range-category"
+            ABSOLUTE -> "http://hl7.org/fhir/observation-range-category"
+            NULL -> null
+        }
+
+    override val definition: String?
+        get() = when (this) {
+            REFERENCE -> "Reference (Normal) Range for Ordinal and Continuous Observations."
+            CRITICAL -> "Critical Range for Ordinal and Continuous Observations."
+            ABSOLUTE -> "Absolute Range for Ordinal and Continuous Observations. Results outside this range are not possible."
+            NULL -> null
+        }
+
+    override val display: String?
+        get() = when (this) {
+            REFERENCE -> "reference range"
+            CRITICAL -> "critical range"
+            ABSOLUTE -> "absolute range"
+            NULL -> null
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): ObservationRangeCategory? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("reference" == codeString) return REFERENCE
+//            if ("critical" == codeString) return CRITICAL
+//            if ("absolute" == codeString) return ABSOLUTE
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown ObservationRangeCategory code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class ObservationStatus : CodeableEnumeration {
+
     /**
      * The existence of the observation is registered, but there is no result yet available.
      */
@@ -1792,12 +3358,24 @@ enum class ObservationStatus {
     unknown;
 
 
+    override fun toCode(): String? {
+        return when (this) {
+            registered -> "registered"
+            preliminary -> "preliminary"
+            final -> "final"
+            amended -> "amended"
+            corrected -> "corrected"
+            cancelled -> "cancelled"
+            `entered-in-error` -> "entered-in-error"
+            unknown -> "unknown"
+        }
+    }
 
 
-    val system: String? = "http://hl7.org/fhir/observation-status"
+    override val system: String? = "http://hl7.org/fhir/observation-status"
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             registered -> "The existence of the observation is registered, but there is no result yet available."
             preliminary -> "This is an initial or interim observation: data may be incomplete or unverified."
@@ -1810,7 +3388,7 @@ enum class ObservationStatus {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             registered -> "Registered"
             preliminary -> "Preliminary"
@@ -1840,8 +3418,10 @@ enum class ObservationStatus {
 //    }
 }
 
+
 @Serializable
-enum class ProvenanceEntityRole {
+enum class ProvenanceEntityRole : CodeableEnumeration {
+
     /**
      * A transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity.
      */
@@ -1872,7 +3452,7 @@ enum class ProvenanceEntityRole {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             DERIVATION -> "derivation"
             REVISION -> "revision"
@@ -1883,7 +3463,7 @@ enum class ProvenanceEntityRole {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             DERIVATION -> "http://hl7.org/fhir/provenance-entity-role"
             REVISION -> "http://hl7.org/fhir/provenance-entity-role"
@@ -1893,7 +3473,7 @@ enum class ProvenanceEntityRole {
             NULL -> null
         }
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             DERIVATION -> "A transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity."
             REVISION -> "A derivation for which the resulting entity is a revised version of some original."
@@ -1903,7 +3483,7 @@ enum class ProvenanceEntityRole {
             NULL -> null
         }
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             DERIVATION -> "Derivation"
             REVISION -> "Revision"
@@ -1929,8 +3509,93 @@ enum class ProvenanceEntityRole {
 //    }
 }
 
+
 @Serializable
-enum class QuantityComparator {
+enum class PublicationStatus : CodeableEnumeration {
+    /**
+     * This resource is still under development and is not yet considered to be ready for normal use.
+     */
+    DRAFT,
+
+    /**
+     * This resource is ready for normal use.
+     */
+    ACTIVE,
+
+    /**
+     * This resource has been withdrawn or superseded and should no longer be used.
+     */
+    RETIRED,
+
+    /**
+     * The authoring system does not know which of the status values currently applies for this resource.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply, it's just not known which one.
+     */
+    UNKNOWN,
+
+    /**
+     * added to help the parsers
+     */
+    NULL;
+
+
+    override fun toCode(): String? {
+        return when (this) {
+            DRAFT -> "draft"
+            ACTIVE -> "active"
+            RETIRED -> "retired"
+            UNKNOWN -> "unknown"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            DRAFT -> "http://hl7.org/fhir/publication-status"
+            ACTIVE -> "http://hl7.org/fhir/publication-status"
+            RETIRED -> "http://hl7.org/fhir/publication-status"
+            UNKNOWN -> "http://hl7.org/fhir/publication-status"
+            NULL -> null
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                DRAFT -> "This resource is still under development and is not yet considered to be ready for normal use."
+                ACTIVE -> "This resource is ready for normal use."
+                RETIRED -> "This resource has been withdrawn or superseded and should no longer be used."
+                UNKNOWN -> "The authoring system does not know which of the status values currently applies for this resource.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, it's just not known which one."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                DRAFT -> "Draft"
+                ACTIVE -> "Active"
+                RETIRED -> "Retired"
+                UNKNOWN -> "Unknown"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): PublicationStatus? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("draft" == codeString) return DRAFT
+//            if ("active" == codeString) return ACTIVE
+//            if ("retired" == codeString) return RETIRED
+//            if ("unknown" == codeString) return UNKNOWN
+//            throw FHIRException("Unknown PublicationStatus code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class QuantityComparator : CodeableEnumeration {
+
     /**
      * The actual value is less than the given value.
      */
@@ -1956,7 +3621,7 @@ enum class QuantityComparator {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             LESS_THAN -> "<"
             LESS_OR_EQUAL -> "<="
@@ -1966,17 +3631,16 @@ enum class QuantityComparator {
         }
     }
 
-    fun getSystem(): String? {
-        return when (this) {
+    override val system: String?
+        get() = when (this) {
             LESS_THAN -> "http://hl7.org/fhir/quantity-comparator"
             LESS_OR_EQUAL -> "http://hl7.org/fhir/quantity-comparator"
             GREATER_OR_EQUAL -> "http://hl7.org/fhir/quantity-comparator"
             GREATER_THAN -> "http://hl7.org/fhir/quantity-comparator"
             NULL -> null
         }
-    }
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             LESS_THAN -> "The actual value is less than the given value."
             LESS_OR_EQUAL -> "The actual value is less than or equal to the given value."
@@ -1985,7 +3649,7 @@ enum class QuantityComparator {
             NULL -> null
         }
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             LESS_THAN -> "Less than"
             LESS_OR_EQUAL -> "Less or Equal to"
@@ -2007,6 +3671,124 @@ enum class QuantityComparator {
 //                )
 //            }
 //        }
+}
+
+
+@Serializable
+enum class RelatedArtifactType : CodeableEnumeration {
+    /**
+     * Additional documentation for the knowledge resource. This would include additional instructions on usage as well as additional information on clinical context or appropriateness.
+     */
+    DOCUMENTATION,
+
+    /**
+     * A summary of the justification for the knowledge resource including supporting evidence, relevant guidelines, or other clinically important information. This information is intended to provide a way to make the justification for the knowledge resource available to the consumer of interventions or results produced by the knowledge resource.
+     */
+    JUSTIFICATION,
+
+    /**
+     * Bibliographic citation for papers, references, or other relevant material for the knowledge resource. This is intended to allow for citation of related material, but that was not necessarily specifically prepared in connection with this knowledge resource.
+     */
+    CITATION,
+
+    /**
+     * The previous version of the knowledge resource.
+     */
+    PREDECESSOR,
+
+    /**
+     * The next version of the knowledge resource.
+     */
+    SUCCESSOR,
+
+    /**
+     * The knowledge resource is derived from the related artifact. This is intended to capture the relationship in which a particular knowledge resource is based on the content of another artifact, but is modified to capture either a different set of overall requirements, or a more specific set of requirements such as those involved in a particular institution or clinical setting.
+     */
+    DERIVEDFROM,
+
+    /**
+     * The knowledge resource depends on the given related artifact.
+     */
+    DEPENDSON,
+
+    /**
+     * The knowledge resource is composed of the given related artifact.
+     */
+    COMPOSEDOF,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+    override fun toCode(): String? {
+        return when (this) {
+            DOCUMENTATION -> "documentation"
+            JUSTIFICATION -> "justification"
+            CITATION -> "citation"
+            PREDECESSOR -> "predecessor"
+            SUCCESSOR -> "successor"
+            DERIVEDFROM -> "derived-from"
+            DEPENDSON -> "depends-on"
+            COMPOSEDOF -> "composed-of"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            DOCUMENTATION -> "http://hl7.org/fhir/related-artifact-type"
+            JUSTIFICATION -> "http://hl7.org/fhir/related-artifact-type"
+            CITATION -> "http://hl7.org/fhir/related-artifact-type"
+            PREDECESSOR -> "http://hl7.org/fhir/related-artifact-type"
+            SUCCESSOR -> "http://hl7.org/fhir/related-artifact-type"
+            DERIVEDFROM -> "http://hl7.org/fhir/related-artifact-type"
+            DEPENDSON -> "http://hl7.org/fhir/related-artifact-type"
+            COMPOSEDOF -> "http://hl7.org/fhir/related-artifact-type"
+            NULL -> null
+        }
+
+    override val definition: String?
+        get() = when (this) {
+            DOCUMENTATION -> "Additional documentation for the knowledge resource. This would include additional instructions on usage as well as additional information on clinical context or appropriateness."
+            JUSTIFICATION -> "A summary of the justification for the knowledge resource including supporting evidence, relevant guidelines, or other clinically important information. This information is intended to provide a way to make the justification for the knowledge resource available to the consumer of interventions or results produced by the knowledge resource."
+            CITATION -> "Bibliographic citation for papers, references, or other relevant material for the knowledge resource. This is intended to allow for citation of related material, but that was not necessarily specifically prepared in connection with this knowledge resource."
+            PREDECESSOR -> "The previous version of the knowledge resource."
+            SUCCESSOR -> "The next version of the knowledge resource."
+            DERIVEDFROM -> "The knowledge resource is derived from the related artifact. This is intended to capture the relationship in which a particular knowledge resource is based on the content of another artifact, but is modified to capture either a different set of overall requirements, or a more specific set of requirements such as those involved in a particular institution or clinical setting."
+            DEPENDSON -> "The knowledge resource depends on the given related artifact."
+            COMPOSEDOF -> "The knowledge resource is composed of the given related artifact."
+            NULL -> null
+        }
+
+    override val display: String?
+        get() = when (this) {
+            DOCUMENTATION -> "Documentation"
+            JUSTIFICATION -> "Justification"
+            CITATION -> "Citation"
+            PREDECESSOR -> "Predecessor"
+            SUCCESSOR -> "Successor"
+            DERIVEDFROM -> "Derived From"
+            DEPENDSON -> "Depends On"
+            COMPOSEDOF -> "Composed Of"
+            NULL -> null
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): RelatedArtifactType? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("documentation" == codeString) return DOCUMENTATION
+//            if ("justification" == codeString) return JUSTIFICATION
+//            if ("citation" == codeString) return CITATION
+//            if ("predecessor" == codeString) return PREDECESSOR
+//            if ("successor" == codeString) return SUCCESSOR
+//            if ("derived-from" == codeString) return DERIVEDFROM
+//            if ("depends-on" == codeString) return DEPENDSON
+//            if ("composed-of" == codeString) return COMPOSEDOF
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown RelatedArtifactType code '$codeString'")
+//        }
+//    }
 }
 
 
@@ -2162,7 +3944,7 @@ enum class ResourceType {
 
 
 
-    val path: String?
+    val path: String
         get() {
             return when (this) {
                 Account -> "account"
@@ -2468,8 +4250,93 @@ enum class ResourceType {
 //    }
 }
 
+
 @Serializable
-enum class ServiceRequestStatus {
+enum class RequestPriority : CodeableEnumeration {
+
+    /**
+     * The request has normal priority.
+     */
+    ROUTINE,
+
+    /**
+     * The request should be actioned promptly - higher priority than routine.
+     */
+    URGENT,
+
+    /**
+     * The request should be actioned as soon as possible - higher priority than urgent.
+     */
+    ASAP,
+
+    /**
+     * The request should be actioned immediately - highest possible priority.  E.g. an emergency.
+     */
+    STAT,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+
+    override fun toCode(): String? {
+        return when (this) {
+            ROUTINE -> "routine"
+            URGENT -> "urgent"
+            ASAP -> "asap"
+            STAT -> "stat"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            ROUTINE -> "http://hl7.org/fhir/request-priority"
+            URGENT -> "http://hl7.org/fhir/request-priority"
+            ASAP -> "http://hl7.org/fhir/request-priority"
+            STAT -> "http://hl7.org/fhir/request-priority"
+            NULL -> null
+        }
+
+    override val definition: String?
+        get() {
+            return when (this) {
+                ROUTINE -> "The request has normal priority."
+                URGENT -> "The request should be actioned promptly - higher priority than routine."
+                ASAP -> "The request should be actioned as soon as possible - higher priority than urgent."
+                STAT -> "The request should be actioned immediately - highest possible priority.  E.g. an emergency."
+                NULL -> null
+            }
+        }
+
+    override val display: String?
+        get() {
+            return when (this) {
+                ROUTINE -> "Routine"
+                URGENT -> "Urgent"
+                ASAP -> "ASAP"
+                STAT -> "STAT"
+                NULL -> null
+            }
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): RequestPriority? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("routine" == codeString) return ROUTINE
+//            if ("urgent" == codeString) return URGENT
+//            if ("asap" == codeString) return ASAP
+//            if ("stat" == codeString) return STAT
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown RequestPriority code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class ServiceRequestStatus : CodeableEnumeration {
     /**
      * The request has been created but is not yet complete or ready for action.
      */
@@ -2510,7 +4377,7 @@ enum class ServiceRequestStatus {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             DRAFT -> "draft"
             ACTIVE -> "active"
@@ -2523,7 +4390,7 @@ enum class ServiceRequestStatus {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             DRAFT -> "http://hl7.org/fhir/request-status"
             ACTIVE -> "http://hl7.org/fhir/request-status"
@@ -2536,7 +4403,7 @@ enum class ServiceRequestStatus {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             DRAFT -> "The request has been created but is not yet complete or ready for action."
             ACTIVE -> "The request is in force and ready to be acted upon."
@@ -2549,7 +4416,7 @@ enum class ServiceRequestStatus {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             DRAFT -> "Draft"
             ACTIVE -> "Active"
@@ -2579,8 +4446,9 @@ enum class ServiceRequestStatus {
 //    }
 }
 
+
 @Serializable
-enum class ServiceRequestIntent {
+enum class ServiceRequestIntent : CodeableEnumeration {
     /**
      * The request is a suggestion made by someone/something that does not have an intention to ensure it occurs and without providing an authorization to act.
      */
@@ -2631,7 +4499,7 @@ enum class ServiceRequestIntent {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             PROPOSAL -> "proposal"
             PLAN -> "plan"
@@ -2646,7 +4514,7 @@ enum class ServiceRequestIntent {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             PROPOSAL -> "http://hl7.org/fhir/request-intent"
             PLAN -> "http://hl7.org/fhir/request-intent"
@@ -2659,7 +4527,7 @@ enum class ServiceRequestIntent {
             OPTION -> "http://hl7.org/fhir/request-intent"
             NULL -> null
         }
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             PROPOSAL -> "The request is a suggestion made by someone/something that does not have an intention to ensure it occurs and without providing an authorization to act."
             PLAN -> "The request represents an intention to ensure something occurs without providing an authorization for others to act."
@@ -2674,7 +4542,7 @@ enum class ServiceRequestIntent {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             PROPOSAL -> "Proposal"
             PLAN -> "Plan"
@@ -2708,8 +4576,9 @@ enum class ServiceRequestIntent {
 //    }
 }
 
+
 @Serializable
-enum class ServiceRequestPriority {
+enum class ServiceRequestPriority : CodeableEnumeration {
     /**
      * The request has normal priority.
      */
@@ -2735,7 +4604,7 @@ enum class ServiceRequestPriority {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             ROUTINE -> "routine"
             URGENT -> "urgent"
@@ -2745,7 +4614,7 @@ enum class ServiceRequestPriority {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             ROUTINE -> "http://hl7.org/fhir/request-priority"
             URGENT -> "http://hl7.org/fhir/request-priority"
@@ -2755,7 +4624,7 @@ enum class ServiceRequestPriority {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             ROUTINE -> "The request has normal priority."
             URGENT -> "The request should be actioned promptly - higher priority than routine."
@@ -2765,7 +4634,7 @@ enum class ServiceRequestPriority {
         }
 
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             ROUTINE -> "Routine"
             URGENT -> "Urgent"
@@ -2789,8 +4658,70 @@ enum class ServiceRequestPriority {
 //    }
 }
 
+
 @Serializable
-enum class SpecimenStatus {
+enum class SortDirection : CodeableEnumeration {
+
+    /**
+     * Sort by the value ascending, so that lower values appear first.
+     */
+    ASCENDING,
+
+    /**
+     * Sort by the value descending, so that lower values appear last.
+     */
+    DESCENDING,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+
+    override fun toCode(): String? {
+        return when (this) {
+            ASCENDING -> "ascending"
+            DESCENDING -> "descending"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            ASCENDING -> "http://hl7.org/fhir/sort-direction"
+            DESCENDING -> "http://hl7.org/fhir/sort-direction"
+            NULL -> null
+        }
+
+    override val definition: String?
+        get() = when (this) {
+            ASCENDING -> "Sort by the value ascending, so that lower values appear first."
+            DESCENDING -> "Sort by the value descending, so that lower values appear last."
+            NULL -> null
+        }
+
+    override val display: String?
+        get() = when (this) {
+            ASCENDING -> "Ascending"
+            DESCENDING -> "Descending"
+            NULL -> null
+        }
+
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): SortDirection? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("ascending" == codeString) return ASCENDING
+//            if ("descending" == codeString) return DESCENDING
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown SortDirection code '$codeString'")
+//        }
+//    }
+}
+
+
+@Serializable
+enum class SpecimenStatus : CodeableEnumeration {
     /**
      * The physical specimen is present and in good condition.
      */
@@ -2816,7 +4747,7 @@ enum class SpecimenStatus {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             AVAILABLE -> "available"
             UNAVAILABLE -> "unavailable"
@@ -2826,7 +4757,7 @@ enum class SpecimenStatus {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             AVAILABLE -> "http://hl7.org/fhir/specimen-status"
             UNAVAILABLE -> "http://hl7.org/fhir/specimen-status"
@@ -2836,7 +4767,7 @@ enum class SpecimenStatus {
         }
 
 
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             AVAILABLE -> "The physical specimen is present and in good condition."
             UNAVAILABLE -> "There is no physical specimen because it is either lost, destroyed or consumed."
@@ -2845,7 +4776,7 @@ enum class SpecimenStatus {
             NULL -> null
         }
 
-    val display: String?
+    override val display: String?
         get() = when (this) {
             AVAILABLE -> "Available"
             UNAVAILABLE -> "Unavailable"
@@ -2869,8 +4800,9 @@ enum class SpecimenStatus {
 //        }
 }
 
+
 @Serializable
-enum class UnitsOfTime {
+enum class UnitsOfTime : CodeableEnumeration {
     /**
      * null
      */
@@ -2911,7 +4843,7 @@ enum class UnitsOfTime {
      */
     NULL;
 
-    fun toCode(): String? {
+    override fun toCode(): String? {
         return when (this) {
             S -> "s"
             MIN -> "min"
@@ -2924,7 +4856,7 @@ enum class UnitsOfTime {
         }
     }
 
-    val system: String?
+    override val system: String?
         get() = when (this) {
             S -> "http://unitsofmeasure.org"
             MIN -> "http://unitsofmeasure.org"
@@ -2935,7 +4867,7 @@ enum class UnitsOfTime {
             A -> "http://unitsofmeasure.org"
             NULL -> null
         }
-    val definition: String?
+    override val definition: String?
         get() = when (this) {
             S -> ""
             MIN -> ""
@@ -2946,7 +4878,7 @@ enum class UnitsOfTime {
             A -> ""
             NULL -> null
         }
-    val display: String?
+    override val display: String?
         get() = when (this) {
             S -> "second"
             MIN -> "minute"
@@ -2974,4 +4906,124 @@ enum class UnitsOfTime {
 //                )
 //            }
 //        }
+}
+
+
+@Serializable
+enum class TriggerType : CodeableEnumeration {
+
+    /**
+     * The trigger occurs in response to a specific named event, and no other information about the trigger is specified. Named events are completely pre-coordinated, and the formal semantics of the trigger are not provided.
+     */
+    NAMEDEVENT,
+
+    /**
+     * The trigger occurs at a specific time or periodically as described by a timing or schedule. A periodic event cannot have any data elements, but may have a name assigned as a shorthand for the event.
+     */
+    PERIODIC,
+
+    /**
+     * The trigger occurs whenever data of a particular type is changed in any way, either added, modified, or removed.
+     */
+    DATACHANGED,
+
+    /**
+     * The trigger occurs whenever data of a particular type is added.
+     */
+    DATAADDED,
+
+    /**
+     * The trigger occurs whenever data of a particular type is modified.
+     */
+    DATAMODIFIED,
+
+    /**
+     * The trigger occurs whenever data of a particular type is removed.
+     */
+    DATAREMOVED,
+
+    /**
+     * The trigger occurs whenever data of a particular type is accessed.
+     */
+    DATAACCESSED,
+
+    /**
+     * The trigger occurs whenever access to data of a particular type is completed.
+     */
+    DATAACCESSENDED,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+
+    override fun toCode(): String? {
+        return when (this) {
+            NAMEDEVENT -> "named-event"
+            PERIODIC -> "periodic"
+            DATACHANGED -> "data-changed"
+            DATAADDED -> "data-added"
+            DATAMODIFIED -> "data-modified"
+            DATAREMOVED -> "data-removed"
+            DATAACCESSED -> "data-accessed"
+            DATAACCESSENDED -> "data-access-ended"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            NAMEDEVENT -> "http://hl7.org/fhir/trigger-type"
+            PERIODIC -> "http://hl7.org/fhir/trigger-type"
+            DATACHANGED -> "http://hl7.org/fhir/trigger-type"
+            DATAADDED -> "http://hl7.org/fhir/trigger-type"
+            DATAMODIFIED -> "http://hl7.org/fhir/trigger-type"
+            DATAREMOVED -> "http://hl7.org/fhir/trigger-type"
+            DATAACCESSED -> "http://hl7.org/fhir/trigger-type"
+            DATAACCESSENDED -> "http://hl7.org/fhir/trigger-type"
+            NULL -> null
+        }
+
+    override val definition: String?
+        get() = when (this) {
+            NAMEDEVENT -> "The trigger occurs in response to a specific named event, and no other information about the trigger is specified. Named events are completely pre-coordinated, and the formal semantics of the trigger are not provided."
+            PERIODIC -> "The trigger occurs at a specific time or periodically as described by a timing or schedule. A periodic event cannot have any data elements, but may have a name assigned as a shorthand for the event."
+            DATACHANGED -> "The trigger occurs whenever data of a particular type is changed in any way, either added, modified, or removed."
+            DATAADDED -> "The trigger occurs whenever data of a particular type is added."
+            DATAMODIFIED -> "The trigger occurs whenever data of a particular type is modified."
+            DATAREMOVED -> "The trigger occurs whenever data of a particular type is removed."
+            DATAACCESSED -> "The trigger occurs whenever data of a particular type is accessed."
+            DATAACCESSENDED -> "The trigger occurs whenever access to data of a particular type is completed."
+            NULL -> null
+        }
+
+    override val display: String?
+        get() = when (this) {
+            NAMEDEVENT -> "Named Event"
+            PERIODIC -> "Periodic"
+            DATACHANGED -> "Data Changed"
+            DATAADDED -> "Data Added"
+            DATAMODIFIED -> "Data Updated"
+            DATAREMOVED -> "Data Removed"
+            DATAACCESSED -> "Data Accessed"
+            DATAACCESSENDED -> "Data Access Ended"
+            NULL -> null
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): TriggerType? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("named-event" == codeString) return NAMEDEVENT
+//            if ("periodic" == codeString) return PERIODIC
+//            if ("data-changed" == codeString) return DATACHANGED
+//            if ("data-added" == codeString) return DATAADDED
+//            if ("data-modified" == codeString) return DATAMODIFIED
+//            if ("data-removed" == codeString) return DATAREMOVED
+//            if ("data-accessed" == codeString) return DATAACCESSED
+//            if ("data-access-ended" == codeString) return DATAACCESSENDED
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown TriggerType code '$codeString'")
+//        }
+//    }
 }

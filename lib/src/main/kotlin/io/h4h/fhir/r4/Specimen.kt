@@ -52,9 +52,9 @@ data class Specimen(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -62,7 +62,7 @@ data class Specimen(
     /**
      * Id for specimen.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * The identifier assigned by the lab when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures.
@@ -95,12 +95,12 @@ data class Specimen(
     /**
      * Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.
      */
-    var parent: MutableList<Reference>? = null,
+    var parent: List<Reference>? = null,
 
     /**
      * Details concerning a service request that required a specimen to be collected.
      */
-    var request: MutableList<Reference>? = null,
+    var request: List<Reference>? = null,
 
     /**
      * Details concerning the specimen collection.
@@ -110,23 +110,23 @@ data class Specimen(
     /**
      * Details concerning processing and processing steps for the specimen.
      */
-    var processing: MutableList<SpecimenProcessingComponent>? = null,
+    var processing: List<SpecimenProcessingComponent>? = null,
 
     /**
      * The container holding the specimen.  The recursive nature of containers; i.e. blood in tube in tray in rack is not addressed here.
      */
-    var container: MutableList<SpecimenContainerComponent>? = null,
+    var container: List<SpecimenContainerComponent>? = null,
 
     /**
      * A mode or state of being that describes the nature of the specimen.
      */
     // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v2-0493")
-    var condition: MutableList<CodeableConcept>? = null,
+    var condition: List<CodeableConcept>? = null,
 
     /**
      * To communicate any details or issues about the specimen or during the specimen collection. (for example: broken vial, sent with patient, frozen).
      */
-    var note: MutableList<Annotation>? = null
+    var note: List<Annotation>? = null
 
 
 )  : DomainResource {
@@ -197,7 +197,7 @@ data class SpecimenProcessingComponent(
     /**
      * Material used in the processing step.
      */
-    var additive: MutableList<Reference>? = null,
+    var additive: List<Reference>? = null,
 
     /**
      * A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin.
@@ -213,7 +213,7 @@ data class SpecimenContainerComponent(
     /**
      * Id for container. There may be multiple; a manufacturer's bar code, lab assigned identifier, etc. The container ID may differ from the specimen id in some circumstances.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * Textual description of the container.

@@ -54,16 +54,16 @@ data class Endpoint(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
     /**
      * Identifier for the organization that is used to identify the endpoint across multiple disparate systems.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * active | suspended | error | off | test.
@@ -90,7 +90,7 @@ data class Endpoint(
     /**
      * Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting.
      */
-    var contact: MutableList<ContactPoint>? = null,
+    var contact: List<ContactPoint>? = null,
 
     /**
      * The interval during which the endpoint is expected to be operational.
@@ -101,13 +101,13 @@ data class Endpoint(
      * The payload type describes the acceptable content that can be communicated on the endpoint.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/endpoint-payload-type")
-    var payloadType: MutableList<CodeableConcept>? = null,
+    var payloadType: List<CodeableConcept>? = null,
 
     /**
      * The mime type to send the payload in - e.g. application/fhir+xml, application/fhir+json. If the mime type is not specified, then the sender could send any content (including no content depending on the connectionType).
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/mimetypes")
-    var payloadMimeType: MutableList<String>? = null,
+    var payloadMimeType: List<String>? = null,
 
     /**
      * The uri that describes the actual end-point to connect to.
@@ -117,7 +117,7 @@ data class Endpoint(
     /**
      * Additional headers / information to send as part of the notification.
      */
-    var header: MutableList<String>? = null
+    var header: List<String>? = null
 
 
 ) : DomainResource {

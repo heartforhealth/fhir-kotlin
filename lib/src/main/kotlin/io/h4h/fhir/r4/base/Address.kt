@@ -62,7 +62,7 @@ data class Address(
     /**
      * This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.
      */
-    var line: MutableList<String>? = null,
+    var line: List<String>? = null,
 
     /**
      * The name of the city, town, suburb, village or other community or delivery center.

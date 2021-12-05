@@ -58,26 +58,26 @@ data class Observation(
     override var implicitRules: String? = null,
     override var language: String? = null,
     override var text: Narrative? = null,
-    override var contained: MutableList<Resource>? = null,
-    override var extension: MutableList<Extension>? = null,
-    override var modifierExtension: MutableList<Extension>? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
     /**
      * A unique identifier assigned to this observation.
      */
-    var identifier: MutableList<Identifier>? = null,
+    var identifier: List<Identifier>? = null,
 
     /**
      * A plan, proposal or order that is fulfilled in whole or in part by this event.  For example, a MedicationRequest may require a patient to have laboratory test performed before  it is dispensed.
      */
-    var basedOn: MutableList<Reference>? = null,
+    var basedOn: List<Reference>? = null,
 
     /**
      * A larger event of which this particular Observation is a component or step.  For example,  an observation as part of a procedure.
      */
-    var partOf: MutableList<Reference>? = null,
+    var partOf: List<Reference>? = null,
 
     /**
      * The status of the result value.
@@ -89,7 +89,7 @@ data class Observation(
      * A code that classifies the general type of observation being made.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-category")
-    var category: MutableList<CodeableConcept>? = null,
+    var category: List<CodeableConcept>? = null,
 
     /**
      * Describes what was observed. Sometimes this is called the observation "name".
@@ -105,7 +105,7 @@ data class Observation(
     /**
      * The actual focus of an observation when it is not the patient of record representing something or someone associated with the patient such as a spouse, parent, fetus, or donor. For example, fetus observations in a mother's record.  The focus of an observation could also be an existing condition,  an intervention, the subject's diet,  another observation of the subject,  or a body structure such as tumor or implanted device.   An example use case would be using the Observation resource to capture whether the mother is trained to change her child's tracheostomy tube. In this example, the child is the patient of record and the mother is the focus.
      */
-    var focus: MutableList<Reference>? = null,
+    var focus: List<Reference>? = null,
 
     /**
      * The healthcare event  (e.g. a patient and healthcare provider interaction) during which this observation is made.
@@ -130,7 +130,7 @@ data class Observation(
     /**
      * Who was responsible for asserting the observed value as "true".
      */
-    var performer: MutableList<Reference>? = null,
+    var performer: List<Reference>? = null,
 
     /**
      * The information determined as a result of making the observation, if the information has a simple value.
@@ -159,12 +159,12 @@ data class Observation(
      * A categorical assessment of an observation value.  For example, high, low, normal.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-interpretation")
-    var interpretation: MutableList<CodeableConcept>? = null,
+    var interpretation: List<CodeableConcept>? = null,
 
     /**
      * Comments about the observation or the results.
      */
-    var note: MutableList<Annotation>? = null,
+    var note: List<Annotation>? = null,
 
     /**
      * Indicates the site on the subject's body where the observation was made (i.e. the target site).
@@ -191,22 +191,22 @@ data class Observation(
     /**
      * Guidance on how to interpret the value by comparison to a normal or recommended range.  Multiple reference ranges are interpreted as an "OR".   In other words, to represent two distinct target populations, two `referenceRange` elements would be used.
      */
-    var referenceRange: MutableList<ObservationReferenceRangeComponent>? = null,
+    var referenceRange: List<ObservationReferenceRangeComponent>? = null,
 
     /**
      * This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.
      */
-    var hasMember: MutableList<Reference>? = null,
+    var hasMember: List<Reference>? = null,
 
     /**
      * The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.
      */
-    var derivedFrom: MutableList<Reference>? = null,
+    var derivedFrom: List<Reference>? = null,
 
     /**
      * Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.
      */
-    var component: MutableList<ObservationComponent>? = null
+    var component: List<ObservationComponent>? = null
 
 
 ) : DomainResource {
@@ -249,12 +249,12 @@ data class ObservationComponent(
      * A categorical assessment of an observation value.  For example, high, low, normal.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-interpretation")
-    var interpretation: MutableList<CodeableConcept>? = null,
+    var interpretation: List<CodeableConcept>? = null,
 
     /**
      * Guidance on how to interpret the value by comparison to a normal or recommended range.
      */
-    var referenceRange: MutableList<ObservationReferenceRangeComponent>? = null
+    var referenceRange: List<ObservationReferenceRangeComponent>? = null
 
 
 )
@@ -283,7 +283,7 @@ data class ObservationReferenceRangeComponent(
      * Codes to indicate the target population this reference range applies to.  For example, a reference range may be based on the normal population or a particular sex or race.  Multiple `appliesTo`  are interpreted as an "AND" of the target populations.  For example, to represent a target population of African American females, both a code of female and a code for African American would be used.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/referencerange-appliesto")
-    var appliesTo: MutableList<CodeableConcept>? = null,
+    var appliesTo: List<CodeableConcept>? = null,
 
     /**
      * The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so.

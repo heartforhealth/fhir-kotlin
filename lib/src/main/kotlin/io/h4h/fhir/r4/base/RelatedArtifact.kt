@@ -2,7 +2,6 @@ package io.h4h.fhir.r4.base
 
 import kotlinx.serialization.Serializable
 
-
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
@@ -33,46 +32,47 @@ import kotlinx.serialization.Serializable
 */
 // Generated on Tue, May 12, 2020 07:26+1000 for FHIR v4.0.1
 
-
 /**
- * The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.
+ * Related artifacts such as additional documentation, justification, or bibliographic references.
  */
 
 @Serializable
-data class Meta(
+data class RelatedArtifact(
 
     /**
-     * The version specific identifier, as it appears in the version portion of the URL. This value changes when the resource is created, updated, or deleted.
+     * The type of relationship to the related artifact.
      */
-    var versionId: String? = null,
+    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/related-artifact-type")
+    var type: RelatedArtifactType? = null,
 
     /**
-     * When the resource last changed - e.g. when the version changed.
-     * An instant in time in the format YYYY-MM-DDThh:mm:ss.sss+zz:zz (e.g. 2015-02-07T13:28:17.239+02:00 or 2017-01-01T00:00:00Z)
-     * InstantType
+     * A short label that can be used to reference the citation from elsewhere in the containing artifact, such as a footnote index.
      */
-    var lastUpdated: String? = null,
+    var label: String? = null,
 
     /**
-     * A uri that identifies the source system of the resource. This provides a minimal amount of [[[Provenance]]] information that can be used to track or differentiate the source of information in the resource. The source may identify another FHIR server, document, message, database, etc.
+     * A brief description of the document or knowledge resource being referenced, suitable for display to a consumer.
      */
-    var source: String? = null,
+    var display: String? = null,
 
     /**
-     * A list of profiles (references to [[[StructureDefinition]]] resources) that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]].
+     * A bibliographic citation for the related artifact. This text SHOULD be formatted according to an accepted citation format.
      */
-    var profile: List<String>? = null,
+    var citation: String? = null,
 
     /**
-     * Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.
+     * A url for the artifact that can be followed to access the actual content.
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/security-labels")
-    var security: List<Coding>? = null,
+    var url: String? = null,
 
     /**
-     * Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.
+     * The document being referenced, represented as an attachment. This is exclusive with the resource element.
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/common-tags")
-    var tag: List<Coding>? = null
+    var document: Attachment? = null,
+
+    /**
+     * The related resource, such as a library, value set, profile, or other knowledge resource.
+     */
+    var resource: String? = null
 
 )
