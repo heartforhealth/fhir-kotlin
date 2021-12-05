@@ -1989,6 +1989,67 @@ enum class EventTiming : CodeableEnumeration {
 //        }
 }
 
+
+@Serializable
+enum class EnableWhenBehavior : CodeableEnumeration {
+
+    /**
+     * Enable the question when all the enableWhen criteria are satisfied.
+     */
+    ALL,
+
+    /**
+     * Enable the question when any of the enableWhen criteria are satisfied.
+     */
+    ANY,
+
+    /**
+     * added to help the parsers with the generic types
+     */
+    NULL;
+
+
+    override fun toCode(): String? {
+        return when (this) {
+            ALL -> "all"
+            ANY -> "any"
+            NULL -> null
+        }
+    }
+
+    override val system: String?
+        get() = when (this) {
+            ALL -> "http://hl7.org/fhir/questionnaire-enable-behavior"
+            ANY -> "http://hl7.org/fhir/questionnaire-enable-behavior"
+            NULL -> null
+        }
+
+    override val definition: String?
+        get() = when (this) {
+            ALL -> "Enable the question when all the enableWhen criteria are satisfied."
+            ANY -> "Enable the question when any of the enableWhen criteria are satisfied."
+            NULL -> null
+        }
+
+    override val display: String?
+        get() = when (this) {
+            ALL -> "All"
+            ANY -> "Any"
+            NULL -> null
+        }
+
+//    companion object {
+//        @Throws(FHIRException::class)
+//        fun fromCode(codeString: String?): EnableWhenBehavior? {
+//            if (codeString == null || "" == codeString) return null
+//            if ("all" == codeString) return ALL
+//            if ("any" == codeString) return ANY
+//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown EnableWhenBehavior code '$codeString'")
+//        }
+//    }
+}
+
+
 @Serializable
 enum class EncounterStatus : CodeableEnumeration {
     /**
