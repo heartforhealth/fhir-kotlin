@@ -1,3 +1,5 @@
+@file:JvmName("DateExtensions")
+
 package io.h4h.fhir.r4.extensions
 
 
@@ -31,4 +33,13 @@ fun Date.toIsoString(timeZone: TimeZone? = null): String {
 fun String.parseDate(timeZone: TimeZone? = null): Date? {
     defaultFormatter.timeZone = (timeZone ?: TimeZone.getTimeZone("UTC"))
     return defaultFormatter.runCatching { parse(this@parseDate) }.getOrNull()
+}
+
+/**
+ * create Date from String
+ * @return date or null if not ISO8601 string
+ */
+fun String.parseDateThrowing(timeZone: TimeZone? = null): Date {
+    defaultFormatter.timeZone = (timeZone ?: TimeZone.getTimeZone("UTC"))
+    return defaultFormatter.parse(this)
 }

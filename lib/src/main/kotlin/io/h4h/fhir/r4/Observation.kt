@@ -2,7 +2,6 @@ package io.h4h.fhir.r4
 
 
 import io.h4h.fhir.r4.base.*
-import io.h4h.fhir.r4.base.Annotation
 import kotlinx.serialization.Serializable
 
 /*
@@ -39,10 +38,6 @@ import kotlinx.serialization.Serializable
 /**
  * Measurements and simple assertions made about a patient, device or other subject.
  */
-
-
-
-
 @Serializable
 data class Observation(
 
@@ -209,14 +204,20 @@ data class Observation(
     var component: List<ObservationComponent>? = null
 
 
-) : DomainResource {
-
-
-}
+) : DomainResource
 
 
 @Serializable
 data class ObservationComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override var id: String? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * Describes what was observed. Sometimes this is called the observation "code".
@@ -257,11 +258,20 @@ data class ObservationComponent(
     var referenceRange: List<ObservationReferenceRangeComponent>? = null
 
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class ObservationReferenceRangeComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override var id: String? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * The value of the low bound of the reference range.  The low bound of the reference range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9). If the low bound is omitted,  it is assumed to be meaningless (e.g. reference range is <=2.3).
@@ -296,5 +306,5 @@ data class ObservationReferenceRangeComponent(
     var text: String? = null
 
 
-)
+) : BackboneElement
 

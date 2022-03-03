@@ -1,6 +1,8 @@
 package io.h4h.fhir.r4.serializers
 
 
+import io.h4h.fhir.r4.extensions.parseDateThrowing
+import io.h4h.fhir.r4.extensions.toIsoString
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializer
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -12,18 +14,21 @@ import java.util.Date
 
 
 @Serializer(forClass = Date::class)
-object DateSerializer : KSerializer<Date> {
+object DateSerializerISOString : KSerializer<Date> {
 
+    /// we are serializing the Date as String
+    override val descriptor = PrimitiveSerialDescriptor("Date", PrimitiveKind.STRING)
 
+    /// encode using UTC ISO 8601 format
     override fun serialize(encoder: Encoder, value: Date) {
-        encoder.encodeString(value.time.toString())
+        encoder.encodeString(value.toIsoString())
     }
 
+    /// decode using UTC ISO 8601 format
     override fun deserialize(decoder: Decoder): Date {
-        return Date(decoder.decodeString().toLong())
+        return decoder.decodeString().parseDateThrowing()
     }
 
-//    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("Date", PrimitiveKind.STRING)
 }
 
 

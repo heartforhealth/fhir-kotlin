@@ -37,9 +37,44 @@ import kotlinx.serialization.Serializable
 /**
  * This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols.
  */
-
 @Serializable
 data class PlanDefinition(
+
+
+    // ============================================================
+    // ============================================================
+    /**
+     * DomainResource + Resource requirements
+     * These are required for all resources
+     */
+    override var id: String? = null,
+    override var resourceType: ResourceType? = ResourceType.PlanDefinition,
+    override var meta: Meta? = null,
+    override var implicitRules: String? = null,
+    override var language: String? = null,
+    override var text: Narrative? = null,
+    override var contained: List<Resource>? = null,
+    override var extension: List<Extension>? = null,
+    override var modifierExtension: List<Extension>? = null,
+
+
+    /**
+     * MetadataResource requirements
+     */
+    override var url: String? = null,
+    override var version: String? = null,
+    override var name: String? = null,
+    override var title: String? = null,
+    override var status: PublicationStatus? = null,
+    override var experimental: Boolean? = null,
+    override var date: String? = null,
+    override var publisher: String? = null,
+    override var contact: List<ContactDetail>? = null,
+    override var description: String? = null,
+    override var useContext: List<UsageContext>? = null,
+    override var jurisdiction: List<CodeableConcept>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * A formal identifier that is used to identify this plan definition when it is represented in other formats, or referenced in a specification, model, design or an instance.
@@ -140,7 +175,7 @@ data class PlanDefinition(
      */
     var action: List<PlanDefinitionActionComponent>? = null
 
-)
+) : MetadataResource
 
 
 

@@ -8,20 +8,22 @@
 
 
 group = "io.h4h"
-version = "0.1.2"
+version = "0.1.3"
 
 
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.6.0"
+    id("org.jetbrains.kotlin.jvm") version "1.6.10"
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
     // Publish to Maven repository
     `maven-publish`
+    // Publish to GCP Artifact Registry repository
+    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.4"
 
-    kotlin("plugin.serialization") version "1.6.0"
+    kotlin("plugin.serialization") version "1.6.10"
 }
 
 
@@ -31,7 +33,6 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "io.h4h"
             artifactId = "fhir-kotlin"
-            // version = "1.1"
 
             from(components["java"])
         }
@@ -52,17 +53,15 @@ dependencies {
     // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+    // This dependency is exported to consumers, that is to say found on their compile classpath.
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm
+    api("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.3.2")
 
     // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
-
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    // api("org.apache.commons:commons-math3:3.6.1")
 }
 
 
@@ -71,4 +70,7 @@ tasks.jar {
         attributes(mapOf("Implementation-Title" to project.name,
             "Implementation-Version" to project.version))
     }
+    // set jar base name
+    archiveBaseName.set(rootProject.name)
 }
+
