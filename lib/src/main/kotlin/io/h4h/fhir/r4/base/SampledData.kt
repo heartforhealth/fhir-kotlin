@@ -37,43 +37,42 @@ import kotlinx.serialization.Serializable
 /**
  * A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.
  */
-
 @Serializable
 data class SampledData(
     /**
      * The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.
      */
-    var origin: Quantity? = null,
+    val origin: Quantity? = null,
 
     /**
      * The length of time between sampling times, measured in milliseconds.
      */
-    var period: Double? = null,
+    val period: Double? = null,
 
     /**
      * A correction factor that is applied to the sampled data points before they are added to the origin.
      */
-    var factor: Double? = null,
+    val factor: Double? = null,
 
     /**
      * The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).
      */
-    var lowerLimit: Double? = null,
+    val lowerLimit: Double? = null,
 
     /**
      * The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).
      */
-    var upperLimit: Double? = null,
+    val upperLimit: Double? = null,
 
     /**
      * The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.
      */
-    var dimensions: Int? = null,
+    val dimensions: Int? = null,
 
     /**
      * A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.
      */
-    var data: String? = null
+    val data: String? = null
 
 
 )

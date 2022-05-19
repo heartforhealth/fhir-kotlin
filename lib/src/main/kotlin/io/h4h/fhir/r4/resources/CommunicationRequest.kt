@@ -1,4 +1,4 @@
-package io.h4h.fhir.r4
+package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
@@ -48,15 +48,15 @@ data class CommunicationRequest(
      * DomainResource + Resource requirements
      * These are required for all resources
      */
-    override var id: String? = null,
-    override var resourceType: ResourceType? = ResourceType.CommunicationRequest,
-    override var meta: Meta? = null,
-    override var implicitRules: String? = null,
-    override var language: String? = null,
-    override var text: Narrative? = null,
-    override var contained: List<Resource>? = null,
-    override var extension: List<Extension>? = null,
-    override var modifierExtension: List<Extension>? = null,
+    override val id: String,
+    override val resourceType: ResourceType = ResourceType.CommunicationRequest,
+    override val meta: Meta? = null,
+    override val implicitRules: String? = null,
+    override val language: String? = null,
+    override val text: Narrative? = null,
+    override val contained: List<Resource>? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -64,121 +64,121 @@ data class CommunicationRequest(
     /**
      * Business identifiers assigned to this communication request by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */
-    var identifier: List<Identifier>? = null,
+    val identifier: List<Identifier>? = null,
 
     /**
      * A plan or proposal that is fulfilled in whole or in part by this request.
      */
-    var basedOn: List<Reference>? = null,
+    val basedOn: List<Reference>? = null,
 
     /**
      * Completed or terminated request(s) whose function is taken by this new request.
      */
-    var replaces: List<Reference>? = null,
+    val replaces: List<Reference>? = null,
 
     /**
      * A shared identifier common to all requests that were authorized more or less simultaneously by a single author, representing the identifier of the requisition, prescription or similar form.
      */
-    var groupIdentifier: Identifier? = null,
+    val groupIdentifier: Identifier? = null,
 
     /**
      * The status of the proposal or order.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/request-status")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/request-status")
-    var status: CommunicationRequestStatus? = null,
+    val status: CommunicationRequestStatus? = null,
 
     /**
      * Captures the reason for the current state of the CommunicationRequest.
      */
-    var statusReason: CodeableConcept? = null,
+    val statusReason: CodeableConcept? = null,
 
     /**
      * The type of message to be sent such as alert, notification, reminder, instruction, etc.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/communication-category")
-    var category: List<CodeableConcept>? = null,
+    val category: List<CodeableConcept>? = null,
 
     /**
      * Characterizes how quickly the proposed act must be initiated. Includes concepts such as stat, urgent, routine.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/request-priority")
-    var priority: CommunicationPriority? = null,
+    val priority: CommunicationPriority? = null,
 
     /**
      * If true indicates that the CommunicationRequest is asking for the specified action to *not* occur.
      */
-    var doNotPerform: Boolean? = null,
+    val doNotPerform: Boolean? = null,
 
     /**
      * A channel that was used for this communication (e.g. email, fax).
      */
     // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v3-ParticipationMode")
-    var medium: List<CodeableConcept>? = null,
+    val medium: List<CodeableConcept>? = null,
 
     /**
      * The patient or group that is the focus of this communication request.
      */
-    var subject: Reference? = null,
+    val subject: Reference? = null,
 
     /**
      * Other resources that pertain to this communication request and to which this communication request should be associated.
      */
-    var about: List<Reference>? = null,
+    val about: List<Reference>? = null,
 
 
     /**
      * The Encounter during which this CommunicationRequest was created or to which the creation of this record is tightly associated.
      */
-    var encounter: Reference? = null,
+    val encounter: Reference? = null,
 
     /**
      * Text, attachment(s), or resource(s) to be communicated to the recipient.
      */
-    var payload: List<CommunicationRequestPayloadComponent>? = null,
+    val payload: List<CommunicationRequestPayloadComponent>? = null,
 
     /**
      * The time when this communication is to occur.
      */
-    var occurrenceDateTime: String? = null,
-    var occurrencePeriod: Period? = null,
+    val occurrenceDateTime: String? = null,
+    val occurrencePeriod: Period? = null,
 
 
     /**
      * For draft requests, indicates the date of initial creation.  For requests with other statuses, indicates the date of activation.
      */
-    var authoredOn: String? = null,
+    val authoredOn: String? = null,
 
     /**
      * The device, individual, or organization who initiated the request and has responsibility for its activation.
      */
-    var requester: Reference? = null,
+    val requester: Reference? = null,
 
 
     /**
      * The entity (e.g. person, organization, clinical information system, device, group, or care team) which is the intended target of the communication.
      */
-    var recipient: List<Reference>? = null,
+    val recipient: List<Reference>? = null,
 
     /**
      * The entity (e.g. person, organization, clinical information system, or device) which is to be the source of the communication.
      */
-    var sender: Reference? = null,
+    val sender: Reference? = null,
 
     /**
      * Describes why the request is being made in coded or textual form.
      */
     // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v3-ActReason")
-    var reasonCode: List<CodeableConcept>? = null,
+    val reasonCode: List<CodeableConcept>? = null,
 
     /**
      * Indicates another resource whose existence justifies this request.
      */
-    var reasonReference: List<Reference>? = null,
+    val reasonReference: List<Reference>? = null,
 
     /**
      * Comments made about the request by the requester, sender, recipient, subject or other participants.
      */
-    var note: List<Annotation>? = null
+    val note: List<Annotation>? = null
 
 ) : DomainResource
 
@@ -189,9 +189,9 @@ data class CommunicationRequestPayloadComponent(
     /**
      * The communicated content (or for multi-part communications, one portion of the communication).
      */
-    var contentString: String? = null,
-    var contentAttachment: Attachment? = null,
-    var contentReference: Reference? = null
+    val contentString: String? = null,
+    val contentAttachment: Attachment? = null,
+    val contentReference: Reference? = null
 
 )
 
@@ -240,8 +240,8 @@ enum class CommunicationRequestStatus : CodeableEnumeration {
     NULL;
 
 
-    override fun toCode(): String? {
-        return when (this) {
+    override val code: String?
+        get() = when (this) {
             DRAFT -> "draft"
             ACTIVE -> "active"
             ONHOLD -> "on-hold"
@@ -251,7 +251,6 @@ enum class CommunicationRequestStatus : CodeableEnumeration {
             UNKNOWN -> "unknown"
             NULL -> null
         }
-    }
 
     override val system: String?
         get() = when (this) {
@@ -289,19 +288,5 @@ enum class CommunicationRequestStatus : CodeableEnumeration {
             NULL -> null
         }
 
-//    companion object {
-//        @Throws(FHIRException::class)
-//        fun fromCode(codeString: String?): CommunicationRequestStatus? {
-//            if (codeString == null || "" == codeString) return null
-//            if ("draft" == codeString) return DRAFT
-//            if ("active" == codeString) return ACTIVE
-//            if ("on-hold" == codeString) return ONHOLD
-//            if ("revoked" == codeString) return REVOKED
-//            if ("completed" == codeString) return COMPLETED
-//            if ("entered-in-error" == codeString) return ENTEREDINERROR
-//            if ("unknown" == codeString) return UNKNOWN
-//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown CommunicationRequestStatus code '$codeString'")
-//        }
-//    }
 }
 

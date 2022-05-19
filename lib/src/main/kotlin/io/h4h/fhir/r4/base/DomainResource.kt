@@ -37,19 +37,17 @@ package io.h4h.fhir.r4.base
 /**
  * A resource that includes narrative, extensions, and contained resources.
  */
-
-
 interface DomainResource : Resource, BackboneElement {
 
     /**
      * A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.
      */
-    var text: Narrative?
+    val text: Narrative?
 
     /**
      * These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.
      */
-    var contained: List<Resource>?
+    val contained: List<Resource>?
 
 }
 

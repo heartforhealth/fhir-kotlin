@@ -1,4 +1,4 @@
-package io.h4h.fhir.r4
+package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
@@ -48,79 +48,76 @@ data class Endpoint(
      * DomainResource + Resource requirements
      * These are required for all resources
      */
-    override var id: String? = null,
-    override var resourceType: ResourceType? = ResourceType.Endpoint,
-    override var meta: Meta? = null,
-    override var implicitRules: String? = null,
-    override var language: String? = null,
-    override var text: Narrative? = null,
-    override var contained: List<Resource>? = null,
-    override var extension: List<Extension>? = null,
-    override var modifierExtension: List<Extension>? = null,
+    override val id: String,
+    override val resourceType: ResourceType = ResourceType.Endpoint,
+    override val meta: Meta? = null,
+    override val implicitRules: String? = null,
+    override val language: String? = null,
+    override val text: Narrative? = null,
+    override val contained: List<Resource>? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
     /**
      * Identifier for the organization that is used to identify the endpoint across multiple disparate systems.
      */
-    var identifier: List<Identifier>? = null,
+    val identifier: List<Identifier>? = null,
 
     /**
      * active | suspended | error | off | test.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/endpoint-status")
-    var status: EndpointStatus? = null,
+    val status: EndpointStatus? = null,
 
     /**
      * A coded value that represents the technical details of the usage of this endpoint, such as what WSDLs should be used in what way. (e.g. XDS.b/DICOM/cds-hook).
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/endpoint-connection-type")
-    var connectionType: Coding? = null,
+    val connectionType: Coding? = null,
 
     /**
      * A friendly name that this endpoint can be referred to with.
      */
-    var name: String? = null,
+    val name: String? = null,
 
     /**
      * The organization that manages this endpoint (even if technically another organization is hosting this in the cloud, it is the organization associated with the data).
      */
-    var managingOrganization: Reference? = null,
+    val managingOrganization: Reference? = null,
 
     /**
      * Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting.
      */
-    var contact: List<ContactPoint>? = null,
+    val contact: List<ContactPoint>? = null,
 
     /**
      * The interval during which the endpoint is expected to be operational.
      */
-    var period: Period? = null,
+    val period: Period? = null,
 
     /**
      * The payload type describes the acceptable content that can be communicated on the endpoint.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/endpoint-payload-type")
-    var payloadType: List<CodeableConcept>? = null,
+    val payloadType: List<CodeableConcept>? = null,
 
     /**
      * The mime type to send the payload in - e.g. application/fhir+xml, application/fhir+json. If the mime type is not specified, then the sender could send any content (including no content depending on the connectionType).
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/mimetypes")
-    var payloadMimeType: List<String>? = null,
+    val payloadMimeType: List<String>? = null,
 
     /**
      * The uri that describes the actual end-point to connect to.
      */
-    var address: String? = null,
+    val address: String? = null,
 
     /**
      * Additional headers / information to send as part of the notification.
      */
-    var header: List<String>? = null
+    val header: List<String>? = null
 
 
-) : DomainResource {
-
-
-}
+) : DomainResource

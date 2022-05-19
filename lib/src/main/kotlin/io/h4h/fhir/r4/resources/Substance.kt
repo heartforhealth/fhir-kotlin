@@ -1,4 +1,4 @@
-package io.h4h.fhir.r4
+package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
@@ -48,15 +48,15 @@ data class Substance(
      * DomainResource + Resource requirements
      * These are required for all resources
      */
-    override var id: String? = null,
-    override var resourceType: ResourceType? = ResourceType.Substance,
-    override var meta: Meta? = null,
-    override var implicitRules: String? = null,
-    override var language: String? = null,
-    override var text: Narrative? = null,
-    override var contained: List<Resource>? = null,
-    override var extension: List<Extension>? = null,
-    override var modifierExtension: List<Extension>? = null,
+    override val id: String,
+    override val resourceType: ResourceType = ResourceType.Substance,
+    override val meta: Meta? = null,
+    override val implicitRules: String? = null,
+    override val language: String? = null,
+    override val text: Narrative? = null,
+    override val contained: List<Resource>? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -64,46 +64,46 @@ data class Substance(
     /**
      * Unique identifier for the substance.
      */
-    var identifier: List<Identifier>? = null,
+    val identifier: List<Identifier>? = null,
 
     /**
      * A code to indicate if the substance is actively used.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/substance-status")
-    var status: FHIRSubstanceStatus? = null,
+    val status: FHIRSubstanceStatus? = null,
 
     /**
      * A code that classifies the general type of substance.  This is used  for searching, sorting and display purposes.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/substance-category")
-    var category: List<CodeableConcept>? = null,
+    val category: List<CodeableConcept>? = null,
 
     /**
      * A code (or set of codes) that identify this substance.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/substance-code")
-    var code: CodeableConcept? = null,
+    val code: CodeableConcept? = null,
 
     /**
      * A description of the substance - its appearance, handling requirements, and other usage notes.
      */
-    var description: String? = null,
+    val description: String? = null,
 
     /**
      * Substance may be used to describe a kind of substance, or a specific package/container of the substance: an instance.
      */
-    var instance: List<SubstanceInstanceComponent>? = null,
+    val instance: List<SubstanceInstanceComponent>? = null,
 
     /**
      * A substance can be composed of other substances.
      */
-    var ingredient: List<SubstanceIngredientComponent>? = null
+    val ingredient: List<SubstanceIngredientComponent>? = null
 
 
-) : DomainResource {
+) : DomainResource
 
 
-}
+
 
 
 @Serializable
@@ -112,18 +112,18 @@ data class SubstanceInstanceComponent(
     /**
      * Identifier associated with the package/container (usually a label affixed directly).
      */
-    var identifier: Identifier? = null,
+    val identifier: Identifier? = null,
 
     /**
      * When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.
      * DateTimeType
      */
-    var expiry: String? = null,
+    val expiry: String? = null,
 
     /**
      * The amount of the substance.
      */
-    var quantity: Quantity? = null
+    val quantity: Quantity? = null
 
 )
 
@@ -133,13 +133,13 @@ data class SubstanceIngredientComponent(
     /**
      * The amount of the ingredient in the substance - a concentration ratio.
      */
-    var quantity: Ratio? = null,
+    val quantity: Ratio? = null,
 
     /**
      * Another substance that is a component of this substance.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/substance-code")
-    var substanceCodeableConcept: CodeableConcept? = null,
-    var substanceReference: Reference? = null
+    val substanceCodeableConcept: CodeableConcept? = null,
+    val substanceReference: Reference? = null
 
 )

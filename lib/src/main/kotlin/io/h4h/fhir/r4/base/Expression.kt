@@ -36,34 +36,33 @@ import kotlinx.serialization.Serializable
 /**
  * A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used.
  */
-
 @Serializable
 data class Expression(
 
     /**
      * A brief, natural language description of the condition that effectively communicates the intended semantics.
      */
-    var description: String? = null,
+    val description: String? = null,
 
     /**
      * A short name assigned to the expression to allow for multiple reuse of the expression in the context where it is defined.
      */
-    var name: String? = null,
+    val name: String? = null,
 
     /**
      * The media type of the language for the expression.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/expression-language")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/expression-language")
-    var language: String? = null,
+    val language: String? = null,
 
     /**
      * An expression in the specified language that returns a value.
      */
-    var expression: String? = null,
+    val expression: String? = null,
 
     /**
      * A URI that defines where the expression is found.
      */
-    var reference: String? = null
+    val reference: String? = null
 
 )

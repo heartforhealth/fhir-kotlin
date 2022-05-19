@@ -1,7 +1,7 @@
-package io.h4h.fhir.r4
-
+package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
+import io.h4h.fhir.r4.codesystems.AdministrativeGender
 import kotlinx.serialization.Serializable
 
 /*
@@ -53,15 +53,15 @@ data class ObservationDefinition(
      * DomainResource + Resource requirements
      * These are required for all resources
      */
-    override var id: String? = null,
-    override var resourceType: ResourceType? = ResourceType.ObservationDefinition,
-    override var meta: Meta? = null,
-    override var implicitRules: String? = null,
-    override var language: String? = null,
-    override var text: Narrative? = null,
-    override var contained: List<Resource>? = null,
-    override var extension: List<Extension>? = null,
-    override var modifierExtension: List<Extension>? = null,
+    override val id: String,
+    override val resourceType: ResourceType = ResourceType.ObservationDefinition,
+    override val meta: Meta? = null,
+    override val implicitRules: String? = null,
+    override val language: String? = null,
+    override val text: Narrative? = null,
+    override val contained: List<Resource>? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -71,90 +71,90 @@ data class ObservationDefinition(
      * A code that classifies the general type of observation.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-category")
-    var category: List<CodeableConcept>? = null,
+    val category: List<CodeableConcept>? = null,
 
     /**
      * Describes what will be observed. Sometimes this is called the observation "name".
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-codes")
-    var code: CodeableConcept? = null,
+    val code: CodeableConcept? = null,
 
     /**
      * A unique identifier assigned to this ObservationDefinition artifact.
      */
-    var identifier: MutableList<Identifier>? = null,
+    val identifier: MutableList<Identifier>? = null,
 
     /**
      * The data types allowed for the value element of the instance observations conforming to this ObservationDefinition.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/permitted-data-type")
-    var permittedDataType: List<ObservationDataType>? = null,
+    val permittedDataType: List<ObservationDataType>? = null,
 
     /**
      * Multiple results allowed for observations conforming to this ObservationDefinition.
      */
-    var multipleResultsAllowed: Boolean? = null,
+    val multipleResultsAllowed: Boolean? = null,
 
     /**
      * The method or technique used to perform the observation.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-methods")
-    var method: CodeableConcept? = null,
+    val method: CodeableConcept? = null,
 
     /**
      * The preferred name to be used when reporting the results of observations conforming to this ObservationDefinition.
      */
-    var preferredReportName: String? = null,
+    val preferredReportName: String? = null,
 
     /**
      * Characteristics for quantitative results of this observation.
      */
-    var quantitativeDetails: ObservationDefinitionQuantitativeDetailsComponent? = null,
+    val quantitativeDetails: ObservationDefinitionQuantitativeDetailsComponent? = null,
 
     /**
      * Multiple  ranges of results qualified by different contexts for ordinal or continuous observations conforming to this ObservationDefinition.
      */
-    var qualifiedInterval: List<ObservationDefinitionQualifiedIntervalComponent>? = null,
+    val qualifiedInterval: List<ObservationDefinitionQualifiedIntervalComponent>? = null,
 
     /**
      * The set of valid coded results for the observations  conforming to this ObservationDefinition.
      */
-    var validCodedValueSet: Reference? = null,
+    val validCodedValueSet: Reference? = null,
 
     /**
      * The actual object that is the target of the reference (The set of valid coded results for the observations  conforming to this ObservationDefinition.)
      */
-    var validCodedValueSetTarget: ValueSet? = null,
+    val validCodedValueSetTarget: ValueSet? = null,
 
     /**
      * The set of normal coded results for the observations conforming to this ObservationDefinition.
      */
-    var normalCodedValueSet: Reference? = null,
+    val normalCodedValueSet: Reference? = null,
 
     /**
      * The actual object that is the target of the reference (The set of normal coded results for the observations conforming to this ObservationDefinition.)
      */
-    var normalCodedValueSetTarget: ValueSet? = null,
+    val normalCodedValueSetTarget: ValueSet? = null,
 
     /**
      * The set of abnormal coded results for the observation conforming to this ObservationDefinition.
      */
-    var abnormalCodedValueSet: Reference? = null,
+    val abnormalCodedValueSet: Reference? = null,
 
     /**
      * The actual object that is the target of the reference (The set of abnormal coded results for the observation conforming to this ObservationDefinition.)
      */
-    var abnormalCodedValueSetTarget: ValueSet? = null,
+    val abnormalCodedValueSetTarget: ValueSet? = null,
 
     /**
      * The set of critical coded results for the observation conforming to this ObservationDefinition.
      */
-    var criticalCodedValueSet: Reference? = null,
+    val criticalCodedValueSet: Reference? = null,
 
     /**
      * The actual object that is the target of the reference (The set of critical coded results for the observation conforming to this ObservationDefinition.)
      */
-    var criticalCodedValueSetTarget: ValueSet? = null
+    val criticalCodedValueSetTarget: ValueSet? = null
 
 
 ) : DomainResource
@@ -167,23 +167,23 @@ data class ObservationDefinitionQuantitativeDetailsComponent(
      * Customary unit used to report quantitative results of observations conforming to this ObservationDefinition.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/ucum-units")
-    var customaryUnit: CodeableConcept? = null,
+    val customaryUnit: CodeableConcept? = null,
 
     /**
      * SI unit used to report quantitative results of observations conforming to this ObservationDefinition.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/ucum-units")
-    var unit: CodeableConcept? = null,
+    val unit: CodeableConcept? = null,
 
     /**
      * Factor for converting value expressed with SI unit to value expressed with customary unit.
      */
-    var conversionFactor: Double? = null,
+    val conversionFactor: Double? = null,
 
     /**
      * Number of digits after decimal separator when the results of such observations are of type Quantity.
      */
-    var decimalPrecision: Int? = null
+    val decimalPrecision: Int? = null
 )
 
 
@@ -196,45 +196,45 @@ data class ObservationDefinitionQualifiedIntervalComponent(
      * The category of interval of values for continuous or ordinal observations conforming to this ObservationDefinition.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-range-category")
-    var category: ObservationRangeCategory? = null,
+    val category: ObservationRangeCategory? = null,
 
     /**
      * The low and high values determining the interval. There may be only one of the two.
      */
-    var range: Range? = null,
+    val range: Range? = null,
 
     /**
      * Codes to indicate the health context the range applies to. For example, the normal or therapeutic range.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/referencerange-meaning")
-    var context: CodeableConcept? = null,
+    val context: CodeableConcept? = null,
 
     /**
      * Codes to indicate the target population this reference range applies to.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/referencerange-appliesto")
-    var appliesTo: MutableList<CodeableConcept>? = null,
+    val appliesTo: MutableList<CodeableConcept>? = null,
 
     /**
      * Sex of the population the range applies to.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/administrative-gender")
-    var gender: AdministrativeGender? = null,
+    val gender: AdministrativeGender? = null,
 
     /**
      * The age at which this reference range is applicable. This is a neonatal age (e.g. number of weeks at term) if the meaning says so.
      */
-    var age: Range? = null,
+    val age: Range? = null,
 
     /**
      * The gestational age to which this reference range is applicable, in the context of pregnancy.
      */
-    var gestationalAge: Range? = null,
+    val gestationalAge: Range? = null,
 
     /**
      * Text based condition for which the reference range is valid.
      */
-    var condition: String? = null
+    val condition: String? = null
 
 
 )

@@ -36,44 +36,43 @@ import kotlinx.serialization.Serializable
 /**
  * A human's name with the ability to identify parts and usage.
  */
-
 @Serializable
 data class HumanName(
 
     /**
      * Identifies the purpose for this name.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/name-use")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/name-use")
-    var use: NameUse? = null,
+    val use: NameUse? = null,
 
     /**
      * Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.
      */
-    var text: String? = null,
+    val text: String? = null,
 
     /**
      * The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
      */
-    var family: String? = null,
+    val family: String? = null,
 
     /**
      * Given name.
      */
-    var given: List<String>? = null,
+    val given: List<String>? = null,
 
     /**
      * Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.
      */
-    var prefix: List<String>? = null,
+    val prefix: List<String>? = null,
 
     /**
      * Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.
      */
-    var suffix: List<String>? = null,
+    val suffix: List<String>? = null,
 
     /**
      * Indicates the period of time when this name was valid for the named person.
      */
-    var period: Period? = null
+    val period: Period? = null
 
 )

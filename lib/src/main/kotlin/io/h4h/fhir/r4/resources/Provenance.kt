@@ -1,4 +1,4 @@
-package io.h4h.fhir.r4
+package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
@@ -47,74 +47,76 @@ data class Provenance(
      * DomainResource + Resource requirements
      * These are required for all resources
      */
-    override var id: String? = null,
-    override var resourceType: ResourceType? = ResourceType.Provenance,
-    override var meta: Meta? = null,
-    override var implicitRules: String? = null,
-    override var language: String? = null,
-    override var text: Narrative? = null,
-    override var contained: List<Resource>? = null,
-    override var extension: List<Extension>? = null,
-    override var modifierExtension: List<Extension>? = null,
+    override val id: String,
+    override val resourceType: ResourceType = ResourceType.Provenance,
+    override val meta: Meta? = null,
+    override val implicitRules: String? = null,
+    override val language: String? = null,
+    override val text: Narrative? = null,
+    override val contained: List<Resource>? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
     /**
      * The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.
      */
-    var target: List<Reference>? = null,
+    val target: List<Reference>? = null,
 
     /**
      * The period during which the activity occurred.
      */
-    var occurredPeriod: Period? = null,
-    var occurredDateTime: String? = null,
+    val occurredPeriod: Period? = null,
+    val occurredDateTime: String? = null,
 
     /**
      * The instant of time at which the activity was recorded.
      */
-    var recorded: String? = null,
+    val recorded: String? = null,
 
     /**
      * Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.
      */
-    var policy: List<String>? = null,
+    val policy: List<String>? = null,
 
     /**
      * Where the activity occurred, if relevant.
      */
-    var location: Reference? = null,
+    val location: Reference? = null,
 
     /**
      * The reason that the activity was taking place.
      */
     // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v3-PurposeOfUse")
-    var reason: List<CodeableConcept>? = null,
+    val reason: List<CodeableConcept>? = null,
 
     /**
      * An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/provenance-activity-type")
-    var activity: CodeableConcept? = null,
+    val activity: CodeableConcept? = null,
 
     /**
      * An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place.
      */
-    var agent: List<ProvenanceAgentComponent>? = null,
+    val agent: List<ProvenanceAgentComponent>? = null,
 
     /**
      * An entity used in this activity.
      */
-    var entity: List<ProvenanceEntityComponent>? = null,
+    val entity: List<ProvenanceEntityComponent>? = null,
 
     /**
      * A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated.
      */
-    var signature: List<Signature>? = null,
+    val signature: List<Signature>? = null,
 
-    ) : DomainResource {
 
-}
+) : DomainResource
+
+
+
 
 
 @Serializable
@@ -124,23 +126,23 @@ data class ProvenanceAgentComponent(
      * The participation the agent had with respect to the activity.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/provenance-agent-type")
-    var type: CodeableConcept? = null,
+    val type: CodeableConcept? = null,
 
     /**
      * The function of the agent with respect to the activity. The security role enabling the agent with respect to the activity.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/security-role-type")
-    var role: List<CodeableConcept>? = null,
+    val role: List<CodeableConcept>? = null,
 
     /**
      * The individual, device or organization that participated in the event.
      */
-    var who: Reference? = null,
+    val who: Reference? = null,
 
     /**
      * The individual, device, or organization for whom the change was made.
      */
-    var onBehalfOf: Reference? = null
+    val onBehalfOf: Reference? = null
 
 )
 
@@ -152,16 +154,16 @@ data class ProvenanceEntityComponent(
      * How the entity was used during the activity.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/provenance-entity-role")
-    var role: ProvenanceEntityRole? = null,
+    val role: ProvenanceEntityRole? = null,
 
     /**
      * Identity of the  Entity used. May be a logical or physical uri and maybe absolute or relative.
      */
-    var what: Reference? = null,
+    val what: Reference? = null,
 
     /**
      * The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity.
      */
-    var agent: List<ProvenanceAgentComponent>? = null
+    val agent: List<ProvenanceAgentComponent>? = null
 
 )

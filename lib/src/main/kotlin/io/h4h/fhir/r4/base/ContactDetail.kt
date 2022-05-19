@@ -37,7 +37,6 @@ import kotlinx.serialization.Serializable
 /**
  * Specifies contact information for a person or organization.
  */
-
 @Serializable
 data class ContactDetail(
 
@@ -46,19 +45,19 @@ data class ContactDetail(
     /**
      * Element requirements
      */
-    override var id: String? = null,
-    override var extension: List<Extension>? = null,
+    override val id: String,
+    override val extension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
     /**
      * The name of an individual to contact.
      */
-    var name: String? = null,
+    val name: String? = null,
 
     /**
      * The contact details for the individual (if a name was provided) or the organization.
      */
-    var telecom: List<ContactPoint>? = null
+    val telecom: List<ContactPoint>? = null
 
 ) : Element

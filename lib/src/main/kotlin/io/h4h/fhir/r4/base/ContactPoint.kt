@@ -33,38 +33,38 @@ import kotlinx.serialization.Serializable
 */
 // Generated on Tue, May 12, 2020 07:26+1000 for FHIR v4.0.1
 
+
 /**
  * Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
  */
-
 @Serializable
 data class ContactPoint(
 
     /**
      * Telecommunications form for contact point - what communications system is required to make use of the contact.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/contact-point-system")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/contact-point-system")
-    var system: ContactPointSystem? = null,
+    val system: ContactPointSystem? = null,
 
     /**
      * The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).
      */
-    var value: String? = null,
+    val value: String? = null,
 
     /**
      * Identifies the purpose for the contact point.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/contact-point-use")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/contact-point-use")
-    var use: ContactPointUse? = null,
+    val use: ContactPointUse? = null,
 
     /**
      * Specifies a preferred order in which to use a set of contacts. ContactPoints with lower rank values are more preferred than those with higher rank values.
      */
-    var rank: Int? = null,
+    val rank: Int? = null,
 
     /**
      * Time period when the contact point was/is in use.
      */
-    var period: Period? = null
+    val period: Period? = null
 
 )

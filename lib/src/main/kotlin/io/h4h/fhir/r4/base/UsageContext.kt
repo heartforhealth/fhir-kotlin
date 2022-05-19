@@ -37,20 +37,19 @@ import kotlinx.serialization.Serializable
 /**
  * Specifies clinical/business/etc. metadata that can be used to retrieve, index and/or categorize an artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care).
  */
-
 @Serializable
 data class UsageContext(
 
     /**
      * A code that identifies the type of context being specified by this usage context.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/usage-context-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/usage-context-type")
-    var code: Coding? = null,
+    val code: Coding? = null,
 
     /**
      * A value that defines the context specified in this context of use. The interpretation of the value is defined by the code.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/use-context")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/use-context")
-    var value: Element? = null
+    val value: Element? = null
 
 )

@@ -1,4 +1,4 @@
-package io.h4h.fhir.r4
+package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
@@ -47,15 +47,15 @@ data class EpisodeOfCare(
      * DomainResource + Resource requirements
      * These are required for all resources
      */
-    override var id: String? = null,
-    override var resourceType: ResourceType? = ResourceType.EpisodeOfCare,
-    override var meta: Meta? = null,
-    override var implicitRules: String? = null,
-    override var language: String? = null,
-    override var text: Narrative? = null,
-    override var contained: List<Resource>? = null,
-    override var extension: List<Extension>? = null,
-    override var modifierExtension: List<Extension>? = null,
+    override val id: String,
+    override val resourceType: ResourceType = ResourceType.EpisodeOfCare,
+    override val meta: Meta? = null,
+    override val implicitRules: String? = null,
+    override val language: String? = null,
+    override val text: Narrative? = null,
+    override val contained: List<Resource>? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -63,72 +63,70 @@ data class EpisodeOfCare(
     /**
      * The EpisodeOfCare may be known by different identifiers for different contexts of use, such as when an external agency is tracking the Episode for funding purposes.
      */
-    var identifier: List<Identifier>? = null,
+    val identifier: List<Identifier>? = null,
 
     /**
      * planned | waitlist | active | onhold | finished | cancelled.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/episode-of-care-status")
-    var status: EpisodeOfCareStatus? = null,
+    val status: EpisodeOfCareStatus? = null,
 
     /**
      * The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).
      */
-    var statusHistory: List<EpisodeOfCareStatusHistoryComponent>? = null,
+    val statusHistory: List<EpisodeOfCareStatusHistoryComponent>? = null,
 
     /**
      * A classification of the type of episode of care; e.g. specialist referral, disease management, type of funded care.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/episodeofcare-type")
-    var type: List<CodeableConcept>? = null,
+    val type: List<CodeableConcept>? = null,
 
     /**
      * The list of diagnosis relevant to this episode of care.
      */
-    var diagnosis: List<DiagnosisComponent>? = null,
+    val diagnosis: List<DiagnosisComponent>? = null,
 
     /**
      * The patient who is the focus of this episode of care.
      */
-    var patient: Reference? = null,
+    val patient: Reference? = null,
 
     /**
      * The organization that has assumed the specific responsibilities for the specified duration.
      */
-    var managingOrganization: Reference? = null,
+    val managingOrganization: Reference? = null,
 
     /**
      * The interval during which the managing organization assumes the defined responsibility.
      */
-    var period: Period? = null,
+    val period: Period? = null,
 
     /**
      * Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals.
      */
-    var referralRequest: List<Reference>? = null,
+    val referralRequest: List<Reference>? = null,
 
     /**
      * The practitioner that is the care manager/care coordinator for this patient.
      */
-    var careManager: Reference? = null,
+    val careManager: Reference? = null,
 
     /**
      * The list of practitioners that may be facilitating this episode of care for specific purposes.
      */
-    var team: List<Reference>? = null,
+    val team: List<Reference>? = null,
 
     /**
      * The set of accounts that may be used for billing for this EpisodeOfCare.
      */
-    var account: List<Reference>? = null
+    val account: List<Reference>? = null
 
 
-) : DomainResource {
+) : DomainResource
 
 
 
-
-}
 
 
 @Serializable
@@ -138,12 +136,12 @@ data class EpisodeOfCareStatusHistoryComponent(
      * planned | waitlist | active | onhold | finished | cancelled.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/episode-of-care-status")
-    var status: EpisodeOfCareStatus? = null,
+    val status: EpisodeOfCareStatus? = null,
 
     /**
      * The period during this EpisodeOfCare that the specific status applied.
      */
-    var period: Period? = null
+    val period: Period? = null
 
 )
 

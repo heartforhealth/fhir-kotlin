@@ -39,38 +39,37 @@ import kotlinx.serialization.Serializable
 /**
  * A description of a triggering event. Triggering events can be named events, data events, or periodic, as determined by the type element.
  */
-
 @Serializable
 data class TriggerDefinition(
 
     /**
      * The type of triggering event.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/trigger-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/trigger-type")
-    var type: TriggerType? = null,
+    val type: TriggerType? = null,
 
     /**
      * A formal name for the event. This may be an absolute URI that identifies the event formally (e.g. from a trigger registry), or a simple relative URI that identifies the event in a local context.
      */
-    var name: String? = null,
+    val name: String? = null,
 
     /**
      * The timing of the event (if this is a periodic trigger).
      */
-    var timingTiming: Timing? = null,
-    var timingReference: Reference? = null,
-    var timingDate: String? = null,
-    var timingDateTime: String? = null,
+    val timingTiming: Timing? = null,
+    val timingReference: Reference? = null,
+    val timingDate: String? = null,
+    val timingDateTime: String? = null,
 
 
     /**
      * The triggering data of the event (if this is a data trigger). If more than one data is requirement is specified, then all the data requirements must be true.
      */
-    var data: List<DataRequirement>? = null,
+    val data: List<DataRequirement>? = null,
 
     /**
      * A boolean-valued expression that is evaluated in the context of the container of the trigger definition and returns whether or not the trigger fires.
      */
-    var condition: Expression? = null
+    val condition: Expression? = null
 
 )

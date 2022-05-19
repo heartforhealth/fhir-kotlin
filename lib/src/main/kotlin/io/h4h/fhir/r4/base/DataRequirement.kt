@@ -43,46 +43,46 @@ data class DataRequirement(
     /**
      * The type of the required data, specified as the type name of a resource. For profiles, this value is set to the type of the base resource of the profile.
      */
-    var type: String? = null,
+    val type: String? = null,
 
     /**
      * The profile of the required data, specified as the uri of the profile definition.
      */
-    var profile: List<String>? = null,
+    val profile: List<String>? = null,
 
     /**
      * The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/subject-type")
-    var subjectCodeableConcept: CodeableConcept? = null,
-    var subjectReference: Reference? = null,
+    val subjectCodeableConcept: io.h4h.fhir.r4.base.CodeableConcept? = null,
+    val subjectReference: io.h4h.fhir.r4.base.Reference? = null,
 
     /**
      * Indicates that specific elements of the type are referenced by the knowledge module and must be supported by the consumer in order to obtain an effective evaluation. This does not mean that a value is required for this element, only that the consuming system must understand the element and be able to provide values for it if they are available.
      *
      * The value of mustSupport SHALL be a FHIRPath resolveable on the type of the DataRequirement. The path SHALL consist only of identifiers, constant indexers, and .resolve() (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full details).
      */
-    var mustSupport: List<String>? = null,
+    val mustSupport: List<String>? = null,
 
     /**
      * Code filters specify additional constraints on the data, specifying the value set of interest for a particular element of the data. Each code filter defines an additional constraint on the data, i.e. code filters are AND'ed, not OR'ed.
      */
-    var codeFilter: List<DataRequirementCodeFilterComponent>? = null,
+    val codeFilter: List<io.h4h.fhir.r4.base.DataRequirementCodeFilterComponent>? = null,
 
     /**
      * Date filters specify additional constraints on the data in terms of the applicable date range for specific elements. Each date filter specifies an additional constraint on the data, i.e. date filters are AND'ed, not OR'ed.
      */
-    var dateFilter: List<DataRequirementDateFilterComponent>? = null,
+    val dateFilter: List<io.h4h.fhir.r4.base.DataRequirementDateFilterComponent>? = null,
 
     /**
      * Specifies a maximum number of results that are required (uses the _count search parameter).
      */
-    var limit: Int? = null,
+    val limit: Int? = null,
 
     /**
      * Specifies the order of the results to be returned.
      */
-    var sort: List<DataRequirementSortComponent>? = null
+    val sort: List<io.h4h.fhir.r4.base.DataRequirementSortComponent>? = null
 
 )
 
@@ -93,22 +93,22 @@ data class DataRequirementCodeFilterComponent(
     /**
      * The code-valued attribute of the filter. The specified path SHALL be a FHIRPath resolveable on the specified type of the DataRequirement, and SHALL consist only of identifiers, constant indexers, and .resolve(). The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full details). Note that the index must be an integer constant. The path must resolve to an element of type code, Coding, or CodeableConcept.
      */
-    var path: String? = null,
+    val path: String? = null,
 
     /**
      * A token parameter that refers to a search parameter defined on the specified type of the DataRequirement, and which searches on elements of type code, Coding, or CodeableConcept.
      */
-    var searchParam: String? = null,
+    val searchParam: String? = null,
 
     /**
      * The valueset for the code filter. The valueSet and code elements are additive. If valueSet is specified, the filter will return only those data items for which the value of the code-valued element specified in the path is a member of the specified valueset.
      */
-    var valueSet: String? = null,
+    val valueSet: String? = null,
 
     /**
      * The codes for the code filter. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codes. If codes are specified in addition to a value set, the filter returns items matching a code in the value set or one of the specified codes.
      */
-    var code: List<Coding>? = null
+    val code: List<io.h4h.fhir.r4.base.Coding>? = null
 
 )
 
@@ -119,19 +119,19 @@ data class DataRequirementDateFilterComponent(
     /**
      * The date-valued attribute of the filter. The specified path SHALL be a FHIRPath resolveable on the specified type of the DataRequirement, and SHALL consist only of identifiers, constant indexers, and .resolve(). The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full details). Note that the index must be an integer constant. The path must resolve to an element of type date, dateTime, Period, Schedule, or Timing.
      */
-    var path: String? = null,
+    val path: String? = null,
 
     /**
      * A date parameter that refers to a search parameter defined on the specified type of the DataRequirement, and which searches on elements of type date, dateTime, Period, Schedule, or Timing.
      */
-    var searchParam: String? = null,
+    val searchParam: String? = null,
 
     /**
      * The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now.
      */
-    var valueDateTime: String? = null,
-    var valuePeriod: Period? = null,
-    var valueDuration: Quantity? = null
+    val valueDateTime: String? = null,
+    val valuePeriod: io.h4h.fhir.r4.base.Period? = null,
+    val valueDuration: io.h4h.fhir.r4.base.Quantity? = null
 
 )
 
@@ -142,12 +142,12 @@ data class DataRequirementSortComponent(
     /**
      * The attribute of the sort. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant.
      */
-    var path: String? = null,
+    val path: String? = null,
 
     /**
      * The direction of the sort, ascending or descending.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/sort-direction")
-    var direction: SortDirection? = null
+    val direction: io.h4h.fhir.r4.base.SortDirection? = null
 
 )

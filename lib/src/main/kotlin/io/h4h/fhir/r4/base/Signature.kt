@@ -1,6 +1,5 @@
 package io.h4h.fhir.r4.base
 
-import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
 
 
@@ -42,41 +41,41 @@ import kotlinx.serialization.Serializable
 data class Signature(
     /**
      * An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/signature-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/signature-type")
-    var type: List<Coding>? = null,
+    val type: List<Coding>? = null,
 
     /**
      * When the digital signature was signed.
      */
-    var `when`: String? = null,
+    val `when`: String? = null,
 
     /**
      * A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).
      */
-    var who: Reference? = null,
+    val who: Reference? = null,
 
     /**
      * A reference to an application-usable description of the identity that is represented by the signature.
      */
-    var onBehalfOf: Reference? = null,
+    val onBehalfOf: Reference? = null,
 
     /**
      * A mime type that indicates the technical format of the target resources signed by the signature.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/mimetypes")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/mimetypes")
-    var targetFormat: String? = null,
+    val targetFormat: String? = null,
 
     /**
      * A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/ * for a graphical image of a signature, etc.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/mimetypes")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/mimetypes")
-    var sigFormat: String? = null,
+    val sigFormat: String? = null,
 
     /**
      * The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.
      * A stream of bytes, base64 encoded
      */
-    var data: String? = null
+    val data: String? = null
 
 )

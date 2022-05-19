@@ -1,6 +1,5 @@
 package io.h4h.fhir.r4.base
 
-import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
 
 
@@ -34,23 +33,24 @@ import kotlinx.serialization.Serializable
 */
 // Generated on Tue, May 12, 2020 07:26+1000 for FHIR v4.0.1
 
+
 @Serializable
 data class DiagnosisComponent(
 
     /**
      * A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.
      */
-    var condition: Reference? = null,
+    val condition: Reference? = null,
 
     /**
      * Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …).
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/diagnosis-role")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/diagnosis-role")
-    var role: CodeableConcept? = null,
+    val role: CodeableConcept? = null,
 
     /**
      * Ranking of the diagnosis (for each role type).
      */
-    var rank: Int? = null
+    val rank: Int? = null
 
 )

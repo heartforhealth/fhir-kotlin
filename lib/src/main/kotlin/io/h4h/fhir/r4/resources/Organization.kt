@@ -1,4 +1,4 @@
-package io.h4h.fhir.r4
+package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
@@ -48,15 +48,15 @@ data class Organization(
      * DomainResource + Resource requirements
      * These are required for all resources
      */
-    override var id: String? = null,
-    override var resourceType: ResourceType? = ResourceType.Organization,
-    override var meta: Meta? = null,
-    override var implicitRules: String? = null,
-    override var language: String? = null,
-    override var text: Narrative? = null,
-    override var contained: List<Resource>? = null,
-    override var extension: List<Extension>? = null,
-    override var modifierExtension: List<Extension>? = null,
+    override val id: String,
+    override val resourceType: ResourceType = ResourceType.Organization,
+    override val meta: Meta? = null,
+    override val implicitRules: String? = null,
+    override val language: String? = null,
+    override val text: Narrative? = null,
+    override val contained: List<Resource>? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -64,53 +64,53 @@ data class Organization(
     /**
      * Identifier for the organization that is used to identify the organization across multiple disparate systems.
      */
-    var identifier: List<Identifier>? = null,
+    val identifier: List<Identifier>? = null,
 
     /**
      * Whether the organization's record is still in active use.
      */
-    var active: Boolean? = null,
+    val active: Boolean? = null,
 
     /**
      * The kind(s) of organization that this is.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/organization-type")
-    var type: List<CodeableConcept>? = null,
+    val type: List<CodeableConcept>? = null,
 
     /**
      * A name associated with the organization.
      */
-    var name: String? = null,
+    val name: String? = null,
 
     /**
      * A list of alternate names that the organization is known as, or was known as in the past.
      */
-    var alias: List<String>? = null,
+    val alias: List<String>? = null,
 
     /**
      * A contact detail for the organization.
      */
-    var telecom: List<ContactPoint>? = null,
+    val telecom: List<ContactPoint>? = null,
 
     /**
      * An address for the organization.
      */
-    var address: List<Address>? = null,
+    val address: List<Address>? = null,
 
     /**
      * The organization of which this organization forms a part.
      */
-    var partOf: Reference? = null,
+    val partOf: Reference? = null,
 
     /**
      * Contact for the organization for a certain purpose.
      */
-    var contact: List<OrganizationContactComponent>? = null,
+    val contact: List<OrganizationContactComponent>? = null,
 
     /**
      * Technical endpoints providing access to services operated for the organization.
      */
-    var endpoint: List<Reference?>? = null
+    val endpoint: List<Reference?>? = null
 
 
 ) : DomainResource
@@ -123,21 +123,21 @@ data class OrganizationContactComponent(
      * Indicates a purpose for which the contact can be reached.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/contactentity-type")
-    var purpose: CodeableConcept? = null,
+    val purpose: CodeableConcept? = null,
 
     /**
      * A name associated with the contact.
      */
-    var name: HumanName? = null,
+    val name: HumanName? = null,
 
     /**
      * A contact detail (e.g. a telephone number or an email address) by which the party may be contacted.
      */
-    var telecom: List<ContactPoint>? = null,
+    val telecom: List<ContactPoint>? = null,
 
     /**
      * Visiting or postal addresses for the contact.
      */
-    var address: Address? = null
+    val address: Address? = null
 
 )

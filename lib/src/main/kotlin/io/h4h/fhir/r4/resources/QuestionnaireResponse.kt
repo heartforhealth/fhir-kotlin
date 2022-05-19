@@ -1,4 +1,4 @@
-package io.h4h.fhir.r4
+package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
@@ -47,15 +47,15 @@ data class QuestionnaireResponse(
      * DomainResource + Resource requirements
      * These are required for all resources
      */
-    override var id: String? = null,
-    override var resourceType: ResourceType? = ResourceType.QuestionnaireResponse,
-    override var meta: Meta? = null,
-    override var implicitRules: String? = null,
-    override var language: String? = null,
-    override var text: Narrative? = null,
-    override var contained: List<Resource>? = null,
-    override var extension: List<Extension>? = null,
-    override var modifierExtension: List<Extension>? = null,
+    override val id: String,
+    override val resourceType: ResourceType = ResourceType.QuestionnaireResponse,
+    override val meta: Meta? = null,
+    override val implicitRules: String? = null,
+    override val language: String? = null,
+    override val text: Narrative? = null,
+    override val contained: List<Resource>? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -63,61 +63,61 @@ data class QuestionnaireResponse(
     /**
      * A business identifier assigned to a particular completed (or partially completed) questionnaire.
      */
-    var identifier: Identifier? = null,
+    val identifier: Identifier? = null,
 
     /**
      * The order, proposal or plan that is fulfilled in whole or in part by this QuestionnaireResponse.  For example, a ServiceRequest seeking an intake assessment or a decision support recommendation to assess for post-partum depression.
      */
-    var basedOn: List<Reference>? = null,
+    val basedOn: List<Reference>? = null,
 
     /**
      * A procedure or observation that this questionnaire was performed as part of the execution of.  For example, the surgery a checklist was executed as part of.
      */
-    var partOf: List<Reference>? = null,
+    val partOf: List<Reference>? = null,
 
     /**
      * The Questionnaire that defines and organizes the questions for which answers are being provided.
      */
-    var questionnaire: String? = null,
+    val questionnaire: String? = null,
 
     /**
      * The position of the questionnaire response within its overall lifecycle.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers-status")
-    var status: QuestionnaireResponseStatus? = null,
+    val status: QuestionnaireResponseStatus? = null,
 
     /**
      * The subject of the questionnaire response.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information.
      */
-    var subject: Reference? = null,
+    val subject: Reference? = null,
 
 
     /**
      * The Encounter during which this questionnaire response was created or to which the creation of this record is tightly associated.
      */
-    var encounter: Reference? = null,
+    val encounter: Reference? = null,
 
 
     /**
      * The date and/or time that this set of answers were last changed.
      */
-    var authored: String? = null,
+    val authored: String? = null,
 
     /**
      * Person who received the answers to the questions in the QuestionnaireResponse and recorded them in the system.
      */
-    var author: Reference? = null,
+    val author: Reference? = null,
 
     /**
      * The person who answered the questions about the subject.
      */
-    var source: Reference? = null,
+    val source: Reference? = null,
 
 
     /**
      * A group or question item from the original questionnaire for which answers are provided.
      */
-    var item: List<QuestionnaireResponseItemComponent>? = null
+    val item: List<QuestionnaireResponseItemComponent>? = null
 
 
 ) : DomainResource
@@ -129,27 +129,27 @@ data class QuestionnaireResponseItemComponent(
     /**
      * The item from the Questionnaire that corresponds to this item in the QuestionnaireResponse resource.
      */
-    var linkId: String? = null,
+    val linkId: String? = null,
 
     /**
      * A reference to an [[[ElementDefinition]]] that provides the details for the item.
      */
-    var definition: String? = null,
+    val definition: String? = null,
 
     /**
      * Text that is displayed above the contents of the group or as the text of the question being answered.
      */
-    var text: String? = null,
+    val text: String? = null,
 
     /**
      * The respondent's answer(s) to the question.
      */
-    var answer: List<QuestionnaireResponseItemAnswerComponent>? = null,
+    val answer: List<QuestionnaireResponseItemAnswerComponent>? = null,
 
     /**
      * Questions or sub-groups nested beneath a question or group.
      */
-    var item: List<QuestionnaireResponseItemComponent>? = null
+    val item: List<QuestionnaireResponseItemComponent>? = null
 
 )
 
@@ -161,23 +161,23 @@ class QuestionnaireResponseItemAnswerComponent(
      * The answer (or one of the answers) provided by the respondent to the question.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers")
-    var valueBoolean: Boolean? = null,
-    var valueDecimal: Double? = null,
-    var valueInteger: Int? = null,
-    var valueDate: String? = null,
-    var valueDateTime: String? = null,
-    var valueTime: String? = null,
-    var valueString: String? = null,
-    var valueUri: String? = null,
-    var valueAttachment: Attachment? = null,
-    var valueCoding: Coding? = null,
-    var valueQuantity: Quantity? = null,
-    var valueReference: Reference? = null,
+    val valueBoolean: Boolean? = null,
+    val valueDecimal: Double? = null,
+    val valueInteger: Int? = null,
+    val valueDate: String? = null,
+    val valueDateTime: String? = null,
+    val valueTime: String? = null,
+    val valueString: String? = null,
+    val valueUri: String? = null,
+    val valueAttachment: Attachment? = null,
+    val valueCoding: Coding? = null,
+    val valueQuantity: Quantity? = null,
+    val valueReference: Reference? = null,
 
     /**
      * Nested groups and/or questions found within this particular answer.
      */
-    var item: List<QuestionnaireResponseItemComponent>? = null
+    val item: List<QuestionnaireResponseItemComponent>? = null
 
 )
 
@@ -208,24 +208,18 @@ enum class QuestionnaireResponseStatus : CodeableEnumeration {
     /**
      * This QuestionnaireResponse has been partially filled out with answers but has been abandoned. It is unknown whether changes or additions are expected to be made to it.
      */
-    STOPPED,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
+    STOPPED;
 
 
-    override fun toCode(): String? {
-        return when (this) {
+    override val code: String?
+        get() = when (this) {
             INPROGRESS -> "in-progress"
             COMPLETED -> "completed"
             AMENDED -> "amended"
             ENTEREDINERROR -> "entered-in-error"
             STOPPED -> "stopped"
-            NULL -> null
         }
-    }
+
 
     override val system: String?
         get() = when (this) {
@@ -234,7 +228,6 @@ enum class QuestionnaireResponseStatus : CodeableEnumeration {
             AMENDED -> "http://hl7.org/fhir/questionnaire-answers-status"
             ENTEREDINERROR -> "http://hl7.org/fhir/questionnaire-answers-status"
             STOPPED -> "http://hl7.org/fhir/questionnaire-answers-status"
-            NULL -> null
         }
 
     override val definition: String?
@@ -244,7 +237,6 @@ enum class QuestionnaireResponseStatus : CodeableEnumeration {
             AMENDED -> "This QuestionnaireResponse has been filled out with answers, then marked as complete, yet changes or additions have been made to it afterwards."
             ENTEREDINERROR -> "This QuestionnaireResponse was entered in error and voided."
             STOPPED -> "This QuestionnaireResponse has been partially filled out with answers but has been abandoned. It is unknown whether changes or additions are expected to be made to it."
-            NULL -> null
         }
 
     override val display: String?
@@ -254,19 +246,6 @@ enum class QuestionnaireResponseStatus : CodeableEnumeration {
             AMENDED -> "Amended"
             ENTEREDINERROR -> "Entered in Error"
             STOPPED -> "Stopped"
-            NULL -> null
         }
 
-//    companion object {
-//        @Throws(FHIRException::class)
-//        fun fromCode(codeString: String?): QuestionnaireResponseStatus? {
-//            if (codeString == null || "" == codeString) return null
-//            if ("in-progress" == codeString) return INPROGRESS
-//            if ("completed" == codeString) return COMPLETED
-//            if ("amended" == codeString) return AMENDED
-//            if ("entered-in-error" == codeString) return ENTEREDINERROR
-//            if ("stopped" == codeString) return STOPPED
-//            return if (Configuration.isAcceptInvalidEnums()) null else throw FHIRException("Unknown QuestionnaireResponseStatus code '$codeString'")
-//        }
-//    }
 }

@@ -34,68 +34,68 @@ import kotlin.Annotation
 */
 // Generated on Tue, May 12, 2020 07:26+1000 for FHIR v4.0.1
 
+
 /**
  * Optional Extension Element - found in all resources.
  */
-
 @Serializable
 data class Extension(
     /**
      * Source of the definition for the extension code - a logical name or a URL.
      */
-    var url: String? = null,
+    val url: String? = null,
 
     /**
      * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
      */
-    // var valueAge: Age? = null,
-    var valueAnnotation: Annotation? = null,
-    var valueAddress: Address? = null,
-    // var valueAttachment: Attachment? = null,
-    var valueBase64Binary: String? = null,
-    var valueBoolean: Boolean? = null,
-    var valueCanonical: String? = null,
-    var valueCode: String? = null,
-    var valueCodeableConcept: CodeableConcept? = null,
-    var valueCoding: Coding? = null,
-    var valueContactPoint: ContactPoint? = null,
-    // var valueCount: Count? = null,
-    // var valueContactDetail: ContactDetail? = null,
-    // var valueContributor: Contributor? = null,
-    // var valueDataRequirement: DataRequirement? = null,
-    var valueDate: String? = null,
-    var valueDateTime: String? = null,
-    var valueDecimal: Double? = null,
-    // var valueDosage: Dosage? = null,
-    // var valueDistance: Distance? = null,
-    // var valueDuration: Duration? = null,
-    // var valueExpression: Expression? = null,
-    var valueHumanName: HumanName? = null,
-    var valueId: String? = null,
-    var valueIdentifier: Identifier? = null,
-    var valueInstant: String? = null,
-    var valueInteger: Int? = null,
-    var valueMarkdown: String? = null,
-    var valueMeta: Meta? = null,
-    // var valueMoney: Money? = null,
-    var valueOid: String? = null,
-    // var valueParameterDefinition: ParameterDefinition? = null,
-    var valuePeriod: Period? = null,
-    var valuePositiveInt: Int? = null,
-    var valueQuantity: Quantity? = null,
-    var valueRange: Range? = null,
-    // var valueRelatedArtifact: RelatedArtifact? = null,
-    var valueRatio: Ratio? = null,
-    var valueReference: Reference? = null,
-    var valueSampledData: SampledData? = null,
-    var valueSignature: Signature? = null,
-    var valueTiming: Timing? = null,
-    var valueTime: String? = null,
-    // var valueTriggerDefinition: TriggerDefinition? = null,
-    var valueUnsignedInt: Int? = null,
-    var valueUri: String? = null,
-    var valueUrl: String? = null,
-    // var valueUsageContext: UsageContext? = null
+    // val valueAge: Age? = null,
+    val valueAnnotation: Annotation? = null,
+    val valueAddress: Address? = null,
+    val valueAttachment: Attachment? = null,
+    val valueBase64Binary: String? = null,
+    val valueBoolean: Boolean? = null,
+    val valueCanonical: String? = null,
+    val valueCode: String? = null,
+    val valueCodeableConcept: CodeableConcept? = null,
+    val valueCoding: Coding? = null,
+    val valueContactPoint: ContactPoint? = null,
+    // val valueCount: Count? = null,
+    val valueContactDetail: ContactDetail? = null,
+    // val valueContributor: Contributor? = null,
+    val valueDataRequirement: DataRequirement? = null,
+    val valueDate: String? = null,
+    val valueDateTime: String? = null,
+    val valueDecimal: Double? = null,
+    // val valueDosage: Dosage? = null,
+    // val valueDistance: Distance? = null,
+    // val valueDuration: Duration? = null,
+    // val valueExpression: Expression? = null,
+    val valueHumanName: HumanName? = null,
+    val valueId: String? = null,
+    val valueIdentifier: Identifier? = null,
+    val valueInstant: String? = null,
+    val valueInteger: Int? = null,
+    val valueMarkdown: String? = null,
+    val valueMeta: Meta? = null,
+    // val valueMoney: Money? = null,
+    val valueOid: String? = null,
+    // val valueParameterDefinition: ParameterDefinition? = null,
+    val valuePeriod: Period? = null,
+    val valuePositiveInt: Int? = null,
+    val valueQuantity: Quantity? = null,
+    val valueRange: Range? = null,
+    val valueRelatedArtifact: RelatedArtifact? = null,
+    val valueRatio: Ratio? = null,
+    val valueReference: Reference? = null,
+    val valueSampledData: SampledData? = null,
+    val valueSignature: Signature? = null,
+    val valueTiming: Timing? = null,
+    val valueTime: String? = null,
+    // val valueTriggerDefinition: TriggerDefinition? = null,
+    val valueUnsignedInt: Int? = null,
+    val valueUri: String? = null,
+    val valueUrl: String? = null,
+    val valueUsageContext: UsageContext? = null
 
 
 )

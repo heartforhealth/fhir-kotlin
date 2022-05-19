@@ -37,25 +37,24 @@ import kotlinx.serialization.Serializable
 /**
  * Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out.
  */
-
 @Serializable
 data class Timing(
 
     /**
      * Identifies specific times when the event occurs.
      */
-    var event: List<String>? = null,
+    val event: List<String>? = null,
 
     /**
      * A set of rules that describe when the event is scheduled.
      */
-    var repeat: TimingRepeatComponent? = null,
+    val repeat: TimingRepeatComponent? = null,
 
     /**
      * A code for the timing schedule (or just text in code.text). Some codes such as BID are ubiquitous, but many institutions define their own additional codes. If a code is provided, the code is understood to be a complete statement of whatever is specified in the structured timing data, and either the code or the data may be used to interpret the Timing, with the exception that .repeat.bounds still applies over the code (and is not contained in the code).
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/timing-abbreviation")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/timing-abbreviation")
-    var code: CodeableConcept? = null
+    val code: CodeableConcept? = null
 
 )
 
@@ -65,82 +64,83 @@ data class TimingRepeatComponent(
     /**
      * Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.
      */
-    var boundsDuration: Quantity? = null,
-    var boundsRange: Range? = null,
-    var boundsPeriod: Period? = null,
+    val boundsDuration: Quantity? = null,
+    val boundsRange: Range? = null,
+    val boundsPeriod: Period? = null,
 
     /**
      * A total count of the desired number of repetitions across the duration of the entire timing specification. If countMax is present, this element indicates the lower bound of the allowed range of count values.
      */
-    var count: Int? = null,
+    val count: Int? = null,
 
     /**
      * If present, indicates that the count is a range - so to perform the action between [count] and [countMax] times.
      */
-    var countMax: Int? = null,
+    val countMax: Int? = null,
 
     /**
      * How long this thing happens for when it happens. If durationMax is present, this element indicates the lower bound of the allowed range of the duration.
      */
-    var duration: Double? = null,
+    val duration: Double? = null,
 
     /**
      * If present, indicates that the duration is a range - so to perform the action between [duration] and [durationMax] time length.
      */
-    var durationMax: Double? = null,
+    val durationMax: Double? = null,
 
     /**
      * The units of time for the duration, in UCUM units.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/units-of-time")
      */
-    //@Binding(valueSet = "http://hl7.org/fhir/ValueSet/units-of-time")
-    var durationUnit: UnitsOfTime? = null,
+    val durationUnit: UnitsOfTime? = null,
 
     /**
      * The number of times to repeat the action within the specified period. If frequencyMax is present, this element indicates the lower bound of the allowed range of the frequency.
      */
-    var frequency: Int? = null,
+    val frequency: Int? = null,
 
     /**
      * If present, indicates that the frequency is a range - so to repeat between [frequency] and [frequencyMax] times within the period or period range.
      */
-    var frequencyMax: Int? = null,
+    val frequencyMax: Int? = null,
 
     /**
      * Indicates the duration of time over which repetitions are to occur; e.g. to express "3 times per day", 3 would be the frequency and "1 day" would be the period. If periodMax is present, this element indicates the lower bound of the allowed range of the period length.
      */
-    var period: Double? = null,
+    val period: Double? = null,
 
     /**
      * If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as "do this once every 3-5 days.
      */
-    var periodMax: Double? = null,
+    val periodMax: Double? = null,
 
     /**
      * The units of time for the period in UCUM units.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/units-of-time")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/units-of-time")
-    var periodUnit: UnitsOfTime? = null,
+    val periodUnit: UnitsOfTime? = null,
 
     /**
      * If one or more days of week is provided, then the action happens only on the specified day(s).
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/days-of-week")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/days-of-week")
-    var dayOfWeek: List<DayOfWeek>? = null,
+    val dayOfWeek: List<DayOfWeek>? = null,
 
     /**
      * Specified time of day for action to take place.
      */
-    var timeOfDay: List<String>? = null,
+    val timeOfDay: List<String>? = null,
 
     /**
      * An approximate time period during the day, potentially linked to an event of daily living that indicates when the action should occur.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/event-timing")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/event-timing")
-    var `when`: List<EventTiming>? = null,
+    //
+    val `when`: List<EventTiming>? = null,
 
     /**
      * The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event.
      */
-    var offset: Int? = null
+    val offset: Int? = null
 
 )

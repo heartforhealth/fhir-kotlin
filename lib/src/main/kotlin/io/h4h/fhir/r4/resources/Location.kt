@@ -1,4 +1,4 @@
-package io.h4h.fhir.r4
+package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
@@ -47,112 +47,113 @@ data class Location(
      * DomainResource + Resource requirements
      * These are required for all resources
      */
-    override var id: String? = null,
-    override var resourceType: ResourceType? = ResourceType.Location,
-    override var meta: Meta? = null,
-    override var implicitRules: String? = null,
-    override var language: String? = null,
-    override var text: Narrative? = null,
-    override var contained: List<Resource>? = null,
-    override var extension: List<Extension>? = null,
-    override var modifierExtension: List<Extension>? = null,
+    override val id: String,
+    override val resourceType: ResourceType = ResourceType.Location,
+    override val meta: Meta? = null,
+    override val implicitRules: String? = null,
+    override val language: String? = null,
+    override val text: Narrative? = null,
+    override val contained: List<Resource>? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
     /**
      * Unique code or number identifying the location to its users.
      */
-    var identifier: List<Identifier>? = null,
+    val identifier: List<Identifier>? = null,
 
     /**
      * The status property covers the general availability of the resource, not the current value which may be covered by the operationStatus, or by a schedule/slots if they are configured for the location.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/location-status")
-    var status: LocationStatus? = null,
+    val status: LocationStatus? = null,
 
     /**
      * The operational status covers operation values most relevant to beds (but can also apply to rooms/units/chairs/etc. such as an isolation unit/dialysis chair). This typically covers concepts such as contamination, housekeeping, and other activities like maintenance.
      */
     // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v2-0116")
-    var operationalStatus: Coding? = null,
+    val operationalStatus: Coding? = null,
 
     /**
      * Name of the location as used by humans. Does not need to be unique.
      */
-    var name: String? = null,
+    val name: String? = null,
 
     /**
      * A list of alternate names that the location is known as, or was known as, in the past.
      */
-    var alias: List<String>? = null,
+    val alias: List<String>? = null,
 
     /**
      * Description of the Location, which helps in finding or referencing the place.
      */
-    var description: String? = null,
+    val description: String? = null,
 
     /**
      * Indicates whether a resource instance represents a specific location or a class of locations.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/location-mode")
-    var mode: LocationMode? = null,
+    val mode: LocationMode? = null,
 
     /**
      * Indicates the type of function performed at the location.
      */
     // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType")
-    var type: List<CodeableConcept>? = null,
+    val type: List<CodeableConcept>? = null,
 
     /**
      * The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.
      */
-    var telecom: List<ContactPoint>? = null,
+    val telecom: List<ContactPoint>? = null,
 
     /**
      * Physical location.
      */
-    var address: Address? = null,
+    val address: Address? = null,
 
     /**
      * Physical form of the location, e.g. building, room, vehicle, road.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/location-physical-type")
-    var physicalType: CodeableConcept? = null,
+    val physicalType: CodeableConcept? = null,
 
     /**
      * The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
      */
-    var position: LocationPositionComponent? = null,
+    val position: LocationPositionComponent? = null,
 
     /**
      * The organization responsible for the provisioning and upkeep of the location.
      */
-    var managingOrganization: Reference? = null,
+    val managingOrganization: Reference? = null,
 
     /**
      * Another Location of which this Location is physically a part of.
      */
-    var partOf: Reference? = null,
+    val partOf: Reference? = null,
 
     /**
      * What days/times during a week is this location usually open.
      */
-    var hoursOfOperation: List<LocationHoursOfOperationComponent>? = null,
+    val hoursOfOperation: List<LocationHoursOfOperationComponent>? = null,
 
     /**
      * A description of when the locations opening ours are different to normal, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as detailed in the opening hours Times.
      */
-    var availabilityExceptions: String? = null,
+    val availabilityExceptions: String? = null,
 
     /**
      * Technical endpoints providing access to services operated for the location.
      */
-    var endpoint: List<Reference>? = null
+    val endpoint: List<Reference>? = null
 
-) : DomainResource {
+) : DomainResource
 
 
-}
+
+
 
 @Serializable
 data class LocationPositionComponent(
@@ -160,17 +161,17 @@ data class LocationPositionComponent(
     /**
      * Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML (see notes below).
      */
-    var longitude: Double? = null,
+    val longitude: Double? = null,
 
     /**
      * Latitude. The value domain and the interpretation are the same as for the text of the latitude element in KML (see notes below).
      */
-    var latitude: Double? = null,
+    val latitude: Double? = null,
 
     /**
      * Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below).
      */
-    var altitude: Double? = null
+    val altitude: Double? = null
 
 )
 
@@ -181,23 +182,23 @@ data class LocationHoursOfOperationComponent(
      * Indicates which days of the week are available between the start and end Times.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/days-of-week")
-    var daysOfWeek: List<DaysOfWeek>? = null,
+    val daysOfWeek: List<DaysOfWeek>? = null,
 
     /**
      * The Location is open all day.
      */
-    var allDay: Boolean? = null,
+    val allDay: Boolean? = null,
 
     /**
      * Time that the Location opens.
      * A time during the day, in the format hh:mm:ss. There is no date specified. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored at receiver discretion.
      */
-    var openingTime: String? = null,
+    val openingTime: String? = null,
 
     /**
      * Time that the Location closes.
      * A time during the day, in the format hh:mm:ss. There is no date specified. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored at receiver discretion.
      */
-    var closingTime: String? = null
+    val closingTime: String? = null
 
 )

@@ -42,44 +42,44 @@ data class Attachment(
     
     /**
      * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/mimetypes")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/mimetypes")
-    var contentType: String? = null,
+    val contentType: String? = null,
 
     /**
      * The human language of the content. The value can be any valid value according to BCP 47.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/languages")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/languages")
-    var language: String? = null,
+    val language: String? = null,
 
     /**
      * The actual data of the attachment - a sequence of bytes, base64 encoded.
      */
-    var data: String? = null,
+    val data: String? = null,
 
     /**
      * A location where the data can be accessed.
      */
-    var url: String? = null,
+    val url: String? = null,
 
     /**
      * The number of bytes of data that make up this attachment (before base64 encoding, if that is done).
      */
-    var size: Int? = null,
+    val size: Int? = null,
 
     /**
      * The calculated hash of the data using SHA-1. Represented using base64.
      */
-    var hash: String? = null,
+    val hash: String? = null,
 
     /**
      * A label or set of text to display in place of the data.
      */
-    var title: String? = null,
+    val title: String? = null,
 
     /**
      * The date that the attachment was first created.
      */
-    var creation: String? = null
+    val creation: String? = null
 
 )

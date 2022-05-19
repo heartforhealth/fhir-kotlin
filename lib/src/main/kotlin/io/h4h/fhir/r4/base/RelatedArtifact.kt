@@ -41,38 +41,38 @@ data class RelatedArtifact(
 
     /**
      * The type of relationship to the related artifact.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/related-artifact-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/related-artifact-type")
-    var type: RelatedArtifactType? = null,
+    val type: RelatedArtifactType? = null,
 
     /**
      * A short label that can be used to reference the citation from elsewhere in the containing artifact, such as a footnote index.
      */
-    var label: String? = null,
+    val label: String? = null,
 
     /**
      * A brief description of the document or knowledge resource being referenced, suitable for display to a consumer.
      */
-    var display: String? = null,
+    val display: String? = null,
 
     /**
      * A bibliographic citation for the related artifact. This text SHOULD be formatted according to an accepted citation format.
      */
-    var citation: String? = null,
+    val citation: String? = null,
 
     /**
      * A url for the artifact that can be followed to access the actual content.
      */
-    var url: String? = null,
+    val url: String? = null,
 
     /**
      * The document being referenced, represented as an attachment. This is exclusive with the resource element.
      */
-    var document: Attachment? = null,
+    val document: Attachment? = null,
 
     /**
      * The related resource, such as a library, value set, profile, or other knowledge resource.
      */
-    var resource: String? = null
+    val resource: String? = null
 
 )

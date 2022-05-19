@@ -44,54 +44,55 @@ data class Address(
 
     /**
      * The purpose of this address.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/address-use")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/address-use")
-    var use: AddressUse? = null,
+    val use: AddressUse? = null,
 
     /**
      * Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/address-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/address-type")
-    var type: AddressType? = null,
+    //
+    val type: AddressType? = null,
 
     /**
      * Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts.
      */
-    var text: String? = null,
+    val text: String? = null,
 
     /**
      * This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.
      */
-    var line: List<String>? = null,
+    val line: List<String>? = null,
 
     /**
      * The name of the city, town, suburb, village or other community or delivery center.
      */
-    var city: String? = null,
+    val city: String? = null,
 
     /**
      * The name of the administrative area (county).
      */
-    var district: String? = null,
+    val district: String? = null,
 
     /**
      * Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (e.g. US 2 letter state codes).
      */
-    var state: String? = null,
+    val state: String? = null,
 
     /**
      * A postal code designating a region defined by the postal service.
      */
-    var postalCode: String? = null,
+    val postalCode: String? = null,
 
     /**
      * Country - a nation as commonly understood or generally accepted.
      */
-    var country: String? = null,
+    val country: String? = null,
 
     /**
      * Time period when address was/is in use.
      */
-    var period: Period? = null,
+    val period: Period? = null,
 
 )

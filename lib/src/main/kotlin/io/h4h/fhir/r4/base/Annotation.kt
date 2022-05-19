@@ -32,28 +32,29 @@ import kotlinx.serialization.Serializable
   
 */
 // Generated on Tue, May 12, 2020 07:26+1000 for FHIR v4.0.1
-/**
- * A  text note which also  contains information about who made the statement and when.
- */
 
+
+/**
+ * A  text note which also contains information about who made the statement and when.
+ */
 @Serializable
 data class Annotation(
     /**
      * The individual responsible for making the annotation.
      */
-    var authorReference: Reference? = null,
-    var authorString: String? = null,
+    val authorReference: Reference? = null,
+    val authorString: String? = null,
 
     /**
      * Indicates when this particular annotation was made.
      * DateTimeType
      */
-    var time: String? = null,
+    val time: String? = null,
 
     /**
      * The text of the annotation in markdown format.
      * MarkdownType
      */
-    var text: String? = null
+    val text: String? = null
 
 )

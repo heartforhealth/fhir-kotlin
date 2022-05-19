@@ -1,4 +1,4 @@
-package io.h4h.fhir.r4
+package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.Serializable
@@ -48,15 +48,15 @@ data class Condition(
      * DomainResource + Resource requirements
      * These are required for all resources
      */
-    override var id: String? = null,
-    override var resourceType: ResourceType? = ResourceType.Condition,
-    override var meta: Meta? = null,
-    override var implicitRules: String? = null,
-    override var language: String? = null,
-    override var text: Narrative? = null,
-    override var contained: List<Resource>? = null,
-    override var extension: List<Extension>? = null,
-    override var modifierExtension: List<Extension>? = null,
+    override val id: String,
+    override val resourceType: ResourceType = ResourceType.Condition,
+    override val meta: Meta? = null,
+    override val implicitRules: String? = null,
+    override val language: String? = null,
+    override val text: Narrative? = null,
+    override val contained: List<Resource>? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
 
@@ -64,111 +64,108 @@ data class Condition(
     /**
      * Business identifiers assigned to this condition by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */
-    var identifier: List<Identifier>? = null,
+    val identifier: List<Identifier>? = null,
 
     /**
      * The clinical status of the condition.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-clinical")
-    var clinicalStatus: CodeableConcept? = null,
+    val clinicalStatus: CodeableConcept? = null,
 
     /**
      * The verification status to support the clinical status of the condition.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-ver-status")
-    var verificationStatus: CodeableConcept? = null,
+    val verificationStatus: CodeableConcept? = null,
 
     /**
      * A category assigned to the condition.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-category")
-    var category: List<CodeableConcept>? = null,
+    val category: List<CodeableConcept>? = null,
 
     /**
      * A subjective assessment of the severity of the condition as evaluated by the clinician.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-severity")
-    var severity: CodeableConcept? = null,
+    val severity: CodeableConcept? = null,
 
     /**
      * Identification of the condition, problem or diagnosis.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-code")
-    var code: CodeableConcept? = null,
+    val code: CodeableConcept? = null,
 
     /**
      * The anatomical location where this condition manifests itself.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/body-site")
-    var bodySite: List<CodeableConcept>? = null,
+    val bodySite: List<CodeableConcept>? = null,
 
     /**
      * Indicates the patient or group who the condition record is associated with.
      */
-    var subject: Reference? = null,
+    val subject: Reference? = null,
 
     /**
      * The Encounter during which this Condition was created or to which the creation of this record is tightly associated.
      */
-    var encounter: Reference? = null,
+    val encounter: Reference? = null,
 
     /**
      * Estimated or actual date or date-time  the condition began, in the opinion of the clinician.
      */
-    var onsetDateTime: String? = null,
-    var onsetAge: Quantity? = null,
-    var onsetPeriod: Period? = null,
-    var onsetRange: Range? = null,
-    var onsetString: String? = null,
+    val onsetDateTime: String? = null,
+    val onsetAge: Quantity? = null,
+    val onsetPeriod: Period? = null,
+    val onsetRange: Range? = null,
+    val onsetString: String? = null,
 
 
     /**
      * The date or estimated date that the condition resolved or went into remission. This is called "abatement" because of the many overloaded connotations associated with "remission" or "resolution" - Conditions are never really resolved, but they can abate.
      */
-    var abatementDateTime: String? = null,
-    var abatementAge: Quantity? = null,
-    var abatementPeriod: Period? = null,
-    var abatementRange: Range? = null,
-    var abatementString: String? = null,
+    val abatementDateTime: String? = null,
+    val abatementAge: Quantity? = null,
+    val abatementPeriod: Period? = null,
+    val abatementRange: Range? = null,
+    val abatementString: String? = null,
 
 
     /**
      * The recordedDate represents when this particular Condition record was created in the system, which is often a system-generated date.
      * A date, date-time or partial date (e.g. just year or year + month) as used in human communication. The format is YYYY, YYYY-MM, YYYY-MM-DD or YYYY-MM-DDThh:mm:ss+zz:zz, e.g. 2018, 1973-06, 1905-08-23, 2015-02-07T13:28:17-05:00 or 2017-01-01T00:00:00.000Z.
      */
-    var recordedDate: String? = null,
+    val recordedDate: String? = null,
 
     /**
      * Individual who recorded the record and takes responsibility for its content.
      */
-    var recorder: Reference? = null,
+    val recorder: Reference? = null,
 
     /**
      * Individual who is making the condition statement.
      */
-    var asserter: Reference? = null,
+    val asserter: Reference? = null,
 
     /**
      * Clinical stage or grade of a condition. May include formal severity assessments.
      */
-    var stage: List<ConditionStageComponent>? = null,
+    val stage: List<ConditionStageComponent>? = null,
 
     /**
      * Supporting evidence / manifestations that are the basis of the Condition's verification status, such as evidence that confirmed or refuted the condition.
      */
-    var evidence: List<ConditionEvidenceComponent>? = null,
+    val evidence: List<ConditionEvidenceComponent>? = null,
 
     /**
      * Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis.
      */
-    var note: List<Annotation>? = null
+    val note: List<Annotation>? = null
 
 
-) : DomainResource {
+) : DomainResource
 
-
-
-}
 
 
 @Serializable
@@ -178,18 +175,18 @@ data class ConditionStageComponent(
      * A simple summary of the stage such as "Stage 3". The determination of the stage is disease-specific.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-stage")
-    var summary: CodeableConcept? = null,
+    val summary: CodeableConcept? = null,
 
     /**
      * Reference to a formal record of the evidence on which the staging assessment is based.
      */
-    var assessment: List<Reference>? = null,
+    val assessment: List<Reference>? = null,
 
     /**
      * The kind of staging, such as pathological or clinical staging.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-stage-type")
-    var type: CodeableConcept? = null
+    val type: CodeableConcept? = null
 
 )
 
@@ -201,11 +198,11 @@ data class ConditionEvidenceComponent(
      * A manifestation or symptom that led to the recording of this condition.
      */
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/manifestation-or-symptom")
-    var code: List<CodeableConcept>? = null,
+    val code: List<CodeableConcept>? = null,
 
     /**
      * Links to other relevant information, including pathology reports.
      */
-    var detail: List<Reference>? = null
+    val detail: List<Reference>? = null
 
 )

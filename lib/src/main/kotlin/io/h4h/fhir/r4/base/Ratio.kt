@@ -36,17 +36,16 @@ import kotlinx.serialization.Serializable
 /**
  * A relationship of two Quantity values - expressed as a numerator and a denominator.
  */
-
 @Serializable
 data class Ratio(
     /**
      * The value of the numerator.
      */
-    var numerator: Quantity? = null,
+    val numerator: Quantity? = null,
 
     /**
      * The value of the denominator.
      */
-    var denominator: Quantity? = null
+    val denominator: Quantity? = null
 
 )
