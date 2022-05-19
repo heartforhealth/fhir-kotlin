@@ -1,6 +1,7 @@
 package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /*
@@ -53,7 +54,7 @@ data class Questionnaire(
     override val implicitRules: String? = null,
     override val language: String? = null,
     override val text: Narrative? = null,
-    override val contained: List<Resource>? = null,
+    // override val contained: List<Resource>? = null,
     override val extension: List<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
 
@@ -314,86 +315,103 @@ enum class QuestionnaireItemType : CodeableEnumeration {
     /**
      * An item with no direct answer but should have at least one child item.
      */
+    @SerialName("group")
     GROUP,
 
     /**
      * Text for display that will not capture an answer or have child items.
      */
+    @SerialName("display")
     DISPLAY,
 
     /**
      * An item that defines a specific answer to be captured, and which may have child items. (the answer provided in the QuestionnaireResponse should be of the defined datatype).
      */
+    @SerialName("question")
     QUESTION,
 
     /**
      * Question with a yes/no answer (valueBoolean).
      */
+    @SerialName("boolean")
     BOOLEAN,
 
     /**
      * Question with is a real number answer (valueDecimal).
      */
+    @SerialName("decimal")
     DECIMAL,
 
     /**
      * Question with an integer answer (valueInteger).
      */
+    @SerialName("integer")
     INTEGER,
 
     /**
      * Question with a date answer (valueDate).
      */
+    @SerialName("date")
     DATE,
 
     /**
      * Question with a date and time answer (valueDateTime).
      */
+    @SerialName("dateTime")
     DATETIME,
 
     /**
      * Question with a time (hour:minute:second) answer independent of date. (valueTime).
      */
+    @SerialName("time")
     TIME,
 
     /**
      * Question with a short (few words to short sentence) free-text entry answer (valueString).
      */
+    @SerialName("string")
     STRING,
 
     /**
      * Question with a long (potentially multi-paragraph) free-text entry answer (valueString).
      */
+    @SerialName("text")
     TEXT,
 
     /**
      * Question with a URL (website, FTP site, etc.) answer (valueUri).
      */
+    @SerialName("url")
     URL,
 
     /**
      * Question with a Coding drawn from a list of possible answers (specified in either the answerOption property, or via the valueset referenced in the answerValueSet property) as an answer (valueCoding).
      */
+    @SerialName("choice")
     CHOICE,
 
     /**
      * Answer is a Coding drawn from a list of possible answers (as with the choice type) or a free-text entry in a string (valueCoding or valueString).
      */
+    @SerialName("open-choice")
     OPENCHOICE,
 
     /**
      * Question with binary content such as an image, PDF, etc. as an answer (valueAttachment).
      */
+    @SerialName("attachment")
     ATTACHMENT,
 
     /**
      * Question with a reference to another resource (practitioner, organization, etc.) as an answer (valueReference).
      */
+    @SerialName("reference")
     REFERENCE,
 
     /**
      * Question with a combination of a numeric value and unit, potentially with a comparator (<, >, etc.) as an answer. (valueQuantity) There is an extension 'http://hl7.org/fhir/StructureDefinition/questionnaire-unit' that can be used to define what unit should be captured (or the unit that has a ucum conversion from the provided unit).
      */
+    @SerialName("quantity")
     QUANTITY;
 
     
@@ -420,26 +438,7 @@ enum class QuestionnaireItemType : CodeableEnumeration {
         }
 
 
-    override val system: String?
-        get() = when (this) {
-            GROUP -> "http://hl7.org/fhir/item-type"
-            DISPLAY -> "http://hl7.org/fhir/item-type"
-            QUESTION -> "http://hl7.org/fhir/item-type"
-            BOOLEAN -> "http://hl7.org/fhir/item-type"
-            DECIMAL -> "http://hl7.org/fhir/item-type"
-            INTEGER -> "http://hl7.org/fhir/item-type"
-            DATE -> "http://hl7.org/fhir/item-type"
-            DATETIME -> "http://hl7.org/fhir/item-type"
-            TIME -> "http://hl7.org/fhir/item-type"
-            STRING -> "http://hl7.org/fhir/item-type"
-            TEXT -> "http://hl7.org/fhir/item-type"
-            URL -> "http://hl7.org/fhir/item-type"
-            CHOICE -> "http://hl7.org/fhir/item-type"
-            OPENCHOICE -> "http://hl7.org/fhir/item-type"
-            ATTACHMENT -> "http://hl7.org/fhir/item-type"
-            REFERENCE -> "http://hl7.org/fhir/item-type"
-            QUANTITY -> "http://hl7.org/fhir/item-type"
-        }
+    override val system: String? = "http://hl7.org/fhir/item-type"
 
     override val definition: String?
         get() = when (this) {

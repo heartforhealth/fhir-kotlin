@@ -2,6 +2,7 @@ package io.h4h.fhir.r4.resources
 
 
 import io.h4h.fhir.r4.base.*
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /*
@@ -54,7 +55,7 @@ data class CarePlan(
     override val implicitRules: String? = null,
     override val language: String? = null,
     override val text: Narrative? = null,
-    override val contained: List<Resource>? = null,
+    // override val contained: List<Resource>? = null,
     override val extension: List<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
@@ -312,3 +313,327 @@ data class CarePlanActivityDetailComponent(
     val description: String? = null
 
 )
+
+
+
+@Serializable
+enum class CarePlanStatus : CodeableEnumeration {
+    /**
+     * The request has been created but is not yet complete or ready for action.
+     */
+    @SerialName("draft")
+    DRAFT,
+
+    /**
+     * The request is in force and ready to be acted upon.
+     */
+    @SerialName("active")
+    ACTIVE,
+
+    /**
+     * The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future.
+     */
+    @SerialName("on-hold")
+    ONHOLD,
+
+    /**
+     * The request (and any implicit authorization to act) has been terminated prior to the known full completion of the intended actions.  No further activity should occur.
+     */
+    @SerialName("revoked")
+    REVOKED,
+
+    /**
+     * The activity described by the request has been fully performed.  No further activity will occur.
+     */
+    @SerialName("completed")
+    COMPLETED,
+
+    /**
+     * This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be "revoked" rather than "entered-in-error".).
+     */
+    @SerialName("entered-in-error")
+    ENTEREDINERROR,
+
+    /**
+     * The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which.
+     */
+    @SerialName("unknown")
+    UNKNOWN;
+
+
+
+    override val code: String?
+        get() = when (this) {
+            DRAFT -> "draft"
+            ACTIVE -> "active"
+            ONHOLD -> "on-hold"
+            REVOKED -> "revoked"
+            COMPLETED -> "completed"
+            ENTEREDINERROR -> "entered-in-error"
+            UNKNOWN -> "unknown"
+        }
+
+    override val system: String? = "http://hl7.org/fhir/request-status"
+
+    override val definition: String?
+        get() = when (this) {
+            DRAFT -> "The request has been created but is not yet complete or ready for action."
+            ACTIVE -> "The request is in force and ready to be acted upon."
+            ONHOLD -> "The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future."
+            REVOKED -> "The request (and any implicit authorization to act) has been terminated prior to the known full completion of the intended actions.  No further activity should occur."
+            COMPLETED -> "The activity described by the request has been fully performed.  No further activity will occur."
+            ENTEREDINERROR -> "This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be \"revoked\" rather than \"entered-in-error\".)."
+            UNKNOWN -> "The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which."
+        }
+
+    override val display: String?
+        get() = when (this) {
+            DRAFT -> "Draft"
+            ACTIVE -> "Active"
+            ONHOLD -> "On Hold"
+            REVOKED -> "Revoked"
+            COMPLETED -> "Completed"
+            ENTEREDINERROR -> "Entered in Error"
+            UNKNOWN -> "Unknown"
+        }
+
+}
+
+
+
+@Serializable
+enum class CarePlanIntent : CodeableEnumeration {
+
+    /**
+     * null
+     */
+    @SerialName("proposal")
+    PROPOSAL,
+
+    /**
+     * null
+     */
+    @SerialName("plan")
+    PLAN,
+
+    /**
+     * null
+     */
+    @SerialName("order")
+    ORDER,
+
+    /**
+     * null
+     */
+    @SerialName("option")
+    OPTION;
+
+
+    override val code: String?
+        get() = when (this) {
+            PROPOSAL -> "proposal"
+            PLAN -> "plan"
+            ORDER -> "order"
+            OPTION -> "option"
+        }
+
+    override val system: String? = "http://hl7.org/fhir/request-intent"
+
+    override val definition: String? = null
+
+    override val display: String?
+        get() = when (this) {
+            PROPOSAL -> "proposal"
+            PLAN -> "plan"
+            ORDER -> "order"
+            OPTION -> "option"
+        }
+
+}
+
+
+
+@Serializable
+enum class CarePlanActivityKind : CodeableEnumeration {
+
+    /**
+     * null
+     */
+    @SerialName("Appointment")
+    APPOINTMENT,
+
+    /**
+     * null
+     */
+    @SerialName("CommunicationRequest")
+    COMMUNICATIONREQUEST,
+
+    /**
+     * null
+     */
+    @SerialName("DeviceRequest")
+    DEVICEREQUEST,
+
+    /**
+     * null
+     */
+    @SerialName("MedicationRequest")
+    MEDICATIONREQUEST,
+
+    /**
+     * null
+     */
+    @SerialName("NutritionOrder")
+    NUTRITIONORDER,
+
+    /**
+     * null
+     */
+    @SerialName("Task")
+    TASK,
+
+    /**
+     * null
+     */
+    @SerialName("ServiceRequest")
+    SERVICEREQUEST,
+
+    /**
+     * null
+     */
+    @SerialName("VisionPrescription")
+    VISIONPRESCRIPTION;
+
+    override val code: String?
+        get() = when (this) {
+            APPOINTMENT -> "Appointment"
+            COMMUNICATIONREQUEST -> "CommunicationRequest"
+            DEVICEREQUEST -> "DeviceRequest"
+            MEDICATIONREQUEST -> "MedicationRequest"
+            NUTRITIONORDER -> "NutritionOrder"
+            TASK -> "Task"
+            SERVICEREQUEST -> "ServiceRequest"
+            VISIONPRESCRIPTION -> "VisionPrescription"
+        }
+
+    override val system: String? = "http://hl7.org/fhir/resource-types"
+
+    override val definition: String? = null
+
+    override val display: String?
+        get() = when (this) {
+            APPOINTMENT -> "Appointment"
+            COMMUNICATIONREQUEST -> "CommunicationRequest"
+            DEVICEREQUEST -> "DeviceRequest"
+            MEDICATIONREQUEST -> "MedicationRequest"
+            NUTRITIONORDER -> "NutritionOrder"
+            TASK -> "Task"
+            SERVICEREQUEST -> "ServiceRequest"
+            VISIONPRESCRIPTION -> "VisionPrescription"
+        }
+
+}
+
+
+
+@Serializable
+enum class CarePlanActivityStatus : CodeableEnumeration {
+
+    /**
+     * Care plan activity is planned but no action has yet been taken.
+     */
+    @SerialName("not-started")
+    NOTSTARTED,
+
+    /**
+     * Appointment or other booking has occurred but activity has not yet begun.
+     */
+    @SerialName("scheduled")
+    SCHEDULED,
+
+    /**
+     * Care plan activity has been started but is not yet complete.
+     */
+    @SerialName("in-progress")
+    INPROGRESS,
+
+    /**
+     * Care plan activity was started but has temporarily ceased with an expectation of resumption at a future time.
+     */
+    @SerialName("on-hold")
+    ONHOLD,
+
+    /**
+     * Care plan activity has been completed (more or less) as planned.
+     */
+    @SerialName("completed")
+    COMPLETED,
+
+    /**
+     * The planned care plan activity has been withdrawn.
+     */
+    @SerialName("cancelled")
+    CANCELLED,
+
+    /**
+     * The planned care plan activity has been ended prior to completion after the activity was started.
+     */
+    @SerialName("stopped")
+    STOPPED,
+
+    /**
+     * The current state of the care plan activity is not known.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which one.
+     */
+    @SerialName("unknown")
+    UNKNOWN,
+
+    /**
+     * Care plan activity was entered in error and voided.
+     */
+    @SerialName("entered-in-error")
+    ENTEREDINERROR;
+
+
+    override val code: String?
+        get() = when (this) {
+            NOTSTARTED -> "not-started"
+            SCHEDULED -> "scheduled"
+            INPROGRESS -> "in-progress"
+            ONHOLD -> "on-hold"
+            COMPLETED -> "completed"
+            CANCELLED -> "cancelled"
+            STOPPED -> "stopped"
+            UNKNOWN -> "unknown"
+            ENTEREDINERROR -> "entered-in-error"
+        }
+
+    override val system: String? = "http://hl7.org/fhir/care-plan-activity-status"
+
+    override val definition: String?
+        get() = when (this) {
+            NOTSTARTED -> "Care plan activity is planned but no action has yet been taken."
+            SCHEDULED -> "Appointment or other booking has occurred but activity has not yet begun."
+            INPROGRESS -> "Care plan activity has been started but is not yet complete."
+            ONHOLD -> "Care plan activity was started but has temporarily ceased with an expectation of resumption at a future time."
+            COMPLETED -> "Care plan activity has been completed (more or less) as planned."
+            CANCELLED -> "The planned care plan activity has been withdrawn."
+            STOPPED -> "The planned care plan activity has been ended prior to completion after the activity was started."
+            UNKNOWN -> "The current state of the care plan activity is not known.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which one."
+            ENTEREDINERROR -> "Care plan activity was entered in error and voided."
+        }
+
+
+    override val display: String?
+        get() = when (this) {
+            NOTSTARTED -> "Not Started"
+            SCHEDULED -> "Scheduled"
+            INPROGRESS -> "In Progress"
+            ONHOLD -> "On Hold"
+            COMPLETED -> "Completed"
+            CANCELLED -> "Cancelled"
+            STOPPED -> "Stopped"
+            UNKNOWN -> "Unknown"
+            ENTEREDINERROR -> "Entered in Error"
+        }
+
+}

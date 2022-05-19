@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "b58038de-da84-4389-9f4b-591858951a8e",
+  "status": "active",
+  "intent": "order",
+  "subject": {
+    "type": "Patient",
+    "identifier": {
+      "value": "ac501716-f4b9-430a-816f-9ac773948f83"
+    }
+  },
+  "supportingInfo": [
+    {
+      "type": "Appointment",
+      "identifier": {
+        "value": "b58038de-da84-4389-9f4b-591858951a8e"
+      }
+    }
+  ],
+  "activity": [
+    {
+      "reference": {
+        "type": "Questionnaire",
+        "identifier": {
+          "value": "0166045b-7e5a-4dd0-8488-df3764f1b9bc"
+        }
+      },
+      "detail": {
+        "status": "not-started",
+        "scheduledTiming": {
+          "event": [
+            "2022-05-18T14:05:56+00:00"
+          ]
+        }
+      }
+    }
+  ]
+}

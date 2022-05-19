@@ -54,7 +54,7 @@ data class Encounter(
     override val implicitRules: String? = null,
     override val language: String? = null,
     override val text: Narrative? = null,
-    override val contained: List<Resource>? = null,
+    // override val contained: List<Resource>? = null,
     override val extension: List<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================

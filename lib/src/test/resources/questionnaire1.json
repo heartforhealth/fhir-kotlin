@@ -1,0 +1,122 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "ceb57163-6a72-4f61-8518-d3b95837c893",
+  "name": "Random Patient Health Questionnaire",
+  "status": "active",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "program",
+        "display": "Program"
+      },
+      "valueReference": {
+        "type": "Appointment",
+        "identifier": {
+          "value": "eb6ffb5a-0fa5-4034-9b25-02f78c9639db"
+        }
+      }
+    }
+  ],
+  "item": [
+    {
+      "linkId": "089f3a13-06b5-453d-8638-2de12c4ace51",
+      "code": [
+        {
+          "system": "http://loinc.org",
+          "code": "44254-1"
+        }
+      ],
+      "text": "Feeling tired or having little energy?",
+      "type": "boolean"
+    },
+    {
+      "linkId": "ce3f1f8c-fae4-4012-9433-b161a268f71c",
+      "code": [
+        {
+          "system": "http://loinc.org",
+          "code": "44259-0"
+        }
+      ],
+      "text": "Trouble falling or staying asleep?",
+      "type": "boolean"
+    },
+    {
+      "linkId": "0fe02ca5-122e-449d-ad22-cca6231af84e",
+      "code": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "263495000"
+        }
+      ],
+      "text": "What is your gender?",
+      "type": "choice",
+      "answerOption": [
+        {
+          "valueString": "M"
+        },
+        {
+          "valueString": "F"
+        }
+      ]
+    },
+    {
+      "linkId": "03fbf5de-973f-4e9c-b3a3-2e23c3703789",
+      "code": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "184099003"
+        }
+      ],
+      "text": "What is your date of birth?",
+      "type": "date"
+    },
+    {
+      "linkId": "ab18ee32-b0c1-4aa6-b089-85628dfc76bc",
+      "code": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "392521001",
+          "display": "History of (contextual qualifier)"
+        }
+      ],
+      "text": "Do you have history of?",
+      "type": "choice",
+      "required": false,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "194828000",
+            "display": "Angina Pectoris"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "22298006",
+            "display": "Myocardial infarction"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "http://snomed.info/sct",
+            "code": "49436004",
+            "display": "Atrial fibrillation"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "f4f1f785-3f37-4224-98b3-70b074257494",
+      "code": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "364589006"
+        }
+      ],
+      "text": "Birth weight?",
+      "type": "decimal"
+    }
+  ]
+}

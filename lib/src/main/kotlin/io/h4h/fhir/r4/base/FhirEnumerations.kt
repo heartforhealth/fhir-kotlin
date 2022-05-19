@@ -695,403 +695,6 @@ enum class AddressType : CodeableEnumeration {
 
 
 @Serializable
-enum class CarePlanStatus : CodeableEnumeration {
-    /**
-     * The request has been created but is not yet complete or ready for action.
-     */
-    DRAFT,
-
-    /**
-     * The request is in force and ready to be acted upon.
-     */
-    ACTIVE,
-
-    /**
-     * The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future.
-     */
-    ONHOLD,
-
-    /**
-     * The request (and any implicit authorization to act) has been terminated prior to the known full completion of the intended actions.  No further activity should occur.
-     */
-    REVOKED,
-
-    /**
-     * The activity described by the request has been fully performed.  No further activity will occur.
-     */
-    COMPLETED,
-
-    /**
-     * This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be "revoked" rather than "entered-in-error".).
-     */
-    ENTEREDINERROR,
-
-    /**
-     * The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which.
-     */
-    UNKNOWN,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
-
-    override val code: String?
-        get() = when (this) {
-            DRAFT -> "draft"
-            ACTIVE -> "active"
-            ONHOLD -> "on-hold"
-            REVOKED -> "revoked"
-            COMPLETED -> "completed"
-            ENTEREDINERROR -> "entered-in-error"
-            UNKNOWN -> "unknown"
-            NULL -> null
-        }
-
-    override val system: String?
-        get() = when (this) {
-            DRAFT -> "http://hl7.org/fhir/request-status"
-            ACTIVE -> "http://hl7.org/fhir/request-status"
-            ONHOLD -> "http://hl7.org/fhir/request-status"
-            REVOKED -> "http://hl7.org/fhir/request-status"
-            COMPLETED -> "http://hl7.org/fhir/request-status"
-            ENTEREDINERROR -> "http://hl7.org/fhir/request-status"
-            UNKNOWN -> "http://hl7.org/fhir/request-status"
-            NULL -> null
-        }
-
-    override val definition: String?
-        get() {
-            return when (this) {
-                DRAFT -> "The request has been created but is not yet complete or ready for action."
-                ACTIVE -> "The request is in force and ready to be acted upon."
-                ONHOLD -> "The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future."
-                REVOKED -> "The request (and any implicit authorization to act) has been terminated prior to the known full completion of the intended actions.  No further activity should occur."
-                COMPLETED -> "The activity described by the request has been fully performed.  No further activity will occur."
-                ENTEREDINERROR -> "This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be \"revoked\" rather than \"entered-in-error\".)."
-                UNKNOWN -> "The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which."
-                NULL -> null
-            }
-        }
-
-    override val display: String?
-        get() {
-            return when (this) {
-                DRAFT -> "Draft"
-                ACTIVE -> "Active"
-                ONHOLD -> "On Hold"
-                REVOKED -> "Revoked"
-                COMPLETED -> "Completed"
-                ENTEREDINERROR -> "Entered in Error"
-                UNKNOWN -> "Unknown"
-                NULL -> null
-            }
-        }
-
-}
-
-
-@Serializable
-enum class CarePlanIntent : CodeableEnumeration {
-
-    /**
-     * null
-     */
-    PROPOSAL,
-
-    /**
-     * null
-     */
-    PLAN,
-
-    /**
-     * null
-     */
-    ORDER,
-
-    /**
-     * null
-     */
-    OPTION,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
-
-    override val code: String?
-        get() = when (this) {
-            PROPOSAL -> "proposal"
-            PLAN -> "plan"
-            ORDER -> "order"
-            OPTION -> "option"
-            NULL -> null
-        }
-
-    override val system: String?
-        get() {
-            return when (this) {
-                PROPOSAL -> "http://hl7.org/fhir/request-intent"
-                PLAN -> "http://hl7.org/fhir/request-intent"
-                ORDER -> "http://hl7.org/fhir/request-intent"
-                OPTION -> "http://hl7.org/fhir/request-intent"
-                NULL -> null
-            }
-        }
-
-    override val definition: String?
-        get() {
-            return when (this) {
-                PROPOSAL -> ""
-                PLAN -> ""
-                ORDER -> ""
-                OPTION -> ""
-                NULL -> null
-            }
-        }
-
-    override val display: String?
-        get() {
-            return when (this) {
-                PROPOSAL -> "proposal"
-                PLAN -> "plan"
-                ORDER -> "order"
-                OPTION -> "option"
-                NULL -> null
-            }
-        }
-
-}
-
-
-@Serializable
-enum class CarePlanActivityKind : CodeableEnumeration {
-
-    /**
-     * null
-     */
-    APPOINTMENT,
-
-    /**
-     * null
-     */
-    COMMUNICATIONREQUEST,
-
-    /**
-     * null
-     */
-    DEVICEREQUEST,
-
-    /**
-     * null
-     */
-    MEDICATIONREQUEST,
-
-    /**
-     * null
-     */
-    NUTRITIONORDER,
-
-    /**
-     * null
-     */
-    TASK,
-
-    /**
-     * null
-     */
-    SERVICEREQUEST,
-
-    /**
-     * null
-     */
-    VISIONPRESCRIPTION,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
-
-    override val code: String?
-        get() = when (this) {
-            APPOINTMENT -> "Appointment"
-            COMMUNICATIONREQUEST -> "CommunicationRequest"
-            DEVICEREQUEST -> "DeviceRequest"
-            MEDICATIONREQUEST -> "MedicationRequest"
-            NUTRITIONORDER -> "NutritionOrder"
-            TASK -> "Task"
-            SERVICEREQUEST -> "ServiceRequest"
-            VISIONPRESCRIPTION -> "VisionPrescription"
-            NULL -> null
-        }
-
-    override val system: String?
-        get() {
-            return when (this) {
-                APPOINTMENT -> "http://hl7.org/fhir/resource-types"
-                COMMUNICATIONREQUEST -> "http://hl7.org/fhir/resource-types"
-                DEVICEREQUEST -> "http://hl7.org/fhir/resource-types"
-                MEDICATIONREQUEST -> "http://hl7.org/fhir/resource-types"
-                NUTRITIONORDER -> "http://hl7.org/fhir/resource-types"
-                TASK -> "http://hl7.org/fhir/resource-types"
-                SERVICEREQUEST -> "http://hl7.org/fhir/resource-types"
-                VISIONPRESCRIPTION -> "http://hl7.org/fhir/resource-types"
-                NULL -> null
-            }
-        }
-
-    override val definition: String?
-        get() {
-            return when (this) {
-                APPOINTMENT -> ""
-                COMMUNICATIONREQUEST -> ""
-                DEVICEREQUEST -> ""
-                MEDICATIONREQUEST -> ""
-                NUTRITIONORDER -> ""
-                TASK -> ""
-                SERVICEREQUEST -> ""
-                VISIONPRESCRIPTION -> ""
-                NULL -> null
-            }
-        }
-
-    override val display: String?
-        get() {
-            return when (this) {
-                APPOINTMENT -> "Appointment"
-                COMMUNICATIONREQUEST -> "CommunicationRequest"
-                DEVICEREQUEST -> "DeviceRequest"
-                MEDICATIONREQUEST -> "MedicationRequest"
-                NUTRITIONORDER -> "NutritionOrder"
-                TASK -> "Task"
-                SERVICEREQUEST -> "ServiceRequest"
-                VISIONPRESCRIPTION -> "VisionPrescription"
-                NULL -> null
-            }
-        }
-
-}
-
-
-@Serializable
-enum class CarePlanActivityStatus : CodeableEnumeration {
-
-    /**
-     * Care plan activity is planned but no action has yet been taken.
-     */
-    NOTSTARTED,
-
-    /**
-     * Appointment or other booking has occurred but activity has not yet begun.
-     */
-    SCHEDULED,
-
-    /**
-     * Care plan activity has been started but is not yet complete.
-     */
-    INPROGRESS,
-
-    /**
-     * Care plan activity was started but has temporarily ceased with an expectation of resumption at a future time.
-     */
-    ONHOLD,
-
-    /**
-     * Care plan activity has been completed (more or less) as planned.
-     */
-    COMPLETED,
-
-    /**
-     * The planned care plan activity has been withdrawn.
-     */
-    CANCELLED,
-
-    /**
-     * The planned care plan activity has been ended prior to completion after the activity was started.
-     */
-    STOPPED,
-
-    /**
-     * The current state of the care plan activity is not known.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which one.
-     */
-    UNKNOWN,
-
-    /**
-     * Care plan activity was entered in error and voided.
-     */
-    ENTEREDINERROR,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
-
-    override val code: String?
-        get() = when (this) {
-            NOTSTARTED -> "not-started"
-            SCHEDULED -> "scheduled"
-            INPROGRESS -> "in-progress"
-            ONHOLD -> "on-hold"
-            COMPLETED -> "completed"
-            CANCELLED -> "cancelled"
-            STOPPED -> "stopped"
-            UNKNOWN -> "unknown"
-            ENTEREDINERROR -> "entered-in-error"
-            NULL -> null
-        }
-
-    override val system: String?
-        get() {
-            return when (this) {
-                NOTSTARTED -> "http://hl7.org/fhir/care-plan-activity-status"
-                SCHEDULED -> "http://hl7.org/fhir/care-plan-activity-status"
-                INPROGRESS -> "http://hl7.org/fhir/care-plan-activity-status"
-                ONHOLD -> "http://hl7.org/fhir/care-plan-activity-status"
-                COMPLETED -> "http://hl7.org/fhir/care-plan-activity-status"
-                CANCELLED -> "http://hl7.org/fhir/care-plan-activity-status"
-                STOPPED -> "http://hl7.org/fhir/care-plan-activity-status"
-                UNKNOWN -> "http://hl7.org/fhir/care-plan-activity-status"
-                ENTEREDINERROR -> "http://hl7.org/fhir/care-plan-activity-status"
-                NULL -> null
-            }
-        }
-
-    override val definition: String?
-        get() {
-            return when (this) {
-                NOTSTARTED -> "Care plan activity is planned but no action has yet been taken."
-                SCHEDULED -> "Appointment or other booking has occurred but activity has not yet begun."
-                INPROGRESS -> "Care plan activity has been started but is not yet complete."
-                ONHOLD -> "Care plan activity was started but has temporarily ceased with an expectation of resumption at a future time."
-                COMPLETED -> "Care plan activity has been completed (more or less) as planned."
-                CANCELLED -> "The planned care plan activity has been withdrawn."
-                STOPPED -> "The planned care plan activity has been ended prior to completion after the activity was started."
-                UNKNOWN -> "The current state of the care plan activity is not known.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which one."
-                ENTEREDINERROR -> "Care plan activity was entered in error and voided."
-                NULL -> null
-            }
-        }
-
-    override val display: String?
-        get() {
-            return when (this) {
-                NOTSTARTED -> "Not Started"
-                SCHEDULED -> "Scheduled"
-                INPROGRESS -> "In Progress"
-                ONHOLD -> "On Hold"
-                COMPLETED -> "Completed"
-                CANCELLED -> "Cancelled"
-                STOPPED -> "Stopped"
-                UNKNOWN -> "Unknown"
-                ENTEREDINERROR -> "Entered in Error"
-                NULL -> null
-            }
-        }
-
-}
-
-
-@Serializable
 enum class ContactPointSystem : CodeableEnumeration {
 
     /**
@@ -3026,68 +2629,44 @@ enum class PublicationStatus : CodeableEnumeration {
     /**
      * This resource is still under development and is not yet considered to be ready for normal use.
      */
-    DRAFT,
+    draft,
 
     /**
      * This resource is ready for normal use.
      */
-    ACTIVE,
+    active,
 
     /**
      * This resource has been withdrawn or superseded and should no longer be used.
      */
-    RETIRED,
+    retired,
 
     /**
      * The authoring system does not know which of the status values currently applies for this resource.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply, it's just not known which one.
      */
-    UNKNOWN,
-
-    /**
-     * added to help the parsers
-     */
-    NULL;
+    unknown;
 
 
-    override val code: String?
-        get() = when (this) {
-            DRAFT -> "draft"
-            ACTIVE -> "active"
-            RETIRED -> "retired"
-            UNKNOWN -> "unknown"
-            NULL -> null
-        }
+    override val code: String? = name
 
 
-    override val system: String?
-        get() = when (this) {
-            DRAFT -> "http://hl7.org/fhir/publication-status"
-            ACTIVE -> "http://hl7.org/fhir/publication-status"
-            RETIRED -> "http://hl7.org/fhir/publication-status"
-            UNKNOWN -> "http://hl7.org/fhir/publication-status"
-            NULL -> null
-        }
+    override val system: String? = "http://hl7.org/fhir/publication-status"
+
 
     override val definition: String?
-        get() {
-            return when (this) {
-                DRAFT -> "This resource is still under development and is not yet considered to be ready for normal use."
-                ACTIVE -> "This resource is ready for normal use."
-                RETIRED -> "This resource has been withdrawn or superseded and should no longer be used."
-                UNKNOWN -> "The authoring system does not know which of the status values currently applies for this resource.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, it's just not known which one."
-                NULL -> null
-            }
+        get() = when (this) {
+            draft -> "This resource is still under development and is not yet considered to be ready for normal use."
+            active -> "This resource is ready for normal use."
+            retired -> "This resource has been withdrawn or superseded and should no longer be used."
+            unknown -> "The authoring system does not know which of the status values currently applies for this resource.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, it's just not known which one."
         }
 
     override val display: String?
-        get() {
-            return when (this) {
-                DRAFT -> "Draft"
-                ACTIVE -> "Active"
-                RETIRED -> "Retired"
-                UNKNOWN -> "Unknown"
-                NULL -> null
-            }
+        get() = when (this) {
+            draft -> "Draft"
+            active -> "Active"
+            retired -> "Retired"
+            unknown -> "Unknown"
         }
     
 }

@@ -8,7 +8,7 @@
 
 
 group = "io.h4h"
-version = "0.1.4"
+version = "0.1.5"
 
 
 
@@ -79,6 +79,9 @@ dependencies {
 
     // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
+    // testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.3.2")
+    // kotlin serialization
+    testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")

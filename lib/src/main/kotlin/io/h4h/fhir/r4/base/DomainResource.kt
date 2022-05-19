@@ -1,7 +1,6 @@
 package io.h4h.fhir.r4.base
 
 
-
 /*
   Copyright (c) 2011+, HL7, Inc.
   All rights reserved.
@@ -47,7 +46,7 @@ interface DomainResource : Resource, BackboneElement {
     /**
      * These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.
      */
-    val contained: List<Resource>?
+    // val contained: List<Resource>?
 
 }
 

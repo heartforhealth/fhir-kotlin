@@ -1,0 +1,386 @@
+{
+    "resourceType": "Questionnaire",
+    "id": "2f2b8f35-5895-4d5d-870a-6b9e34ac8dce",
+    "name": "Vragenlijst eerste consult",
+    "status": "active",
+    "item": [
+        {
+            "linkId": "795ca36e-de2b-466d-bb58-cc83c921bc4a",
+            "text": "Korte omschrijving van het probleem",
+            "type": "text"
+        },
+        {
+            "linkId": "a80ec646-4d17-4eff-bba6-91e87ee09248",
+            "code": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "38866009",
+                    "display": "Body part structure"
+                }
+            ],
+            "text": "Lichaamsdeel (Indien van toepassing ook de zijde vermelden)",
+            "type": "choice",
+            "answerOption": [
+                {
+                    "valueString": "Links"
+                },
+                {
+                    "valueString": "Rechts"
+                },
+                {
+                    "valueString": "Beide"
+                }
+            ]
+        },
+        {
+            "linkId": "86f999fa-ef71-4962-a15b-bc5f08bb17e3",
+            "text": "Klachten Sinds",
+            "type": "date"
+        },
+        {
+            "linkId": "f4416086-b001-4164-a176-6dd2257f3b50",
+            "text": "Is er een duidelijke oorzaak van de klachten?",
+            "type": "open-choice",
+            "answerOption": [
+                {
+                    "valueString": "Trauma"
+                },
+                {
+                    "valueString": "Overbelasting"
+                },
+                {
+                    "valueString": "Geen duidelijke oorzaak"
+                },
+                {
+                    "valueString": "Anders"
+                }
+            ]
+        },
+        {
+            "linkId": "62589a85-df3d-400e-ab65-e7ce9e837326",
+            "text": "Wanneer treden de klachten op?",
+            "type": "choice",
+            "answerOption": [
+                {
+                    "valueString": "Alleen met sport"
+                },
+                {
+                    "valueString": "Met sport en in het dagelijks leven"
+                },
+                {
+                    "valueString": "Alleen in het dagelijks leven"
+                }
+            ]
+        },
+        {
+            "linkId": "bd53f776-9c4e-49a4-8bf8-9626acc677d8",
+            "text": "Last",
+            "type": "choice",
+            "answerOption": [
+                {
+                    "valueString": "Vooral tijdens sport"
+                },
+                {
+                    "valueString": "Vooral na sport"
+                },
+                {
+                    "valueString": "Tijdens en na sport evenveel"
+                }
+            ]
+        },
+        {
+            "linkId": "f8d6112e-5bed-46ce-a072-6bf0f253ae03",
+            "text": "Ochtend",
+            "type": "choice",
+            "answerOption": [
+                {
+                    "valueString": "Pijn en/of stijfheid"
+                },
+                {
+                    "valueString": "Geen last"
+                },
+                {
+                    "valueString": "Niet van toepassing"
+                }
+            ]
+        },
+        {
+            "linkId": "7645fa24-f03b-4f4c-b9e8-6c4980c2418c",
+            "text": "Sport",
+            "type": "choice",
+            "answerOption": [
+                {
+                    "valueString": "Niet gestopt, niet aangepast"
+                },
+                {
+                    "valueString": "Niet gestopt, wel aangepast"
+                },
+                {
+                    "valueString": "Gestopt"
+                },
+                {
+                    "valueString": "Niet van toepassing"
+                }
+            ]
+        },
+        {
+            "linkId": "3cb1e63b-27c2-4d46-884e-a3d34148449d",
+            "text": "Hoeveel last/pijn heeft u in het dagelijks leven? (0 = geen pijn, 10 = maximale pijn)",
+            "type": "integer"
+        },
+        {
+            "linkId": "5cbfe955-832f-4035-842c-09bcb0924375",
+            "text": "Hoeveel last/pijn heeft u met sporten? (0 = geen pijn, 10 = maximale pijn). Indien geen sport, is deze vraag niet van toepassing.",
+            "type": "integer"
+        },
+        {
+            "linkId": "1033a166-3c2d-49df-a5af-af922ef52d0a",
+            "text": "Gedane behandelingen tot nu:",
+            "type": "text"
+        },
+        {
+            "linkId": "1025c863-c8c8-41bf-b6d2-5f011870a5f7",
+            "text": "Gedane onderzoeken tot nu:",
+            "type": "text"
+        },
+        {
+            "linkId": "e0f7e825-d5fb-40b0-81bb-ba4e4e969d5b",
+            "text": "Sport 1",
+            "type": "group",
+            "item": [
+                {
+                    "linkId": "e1fb87c5-0017-4a82-91b4-b80ec11166bb",
+                    "text": "Sport 1:",
+                    "type": "string"
+                },
+                {
+                    "linkId": "6baca94b-dc4b-4aff-a813-27803f4907eb",
+                    "text": "Duur sport 1: (aangeven in uren per week)",
+                    "type": "integer"
+                },
+                {
+                    "linkId": "62bd5297-da6d-4865-9dca-d4743eb39797",
+                    "type": "choice",
+                    "answerOption": [
+                        {
+                            "valueString": "Recreatief"
+                        },
+                        {
+                            "valueString": "Prestatie"
+                        },
+                        {
+                            "valueString": "Topsport"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "linkId": "7e138c14-01b3-4e90-9aff-52234d41e65b",
+            "text": "Sport 2",
+            "type": "group",
+            "item": [
+                {
+                    "linkId": "cfbc4601-0651-4b57-a6fb-7ab15b823e28",
+                    "text": "Sport 2:",
+                    "type": "string"
+                },
+                {
+                    "linkId": "7826047d-92c0-49a1-9140-2a109486aeb7",
+                    "text": "Duur sport 2: (aangeven in uren per week)",
+                    "type": "integer"
+                },
+                {
+                    "linkId": "abd0bf86-b72d-4749-a61b-53de2d5ddea9",
+                    "type": "choice",
+                    "answerOption": [
+                        {
+                            "valueString": "Recreatief"
+                        },
+                        {
+                            "valueString": "Prestatie"
+                        },
+                        {
+                            "valueString": "Topsport"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "linkId": "0b5a9188-40c9-427c-a1f4-423422d45f3f",
+            "text": "Sport 3",
+            "type": "group",
+            "item": [
+                {
+                    "linkId": "1c7db89b-0b2e-4091-8240-5495d076d368",
+                    "text": "Sport 3:",
+                    "type": "string"
+                },
+                {
+                    "linkId": "bd79d456-dc15-4db2-ba5b-fffe3e3feabf",
+                    "text": "Duur sport 3: (aangeven in uren per week)",
+                    "type": "integer"
+                },
+                {
+                    "linkId": "4e62da78-1cce-48b1-926e-eed07b084d95",
+                    "type": "choice",
+                    "answerOption": [
+                        {
+                            "valueString": "Recreatief"
+                        },
+                        {
+                            "valueString": "Prestatie"
+                        },
+                        {
+                            "valueString": "Topsport"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "linkId": "633d050c-ba98-405f-8d34-78b5aadc6704",
+            "text": "Opleiding/beroep",
+            "type": "group",
+            "item": [
+                {
+                    "linkId": "a59d6ad5-a50d-449f-8a0f-7adb6ac264f0",
+                    "text": "Opleiding/beroep",
+                    "type": "string"
+                },
+                {
+                    "linkId": "fbe6efff-6e56-4f28-b718-4b34b17ebb68",
+                    "type": "choice",
+                    "answerOption": [
+                        {
+                            "valueString": "Veel zitten"
+                        },
+                        {
+                            "valueString": "Veel staan/wandelen"
+                        },
+                        {
+                            "valueString": "Lichamelijke arbeid"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "linkId": "5dc28cd6-51e8-4c0e-bcea-fbb20039b12d",
+            "text": "Dominante arm",
+            "type": "choice",
+            "answerOption": [
+                {
+                    "valueString": "Links"
+                },
+                {
+                    "valueString": "Rechts"
+                }
+            ]
+        },
+        {
+            "linkId": "f4cdd94d-4cea-4e01-b389-9ed18c2b7d3a",
+            "text": "Dominante been",
+            "type": "choice",
+            "answerOption": [
+                {
+                    "valueString": "Links"
+                },
+                {
+                    "valueString": "Rechts"
+                }
+            ]
+        },
+        {
+            "linkId": "64e6e5b9-5889-45ea-9fd6-4c8e54ff7d58",
+            "text": "Roken",
+            "type": "group",
+            "answerOption": [
+                {
+                    "valueString": "Nooit"
+                }
+            ],
+            "item": [
+                {
+                    "linkId": "8db57b50-5736-41e8-a6ef-7656f88ffc29",
+                    "text": "Gestopt sinds",
+                    "type": "date"
+                },
+                {
+                    "linkId": "de3f9005-04b3-42f5-949f-fb33c959aded",
+                    "text": "Ja aantal per dag",
+                    "type": "integer"
+                }
+            ]
+        },
+        {
+            "linkId": "6240e8b0-5d3f-4fbf-b2cd-7bb0274b9930",
+            "text": "Alcohol",
+            "type": "choice",
+            "answerOption": [
+                {
+                    "valueString": "Nooit"
+                },
+                {
+                    "valueString": "1-5 glazen/week"
+                },
+                {
+                    "valueString": "5-15 glazen/week"
+                },
+                {
+                    "valueString": "Meer dan 15 glazen/week"
+                }
+            ]
+        },
+        {
+            "linkId": "dc4fd54d-8be8-40a9-bc32-7e1b7b552fe8",
+            "text": "Drugs",
+            "type": "group",
+            "answerOption": [
+                {
+                    "valueString": "Nee"
+                }
+            ],
+            "item": [
+                {
+                    "linkId": "6a0cae6f-4c6f-4252-8028-451708fa7ee6",
+                    "text": "Ja, namelijk",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "linkId": "be87cc98-e8c9-4c59-968a-a24fa8edf857",
+            "text": "Allergie",
+            "type": "group",
+            "answerOption": [
+                {
+                    "valueString": "Nee"
+                }
+            ],
+            "item": [
+                {
+                    "linkId": "40f88159-445e-49e9-b0d2-f4a3484f6bb4",
+                    "text": "Ja, namelijk",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "linkId": "e2e4f82c-8c0c-4739-9cde-01e3ee1e4881",
+            "text": "Blessures/ziektes/operaties/ziekenhuisopnames in het verleden",
+            "type": "text"
+        },
+        {
+            "linkId": "915ba98f-4777-40cf-ae30-fb53edbc9c03",
+            "text": "Gebruikte medicatie/vitamines/supplementen",
+            "type": "text"
+        },
+        {
+            "linkId": "e6aa8b1f-a6dd-421b-adf8-25fc57b625dc",
+            "text": "Ziektes in de familie",
+            "type": "text"
+        }
+    ]
+}

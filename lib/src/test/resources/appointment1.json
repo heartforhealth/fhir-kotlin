@@ -1,0 +1,90 @@
+{
+  "resourceType": "Appointment",
+  "id": "eb6ffb5a-0fa5-4034-9b25-02f78c9639db",
+  "contained": [
+    {
+      "resourceType": "Location",
+      "id": "a5ada58a-332f-4920-917c-abbd701b8fe0",
+      "name": "Department of Cardiology",
+      "address": {
+        "line": [
+          "Street"
+        ],
+        "city": "Amsterdam",
+        "country": "NL"
+      }
+    },
+    {
+      "resourceType": "Practitioner",
+      "id": "e654e785-226c-429d-a8e2-d921d0fa38b6",
+      "name": [
+        {
+          "family": "Somsen",
+          "given": [
+            "Aernout"
+          ],
+          "prefix": [
+            "Dr."
+          ]
+        }
+      ],
+      "gender": "male"
+    },
+    {
+      "resourceType": "Patient",
+      "id": "ac501716-f4b9-430a-816f-9ac773948f83",
+      "identifier": [
+        {
+          "system": "iamId",
+          "value": "ac501716-f4b9-430a-816f-9ac773948f83",
+          "assigner": {
+            "reference": "Keycloak"
+          }
+        }
+      ]
+    }
+  ],
+  "status": "booked",
+  "supportingInformation": [
+    {
+      "type": "CarePlan",
+      "identifier": {
+        "value": "eb6ffb5a-0fa5-4034-9b25-02f78c9639db"
+      }
+    }
+  ],
+  "start": "2022-05-19T14:11:59.146+00:00",
+  "minutesDuration": 60,
+  "participant": [
+    {
+      "actor": {
+        "type": "Location",
+        "identifier": {
+          "value": "a5ada58a-332f-4920-917c-abbd701b8fe0"
+        }
+      },
+      "required": "required",
+      "status": "accepted"
+    },
+    {
+      "actor": {
+        "type": "Practitioner",
+        "identifier": {
+          "value": "e654e785-226c-429d-a8e2-d921d0fa38b6"
+        }
+      },
+      "required": "required",
+      "status": "accepted"
+    },
+    {
+      "actor": {
+        "type": "Patient",
+        "identifier": {
+          "value": "ac501716-f4b9-430a-816f-9ac773948f83"
+        }
+      },
+      "required": "required",
+      "status": "tentative"
+    }
+  ]
+}
