@@ -171,6 +171,15 @@ data class ConceptSetComponent(
 @Serializable
 data class ConceptReferenceComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Specifies a code for the concept to be included or excluded.
      */
@@ -185,11 +194,21 @@ data class ConceptReferenceComponent(
      * Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.
      */
     val designation: List<ConceptReferenceDesignationComponent>? = null
-)
+
+) : BackboneElement
 
 
 @Serializable
 data class ConceptReferenceDesignationComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * The language this designation is defined for.
@@ -208,11 +227,21 @@ data class ConceptReferenceDesignationComponent(
      */
     val value: String? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class ConceptSetFilterComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * A code that identifies a property or a filter defined in the code system.
      */
@@ -228,11 +257,21 @@ data class ConceptSetFilterComponent(
      * The match value may be either a code defined by the system, or a string value, which is a regex match on the literal string of the property value  (if the filter represents a property defined in CodeSystem) or of the system filter value (if the filter represents a filter defined in CodeSystem) when the operation is 'regex', or one of the values (true and false), when the operation is 'exists'.
      */
     val value: String? = null
-)
+
+) : BackboneElement
 
 
 @Serializable
 data class ValueSetExpansionComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * An identifier that uniquely identifies this expansion of the valueset, based on a unique combination of the provided parameters, the system default parameters, and the underlying system code system versions etc. Systems may re-use the same identifier as long as those factors remain the same, and the expansion is the same, but are not required to do so. This is a business identifier.
@@ -265,11 +304,20 @@ data class ValueSetExpansionComponent(
      */
     val contains: List<ValueSetExpansionContainsComponent>? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class ValueSetExpansionParameterComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * Name of the input parameter to the $expand operation; may be a server-assigned name for additional default or other server-supplied parameters used to control the expansion process.
@@ -286,11 +334,21 @@ data class ValueSetExpansionParameterComponent(
     val valueUri: String? = null,
     val valueCode: String? = null,
     val valueDateTime: String? = null
-)
+
+) : BackboneElement
 
 
 @Serializable
 data class ValueSetExpansionContainsComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * An absolute URI which is the code system in which the code for this item in the expansion is defined.
@@ -332,4 +390,4 @@ data class ValueSetExpansionContainsComponent(
      */
     val contains: List<ValueSetExpansionContainsComponent>? = null
 
-)
+) : BackboneElement

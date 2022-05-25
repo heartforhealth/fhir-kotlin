@@ -119,6 +119,15 @@ data class Organization(
 @Serializable
 data class OrganizationContactComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Indicates a purpose for which the contact can be reached.
      */
@@ -140,4 +149,4 @@ data class OrganizationContactComponent(
      */
     val address: Address? = null
 
-)
+) : BackboneElement

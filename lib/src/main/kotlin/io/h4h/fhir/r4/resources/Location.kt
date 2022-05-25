@@ -158,6 +158,15 @@ data class Location(
 @Serializable
 data class LocationPositionComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML (see notes below).
      */
@@ -173,10 +182,20 @@ data class LocationPositionComponent(
      */
     val altitude: Double? = null
 
-)
+) : BackboneElement
+
 
 @Serializable
 data class LocationHoursOfOperationComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * Indicates which days of the week are available between the start and end Times.
@@ -201,4 +220,4 @@ data class LocationHoursOfOperationComponent(
      */
     val closingTime: String? = null
 
-)
+) : BackboneElement

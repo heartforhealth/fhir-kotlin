@@ -163,6 +163,16 @@ data class ObservationDefinition(
 
 @Serializable
 data class ObservationDefinitionQuantitativeDetailsComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Customary unit used to report quantitative results of observations conforming to this ObservationDefinition.
      */
@@ -184,13 +194,23 @@ data class ObservationDefinitionQuantitativeDetailsComponent(
      * Number of digits after decimal separator when the results of such observations are of type Quantity.
      */
     val decimalPrecision: Int? = null
-)
+
+) : BackboneElement
 
 
 
 
 @Serializable
 data class ObservationDefinitionQualifiedIntervalComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * The category of interval of values for continuous or ordinal observations conforming to this ObservationDefinition.
@@ -237,4 +257,4 @@ data class ObservationDefinitionQualifiedIntervalComponent(
     val condition: String? = null
 
 
-)
+) : BackboneElement

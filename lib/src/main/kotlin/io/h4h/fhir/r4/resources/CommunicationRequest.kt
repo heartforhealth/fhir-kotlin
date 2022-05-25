@@ -186,6 +186,15 @@ data class CommunicationRequest(
 @Serializable
 data class CommunicationRequestPayloadComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * The communicated content (or for multi-part communications, one portion of the communication).
      */
@@ -193,7 +202,7 @@ data class CommunicationRequestPayloadComponent(
     val contentAttachment: Attachment? = null,
     val contentReference: Reference? = null
 
-)
+) : BackboneElement
 
 
 @Serializable

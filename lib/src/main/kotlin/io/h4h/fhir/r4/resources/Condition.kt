@@ -68,38 +68,38 @@ data class Condition(
 
     /**
      * The clinical status of the condition.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-clinical")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-clinical")
     val clinicalStatus: CodeableConcept? = null,
 
     /**
      * The verification status to support the clinical status of the condition.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-ver-status")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-ver-status")
     val verificationStatus: CodeableConcept? = null,
 
     /**
      * A category assigned to the condition.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-category")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-category")
     val category: List<CodeableConcept>? = null,
 
     /**
      * A subjective assessment of the severity of the condition as evaluated by the clinician.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-severity")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-severity")
     val severity: CodeableConcept? = null,
 
     /**
      * Identification of the condition, problem or diagnosis.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-code")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-code")
     val code: CodeableConcept? = null,
 
     /**
      * The anatomical location where this condition manifests itself.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/body-site")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/body-site")
     val bodySite: List<CodeableConcept>? = null,
 
     /**
@@ -171,10 +171,19 @@ data class Condition(
 @Serializable
 data class ConditionStageComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * A simple summary of the stage such as "Stage 3". The determination of the stage is disease-specific.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-stage")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-stage")
     val summary: CodeableConcept? = null,
 
     /**
@@ -184,20 +193,29 @@ data class ConditionStageComponent(
 
     /**
      * The kind of staging, such as pathological or clinical staging.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-stage-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-stage-type")
     val type: CodeableConcept? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class ConditionEvidenceComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * A manifestation or symptom that led to the recording of this condition.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/manifestation-or-symptom")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/manifestation-or-symptom")
     val code: List<CodeableConcept>? = null,
 
     /**
@@ -205,4 +223,4 @@ data class ConditionEvidenceComponent(
      */
     val detail: List<Reference>? = null
 
-)
+) : BackboneElement

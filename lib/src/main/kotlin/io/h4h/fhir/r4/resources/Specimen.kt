@@ -138,6 +138,16 @@ data class Specimen(
 
 @Serializable
 data class SpecimenCollectionComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Person who collected the specimen.
      */
@@ -179,12 +189,22 @@ data class SpecimenCollectionComponent(
     val fastingStatusCodeableConcept: CodeableConcept? = null,
     val fastingStatusDuration: Quantity? = null
 
-)
+) : BackboneElement
 
 
 
 @Serializable
 data class SpecimenProcessingComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Textual description of procedure.
      */
@@ -207,10 +227,21 @@ data class SpecimenProcessingComponent(
     val timeDateTime: String? = null,
     val timePeriod: Period? = null
 
-)
+) : BackboneElement
+
+
 
 @Serializable
 data class SpecimenContainerComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * Id for container. There may be multiple; a manufacturer's bar code, lab assigned identifier, etc. The container ID may differ from the specimen id in some circumstances.
@@ -245,4 +276,4 @@ data class SpecimenContainerComponent(
     val additiveCodeableConcept: CodeableConcept? = null,
     val additiveReference: Reference? = null
 
-)
+) : BackboneElement

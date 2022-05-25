@@ -137,6 +137,15 @@ data class Questionnaire(
 @Serializable
 data class QuestionnaireItemComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * An identifier that is unique within the Questionnaire allowing linkage to the equivalent item in a QuestionnaireResponse resource.
      */
@@ -228,11 +237,20 @@ data class QuestionnaireItemComponent(
      */
     val item: List<QuestionnaireItemComponent>? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class QuestionnaireItemEnableWhenComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * The linkId for the question whose answer (or lack of answer) governs whether this item is enabled.
@@ -260,11 +278,20 @@ data class QuestionnaireItemEnableWhenComponent(
     val answerQuantity: Quantity? = null,
     val answerReference: Reference? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class QuestionnaireItemAnswerOptionComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * A potential answer that's allowed as the answer to this question.
@@ -282,11 +309,20 @@ data class QuestionnaireItemAnswerOptionComponent(
      */
     val initialSelected: Boolean? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class QuestionnaireItemInitialComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * The actual value to for an initial answer.
@@ -305,7 +341,7 @@ data class QuestionnaireItemInitialComponent(
     val valueQuantity: Quantity? = null,
     val valueReference: Reference? = null
 
-)
+) : BackboneElement
 
 
 

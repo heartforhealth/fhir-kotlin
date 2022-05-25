@@ -37,6 +37,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class DiagnosisComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.
      */
@@ -53,4 +62,4 @@ data class DiagnosisComponent(
      */
     val rank: Int? = null
 
-)
+) : BackboneElement

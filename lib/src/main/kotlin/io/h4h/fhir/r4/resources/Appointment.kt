@@ -199,7 +199,7 @@ data class AppointmentParticipantComponent(
 
     /**
      * Role of participant in the appointment.
-     * // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/encounter-participant-type")
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/encounter-participant-type")
      */
     val type: List<CodeableConcept>? = null,
 
@@ -210,13 +210,13 @@ data class AppointmentParticipantComponent(
 
     /**
      * Whether this participant is required to be present at the meeting. This covers a use-case where two doctors need to meet to discuss the results for a specific patient, and the patient is not required to be present.
-     * // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/participantrequired")
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/participantrequired")
      */
     val required: ParticipantRequired? = null,
 
     /**
      * Participation status of the actor.
-     * // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/participationstatus")
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/participationstatus")
      */
     val status: ParticipationStatus? = null,
 

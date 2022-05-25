@@ -109,6 +109,15 @@ data class Substance(
 @Serializable
 data class SubstanceInstanceComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Identifier associated with the package/container (usually a label affixed directly).
      */
@@ -125,11 +134,21 @@ data class SubstanceInstanceComponent(
      */
     val quantity: Quantity? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class SubstanceIngredientComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * The amount of the ingredient in the substance - a concentration ratio.
      */
@@ -142,4 +161,4 @@ data class SubstanceIngredientComponent(
     val substanceCodeableConcept: CodeableConcept? = null,
     val substanceReference: Reference? = null
 
-)
+) : BackboneElement

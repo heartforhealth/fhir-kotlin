@@ -122,6 +122,15 @@ data class Provenance(
 @Serializable
 data class ProvenanceAgentComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * The participation the agent had with respect to the activity.
      */
@@ -144,11 +153,20 @@ data class ProvenanceAgentComponent(
      */
     val onBehalfOf: Reference? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class ProvenanceEntityComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * How the entity was used during the activity.
@@ -166,4 +184,4 @@ data class ProvenanceEntityComponent(
      */
     val agent: List<ProvenanceAgentComponent>? = null
 
-)
+) : BackboneElement

@@ -252,6 +252,15 @@ data class PlanDefinitionGoalTargetComponent(
 @Serializable
 data class PlanDefinitionActionComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * A user-visible prefix for the action.
      */
@@ -402,11 +411,20 @@ data class PlanDefinitionActionComponent(
      */
     val action: List<PlanDefinitionActionComponent>? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class PlanDefinitionActionConditionComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * The kind of condition.
@@ -419,11 +437,20 @@ data class PlanDefinitionActionConditionComponent(
      */
     val expression: Expression? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class PlanDefinitionActionRelatedActionComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * The element id of the related action.
@@ -443,11 +470,21 @@ data class PlanDefinitionActionRelatedActionComponent(
     val offsetRange: Range? = null
 
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class PlanDefinitionActionParticipantComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * The type of participant in the action.
      */
@@ -460,11 +497,20 @@ data class PlanDefinitionActionParticipantComponent(
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-participant-role")
     val role: CodeableConcept? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class PlanDefinitionActionDynamicValueComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * The path to the element to be customized. This is the path on the resource that will hold the result of the calculation defined by the expression. The specified path SHALL be a FHIRPath resolveable on the specified target type of the ActivityDefinition, and SHALL consist only of identifiers, constant indexers, and a restricted subset of functions. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full details).
@@ -476,4 +522,4 @@ data class PlanDefinitionActionDynamicValueComponent(
      */
     val expression: Expression? = null
 
-)
+) : BackboneElement

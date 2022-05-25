@@ -221,8 +221,8 @@ data class ObservationComponent(
 
     /**
      * Describes what was observed. Sometimes this is called the observation "code".
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-codes")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-codes")
     val code: CodeableConcept? = null,
 
     /**
@@ -242,14 +242,14 @@ data class ObservationComponent(
 
     /**
      * Provides a reason why the expected value in the element Observation.component.value[x] is missing.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/data-absent-reason")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/data-absent-reason")
     val dataAbsentReason: CodeableConcept? = null,
 
     /**
      * A categorical assessment of an observation value.  For example, high, low, normal.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-interpretation")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-interpretation")
     val interpretation: List<CodeableConcept>? = null,
 
     /**
@@ -285,14 +285,14 @@ data class ObservationReferenceRangeComponent(
 
     /**
      * Codes to indicate the what part of the targeted reference population it applies to. For example, the normal or therapeutic range.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/referencerange-meaning")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/referencerange-meaning")
     val type: CodeableConcept? = null,
 
     /**
      * Codes to indicate the target population this reference range applies to.  For example, a reference range may be based on the normal population or a particular sex or race.  Multiple `appliesTo`  are interpreted as an "AND" of the target populations.  For example, to represent a target population of African American females, both a code of female and a code for African American would be used.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/referencerange-appliesto")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/referencerange-appliesto")
     val appliesTo: List<CodeableConcept>? = null,
 
     /**

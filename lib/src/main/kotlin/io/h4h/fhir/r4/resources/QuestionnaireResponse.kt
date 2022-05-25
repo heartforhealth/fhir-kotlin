@@ -126,6 +126,15 @@ data class QuestionnaireResponse(
 @Serializable
 data class QuestionnaireResponseItemComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * The item from the Questionnaire that corresponds to this item in the QuestionnaireResponse resource.
      */
@@ -151,16 +160,25 @@ data class QuestionnaireResponseItemComponent(
      */
     val item: List<QuestionnaireResponseItemComponent>? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 class QuestionnaireResponseItemAnswerComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * The answer (or one of the answers) provided by the respondent to the question.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers")
     val valueBoolean: Boolean? = null,
     val valueDecimal: Double? = null,
     val valueInteger: Int? = null,
@@ -179,7 +197,7 @@ class QuestionnaireResponseItemAnswerComponent(
      */
     val item: List<QuestionnaireResponseItemComponent>? = null
 
-)
+) : BackboneElement
 
 
 @Serializable

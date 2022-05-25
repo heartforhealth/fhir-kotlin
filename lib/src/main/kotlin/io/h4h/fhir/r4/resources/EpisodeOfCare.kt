@@ -132,6 +132,15 @@ data class EpisodeOfCare(
 @Serializable
 data class EpisodeOfCareStatusHistoryComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * planned | waitlist | active | onhold | finished | cancelled.
      */
@@ -143,6 +152,6 @@ data class EpisodeOfCareStatusHistoryComponent(
      */
     val period: Period? = null
 
-)
+) : BackboneElement
 
 

@@ -93,20 +93,20 @@ data class CarePlan(
 
     /**
      * Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/request-status")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/request-status")
     val status: CarePlanStatus? = null,
 
     /**
      * Indicates the level of authority/intentionality associated with the care plan and where the care plan fits into the workflow chain.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/care-plan-intent")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/care-plan-intent")
     val intent: CarePlanIntent? = null,
 
     /**
      * Identifies what "kind" of plan this is to support differentiation between multiple co-existing plans; e.g. "Home health", "psychiatric", "asthma", "disease management", "wellness plan", etc.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/care-plan-category")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/care-plan-category")
     val category: List<CodeableConcept>? = null,
 
     /**
@@ -186,10 +186,19 @@ data class CarePlan(
 @Serializable
 data class CarePlanActivityComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Identifies the outcome at the point when the status of the activity is assessed.  For example, the outcome of an education activity could be patient understands (or not).
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/care-plan-activity-outcome")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/care-plan-activity-outcome")
     val outcomeCodeableConcept: List<CodeableConcept>? = null,
 
     /**
@@ -213,16 +222,26 @@ data class CarePlanActivityComponent(
      */
     val detail: CarePlanActivityDetailComponent? = null
 
-)
+) : BackboneElement
 
 
 @Serializable
 data class CarePlanActivityDetailComponent(
 
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * A description of the kind of resource the in-line definition of a care plan activity is representing.  The CarePlan.activity.detail is an in-line definition when a resource is not referenced using CarePlan.activity.reference.  For example, a MedicationRequest, a ServiceRequest, or a CommunicationRequest.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/care-plan-activity-kind")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/care-plan-activity-kind")
+    //
     val kind: CarePlanActivityKind? = null,
 
     /**
@@ -237,14 +256,14 @@ data class CarePlanActivityDetailComponent(
 
     /**
      * Detailed description of the type of planned activity; e.g. what lab test, what procedure, what kind of encounter.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/procedure-code")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/procedure-code")
     val code: CodeableConcept? = null,
 
     /**
      * Provides the rationale that drove the inclusion of this particular activity as part of the plan or the reason why the activity was prohibited.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/clinical-findings")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/clinical-findings")
     val reasonCode: List<CodeableConcept>? = null,
 
     /**
@@ -259,8 +278,8 @@ data class CarePlanActivityDetailComponent(
 
     /**
      * Identifies what progress is being made for the specific activity.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/care-plan-activity-status")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/care-plan-activity-status")
     val status: CarePlanActivityStatus? = null,
 
     /**
@@ -292,8 +311,8 @@ data class CarePlanActivityDetailComponent(
 
     /**
      * Identifies the food, drug or other product to be consumed or supplied in the activity.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/medication-codes")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/medication-codes")
     val productCodeableConcept: CodeableConcept? = null,
     val productReference: Reference? = null,
 
@@ -312,7 +331,7 @@ data class CarePlanActivityDetailComponent(
      */
     val description: String? = null
 
-)
+) : BackboneElement
 
 
 

@@ -207,6 +207,16 @@ data class StatusHistoryComponent(
 
 @Serializable
 data class ClassHistoryComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * inpatient | outpatient | ambulatory | emergency +.
      */
@@ -218,10 +228,20 @@ data class ClassHistoryComponent(
      */
     val period: Period? = null
 
-)
+) : BackboneElement
+
 
 @Serializable
 data class EncounterParticipantComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * Role of participant in encounter.
@@ -239,10 +259,20 @@ data class EncounterParticipantComponent(
      */
     val individual: Reference? = null
 
-)
+) : BackboneElement
+
 
 @Serializable
 data class EncounterHospitalizationComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * Pre-admission identifier.
@@ -295,10 +325,20 @@ data class EncounterHospitalizationComponent(
     // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/encounter-discharge-disposition")
     val dischargeDisposition: CodeableConcept? = null
 
-)
+) : BackboneElement
+
 
 @Serializable
 data class EncounterLocationComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * The location where the encounter takes place.
@@ -322,4 +362,4 @@ data class EncounterLocationComponent(
      */
     val period: Period? = null
 
-)
+) : BackboneElement
