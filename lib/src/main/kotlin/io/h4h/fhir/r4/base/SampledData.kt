@@ -39,6 +39,15 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class SampledData(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override val extension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.
      */
@@ -75,4 +84,4 @@ data class SampledData(
     val data: String? = null
 
 
-)
+) : Element
