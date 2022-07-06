@@ -1,6 +1,8 @@
 package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
+import io.h4h.fhir.r4.serializers.InstantSerializer
+import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -104,7 +106,8 @@ data class RiskAssessment(
     /**
      * The date (and possibly time) the risk assessment was performed.
      */
-    val occurrenceDateTimeType: String? = null,
+    @Serializable(with= InstantSerializer::class)
+    val occurrenceDateTime: Instant? = null,
     val occurrencePeriod: Period? = null,
 
     /**

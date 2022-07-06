@@ -2,6 +2,8 @@ package io.h4h.fhir.r4.resources
 
 
 import io.h4h.fhir.r4.base.*
+import io.h4h.fhir.r4.serializers.InstantSerializer
+import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 
 /*
@@ -110,10 +112,13 @@ data class Observation(
     /**
      * The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the "physiologically relevant time". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.
      */
-    val effectiveDateTime: String? = null,
+    @Serializable(with=InstantSerializer::class)
+    val effectiveDateTime: Instant? = null,
+    @Serializable(with=InstantSerializer::class)
+    val effectiveInstant: Instant? = null,
+
     val effectivePeriod: Period? = null,
     val effectiveTiming: Timing? = null,
-    val effectiveInstant: String? = null,
 
 
     /**

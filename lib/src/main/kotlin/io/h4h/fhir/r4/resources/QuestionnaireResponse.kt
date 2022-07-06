@@ -1,6 +1,8 @@
 package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
+import io.h4h.fhir.r4.serializers.InstantSerializer
+import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 
 /*
@@ -82,8 +84,8 @@ data class QuestionnaireResponse(
 
     /**
      * The position of the questionnaire response within its overall lifecycle.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers-status")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers-status")
     val status: QuestionnaireResponseStatus? = null,
 
     /**
@@ -101,7 +103,8 @@ data class QuestionnaireResponse(
     /**
      * The date and/or time that this set of answers were last changed.
      */
-    val authored: String? = null,
+    @Serializable(with= InstantSerializer::class)
+    val authored: Instant? = null,
 
     /**
      * Person who received the answers to the questions in the QuestionnaireResponse and recorded them in the system.
@@ -112,7 +115,6 @@ data class QuestionnaireResponse(
      * The person who answered the questions about the subject.
      */
     val source: Reference? = null,
-
 
     /**
      * A group or question item from the original questionnaire for which answers are provided.

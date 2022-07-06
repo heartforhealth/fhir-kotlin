@@ -1,6 +1,8 @@
 package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
+import io.h4h.fhir.r4.serializers.InstantSerializer
+import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -131,12 +133,14 @@ data class Appointment(
     /**
      * Date/Time that the appointment is to take place.
      */
-    val start: String? = null,
+    @Serializable(with= InstantSerializer::class)
+    val start: Instant? = null,
 
     /**
      * Date/Time that the appointment is to conclude.
      */
-    val end: String? = null,
+    @Serializable(with= InstantSerializer::class)
+    val end: Instant? = null,
 
     /**
      * Number of minutes that the appointment is to take. This can be less than the duration between the start and end times.  For example, where the actual time of appointment is only an estimate or if a 30 minute appointment is being requested, but any time would work.  Also, if there is, for example, a planned 15 minute break in the middle of a long appointment, the duration may be 15 minutes less than the difference between the start and end.

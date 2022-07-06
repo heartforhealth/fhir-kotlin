@@ -8,7 +8,7 @@ import kotlin.test.Test
 class AppointmentTest : ResourceTest() {
 
 
-    @Test fun deserializeSerializeQuestionnaire() =
+    @Test fun deserializeSerializeAppointment() =
         deserializeSerializeResource<Appointment>("appointment1.json")
 
 

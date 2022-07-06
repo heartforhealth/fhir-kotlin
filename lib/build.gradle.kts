@@ -8,7 +8,7 @@
 
 
 group = "io.h4h"
-version = "0.1.9"
+version = "0.1.9-alpha2"
 
 
 
@@ -71,7 +71,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // base definitions of FHIR data structures
-    api("io.h4h:fhir-base-kotlin:0.1.2")
+    api("io.h4h:fhir-base-kotlin:0.1.3-alpha1")
 
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm
@@ -82,6 +82,9 @@ dependencies {
 
     // kotlin serialization
     testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+    // mongo serialization
+    testImplementation("com.github.jershell:kbson:0.4.4")
+    testImplementation("org.mongodb:bson:4.5.0")
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
