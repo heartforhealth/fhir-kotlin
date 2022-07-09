@@ -46,7 +46,7 @@ data class ContactDetail(
      * Element requirements
      */
     override val id: String,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     // ============================================================
     // ============================================================
 

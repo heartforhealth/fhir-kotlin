@@ -8,7 +8,7 @@
 
 
 group = "io.h4h"
-version = "0.1.9-alpha2"
+version = "0.1.9-alpha3"
 
 
 
@@ -65,7 +65,7 @@ repositories {
 
 dependencies {
     // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.6.21"))
 
     // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -77,17 +77,13 @@ dependencies {
     // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm
     api("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.3.3")
 
-    // Use the Kotlin test library.
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    // Use the Kotlin JUnit integration.
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
-    // kotlin serialization
+    // serialization
     testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
-    // mongo serialization
     testImplementation("com.github.jershell:kbson:0.4.4")
     testImplementation("org.mongodb:bson:4.5.0")
-
-    // Use the Kotlin JUnit integration.
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }
 
 
@@ -100,3 +96,6 @@ tasks.jar {
     archiveBaseName.set(rootProject.name)
 }
 
+tasks.withType<Test> {
+    useJUnitPlatform()
+}

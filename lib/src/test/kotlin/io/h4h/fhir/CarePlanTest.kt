@@ -5,16 +5,16 @@ import io.h4h.fhir.r4.resources.CarePlan
 import kotlin.test.Test
 
 
-class CarePlanTest : ResourceTest() {
+class CarePlanTest : SerializerTest() {
 
 
     @Test
     fun deserializeSerializeCarePlan1() =
-        deserializeSerializeResource<CarePlan>("carePlan1.json")
+        kotlinxDeserializeSerializeResource<CarePlan>("carePlan1.json")
 
     @Test
     fun deserializeSerializeCarePlan2() =
-        deserializeSerializeResource<CarePlan>("carePlan2.json")
+        kotlinxDeserializeSerializeResource<CarePlan>("carePlan2.json")
 
 
 }

@@ -1,22 +1,20 @@
 package io.h4h.fhir
 
-import com.github.jershell.kbson.*
 import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.r4.resources.Observation
 import io.h4h.fhir.r4.resources.ObservationComponent
 import io.h4h.fhir.utils.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
-import java.util.*
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.fail
 
-class ObservationTest : ResourceTest() {
+class ObservationTest : SerializerTest() {
 
     @Test
     fun deserializeSerializeObservation1() =
-        deserializeSerializeResource<Observation>("observation1.json")
+        kotlinxDeserializeSerializeResource<Observation>("observation1.json")
 
 
     @Test fun testMongoSerialization() {

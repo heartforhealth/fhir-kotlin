@@ -54,7 +54,7 @@ data class PlanDefinition(
     override val language: String? = null,
     override val text: Narrative? = null,
     // override val contained: List<Resource>? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
 
 
@@ -256,7 +256,7 @@ data class PlanDefinitionActionComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
@@ -421,7 +421,7 @@ data class PlanDefinitionActionConditionComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
@@ -447,7 +447,7 @@ data class PlanDefinitionActionRelatedActionComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
@@ -480,7 +480,7 @@ data class PlanDefinitionActionParticipantComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
@@ -507,7 +507,7 @@ data class PlanDefinitionActionDynamicValueComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================

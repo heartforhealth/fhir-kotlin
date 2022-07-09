@@ -41,7 +41,7 @@ data class DiagnosisComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================

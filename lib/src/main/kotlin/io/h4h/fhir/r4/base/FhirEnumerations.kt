@@ -867,6 +867,7 @@ enum class ContactPointUse : CodeableEnumeration {
 
 @Serializable
 enum class DayOfWeek : CodeableEnumeration {
+
     /**
      * Monday.
      */
@@ -900,12 +901,7 @@ enum class DayOfWeek : CodeableEnumeration {
     /**
      * Sunday.
      */
-    SUN,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
+    SUN;
 
     override val code: String?
         get() = when (this) {
@@ -916,21 +912,10 @@ enum class DayOfWeek : CodeableEnumeration {
             FRI -> "fri"
             SAT -> "sat"
             SUN -> "sun"
-            NULL -> null
         }
 
 
-    override val system: String?
-        get() = when (this) {
-            MON -> "http://hl7.org/fhir/days-of-week"
-            TUE -> "http://hl7.org/fhir/days-of-week"
-            WED -> "http://hl7.org/fhir/days-of-week"
-            THU -> "http://hl7.org/fhir/days-of-week"
-            FRI -> "http://hl7.org/fhir/days-of-week"
-            SAT -> "http://hl7.org/fhir/days-of-week"
-            SUN -> "http://hl7.org/fhir/days-of-week"
-            NULL -> null
-        }
+    override val system = "http://hl7.org/fhir/days-of-week"
 
 
     override val definition: String?
@@ -942,7 +927,6 @@ enum class DayOfWeek : CodeableEnumeration {
             FRI -> "Friday."
             SAT -> "Saturday."
             SUN -> "Sunday."
-            NULL -> null
         }
 
 
@@ -955,7 +939,6 @@ enum class DayOfWeek : CodeableEnumeration {
             FRI -> "Friday"
             SAT -> "Saturday"
             SUN -> "Sunday"
-            NULL -> null
         }
 
 }
@@ -963,6 +946,7 @@ enum class DayOfWeek : CodeableEnumeration {
 
 @Serializable
 enum class DaysOfWeek : CodeableEnumeration {
+
     /**
      * Monday.
      */
@@ -996,12 +980,7 @@ enum class DaysOfWeek : CodeableEnumeration {
     /**
      * Sunday.
      */
-    SUN,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
+    SUN;
 
 
     override val code: String?
@@ -1013,21 +992,10 @@ enum class DaysOfWeek : CodeableEnumeration {
             FRI -> "fri"
             SAT -> "sat"
             SUN -> "sun"
-            NULL -> null
         }
 
 
-    override val system: String?
-        get() = when (this) {
-            MON -> "http://hl7.org/fhir/days-of-week"
-            TUE -> "http://hl7.org/fhir/days-of-week"
-            WED -> "http://hl7.org/fhir/days-of-week"
-            THU -> "http://hl7.org/fhir/days-of-week"
-            FRI -> "http://hl7.org/fhir/days-of-week"
-            SAT -> "http://hl7.org/fhir/days-of-week"
-            SUN -> "http://hl7.org/fhir/days-of-week"
-            NULL -> null
-        }
+    override val system = "http://hl7.org/fhir/days-of-week"
 
 
     override val definition: String?
@@ -1039,7 +1007,6 @@ enum class DaysOfWeek : CodeableEnumeration {
             FRI -> "Friday."
             SAT -> "Saturday."
             SUN -> "Sunday."
-            NULL -> null
         }
 
 
@@ -1052,7 +1019,6 @@ enum class DaysOfWeek : CodeableEnumeration {
             FRI -> "Friday"
             SAT -> "Saturday"
             SUN -> "Sunday"
-            NULL -> null
         }
     
 }
@@ -1188,12 +1154,7 @@ enum class EventTiming : CodeableEnumeration {
     /**
      * null
      */
-    PCV,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
+    PCV;
 
     override val code: String?
         get() = when (this) {
@@ -1223,7 +1184,6 @@ enum class EventTiming : CodeableEnumeration {
             PCM -> "PCM"
             PCD -> "PCD"
             PCV -> "PCV"
-            NULL -> null
         }
 
 
@@ -1255,7 +1215,6 @@ enum class EventTiming : CodeableEnumeration {
             PCM -> "http://terminology.hl7.org/CodeSystem/v3-TimingEvent"
             PCD -> "http://terminology.hl7.org/CodeSystem/v3-TimingEvent"
             PCV -> "http://terminology.hl7.org/CodeSystem/v3-TimingEvent"
-            NULL -> null
         }
 
 
@@ -1287,7 +1246,6 @@ enum class EventTiming : CodeableEnumeration {
             PCM -> ""
             PCD -> ""
             PCV -> ""
-            NULL -> null
         }
 
 
@@ -1319,7 +1277,6 @@ enum class EventTiming : CodeableEnumeration {
             PCM -> "PCM"
             PCD -> "PCD"
             PCV -> "PCV"
-            NULL -> null
         }
 
 

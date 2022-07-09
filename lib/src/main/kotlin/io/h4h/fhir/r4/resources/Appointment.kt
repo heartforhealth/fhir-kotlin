@@ -58,7 +58,7 @@ data class Appointment(
     override val language: String? = null,
     override val text: Narrative? = null,
     // override val contained: List<Resource>? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
@@ -195,7 +195,7 @@ data class AppointmentParticipantComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================

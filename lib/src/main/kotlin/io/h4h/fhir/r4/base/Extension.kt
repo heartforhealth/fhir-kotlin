@@ -89,13 +89,34 @@ data class Extension(
     val valueReference: Reference? = null,
     val valueSampledData: SampledData? = null,
     val valueSignature: Signature? = null,
+    val valueString: String? = null,
     val valueTiming: Timing? = null,
     val valueTime: String? = null,
     // val valueTriggerDefinition: TriggerDefinition? = null,
     val valueUnsignedInt: Int? = null,
     val valueUri: String? = null,
     val valueUrl: String? = null,
-    val valueUsageContext: UsageContext? = null
+    val valueUsageContext: UsageContext? = null,
+    val valueUuid: String? = null
 
 
-)
+) {
+
+    /// 2 extensions with the same URL are considered equal
+    override fun equals(other: Any?): Boolean {
+        return when (other) {
+            is Extension -> {
+                (this.url == other.url)
+            }
+            else -> false
+        }
+    }
+
+    /// we only care about the url value
+    override fun hashCode(): Int {
+        var result = url?.hashCode() ?: 0
+        result = 31 * result + (url?.hashCode() ?: 0)
+        return result
+    }
+
+}

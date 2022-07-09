@@ -55,7 +55,7 @@ data class ValueSet(
     override val language: String? = null,
     override val text: Narrative? = null,
     // override val contained: List<Resource>? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
 
 
@@ -175,7 +175,7 @@ data class ConceptReferenceComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
@@ -205,7 +205,7 @@ data class ConceptReferenceDesignationComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
@@ -237,7 +237,7 @@ data class ConceptSetFilterComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
@@ -268,7 +268,7 @@ data class ValueSetExpansionComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
@@ -314,7 +314,7 @@ data class ValueSetExpansionParameterComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================
@@ -345,7 +345,7 @@ data class ValueSetExpansionContainsComponent(
     // BackboneElement requirements
     // ============================================================
     override val id: String? = null,
-    override val extension: List<Extension>? = null,
+    override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
     // ============================================================

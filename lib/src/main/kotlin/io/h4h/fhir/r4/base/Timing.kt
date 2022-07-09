@@ -1,6 +1,9 @@
 package io.h4h.fhir.r4.base
 
+import kotlinx.datetime.Month
 import kotlinx.serialization.Serializable
+import java.time.MonthDay
+import java.time.temporal.ChronoField
 
 
 /*
@@ -40,6 +43,14 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Timing(
 
+    // ============================================================
+    // Element requirements
+    // ============================================================
+    override val id: String? = null,
+    override var extension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
     /**
      * Identifies specific times when the event occurs.
      */
@@ -56,10 +67,19 @@ data class Timing(
      */
     val code: CodeableConcept? = null
 
-)
+) : Element
+
 
 @Serializable
 data class TimingRepeatComponent(
+
+    // ============================================================
+    // Element requirements
+    // ============================================================
+    override val id: String? = null,
+    override var extension: MutableList<Extension>? = null,
+    // ============================================================
+    // ============================================================
 
     /**
      * Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.
@@ -143,4 +163,113 @@ data class TimingRepeatComponent(
      */
     val offset: Int? = null
 
-)
+) : Element
+
+
+
+
+// ============================================================
+// TimingRepeatComponent extensions
+// ============================================================
+private const val daysOfMonthExtension = "daysOfMonth"
+private const val monthsOfYearExtension = "monthsOfYear"
+
+
+var TimingRepeatComponent.daysOfMonth: List<Int>
+    get() {
+        return when (val value = extension?.getString(daysOfMonthExtension)) {
+            null -> listOf()
+            else -> value.split(",").map { it.toInt() }
+        }
+    }
+    set(days) {
+        // guard
+        for (day in days) {
+            // check if day is valid, if not it will throw
+            ChronoField.DAY_OF_MONTH.checkValidValue(day.toLong())
+        }
+        // new extension
+        val extension = Extension(url = daysOfMonthExtension, valueString = days.joinToString())
+        // add the new extension
+        upsert(extension)
+    }
+
+
+
+var TimingRepeatComponent.monthsOfYear: List<Month>
+    get() {
+        return when (val value = extension?.getString(monthsOfYearExtension)) {
+            null -> listOf()
+            else -> value.split(",").map { Month.valueOf(it) }
+        }
+    }
+    set(months) {
+        // new extension
+        val extension = Extension(url = monthsOfYearExtension, valueString = months.joinToString())
+        // add the new extension
+        upsert(extension)
+    }
+
+
+
+
+// ==========================================================================
+// TimingException
+// ==========================================================================
+
+class TimingException(message: String) : IllegalStateException(message)
+
+
+
+// ==========================================================================
+// Validation
+// ==========================================================================
+
+/**
+ * When the event is to occur:
++ Rule: if there's a duration, there needs to be duration units
++ Rule: if there's a period, there needs to be period units
++ Rule: If there's a timeOfDay, there cannot be a when, or vice versa
+
++ TODO: Rule: duration SHALL be a non-negative value
++ TODO: Rule: period SHALL be a non-negative value
++ TODO: Rule: If there's a periodMax, there must be a period
++ TODO: Rule: If there's a durationMax, there must be a duration
++ TODO: Rule: If there's a countMax, there must be a count
++ TODO: Rule: If there's an offset, there must be a when (and not C, CM, CD, CV)
+ */
+fun Timing.validate() {
+    // guard
+    val repeat = this.repeat ?: return
+
+    when {
+        // Rule: if there's a duration, there needs to be duration units
+        (repeat.duration != null && repeat.durationUnit == null)
+        -> throw TimingException("Rule: if there's a duration, there needs to be duration units, and vice versa")
+        // Rule: if there's a duration, there needs to be duration units
+        (repeat.duration == null && repeat.durationUnit != null)
+        -> throw TimingException("Rule: if there's a duration, there needs to be duration units, and vice versa")
+
+        // Rule: if there's a period, there needs to be period units
+        (repeat.period != null && repeat.periodUnit == null)
+        -> throw TimingException("Rule: if there's a period, there needs to be period units, and vice versa")
+        // Rule: if there's a period, there needs to be period units
+        (repeat.period == null && repeat.periodUnit != null)
+        -> throw TimingException("Rule: if there's a period, there needs to be period units, and vice versa")
+
+        // Rule: If there's a timeOfDay, there cannot be a when, or vice versa
+        (repeat.timeOfDay != null && repeat.`when` != null)
+        -> throw TimingException("Rule: If there's a timeOfDay, there cannot be a when, or vice versa")
+
+        // Assumption 1: frequency exists when there is some bound specified
+        (repeat.frequency != null && repeat.period == null && repeat.boundsPeriod == null)
+        -> throw TimingException("Assumption: frequency exists solely within some period/bounds")
+    }
+
+    // fields that are not implemented
+    repeat.boundsDuration?.let { throw NotImplementedError("Timing 'boundsDuration' not implemented") }
+    repeat.boundsRange?.let { throw NotImplementedError("Timing 'boundsRange' not implemented") }
+
+    // TODO: parse this.code TimingAbbreviation
+    code?.let { throw NotImplementedError("Timing 'code' (TimingAbbreviation) not implemented") }
+}

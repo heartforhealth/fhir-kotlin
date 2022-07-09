@@ -1,25 +1,32 @@
 package io.h4h.fhir.utils
 
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
-import java.time.LocalDate
-import java.time.ZoneId
-import java.util.*
+
+import io.h4h.fhir.r4.base.Period
+import kotlinx.datetime.*
+import java.util.UUID
 import kotlin.random.Random
 
 
 
-fun randomDate(): Date {
-    // 3 months ago until now
-    val startDate = Date.from(LocalDate.now().minusMonths(3).atStartOfDay(ZoneId.systemDefault()).toInstant())
-    val endDate = Date()
-
-    // random date
-    val randomMillisSinceEpoch = Random.nextLong(from = startDate.time, until = endDate.time)
-    return Date(randomMillisSinceEpoch)
-}
 
 fun randomUUID(): String = UUID.randomUUID().toString()
 
 
+// ==========================================================================
+// Date/Time helpers
+// ==========================================================================
+
 fun now(): Instant = Clock.System.now()
+
+
+/**
+ * Generates a period that contains the 'date' param. If 'date' is null, the current date is chosen
+ */
+fun periodThatIncludesDate(date: Instant = now()): Period {
+    val minusDays = Random.nextInt(10, 30)
+    val plusDays = Random.nextInt(10, 30)
+    return Period(
+        date.minus(minusDays, DateTimeUnit.DAY, TimeZone.currentSystemDefault()).toString(),
+        date.plus(plusDays, DateTimeUnit.DAY, TimeZone.currentSystemDefault()).toString()
+    )
+}

@@ -7,14 +7,14 @@ import io.h4h.fhir.r4.resources.Questionnaire
 import kotlin.test.Test
 
 
-class QuestionnaireTest : ResourceTest() {
+class QuestionnaireTest : SerializerTest() {
 
 
     @Test fun deserializeSerializeQuestionnaire1() =
-        deserializeSerializeResource<Questionnaire>("questionnaire1.json")
+        kotlinxDeserializeSerializeResource<Questionnaire>("questionnaire1.json")
 
     @Test fun deserializeSerializeQuestionnaire2() =
-        deserializeSerializeResource<Questionnaire>("questionnaire2.json")
+        kotlinxDeserializeSerializeResource<Questionnaire>("questionnaire2.json")
 
 
 }

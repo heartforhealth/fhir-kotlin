@@ -5,11 +5,11 @@ import io.h4h.fhir.r4.resources.Appointment
 import kotlin.test.Test
 
 
-class AppointmentTest : ResourceTest() {
+class AppointmentTest : SerializerTest() {
 
 
     @Test fun deserializeSerializeAppointment() =
-        deserializeSerializeResource<Appointment>("appointment1.json")
+        kotlinxDeserializeSerializeResource<Appointment>("appointment1.json")
 
 
 }

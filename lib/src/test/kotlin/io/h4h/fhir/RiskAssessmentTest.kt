@@ -5,11 +5,11 @@ import io.h4h.fhir.r4.resources.RiskAssessment
 import kotlin.test.Test
 
 
-class RiskAssessmentTest : ResourceTest() {
+class RiskAssessmentTest : SerializerTest() {
 
 
     @Test fun deserializeSerializeRiskAssessment1() =
-        deserializeSerializeResource<RiskAssessment>("riskAssessment1.json")
+        kotlinxDeserializeSerializeResource<RiskAssessment>("riskAssessment1.json")
 
 
 }
