@@ -84,6 +84,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
     testImplementation("com.github.jershell:kbson:0.4.4")
     testImplementation("org.mongodb:bson:4.5.0")
+    testImplementation("ca.uhn.hapi.fhir:hapi-fhir-structures-r4:6.0.2")
 }
 
 
@@ -98,4 +99,10 @@ tasks.jar {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+
+    minHeapSize = "2048m"
+    maxHeapSize = "4096m"
+    // jvmArgs = listOf("-XX:MaxPermSize=2048m")
+    // set JVM arguments for the test JVM(s)
 }
+
