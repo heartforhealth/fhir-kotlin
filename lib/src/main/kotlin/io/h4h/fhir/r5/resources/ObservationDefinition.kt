@@ -1,8 +1,9 @@
-package io.h4h.fhir.r4.resources
+package io.h4h.fhir.r5.resources
 
 import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.r4.codesystems.AdministrativeGender
 import kotlinx.serialization.Serializable
+
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -37,8 +38,6 @@ import kotlinx.serialization.Serializable
 
 
 
-
-
 /**
  * Set of definitional characteristics for a kind of observation or measurement produced or consumed by an orderable health care service.
  */
@@ -50,7 +49,7 @@ data class ObservationDefinition(
     // ============================================================
     // ============================================================
     /**
-     * DomainResource requirements
+     * DomainResource + Resource requirements
      * These are required for all resources
      */
     override val id: String,
@@ -63,6 +62,132 @@ data class ObservationDefinition(
     override var extension: MutableList<Extension>? = null,
     override val modifierExtension: List<Extension>? = null,
     // ============================================================
+    // ============================================================
+
+    /**
+     * Logical canonical URL to reference this ObservationDefinition (globally unique)
+     * */
+    val url: String? = null,
+
+    /**
+     * Business version of the ObservationDefinition
+     * */
+    val version: String? = null,
+
+    /**
+     * Name for this ObservationDefinition (computer friendly)
+     * */
+    val name: String? = null,
+
+    /**
+     * Name for this ObservationDefinition (human friendly)
+     * */
+    val title: String? = null,
+
+    /**
+     * The current state of the ObservationDefinition.
+     * */
+    val status: PublicationStatus? = null,
+
+    /**
+     * A flag to indicate that this ObservationDefinition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+     * */
+    val experimental: Boolean? = null,
+
+    /**
+     * The date (and optionally time) when the ObservationDefinition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the ObservationDefinition changes.
+     * */
+    val date: String? = null,
+
+    /**
+     * Helps establish the "authority/credibility" of the ObservationDefinition. May also allow for contact.
+     */
+    val publisher: Reference? = null,
+
+    /**
+     * Contact details to assist a user in finding and communicating with the publisher.
+     * */
+    val contact: List<ContactDetail>? = null,
+
+    /**
+     * Natural language description of the ObservationDefinition
+     * */
+    val description: String? = null,
+
+    /**
+     * Content intends to support these contexts
+     * */
+    val useContext: List<UsageContext>? = null,
+
+    /**
+     * Intended jurisdiction for this ObservationDefinition (if applicable)
+     * */
+    val jurisdiction: List<CodeableConcept>? = null,
+
+    /**
+     * Why this ObservationDefinition is defined
+     * */
+    val purpose: String? = null,
+
+    /**
+     * Use and/or publishing restrictions
+     * */
+    val copyright: String? = null,
+
+    /**
+     * When ObservationDefinition was approved by publisher
+     * */
+    val approvalDate: String? = null,
+
+    /**
+     * Date on which the asset content was last reviewed
+     * */
+    val lastReviewDate: String? = null,
+
+    /**
+     * The effective date range for the ObservationDefinition
+     * */
+    val effectivePeriod: Period? = null,
+
+    /**
+     * Based on FHIR definition of another observation
+     * */
+    val derivedFromCanonical: List<String>? = null,
+
+    /**
+     * Based on external definition
+     * */
+    val derivedFromUri: List<String>? = null,
+
+    /**
+     * Type of subject for the defined observation
+     * */
+    val subject: List<CodeableConcept>? = null,
+
+    /**
+     * Desired kind of performer for such kind of observation
+     * */
+    val performerType: CodeableConcept? = null,
+
+    /**
+     * Body part to be observed
+     * */
+    val bodySite: CodeableConcept? = null,
+
+    /**
+     * Kind of specimen used by this type of observation
+     * */
+    val specimen: List<Reference>? = null,
+
+    /**
+     * Measurement device or model of device
+     * */
+    val device: List<Reference>? = null,
+
+
+
+    // ============================================================
+    // common with R4
     // ============================================================
 
 
@@ -111,29 +236,19 @@ data class ObservationDefinition(
     val quantitativeDetails: ObservationDefinitionQuantitativeDetailsComponent? = null,
 
     /**
-     * Multiple  ranges of results qualified by different contexts for ordinal or continuous observations conforming to this ObservationDefinition.
+     * A set of qualified values associated with a context and a set of conditions - provides a range for quantitative and ordinal observations and a collection of value sets for qualitative observations.
      */
-    val qualifiedInterval: List<ObservationDefinitionQualifiedIntervalComponent>? = null,
+    val qualifiedValue: List<ObservationDefinitionQualifiedValueComponent>? = null,
 
     /**
-     * The set of valid coded results for the observations  conforming to this ObservationDefinition.
-     */
-    val validCodedValueSet: Reference? = null,
+     * This ObservationDefinition defines a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.
+     * */
+    val hasMember: List<Reference>? = null,
 
     /**
-     * The set of normal coded results for the observations conforming to this ObservationDefinition.
-     */
-    val normalCodedValueSet: Reference? = null,
-
-    /**
-     * The set of abnormal coded results for the observation conforming to this ObservationDefinition.
-     */
-    val abnormalCodedValueSet: Reference? = null,
-
-    /**
-     * The set of critical coded results for the observation conforming to this ObservationDefinition.
-     */
-    val criticalCodedValueSet: Reference? = null,
+     * Some observations have multiple component observations, expressed as separate code value pairs.
+     * */
+    val component: List<ObservationDefinitionComponent>? = null
 
 
 ) : DomainResource
@@ -178,9 +293,8 @@ data class ObservationDefinitionQuantitativeDetailsComponent(
 
 
 
-
 @Serializable
-data class ObservationDefinitionQualifiedIntervalComponent(
+data class ObservationDefinitionQualifiedValueComponent(
 
     // ============================================================
     // BackboneElement requirements
@@ -192,19 +306,18 @@ data class ObservationDefinitionQualifiedIntervalComponent(
     // ============================================================
 
     /**
-     * The category of interval of values for continuous or ordinal observations conforming to this ObservationDefinition.
-     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-range-category")
-     */
-    val category: ObservationRangeCategory? = null,
-
-    /**
-     * The low and high values determining the interval. There may be only one of the two.
+     * The range of values defined for continuous or ordinal observations that match the criteria of this set of qualified values.
      */
     val range: Range? = null,
 
     /**
-     * Codes to indicate the health context the range applies to. For example, the normal or therapeutic range.
-     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/referencerange-meaning")
+     * The category of interval of values for continuous or ordinal observations conforming to this ObservationDefinition.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-range-category")
+     */
+    val rangeCategory: ObservationRangeCategory? = null,
+
+    /**
+     * A concept defining the context for this set of qualified values.
      */
     val context: CodeableConcept? = null,
 
@@ -233,7 +346,69 @@ data class ObservationDefinitionQualifiedIntervalComponent(
     /**
      * Text based condition for which the reference range is valid.
      */
-    val condition: String? = null
+    val condition: String? = null,
+
+    /**
+     * The set of valid coded results for the observations conforming to this ObservationDefinition.
+     */
+    val validCodedValueSet: String? = null,
+
+    /**
+     * The set of normal coded results for the observations conforming to this ObservationDefinition.
+     */
+    val normalCodedValueSet: String? = null,
+
+    /**
+     * The set of abnormal coded results for the observation conforming to this ObservationDefinition.
+     */
+    val abnormalCodedValueSet: String? = null,
+
+    /**
+     * The set of critical coded results for the observation conforming to this ObservationDefinition.
+     */
+    val criticalCodedValueSet: String? = null,
+
+
+) : BackboneElement
+
+
+
+@Serializable
+data class ObservationDefinitionComponent(
+
+    // ============================================================
+    // BackboneElement requirements
+    // ============================================================
+    override val id: String? = null,
+    override var extension: MutableList<Extension>? = null,
+    override val modifierExtension: List<Extension>? = null,
+    // ============================================================
+    // ============================================================
+
+
+    /**
+     * Describes what will be observed. Sometimes this is called the observation "name".
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-codes")
+     */
+    val code: CodeableConcept? = null,
+
+
+    /**
+     * The data types allowed for the value element of the instance observations conforming to this ObservationDefinition.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/permitted-data-type")
+     */
+    val permittedDataType: List<ObservationDataType>? = null,
+
+
+    /**
+     * Characteristics for quantitative results of this observation.
+     */
+    val quantitativeDetails: ObservationDefinitionQuantitativeDetailsComponent? = null,
+
+    /**
+     * A set of qualified values associated with a context and a set of conditions - provides a range for quantitative and ordinal observations and a collection of value sets for qualitative observations.
+     */
+    val qualifiedValue: List<ObservationDefinitionQualifiedValueComponent>? = null
 
 
 ) : BackboneElement

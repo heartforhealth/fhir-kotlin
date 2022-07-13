@@ -1,6 +1,7 @@
 package io.h4h.fhir.r4.base
 
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
@@ -794,32 +795,32 @@ enum class ContactPointUse : CodeableEnumeration {
     /**
      * A communication contact point at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available.
      */
+    @SerialName("home")
     HOME,
 
     /**
      * An office contact point. First choice for business related contacts during business hours.
      */
+    @SerialName("work")
     WORK,
 
     /**
      * A temporary contact point. The period can provide more detailed information.
      */
+    @SerialName("temp")
     TEMP,
 
     /**
      * This contact point is no longer in use (or was never correct, but retained for records).
      */
+    @SerialName("old")
     OLD,
 
     /**
      * A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business.
      */
-    MOBILE,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
+    @SerialName("mobile")
+    MOBILE;
 
     override val code: String?
         get() = when (this) {
@@ -828,19 +829,10 @@ enum class ContactPointUse : CodeableEnumeration {
             TEMP -> "temp"
             OLD -> "old"
             MOBILE -> "mobile"
-            NULL -> null
         }
 
 
-    override val system: String?
-        get() = when (this) {
-            HOME -> "http://hl7.org/fhir/contact-point-use"
-            WORK -> "http://hl7.org/fhir/contact-point-use"
-            TEMP -> "http://hl7.org/fhir/contact-point-use"
-            OLD -> "http://hl7.org/fhir/contact-point-use"
-            MOBILE -> "http://hl7.org/fhir/contact-point-use"
-            NULL -> null
-        }
+    override val system = "http://hl7.org/fhir/contact-point-use"
 
     override val definition: String?
         get() = when (this) {
@@ -849,7 +841,6 @@ enum class ContactPointUse : CodeableEnumeration {
             TEMP -> "A temporary contact point. The period can provide more detailed information."
             OLD -> "This contact point is no longer in use (or was never correct, but retained for records)."
             MOBILE -> "A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business."
-            NULL -> null
         }
 
     override val display: String?
@@ -859,7 +850,6 @@ enum class ContactPointUse : CodeableEnumeration {
             TEMP -> "Temp"
             OLD -> "Old"
             MOBILE -> "Mobile"
-            NULL -> null
         }
 
 }
@@ -2157,62 +2147,68 @@ enum class ObservationDataType : CodeableEnumeration {
     /**
      * A measured amount.
      */
+    @SerialName("Quantity")
     QUANTITY,
 
     /**
      * A coded concept from a reference terminology and/or text.
      */
+    @SerialName("CodeableConcept")
     CODEABLECONCEPT,
 
     /**
      * A sequence of Unicode characters.
      */
+    @SerialName("string")
     STRING,
 
     /**
      * true or false.
      */
+    @SerialName("boolean")
     BOOLEAN,
 
     /**
      * A signed integer.
      */
+    @SerialName("integer")
     INTEGER,
 
     /**
      * A set of values bounded by low and high.
      */
+    @SerialName("Range")
     RANGE,
 
     /**
      * A ratio of two Quantity values - a numerator and a denominator.
      */
+    @SerialName("Ratio")
     RATIO,
 
     /**
      * A series of measurements taken by a device.
      */
+    @SerialName("SampledData")
     SAMPLEDDATA,
 
     /**
      * A time during the day, in the format hh:mm:ss.
      */
+    @SerialName("time")
     TIME,
 
     /**
      * A date, date-time or partial date (e.g. just year or year + month) as used in human communication.
      */
+    @SerialName("dateTime")
     DATETIME,
 
     /**
      * A time range defined by start and end date/time.
      */
-    PERIOD,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
+    @SerialName("Period")
+    PERIOD;
 
 
     override val code: String?
@@ -2228,26 +2224,11 @@ enum class ObservationDataType : CodeableEnumeration {
             TIME -> "time"
             DATETIME -> "dateTime"
             PERIOD -> "Period"
-            NULL -> null
         }
 
 
 
-    override val system: String?
-        get() = when (this) {
-            QUANTITY -> "http://hl7.org/fhir/permitted-data-type"
-            CODEABLECONCEPT -> "http://hl7.org/fhir/permitted-data-type"
-            STRING -> "http://hl7.org/fhir/permitted-data-type"
-            BOOLEAN -> "http://hl7.org/fhir/permitted-data-type"
-            INTEGER -> "http://hl7.org/fhir/permitted-data-type"
-            RANGE -> "http://hl7.org/fhir/permitted-data-type"
-            RATIO -> "http://hl7.org/fhir/permitted-data-type"
-            SAMPLEDDATA -> "http://hl7.org/fhir/permitted-data-type"
-            TIME -> "http://hl7.org/fhir/permitted-data-type"
-            DATETIME -> "http://hl7.org/fhir/permitted-data-type"
-            PERIOD -> "http://hl7.org/fhir/permitted-data-type"
-            NULL -> null
-        }
+    override val system = "http://hl7.org/fhir/permitted-data-type"
 
 
     override val definition: String?
@@ -2263,7 +2244,6 @@ enum class ObservationDataType : CodeableEnumeration {
             TIME -> "A time during the day, in the format hh:mm:ss."
             DATETIME -> "A date, date-time or partial date (e.g. just year or year + month) as used in human communication."
             PERIOD -> "A time range defined by start and end date/time."
-            NULL -> null
         }
 
 
@@ -2280,7 +2260,6 @@ enum class ObservationDataType : CodeableEnumeration {
             TIME -> "time"
             DATETIME -> "dateTime"
             PERIOD -> "Period"
-            NULL -> null
         }
 
 }
@@ -2291,46 +2270,36 @@ enum class ObservationRangeCategory : CodeableEnumeration {
     /**
      * Reference (Normal) Range for Ordinal and Continuous Observations.
      */
+    @SerialName("reference")
     REFERENCE,
 
     /**
      * Critical Range for Ordinal and Continuous Observations.
      */
+    @SerialName("critical")
     CRITICAL,
 
     /**
      * Absolute Range for Ordinal and Continuous Observations. Results outside this range are not possible.
      */
-    ABSOLUTE,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
+    @SerialName("absolute")
+    ABSOLUTE;
 
     override val code: String?
         get() = when (this) {
             REFERENCE -> "reference"
             CRITICAL -> "critical"
             ABSOLUTE -> "absolute"
-            NULL -> null
         }
 
 
-    override val system: String?
-        get() = when (this) {
-            REFERENCE -> "http://hl7.org/fhir/observation-range-category"
-            CRITICAL -> "http://hl7.org/fhir/observation-range-category"
-            ABSOLUTE -> "http://hl7.org/fhir/observation-range-category"
-            NULL -> null
-        }
+    override val system = "http://hl7.org/fhir/observation-range-category"
 
     override val definition: String?
         get() = when (this) {
             REFERENCE -> "Reference (Normal) Range for Ordinal and Continuous Observations."
             CRITICAL -> "Critical Range for Ordinal and Continuous Observations."
             ABSOLUTE -> "Absolute Range for Ordinal and Continuous Observations. Results outside this range are not possible."
-            NULL -> null
         }
 
     override val display: String?
@@ -2338,7 +2307,6 @@ enum class ObservationRangeCategory : CodeableEnumeration {
             REFERENCE -> "reference range"
             CRITICAL -> "critical range"
             ABSOLUTE -> "absolute range"
-            NULL -> null
         }
     
 }
