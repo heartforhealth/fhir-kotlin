@@ -23,13 +23,12 @@ class TimingException(message: String) : IllegalStateException(message)
     + Rule: if there's a duration, there needs to be duration units
     + Rule: if there's a period, there needs to be period units
     + Rule: If there's a timeOfDay, there cannot be a when, or vice versa
-
-    + TODO: Rule: duration SHALL be a non-negative value
-    + TODO: Rule: period SHALL be a non-negative value
-    + TODO: Rule: If there's a periodMax, there must be a period
-    + TODO: Rule: If there's a durationMax, there must be a duration
-    + TODO: Rule: If there's a countMax, there must be a count
-    + TODO: Rule: If there's an offset, there must be a when (and not C, CM, CD, CV)
+    + Rule: duration SHALL be a non-negative value
+    + Rule: period SHALL be a non-negative value
+    + Rule: If there's a periodMax, there must be a period
+    + Rule: If there's a durationMax, there must be a duration
+    + Rule: If there's a countMax, there must be a count
+    + Rule: If there's an offset, there must be a when (and not C, CM, CD, CV)
  */
 fun Timing.validate() {
     // guard
@@ -38,25 +37,52 @@ fun Timing.validate() {
     when {
         // Rule: if there's a duration, there needs to be duration units
         (repeat.duration != null && repeat.durationUnit == null)
-            -> throw TimingException("Rule: if there's a duration, there needs to be duration units, and vice versa")
+        -> throw TimingException("Rule: if there's a duration, there needs to be duration units, and vice versa")
+
         // Rule: if there's a duration, there needs to be duration units
         (repeat.duration == null && repeat.durationUnit != null)
-            -> throw TimingException("Rule: if there's a duration, there needs to be duration units, and vice versa")
+        -> throw TimingException("Rule: if there's a duration, there needs to be duration units, and vice versa")
+
+        // Rule: duration SHALL be a non-negative value
+        (repeat.duration != null && repeat.duration < 0)
+        -> throw TimingException("Rule: if there's a duration, it SHALL be a non-negative value")
+
+        // Rule: If there's a durationMax, there must be a duration
+        (repeat.durationMax != null && repeat.duration == null)
+        -> throw TimingException("Rule: If there's a durationMax, there must be a duration")
 
         // Rule: if there's a period, there needs to be period units
         (repeat.period != null && repeat.periodUnit == null)
-            -> throw TimingException("Rule: if there's a period, there needs to be period units, and vice versa")
+        -> throw TimingException("Rule: if there's a period, there needs to be period units, and vice versa")
+
         // Rule: if there's a period, there needs to be period units
         (repeat.period == null && repeat.periodUnit != null)
-            -> throw TimingException("Rule: if there's a period, there needs to be period units, and vice versa")
+        -> throw TimingException("Rule: if there's a period, there needs to be period units, and vice versa")
+
+        // Rule: period SHALL be a non-negative value
+        (repeat.period != null && repeat.period < 0)
+        -> throw TimingException("Rule: if there's a period, it SHALL be a non-negative value")
+
+        // Rule: Rule: If there's a durationMax, there must be a duration
+        (repeat.periodMax != null && repeat.period == null)
+        -> throw TimingException("Rule: If there's a periodMax, there must be a period")
 
         // Rule: If there's a timeOfDay, there cannot be a when, or vice versa
         (repeat.timeOfDay != null && repeat.`when` != null)
-            -> throw TimingException("Rule: If there's a timeOfDay, there cannot be a when, or vice versa")
+        -> throw TimingException("Rule: If there's a timeOfDay, there cannot be a when, or vice versa")
 
         // Assumption 1: frequency exists when there is some bound specified
         (repeat.frequency != null && repeat.period == null && repeat.boundsPeriod == null)
-            -> throw TimingException("Assumption: frequency exists solely within some period/bounds")
+        -> throw TimingException("Assumption: frequency exists solely within some period/bounds")
+
+        // Rule: If there's a countMax, there must be a count
+        (repeat.countMax != null && repeat.count == null)
+        -> throw TimingException("Rule: If there's a countMax, there must be a count")
+
+        // Rule: If there's an offset, there must be a when (and not C, CM, CD, CV)
+        (repeat.offset != null && (repeat.`when` == null ||
+            repeat.`when`.any { it == EventTiming.C || it == EventTiming.CM || it == EventTiming.CD || it == EventTiming.CV }))
+        -> throw TimingException("Rule: If there's an offset, there must be a when (and not C, CM, CD, CV)")
     }
 
     // fields that are not implemented
@@ -155,7 +181,6 @@ fun Timing.getDailyFrequency(): Int {
     // if today and when specified, return 1 occurrence
     repeat.`when`?.let { return 1 }
 
-    // TODO: look at frequency, period, periodUnit
     val period = repeat.period
     val periodUnit = repeat.periodUnit
     val frequency = repeat.frequency
@@ -183,40 +208,6 @@ fun Timing.getDailyFrequency(): Int {
 
     return 0
 }
-
-/*
-fun Timing.getDailyTaskFrequency2(): Int {
-
-    this.repeat?.let { repeat ->
-        repeat.frequency?.let { frequency ->
-            when (repeat.periodUnit) {
-
-                // Hourly
-                UnitsOfTime.H -> {
-                    // repeat.period divides 24 (hours)
-                    return (24 / repeat.period!!).toInt() * frequency
-                }
-
-                // Daily
-                UnitsOfTime.D -> {
-                    return frequency //TODO: test this & simplify when() if it works
-                }
-
-                // Weekly
-                UnitsOfTime.WK -> {
-                    return frequency //TODO: test this & simplify when() if it works
-                }
-
-                else -> return frequency
-            }
-
-        }
-    }
-
-    return 1
-}
- */
-
 
 
 // ==========================================================================
@@ -283,6 +274,18 @@ private fun TimingRepeatComponent.checkDateByPeriod(
             if (period > 1.0) {
                 return currentDate.isValid(start, period.toInt() * 7, periodMax * 7)
             }
+        }
+
+        // Monthly
+        UnitsOfTime.MO -> {
+            //TODO
+            return false
+        }
+
+        // Yearly
+        UnitsOfTime.A -> {
+            //TODO
+            return false
         }
 
         else -> return false

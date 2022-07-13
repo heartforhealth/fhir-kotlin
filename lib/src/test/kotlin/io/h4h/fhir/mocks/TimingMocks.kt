@@ -139,6 +139,49 @@ object TimingMocks {
         )
     )
 
+    //TODO: on 3rd, 10th and 18th every month, at 10:00 and 22:00 each time
+    fun specificDatesEveryMonth(
+        periodStart: String,
+        periodEnd: String
+    ) = Timing(
+        repeat = TimingRepeatComponent(
+            boundsPeriod = Period(periodStart, periodEnd),
+
+            // every month
+            period = 1.0,
+            periodUnit = UnitsOfTime.MO,
+
+            // at 10:00 and 22:00
+            timeOfDay = listOf("10:00", "22:00"),
+
+            // 1 each time
+            frequency = 1
+
+            // TODO: how do we specify "on 3rd, 10th and 18th"?   daysOfMonth: List<Int>
+        )
+    )
+
+    //TODO: in May, July, September, on Wednesdays of the second week of each month, at 10:00 and 22:00
+    fun specificWeekMonthAndDay() = Timing(
+        repeat = TimingRepeatComponent(
+            // every year
+            period = 1.0,
+            periodUnit = UnitsOfTime.A,
+
+            // on Wednesdays
+            dayOfWeek = listOf(io.h4h.fhir.r4.base.DayOfWeek.WED),
+
+            // at 10:00 and 22:00
+            timeOfDay = listOf("10:00", "22:00"),
+
+            // 1 each time
+            frequency = 1
+
+            // TODO: how do we specify "in May, July, September"?   monthsOfYear: List<Int>
+            // TODO: how do we specify "the second week of each month"?   weeksOfMonth: List<Int>
+        )
+    )
+
     // TODO
     fun onlyTuesdaysFromBeginningOfEachMonth(
         periodStart: String,

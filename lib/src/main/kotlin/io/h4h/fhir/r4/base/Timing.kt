@@ -178,7 +178,7 @@ var TimingRepeatComponent.daysOfMonth: List<Int>
     get() {
         return when (val value = extension?.getString(daysOfMonthExtension)) {
             null -> listOf()
-            else -> value.split(",").map { it.toInt() }
+            else -> value.split(",").map { it.trim().toInt() }
         }
     }
     set(days) {
@@ -199,7 +199,7 @@ var TimingRepeatComponent.monthsOfYear: List<Month>
     get() {
         return when (val value = extension?.getString(monthsOfYearExtension)) {
             null -> listOf()
-            else -> value.split(",").map { Month.valueOf(it) }
+            else -> value.split(",").map { Month.valueOf(it.trim()) }
         }
     }
     set(months) {

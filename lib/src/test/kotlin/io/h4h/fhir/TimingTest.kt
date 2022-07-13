@@ -1,22 +1,19 @@
 package io.h4h.fhir
 
 
-
-import io.h4h.fhir.mocks.*
+import io.h4h.fhir.mocks.TimingMocks
 import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.r4.extensions.*
 import kotlinx.datetime.Instant
-import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import java.time.DateTimeException
 import java.time.Month
-import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertNotEquals
 import kotlin.test.assertTrue
-
-
 
 
 class TimingTest : SerializerTest() {
@@ -26,12 +23,15 @@ class TimingTest : SerializerTest() {
     // ==========================================================================
 
 
-    @Test fun daysOfMonthTest() {
+    @Test
+    fun daysOfMonthTest() {
         val timing = TimingMocks.mondayThursdayAt8and20()
 
         // should serialize/deserialize
         timing.repeat?.daysOfMonth = listOf(1, 2, 3, 4)
         timing.kotlinxSerializeDeserializeResource()
+
+        println(timing.repeat?.daysOfMonth)
 
         // should change the existing extension
         timing.repeat?.daysOfMonth = listOf(31)
@@ -39,17 +39,25 @@ class TimingTest : SerializerTest() {
 
         // should fail
         assertThrows<DateTimeException> { timing.repeat?.daysOfMonth = listOf(32) }
+        assertNotEquals(timing.repeat?.daysOfMonth, listOf(1, 2, 3, 4))
     }
 
 
-    @Test fun extensionsTest() {
+    @Test
+    fun extensionsTest() {
         val timing = TimingMocks.mondayThursdayAt8and20()
 
         // should serialize/deserialize
         timing.repeat?.daysOfMonth = listOf(1, 2, 3, 4)
         timing.repeat?.monthsOfYear = listOf(Month.APRIL, Month.JULY)
+
+        assertEquals(listOf(Month.APRIL, Month.JULY), timing.repeat?.monthsOfYear)
+
         timing.repeat?.daysOfMonth = listOf(8)
         timing.repeat?.monthsOfYear = listOf(Month.APRIL, Month.DECEMBER)
+
+        assertEquals(listOf(Month.APRIL, Month.DECEMBER), timing.repeat?.monthsOfYear)
+
         timing.kotlinxSerializeDeserializeResource()
     }
 
@@ -162,10 +170,103 @@ class TimingTest : SerializerTest() {
         assertDoesNotThrow { timingWithBoundsPeriod.validate() }
     }
 
+    @Test
+    fun `validate() throws Exception when Timing contains a negative 'duration' value`() {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                duration = -10.0,
+                durationUnit = UnitsOfTime.MO
+            )
+        )
+
+        assertThrows<TimingException> { timing.validate() }
+    }
+
+    @Test
+    fun `validate() throws Exception when Timing contains a negative 'period' value`() {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                period = -2.0,
+                periodUnit = UnitsOfTime.D
+            )
+        )
+
+        assertThrows<TimingException> { timing.validate() }
+    }
+
+    @Test
+    fun `validate() throws Exception when Timing contains 'periodMax' but it does not contain 'period'`() {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                periodMax = 2.0,
+                periodUnit = UnitsOfTime.D
+            )
+        )
+
+        assertThrows<TimingException> { timing.validate() }
+    }
+
+    @Test
+    fun `validate() throws Exception when Timing contains 'durationMax' but it does not contain 'duration'`() {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                durationMax = 2.0,
+                durationUnit = UnitsOfTime.D
+            )
+        )
+
+        assertThrows<TimingException> { timing.validate() }
+    }
+
+    @Test
+    fun `validate() throws Exception when Timing contains 'countMax' but it does not contain 'count'`() {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                countMax = 2
+            )
+        )
+
+        assertThrows<TimingException> { timing.validate() }
+    }
+
+    @Test
+    fun `validate() throws Exception when Timing contains 'offset' but it does not contain 'when'`() {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                offset = 2
+            )
+        )
+
+        assertThrows<TimingException> { timing.validate() }
+    }
+
+    @Test
+    fun `validate() throws Exception when Timing contains 'offset' and invalid 'when' (C, CM, CD, CV)`() {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                offset = 2,
+                `when` = listOf(EventTiming.EVE, EventTiming.MORN, EventTiming.CD)
+            )
+        )
+
+        assertThrows<TimingException> { timing.validate() }
+    }
+
+    @Test
+    fun `validate() passes when Timing contains 'offset' and valid 'when'`() {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                offset = 2,
+                `when` = listOf(EventTiming.EVE, EventTiming.MORN)
+            )
+        )
+
+        assertDoesNotThrow { timing.validate() }
+    }
 
 
     // ==========================================================================
-    // isToday()
+    // includesDate()
     // ==========================================================================
 
     @Test
