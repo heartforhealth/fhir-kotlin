@@ -480,6 +480,160 @@ class TimingTest : SerializerTest() {
         assertFalse(timing.includesDate(outsideBoundsDate.toLocalDate()))
     }
 
+    @Test
+    fun `includesDate() returns TRUE when Timing is 'every 3rd, 10th and 18th of each month at 10 and 22' and currentDate is WITHIN BOUNDS`() {
+        val periodStart = "2022-07-06T05:00:00.287542Z"
+        val periodEnd = "2022-10-27T05:00:00.287542Z"
+
+        val timing = TimingMocks.specificDaysEveryMonthAt10And20(periodStart, periodEnd)
+        assertDoesNotThrow { timing.validate() }
+
+        val firstDate = Instant.parse("2022-09-10T10:00:00.287542Z")
+        val secondDate = Instant.parse("2022-09-03T20:00:00.287542Z")
+
+        assertTrue(timing.includesDate(firstDate.toLocalDate()))
+        assertTrue(timing.includesDate(secondDate.toLocalDate()))
+    }
+
+    @Test
+    fun `includesDate() returns TRUE when Timing is 'every 3rd, 10th and 18th of each month at 10 and 22' and currentDate is OUTSIDE BOUNDS`() {
+        val periodStart = "2022-07-06T05:00:00.287542Z"
+        val periodEnd = "2022-10-27T05:00:00.287542Z"
+
+        val timing = TimingMocks.specificDaysEveryMonthAt10And20(periodStart, periodEnd)
+        assertDoesNotThrow { timing.validate() }
+
+        val dateOutsideBounds = Instant.parse("2022-09-15T10:00:00.287542Z")
+        assertFalse(timing.includesDate(dateOutsideBounds.toLocalDate()))
+    }
+
+    @Test
+    fun `includesDate() returns TRUE when Timing is 'every May, July, September, the second week of the month, on Wednesdays, at 10 and 22' and currentDate is WITHIN BOUNDS`() {
+        val periodStart = "2022-04-06T05:00:00.287542Z"
+        val periodEnd = "2022-10-27T05:00:00.287542Z"
+
+        val timing = TimingMocks.specificWeekMonthAndDayEveryMonth(periodStart, periodEnd)
+        assertDoesNotThrow { timing.validate() }
+
+        val firstDate = Instant.parse("2022-05-11T10:00:00.287542Z")
+        val secondDate = Instant.parse("2022-09-14T20:00:00.287542Z")
+
+        assertTrue(timing.includesDate(firstDate.toLocalDate()))
+        assertTrue(timing.includesDate(secondDate.toLocalDate()))
+    }
+
+    @Test
+    fun `includesDate() returns TRUE when Timing is 'every May, July, September, the second week of the month, on Wednesdays, at 10 and 22' and currentDate is OUTSIDE BOUNDS`() {
+        val periodStart = "2022-04-06T05:00:00.287542Z"
+        val periodEnd = "2022-10-27T05:00:00.287542Z"
+
+        val timing = TimingMocks.specificWeekMonthAndDayEveryMonth(periodStart, periodEnd)
+        assertDoesNotThrow { timing.validate() }
+
+        // bad month
+        val firstBadDate = Instant.parse("2022-06-11T10:00:00.287542Z")
+
+        // bad day of week
+        val secondBadDate = Instant.parse("2022-09-12T20:00:00.287542Z")
+
+        // good month and day of week but outside periodStart & periodEnd
+        val thirdBadDate = Instant.parse("2023-05-10T20:00:00.287542Z")
+
+        // bad week of month (3rd week)
+        val fourthBadDate = Instant.parse("2022-09-21T20:00:00.287542Z")
+
+        assertFalse(timing.includesDate(firstBadDate.toLocalDate()))
+        assertFalse(timing.includesDate(secondBadDate.toLocalDate()))
+        assertFalse(timing.includesDate(thirdBadDate.toLocalDate()))
+        assertFalse(timing.includesDate(fourthBadDate.toLocalDate()))
+    }
+
+    @Test
+    fun `includesDate() returns TRUE when Timing is 'only Tuesdays from the beginning of each month' and currentDate is WITHIN BOUNDS`() {
+        val periodStart = "2022-04-06T05:00:00.287542Z"
+        val periodEnd = "2022-10-27T05:00:00.287542Z"
+
+        val timing = TimingMocks.onlyTuesdaysFromBeginningOfEachMonth(periodStart, periodEnd)
+        assertDoesNotThrow { timing.validate() }
+
+        val firstDate = Instant.parse("2022-05-03T10:00:00.287542Z")
+        val secondDate = Instant.parse("2022-06-07T20:00:00.287542Z")
+
+        assertTrue(timing.includesDate(firstDate.toLocalDate()))
+        assertTrue(timing.includesDate(secondDate.toLocalDate()))
+    }
+
+    @Test
+    fun `includesDate() returns TRUE when Timing is 'only Tuesdays from the beginning of each month' and currentDate is OUTSIDE BOUNDS`() {
+        val periodStart = "2022-04-06T05:00:00.287542Z"
+        val periodEnd = "2022-10-27T05:00:00.287542Z"
+
+        val timing = TimingMocks.onlyTuesdaysFromBeginningOfEachMonth(periodStart, periodEnd)
+        assertDoesNotThrow { timing.validate() }
+
+        val firstBadDate = Instant.parse("2022-05-24T10:00:00.287542Z")
+        val secondBadDate = Instant.parse("2022-06-14T20:00:00.287542Z")
+
+        assertFalse(timing.includesDate(firstBadDate.toLocalDate()))
+        assertFalse(timing.includesDate(secondBadDate.toLocalDate()))
+    }
+
+    @Test
+    fun `includesDate() returns TRUE when Timing is 'only Tuesdays from the first 2 weeks of each month' and currentDate is WITHIN BOUNDS`() {
+        val periodStart = "2022-04-06T05:00:00.287542Z"
+        val periodEnd = "2022-10-27T05:00:00.287542Z"
+
+        val timing = TimingMocks.onlyTuesdaysFromFirstTwoWeeksOfEachMonth(periodStart, periodEnd)
+        assertDoesNotThrow { timing.validate() }
+
+        val firstDate = Instant.parse("2022-05-03T10:00:00.287542Z")
+        val secondDate = Instant.parse("2022-06-14T20:00:00.287542Z")
+
+        assertTrue(timing.includesDate(firstDate.toLocalDate()))
+        assertTrue(timing.includesDate(secondDate.toLocalDate()))
+    }
+
+    @Test
+    fun `includesDate() returns TRUE when Timing is 'only Tuesdays from the first 2 weeks of each month' and currentDate is OUTSIDE BOUNDS`() {
+        val periodStart = "2022-04-06T05:00:00.287542Z"
+        val periodEnd = "2022-10-27T05:00:00.287542Z"
+
+        val timing = TimingMocks.onlyTuesdaysFromFirstTwoWeeksOfEachMonth(periodStart, periodEnd)
+        assertDoesNotThrow { timing.validate() }
+
+        val firstBadDate = Instant.parse("2022-05-14T10:00:00.287542Z")
+        val secondBadDate = Instant.parse("2022-06-21T20:00:00.287542Z")
+
+        assertFalse(timing.includesDate(firstBadDate.toLocalDate()))
+        assertFalse(timing.includesDate(secondBadDate.toLocalDate()))
+    }
+
+    @Test
+    fun `includesDate() returns TRUE when Timing is 'first 15 days of the month' and currentDate is WITHIN BOUNDS`() {
+        val periodStart = "2022-04-06T05:00:00.287542Z"
+        val periodEnd = "2022-10-27T05:00:00.287542Z"
+
+        val timing = TimingMocks.first15DaysOfTheMonth(periodStart, periodEnd)
+        assertDoesNotThrow { timing.validate() }
+
+        val firstDate = Instant.parse("2022-05-15T10:00:00.287542Z")
+        val secondDate = Instant.parse("2022-06-01T20:00:00.287542Z")
+
+        assertTrue(timing.includesDate(firstDate.toLocalDate()))
+        assertTrue(timing.includesDate(secondDate.toLocalDate()))
+    }
+
+    @Test
+    fun `includesDate() returns TRUE when Timing is 'first 15 days of the month' and currentDate is OUTSIDE BOUNDS`() {
+        val periodStart = "2022-04-06T05:00:00.287542Z"
+        val periodEnd = "2022-10-27T05:00:00.287542Z"
+
+        val timing = TimingMocks.first15DaysOfTheMonth(periodStart, periodEnd)
+        assertDoesNotThrow { timing.validate() }
+
+        val dateOutsideBounds = Instant.parse("2022-05-16T10:00:00.287542Z")
+        assertFalse(timing.includesDate(dateOutsideBounds.toLocalDate()))
+    }
 
     // ==========================================================================
     // getDailyFrequency()
