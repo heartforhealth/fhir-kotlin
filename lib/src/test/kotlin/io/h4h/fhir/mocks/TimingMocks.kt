@@ -1,13 +1,9 @@
 package io.h4h.fhir.mocks
 
-import io.h4h.fhir.r4.base.Period
-import io.h4h.fhir.r4.base.Timing
-import io.h4h.fhir.r4.base.TimingRepeatComponent
-import io.h4h.fhir.r4.base.UnitsOfTime
+import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.utils.periodThatIncludesDate
 import kotlinx.datetime.*
-
-
+import java.time.Month
 
 
 object TimingMocks {
@@ -139,122 +135,132 @@ object TimingMocks {
         )
     )
 
-    //TODO: on 3rd, 10th and 18th every month, at 10:00 and 22:00 each time
-    fun specificDatesEveryMonth(
+    fun specificDaysEveryMonthAt10And20(
         periodStart: String,
         periodEnd: String
-    ) = Timing(
-        repeat = TimingRepeatComponent(
-            boundsPeriod = Period(periodStart, periodEnd),
+    ): Timing {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                boundsPeriod = Period(periodStart, periodEnd),
 
-            // every month
-            period = 1.0,
-            periodUnit = UnitsOfTime.MO,
+                // every month
+                period = 1.0,
+                periodUnit = UnitsOfTime.MO,
 
-            // at 10:00 and 22:00
-            timeOfDay = listOf("10:00", "22:00"),
+                // at 10:00 and 22:00
+                timeOfDay = listOf("10:00", "20:00"),
 
-            // 1 each time
-            frequency = 1
-
-            // TODO: how do we specify "on 3rd, 10th and 18th"?   daysOfMonth: List<Int>
+                // 1 each time
+                frequency = 1
+            )
         )
-    )
 
-    //TODO: in May, July, September, on Wednesdays of the second week of each month, at 10:00 and 22:00
-    fun specificWeekMonthAndDay() = Timing(
-        repeat = TimingRepeatComponent(
-            // every year
-            period = 1.0,
-            periodUnit = UnitsOfTime.A,
+        timing.repeat?.daysOfMonth = listOf(3, 10, 18)
 
-            // on Wednesdays
-            dayOfWeek = listOf(io.h4h.fhir.r4.base.DayOfWeek.WED),
+        return timing
+    }
 
-            // at 10:00 and 22:00
-            timeOfDay = listOf("10:00", "22:00"),
+    fun specificWeekMonthAndDayEveryMonth(
+        periodStart: String,
+        periodEnd: String
+    ) : Timing {
+        // every May, July, September, the second week of the month, on Wednesdays, at 10 and 20
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                boundsPeriod = Period(periodStart, periodEnd),
 
-            // 1 each time
-            frequency = 1
+                period = 1.0,
+                periodUnit = UnitsOfTime.A,
 
-            // TODO: how do we specify "in May, July, September"?   monthsOfYear: List<Int>
-            // TODO: how do we specify "the second week of each month"?   weeksOfMonth: List<Int>
+                // on Wednesdays
+                dayOfWeek = listOf(io.h4h.fhir.r4.base.DayOfWeek.WED),
+
+                // at 10:00 and 22:00
+                timeOfDay = listOf("10:00", "20:00"),
+
+                // 1 each time
+                frequency = 1
+            )
         )
-    )
 
-    // TODO
+        timing.repeat?.monthsOfYear = listOf(Month.MAY, Month.JULY, Month.SEPTEMBER)
+
+        // second week of each month:
+        timing.repeat?.daysOfMonth = listOf(8, 9, 10, 11, 12, 13, 14)
+
+        return timing
+    }
+
     fun onlyTuesdaysFromBeginningOfEachMonth(
         periodStart: String,
         periodEnd: String
-    ) = Timing(
-        repeat = TimingRepeatComponent(
-            boundsPeriod = Period(periodStart, periodEnd),
+    ) : Timing {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                boundsPeriod = Period(periodStart, periodEnd),
 
-            // each month
-            period = 1.0,
-            periodUnit = UnitsOfTime.MO,
+                // each month
+                period = 1.0,
+                periodUnit = UnitsOfTime.MO,
 
-            // every Tuesday
-            dayOfWeek = listOf(io.h4h.fhir.r4.base.DayOfWeek.TUE),
+                // every Tuesday
+                dayOfWeek = listOf(io.h4h.fhir.r4.base.DayOfWeek.TUE),
 
-            // just the first week Tuesday of the month
-            count = 1,
-
-            frequency = 1
+                frequency = 1
+            )
         )
-    )
 
-    //TODO
+        // first week of the month
+        timing.repeat?.daysOfMonth = listOf(1, 2, 3, 4, 5, 6, 7)
+
+        return timing
+    }
+
     fun onlyTuesdaysFromFirstTwoWeeksOfEachMonth(
         periodStart: String,
         periodEnd: String
-    ) = Timing(
-        repeat = TimingRepeatComponent(
-            boundsPeriod = Period(periodStart, periodEnd),
+    ) : Timing {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                boundsPeriod = Period(periodStart, periodEnd),
 
-            // each month
-            period = 1.0,
-            periodUnit = UnitsOfTime.MO,
+                // each month
+                period = 1.0,
+                periodUnit = UnitsOfTime.MO,
 
-            // every Tuesday
-            dayOfWeek = listOf(io.h4h.fhir.r4.base.DayOfWeek.TUE),
+                // every Tuesday
+                dayOfWeek = listOf(io.h4h.fhir.r4.base.DayOfWeek.TUE),
 
-            // just the first two weeks Tuesdays of the month
-            count = 2,
-
-            frequency = 1
+                frequency = 1
+            )
         )
-    )
 
-    // TODO
-    fun firstTuesdayOfTheMonth(
+        // first 2 weeks of the month
+        timing.repeat?.daysOfMonth = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)
+
+        return timing
+    }
+
+    fun first15DaysOfTheMonth(
         periodStart: String,
         periodEnd: String
-    ) = Timing(
-        repeat = TimingRepeatComponent(
+    ): Timing {
+        val timing = Timing(
+            repeat = TimingRepeatComponent(
+                boundsPeriod = Period(periodStart, periodEnd),
 
+                // each month
+                period = 1.0,
+                periodUnit = UnitsOfTime.MO,
+
+                frequency = 1
+            )
         )
-    )
 
-    // TODO
-    fun firstTuesdayAndFridayOfTheMonth(
-        periodStart: String,
-        periodEnd: String
-    ) = Timing(
-        repeat = TimingRepeatComponent(
+        // last 7 days
+        timing.repeat?.daysOfMonth = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
 
-        )
-    )
-
-    // TODO
-    fun firstSevenDaysOfTheMonth(
-        periodStart: String,
-        periodEnd: String
-    ) = Timing(
-        repeat = TimingRepeatComponent(
-
-        )
-    )
-
+        return timing
+    }
 
 }

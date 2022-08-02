@@ -133,12 +133,21 @@ fun Timing.includesDate(date: LocalDate): Boolean {
         return@let it
     }
 
-    // 4) if we have 'dayOfWeek' present but the current day is not part of the list, the task is not for today
+    // 4) if we have monthsOfYear or daysOfMonth, check if the current date is within the interval and continue the algorithm if it is
+    if (repeat.monthsOfYear.isNotEmpty() && !repeat.monthsOfYear.contains(date.month)) {
+        return false
+    }
+
+    if (repeat.daysOfMonth.isNotEmpty() && !repeat.daysOfMonth.contains(date.dayOfMonth)){
+        return false
+    }
+
+    // 5) if we have 'dayOfWeek' present but the current day is not part of the list, the task is not for today
     repeat.dayOfWeek?.let { days ->
         return days.checkDayOfWeek(date)
     }
 
-    // 4) if we have bounds: either both 'start' and 'end', or just 'start'
+    // 6) if we have bounds: either both 'start' and 'end', or just 'start'
     boundsPeriod?.let { period ->
         // if we have start, proceed analyzing period, frequency, bounds
         period.start?.let { Instant.parse(it).toLocalDate() }?.let { start ->
@@ -276,16 +285,10 @@ private fun TimingRepeatComponent.checkDateByPeriod(
             }
         }
 
-        // Monthly
-        UnitsOfTime.MO -> {
-            //TODO
-            return false
-        }
-
-        // Yearly
-        UnitsOfTime.A -> {
-            //TODO
-            return false
+        // Monthly, Yearly
+        UnitsOfTime.MO, UnitsOfTime.A -> {
+            return true
+            //TODO: handle "every 2nd month/year, 3rd month/year, 6th month/year, etc cases - if we are going to have such schedules"
         }
 
         else -> return false
