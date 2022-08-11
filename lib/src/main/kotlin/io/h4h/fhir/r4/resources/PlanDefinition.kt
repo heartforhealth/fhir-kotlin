@@ -88,14 +88,14 @@ data class PlanDefinition(
 
     /**
      * A high-level category for the plan definition that distinguishes the kinds of systems that would be interested in the plan definition.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/plan-definition-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/plan-definition-type")
     val type: CodeableConcept? = null,
 
     /**
      * A code or group definition that describes the intended subject of the plan definition.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/subject-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/subject-type")
     val subjectCodeableConcept: CodeableConcept? = null,
     val subjectReference: Reference? = null,
 
@@ -131,12 +131,12 @@ data class PlanDefinition(
 
     /**
      * Descriptive topics related to the content of the plan definition. Topics provide a high-level categorization of the definition that can be useful for filtering and searching.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/definition-topic")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/definition-topic")
     val topic: List<CodeableConcept>? = null,
 
     /**
-     * An individiual or organization primarily involved in the creation and maintenance of the content.
+     * An individual or organization primarily involved in the creation and maintenance of the content.
      */
     val author: List<ContactDetail>? = null,
 
@@ -184,32 +184,32 @@ data class PlanDefinitionGoalComponent(
 
     /**
      * Indicates a category the goal falls within.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/goal-category")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/goal-category")
     val category: CodeableConcept? = null,
 
     /**
      * Human-readable and/or coded description of a specific desired objective of care, such as "control blood pressure" or "negotiate an obstacle course" or "dance with child at wedding".
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/clinical-findings")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/clinical-findings")
     val description: CodeableConcept? = null,
 
     /**
      * Identifies the expected level of importance associated with reaching/sustaining the defined goal.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/goal-priority")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/goal-priority")
     val priority: CodeableConcept? = null,
 
     /**
      * The event after which the goal should begin being pursued.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/goal-start-event")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/goal-start-event")
     val start: CodeableConcept? = null,
 
     /**
      * Identifies problems, conditions, issues, or concerns the goal is intended to address.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-code")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/condition-code")
     val addresses: List<CodeableConcept>? = null,
 
     /**
@@ -230,8 +230,8 @@ data class PlanDefinitionGoalTargetComponent(
 
     /**
      * The parameter whose value is to be tracked, e.g. body weight, blood pressure, or hemoglobin A1c level.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-codes")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/observation-codes")
     val measure: CodeableConcept? = null,
 
     /**
@@ -283,8 +283,8 @@ data class PlanDefinitionActionComponent(
 
     /**
      * Indicates how quickly the action should be addressed with respect to other actions.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/request-priority")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/request-priority")
     val priority: RequestPriority? = null,
 
     /**
@@ -309,8 +309,8 @@ data class PlanDefinitionActionComponent(
 
     /**
      * A code or group definition that describes the intended subject of the action and its children, if any.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/subject-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/subject-type")
     val subjectCodeableConcept: CodeableConcept? = null,
     val subjectReference: Reference? = null,
 
@@ -356,38 +356,38 @@ data class PlanDefinitionActionComponent(
 
     /**
      * The type of action to perform (create, update, remove).
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-type")
     val type: CodeableConcept? = null,
 
     /**
      * Defines the grouping behavior for the action and its children.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-grouping-behavior")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-grouping-behavior")
     val groupingBehavior: ActionGroupingBehavior? = null,
 
     /**
      * Defines the selection behavior for the action and its children.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-selection-behavior")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-selection-behavior")
     val selectionBehavior: ActionSelectionBehavior? = null,
 
     /**
      * Defines the required behavior for the action.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-required-behavior")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-required-behavior")
     val requiredBehavior: ActionRequiredBehavior? = null,
 
     /**
      * Defines whether the action should usually be preselected.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-precheck-behavior")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-precheck-behavior")
     val precheckBehavior: ActionPrecheckBehavior? = null,
 
     /**
      * Defines whether the action can be selected multiple times.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-cardinality-behavior")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-cardinality-behavior")
     val cardinalityBehavior: ActionCardinalityBehavior? = null,
 
     /**
@@ -428,8 +428,8 @@ data class PlanDefinitionActionConditionComponent(
 
     /**
      * The kind of condition.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-condition-kind")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-condition-kind")
     val kind: ActionConditionKind? = null,
 
     /**
@@ -459,8 +459,8 @@ data class PlanDefinitionActionRelatedActionComponent(
 
     /**
      * The relationship of this action to the related action.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-relationship-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-relationship-type")
     val relationship: ActionRelationshipType? = null,
 
     /**
@@ -487,14 +487,14 @@ data class PlanDefinitionActionParticipantComponent(
 
     /**
      * The type of participant in the action.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-participant-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-participant-type")
     val type: ActionParticipantType? = null,
 
     /**
      * The role the participant should play in performing the described action.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-participant-role")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/action-participant-role")
     val role: CodeableConcept? = null
 
 ) : BackboneElement

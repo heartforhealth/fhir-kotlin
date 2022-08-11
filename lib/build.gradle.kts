@@ -8,7 +8,7 @@
 
 
 group = "io.h4h"
-version = "0.1.10-alpha1"
+version = "0.1.11"
 
 
 
