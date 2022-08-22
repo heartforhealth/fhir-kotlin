@@ -1,5 +1,6 @@
 package io.h4h.fhir.r4.base
 
+import io.h4h.fhir.r4.serializers.DoubleSerializer
 import kotlinx.datetime.Month
 import kotlinx.serialization.Serializable
 import java.time.temporal.ChronoField
@@ -100,11 +101,13 @@ data class TimingRepeatComponent(
     /**
      * How long this thing happens for when it happens. If durationMax is present, this element indicates the lower bound of the allowed range of the duration.
      */
+    @Serializable(with = DoubleSerializer::class)
     val duration: Double? = null,
 
     /**
      * If present, indicates that the duration is a range - so to perform the action between [duration] and [durationMax] time length.
      */
+    @Serializable(with = DoubleSerializer::class)
     val durationMax: Double? = null,
 
     /**
@@ -126,11 +129,13 @@ data class TimingRepeatComponent(
     /**
      * Indicates the duration of time over which repetitions are to occur; e.g. to express "3 times per day", 3 would be the frequency and "1 day" would be the period. If periodMax is present, this element indicates the lower bound of the allowed range of the period length.
      */
+    @Serializable(with = DoubleSerializer::class)
     val period: Double? = null,
 
     /**
      * If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as "do this once every 3-5 days.
      */
+    @Serializable(with = DoubleSerializer::class)
     val periodMax: Double? = null,
 
     /**
