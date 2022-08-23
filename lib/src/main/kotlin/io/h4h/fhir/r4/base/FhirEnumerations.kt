@@ -106,12 +106,8 @@ enum class ActionRelationshipType : CodeableEnumeration {
     /**
      * The action must be performed after the end of the related action.
      */
-    AFTEREND,
+    AFTEREND;
 
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
 
     override val code: String?
         get() = when (this) {
@@ -124,24 +120,10 @@ enum class ActionRelationshipType : CodeableEnumeration {
             AFTERSTART -> "after-start"
             AFTER -> "after"
             AFTEREND -> "after-end"
-            NULL -> null
         }
 
     override val system: String?
-        get() {
-            return when (this) {
-                BEFORESTART -> "http://hl7.org/fhir/action-relationship-type"
-                BEFORE -> "http://hl7.org/fhir/action-relationship-type"
-                BEFOREEND -> "http://hl7.org/fhir/action-relationship-type"
-                CONCURRENTWITHSTART -> "http://hl7.org/fhir/action-relationship-type"
-                CONCURRENT -> "http://hl7.org/fhir/action-relationship-type"
-                CONCURRENTWITHEND -> "http://hl7.org/fhir/action-relationship-type"
-                AFTERSTART -> "http://hl7.org/fhir/action-relationship-type"
-                AFTER -> "http://hl7.org/fhir/action-relationship-type"
-                AFTEREND -> "http://hl7.org/fhir/action-relationship-type"
-                NULL -> null
-            }
-        }
+        get() = "http://hl7.org/fhir/action-relationship-type"
 
     override val definition: String?
         get() {
@@ -155,7 +137,6 @@ enum class ActionRelationshipType : CodeableEnumeration {
                 AFTERSTART -> "The action must be performed after the start of the related action."
                 AFTER -> "The action must be performed after the related action."
                 AFTEREND -> "The action must be performed after the end of the related action."
-                NULL -> null
             }
         }
 
@@ -171,7 +152,6 @@ enum class ActionRelationshipType : CodeableEnumeration {
                 AFTERSTART -> "After Start"
                 AFTER -> "After"
                 AFTEREND -> "After End"
-                NULL -> null
             }
         }
 
