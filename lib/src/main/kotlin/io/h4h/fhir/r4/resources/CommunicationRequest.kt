@@ -1,6 +1,7 @@
 package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
@@ -211,42 +212,44 @@ enum class CommunicationRequestStatus : CodeableEnumeration {
     /**
      * The request has been created but is not yet complete or ready for action.
      */
+    @SerialName("draft")
     DRAFT,
 
     /**
      * The request is in force and ready to be acted upon.
      */
+    @SerialName("active")
     ACTIVE,
 
     /**
      * The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future.
      */
+    @SerialName("on-hold")
     ONHOLD,
 
     /**
      * The request (and any implicit authorization to act) has been terminated prior to the known full completion of the intended actions.  No further activity should occur.
      */
+    @SerialName("revoked")
     REVOKED,
 
     /**
      * The activity described by the request has been fully performed.  No further activity will occur.
      */
+    @SerialName("completed")
     COMPLETED,
 
     /**
      * This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be "revoked" rather than "entered-in-error".).
      */
+    @SerialName("entered-in-error")
     ENTEREDINERROR,
 
     /**
      * The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which.
      */
-    UNKNOWN,
-
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
+    @SerialName("unknown")
+    UNKNOWN;
 
 
     override val code: String?
@@ -258,20 +261,10 @@ enum class CommunicationRequestStatus : CodeableEnumeration {
             COMPLETED -> "completed"
             ENTEREDINERROR -> "entered-in-error"
             UNKNOWN -> "unknown"
-            NULL -> null
         }
 
     override val system: String?
-        get() = when (this) {
-            DRAFT -> "http://hl7.org/fhir/request-status"
-            ACTIVE -> "http://hl7.org/fhir/request-status"
-            ONHOLD -> "http://hl7.org/fhir/request-status"
-            REVOKED -> "http://hl7.org/fhir/request-status"
-            COMPLETED -> "http://hl7.org/fhir/request-status"
-            ENTEREDINERROR -> "http://hl7.org/fhir/request-status"
-            UNKNOWN -> "http://hl7.org/fhir/request-status"
-            NULL -> null
-        }
+        get() = "http://hl7.org/fhir/request-status"
 
     override val definition: String?
         get() = when (this) {
@@ -282,7 +275,6 @@ enum class CommunicationRequestStatus : CodeableEnumeration {
             COMPLETED -> "The activity described by the request has been fully performed.  No further activity will occur."
             ENTEREDINERROR -> "This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be \"revoked\" rather than \"entered-in-error\".)."
             UNKNOWN -> "The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which."
-            NULL -> null
         }
 
     override val display: String?
@@ -294,7 +286,6 @@ enum class CommunicationRequestStatus : CodeableEnumeration {
             COMPLETED -> "Completed"
             ENTEREDINERROR -> "Entered in Error"
             UNKNOWN -> "Unknown"
-            NULL -> null
         }
 
 }

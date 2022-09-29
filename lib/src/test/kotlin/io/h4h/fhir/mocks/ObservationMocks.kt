@@ -94,7 +94,7 @@ object ObservationMocks {
         // --------------------------------
         return Observation(
             id = randomUUID(),
-            status = ObservationStatus.final,
+            status = ObservationStatus.FINAL,
             category = mutableListOf(categoryCodeableConcept),
             code = codeCodeableConcept,
             subject = Reference(reference = "Patient/$patientReference", identifier = Identifier(value = patientReference)),

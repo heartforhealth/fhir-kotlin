@@ -66,14 +66,14 @@ data class Location(
 
     /**
      * The status property covers the general availability of the resource, not the current value which may be covered by the operationStatus, or by a schedule/slots if they are configured for the location.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/location-status")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/location-status")
     val status: LocationStatus? = null,
 
     /**
      * The operational status covers operation values most relevant to beds (but can also apply to rooms/units/chairs/etc. such as an isolation unit/dialysis chair). This typically covers concepts such as contamination, housekeeping, and other activities like maintenance.
+     * @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v2-0116")
      */
-    // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v2-0116")
     val operationalStatus: Coding? = null,
 
     /**
@@ -93,14 +93,14 @@ data class Location(
 
     /**
      * Indicates whether a resource instance represents a specific location or a class of locations.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/location-mode")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/location-mode")
     val mode: LocationMode? = null,
 
     /**
      * Indicates the type of function performed at the location.
+     * @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType")
      */
-    // @Binding(valueSet = "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType")
     val type: List<CodeableConcept>? = null,
 
     /**
@@ -115,8 +115,8 @@ data class Location(
 
     /**
      * Physical form of the location, e.g. building, room, vehicle, road.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/location-physical-type")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/location-physical-type")
     val physicalType: CodeableConcept? = null,
 
     /**
@@ -199,9 +199,9 @@ data class LocationHoursOfOperationComponent(
 
     /**
      * Indicates which days of the week are available between the start and end Times.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/days-of-week")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/days-of-week")
-    val daysOfWeek: List<DaysOfWeek>? = null,
+    val daysOfWeek: List<DayOfWeek>? = null,
 
     /**
      * The Location is open all day.

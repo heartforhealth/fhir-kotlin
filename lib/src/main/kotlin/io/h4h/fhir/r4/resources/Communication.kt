@@ -3,6 +3,7 @@ package io.h4h.fhir.r4.resources
 
 import kotlinx.serialization.Serializable
 import io.h4h.fhir.r4.base.*
+import kotlinx.serialization.SerialName
 
 /*
   Copyright (c) 2011+, HL7, Inc.
@@ -216,41 +217,49 @@ enum class CommunicationStatus : CodeableEnumeration {
     /**
      * The core event has not started yet, but some staging activities have begun (e.g. surgical suite preparation).  Preparation stages may be tracked for billing purposes.
      */
+    @SerialName("preparation")
     PREPARATION,
 
     /**
      * The event is currently occurring.
      */
+    @SerialName("in-progress")
     INPROGRESS,
 
     /**
      * The event was terminated prior to any activity beyond preparation.  I.e. The 'main' activity has not yet begun.  The boundary between preparatory and the 'main' activity is context-specific.
      */
+    @SerialName("not-done")
     NOTDONE,
 
     /**
      * The event has been temporarily stopped but is expected to resume in the future.
      */
+    @SerialName("on-hold")
     ONHOLD,
 
     /**
      * The event was terminated prior to the full completion of the intended activity but after at least some of the 'main' activity (beyond preparation) has occurred.
      */
+    @SerialName("stopped")
     STOPPED,
 
     /**
      * The event has now concluded.
      */
+    @SerialName("completed")
     COMPLETED,
 
     /**
      * This electronic record should never have existed, though it is possible that real-world decisions were based on it.  (If real-world activity has occurred, the status should be "stopped" rather than "entered-in-error".).
      */
+    @SerialName("entered-in-error")
     ENTEREDINERROR,
 
     /**
      * The authoring/source system does not know which of the status values currently applies for this event.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which.
      */
+    @SerialName("unknown")
     UNKNOWN;
 
 
@@ -267,16 +276,7 @@ enum class CommunicationStatus : CodeableEnumeration {
         }
 
     override val system: String?
-        get() = when (this) {
-            PREPARATION -> "http://hl7.org/fhir/event-status"
-            INPROGRESS -> "http://hl7.org/fhir/event-status"
-            NOTDONE -> "http://hl7.org/fhir/event-status"
-            ONHOLD -> "http://hl7.org/fhir/event-status"
-            STOPPED -> "http://hl7.org/fhir/event-status"
-            COMPLETED -> "http://hl7.org/fhir/event-status"
-            ENTEREDINERROR -> "http://hl7.org/fhir/event-status"
-            UNKNOWN -> "http://hl7.org/fhir/event-status"
-        }
+        get() = "http://hl7.org/fhir/event-status"
 
     override val definition: String?
         get() = when (this) {
@@ -311,21 +311,25 @@ enum class CommunicationPriority : CodeableEnumeration {
     /**
      * The request has normal priority.
      */
+    @SerialName("routine")
     ROUTINE,
 
     /**
      * The request should be actioned promptly - higher priority than routine.
      */
+    @SerialName("urgent")
     URGENT,
 
     /**
      * The request should be actioned as soon as possible - higher priority than urgent.
      */
+    @SerialName("asap")
     ASAP,
 
     /**
      * The request should be actioned immediately - highest possible priority.  E.g. an emergency.
      */
+    @SerialName("stat")
     STAT;
 
 
@@ -338,12 +342,7 @@ enum class CommunicationPriority : CodeableEnumeration {
         }
 
     override val system: String?
-        get() = when (this) {
-            ROUTINE -> "http://hl7.org/fhir/request-priority"
-            URGENT -> "http://hl7.org/fhir/request-priority"
-            ASAP -> "http://hl7.org/fhir/request-priority"
-            STAT -> "http://hl7.org/fhir/request-priority"
-        }
+        get() = "http://hl7.org/fhir/request-priority"
 
     override val definition: String?
         get() = when (this) {
