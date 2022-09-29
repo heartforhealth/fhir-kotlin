@@ -8,16 +8,16 @@
 
 
 group = "io.h4h"
-version = "0.1.13"
+version = "0.1.14"
 
 
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.6.21"
+    id("org.jetbrains.kotlin.jvm") version "1.7.10"
 
     // Dokka is a documentation engine for Kotlin
-    id("org.jetbrains.dokka") version "1.6.21"
+    id("org.jetbrains.dokka") version "1.7.10"
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
@@ -28,7 +28,7 @@ plugins {
     id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.4"
 
     // Kotlinx Serialization
-    kotlin("plugin.serialization") version "1.6.21"
+    kotlin("plugin.serialization") version "1.7.10"
 }
 
 
@@ -71,17 +71,17 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // base definitions of FHIR data structures
-    api("io.h4h:fhir-base-kotlin:0.1.3-alpha1")
+    api("io.h4h:fhir-base-kotlin:0.1.4")
 
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm
-    api("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.3.3")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.4.0")
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
     // serialization
-    testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
     testImplementation("com.github.jershell:kbson:0.4.4")
     testImplementation("org.mongodb:bson:4.5.0")
 }

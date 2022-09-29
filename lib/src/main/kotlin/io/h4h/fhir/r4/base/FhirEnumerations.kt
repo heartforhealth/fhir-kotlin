@@ -36,11 +36,7 @@ enum class ActionConditionKind : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            APPLICABILITY -> "http://hl7.org/fhir/action-condition-kind"
-            START -> "http://hl7.org/fhir/action-condition-kind"
-            STOP -> "http://hl7.org/fhir/action-condition-kind"
-        }
+        get() = "http://hl7.org/fhir/action-condition-kind"
 
     override val definition: String?
         get() {
@@ -134,19 +130,7 @@ enum class ActionRelationshipType : CodeableEnumeration {
         }
 
     override val system: String?
-        get() {
-            return when (this) {
-                BEFORESTART -> "http://hl7.org/fhir/action-relationship-type"
-                BEFORE -> "http://hl7.org/fhir/action-relationship-type"
-                BEFOREEND -> "http://hl7.org/fhir/action-relationship-type"
-                CONCURRENTWITHSTART -> "http://hl7.org/fhir/action-relationship-type"
-                CONCURRENT -> "http://hl7.org/fhir/action-relationship-type"
-                CONCURRENTWITHEND -> "http://hl7.org/fhir/action-relationship-type"
-                AFTERSTART -> "http://hl7.org/fhir/action-relationship-type"
-                AFTER -> "http://hl7.org/fhir/action-relationship-type"
-                AFTEREND -> "http://hl7.org/fhir/action-relationship-type"
-            }
-        }
+        get() = "http://hl7.org/fhir/action-relationship-type"
 
     override val definition: String?
         get() {
@@ -217,14 +201,7 @@ enum class ActionParticipantType : CodeableEnumeration {
         }
 
     override val system: String?
-        get() {
-            return when (this) {
-                PATIENT -> "http://hl7.org/fhir/action-participant-type"
-                PRACTITIONER -> "http://hl7.org/fhir/action-participant-type"
-                RELATEDPERSON -> "http://hl7.org/fhir/action-participant-type"
-                DEVICE -> "http://hl7.org/fhir/action-participant-type"
-            }
-        }
+        get() = "http://hl7.org/fhir/action-participant-type"
 
     override val definition: String?
         get() {
@@ -278,13 +255,7 @@ enum class ActionGroupingBehavior : CodeableEnumeration {
         }
 
     override val system: String?
-        get() {
-            return when (this) {
-                VISUALGROUP -> "http://hl7.org/fhir/action-grouping-behavior"
-                LOGICALGROUP -> "http://hl7.org/fhir/action-grouping-behavior"
-                SENTENCEGROUP -> "http://hl7.org/fhir/action-grouping-behavior"
-            }
-        }
+        get() = "http://hl7.org/fhir/action-grouping-behavior"
 
     override val definition: String?
         get() {
@@ -357,16 +328,8 @@ enum class ActionSelectionBehavior : CodeableEnumeration {
         }
 
     override val system: String?
-        get() {
-            return when (this) {
-                ANY -> "http://hl7.org/fhir/action-selection-behavior"
-                ALL -> "http://hl7.org/fhir/action-selection-behavior"
-                ALLORNONE -> "http://hl7.org/fhir/action-selection-behavior"
-                EXACTLYONE -> "http://hl7.org/fhir/action-selection-behavior"
-                ATMOSTONE -> "http://hl7.org/fhir/action-selection-behavior"
-                ONEORMORE -> "http://hl7.org/fhir/action-selection-behavior"
-            }
-        }
+        get() = "http://hl7.org/fhir/action-selection-behavior"
+
 
     override val definition: String?
         get() {
@@ -424,13 +387,7 @@ enum class ActionRequiredBehavior : CodeableEnumeration {
         }
 
     override val system: String?
-        get() {
-            return when (this) {
-                MUST -> "http://hl7.org/fhir/action-required-behavior"
-                COULD -> "http://hl7.org/fhir/action-required-behavior"
-                MUSTUNLESSDOCUMENTED -> "http://hl7.org/fhir/action-required-behavior"
-            }
-        }
+        get() = "http://hl7.org/fhir/action-required-behavior"
 
     override val definition: String?
         get() {
@@ -475,12 +432,7 @@ enum class ActionPrecheckBehavior : CodeableEnumeration {
         }
 
     override val system: String?
-        get() {
-            return when (this) {
-                YES -> "http://hl7.org/fhir/action-precheck-behavior"
-                NO -> "http://hl7.org/fhir/action-precheck-behavior"
-            }
-        }
+        get() = "http://hl7.org/fhir/action-precheck-behavior"
 
     override val definition: String?
         get() {
@@ -523,12 +475,7 @@ enum class ActionCardinalityBehavior : CodeableEnumeration {
         }
 
     override val system: String?
-        get() {
-            return when (this) {
-                SINGLE -> "http://hl7.org/fhir/action-cardinality-behavior"
-                MULTIPLE -> "http://hl7.org/fhir/action-cardinality-behavior"
-            }
-        }
+        get() = "http://hl7.org/fhir/action-cardinality-behavior"
 
     override val definition: String?
         get() {
@@ -555,49 +502,61 @@ enum class AddressUse : CodeableEnumeration {
     /**
      * A communication address at a home.
      */
-    home,
+    @SerialName("home")
+    HOME,
 
     /**
      * An office address. First choice for business related contacts during business hours.
      */
-    work,
+    @SerialName("work")
+    WORK,
 
     /**
      * A temporary address. The period can provide more detailed information.
      */
-    temp,
+    @SerialName("temp")
+    TEMP,
 
     /**
      * This address is no longer in use (or was never correct but retained for records).
      */
-    old,
+    @SerialName("old")
+    OLD,
 
     /**
      * An address to be used to send bills, invoices, receipts etc.
      */
-    billing;
+    @SerialName("billing")
+    BILLING;
 
 
-    override val code = this.name
+    override val code: String?
+        get() = when (this) {
+            HOME -> "home"
+            WORK -> "work"
+            TEMP -> "temp"
+            OLD -> "old"
+            BILLING -> "billing"
+        }
 
     override val system: String? = "http://hl7.org/fhir/address-use"
 
     override val definition: String?
         get() = when (this) {
-            home -> "A communication address at a home."
-            work -> "An office address. First choice for business related contacts during business hours."
-            temp -> "A temporary address. The period can provide more detailed information."
-            old -> "This address is no longer in use (or was never correct but retained for records)."
-            billing -> "An address to be used to send bills, invoices, receipts etc."
+            HOME -> "A communication address at a home."
+            WORK -> "An office address. First choice for business related contacts during business hours."
+            TEMP -> "A temporary address. The period can provide more detailed information."
+            OLD -> "This address is no longer in use (or was never correct but retained for records)."
+            BILLING -> "An address to be used to send bills, invoices, receipts etc."
         }
 
     override val display: String?
         get() = when (this) {
-            home -> "Home"
-            work -> "Work"
-            temp -> "Temporary"
-            old -> "Old / Incorrect"
-            billing -> "Billing"
+            HOME -> "Home"
+            WORK -> "Work"
+            TEMP -> "Temporary"
+            OLD -> "Old / Incorrect"
+            BILLING -> "Billing"
         }
 
 }
@@ -633,11 +592,7 @@ enum class AddressType : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            POSTAL -> "http://hl7.org/fhir/address-type"
-            PHYSICAL -> "http://hl7.org/fhir/address-type"
-            BOTH -> "http://hl7.org/fhir/address-type"
-        }
+        get() = "http://hl7.org/fhir/address-type"
 
     override val definition: String?
         get() = when (this) {
@@ -714,15 +669,7 @@ enum class ContactPointSystem : CodeableEnumeration {
         }
 
     override val system: String?
-        get() = when (this) {
-            PHONE -> "http://hl7.org/fhir/contact-point-system"
-            FAX -> "http://hl7.org/fhir/contact-point-system"
-            EMAIL -> "http://hl7.org/fhir/contact-point-system"
-            PAGER -> "http://hl7.org/fhir/contact-point-system"
-            URL -> "http://hl7.org/fhir/contact-point-system"
-            SMS -> "http://hl7.org/fhir/contact-point-system"
-            OTHER -> "http://hl7.org/fhir/contact-point-system"
-        }
+        get() = "http://hl7.org/fhir/contact-point-system"
 
     override val definition: String?
         get() = when (this) {
@@ -901,98 +848,14 @@ enum class DayOfWeek : CodeableEnumeration {
 }
 
 
-@Serializable
-enum class DaysOfWeek : CodeableEnumeration {
-
-    /**
-     * Monday.
-     */
-    @SerialName("mon")
-    MON,
-
-    /**
-     * Tuesday.
-     */
-    @SerialName("tue")
-    TUE,
-
-    /**
-     * Wednesday.
-     */
-    @SerialName("wed")
-    WED,
-
-    /**
-     * Thursday.
-     */
-    @SerialName("thu")
-    THU,
-
-    /**
-     * Friday.
-     */
-    @SerialName("fri")
-    FRI,
-
-    /**
-     * Saturday.
-     */
-    @SerialName("sat")
-    SAT,
-
-    /**
-     * Sunday.
-     */
-    @SerialName("sun")
-    SUN;
-
-
-    override val code: String?
-        get() = when (this) {
-            MON -> "mon"
-            TUE -> "tue"
-            WED -> "wed"
-            THU -> "thu"
-            FRI -> "fri"
-            SAT -> "sat"
-            SUN -> "sun"
-        }
-
-
-    override val system = "http://hl7.org/fhir/days-of-week"
-
-
-    override val definition: String?
-        get() = when (this) {
-            MON -> "Monday."
-            TUE -> "Tuesday."
-            WED -> "Wednesday."
-            THU -> "Thursday."
-            FRI -> "Friday."
-            SAT -> "Saturday."
-            SUN -> "Sunday."
-        }
-
-
-    override val display: String?
-        get() = when (this) {
-            MON -> "Monday"
-            TUE -> "Tuesday"
-            WED -> "Wednesday"
-            THU -> "Thursday"
-            FRI -> "Friday"
-            SAT -> "Saturday"
-            SUN -> "Sunday"
-        }
-    
-}
-
 
 @Serializable
 enum class EventTiming : CodeableEnumeration {
+
     /**
      * Event occurs during the morning. The exact time is unspecified and established by institution convention or patient interpretation.
      */
+    @SerialName("MORN")
     MORN,
 
     /**
@@ -1010,11 +873,13 @@ enum class EventTiming : CodeableEnumeration {
     /**
      * Event occurs around 12:00pm. The exact time is unspecified and established by institution convention or patient interpretation.
      */
+    @SerialName("NOON")
     NOON,
 
     /**
      * Event occurs during the afternoon. The exact time is unspecified and established by institution convention or patient interpretation.
      */
+    @SerialName("AFT")
     AFT,
 
     /**
@@ -1032,6 +897,7 @@ enum class EventTiming : CodeableEnumeration {
     /**
      * Event occurs during the evening. The exact time is unspecified and established by institution convention or patient interpretation.
      */
+    @SerialName("EVE")
     EVE,
 
     /**
@@ -1049,81 +915,97 @@ enum class EventTiming : CodeableEnumeration {
     /**
      * Event occurs during the night. The exact time is unspecified and established by institution convention or patient interpretation.
      */
+    @SerialName("NIGHT")
     NIGHT,
 
     /**
      * Event occurs [offset] after subject goes to sleep. The exact time is unspecified and established by institution convention or patient interpretation.
      */
+    @SerialName("PHS")
     PHS,
 
     /**
      * null
      */
+    @SerialName("HS")
     HS,
 
     /**
      * null
      */
+    @SerialName("WAKE")
     WAKE,
 
     /**
      * null
      */
+    @SerialName("C")
     C,
 
     /**
      * null
      */
+    @SerialName("CM")
     CM,
 
     /**
      * null
      */
+    @SerialName("CD")
     CD,
 
     /**
      * null
      */
+    @SerialName("CV")
     CV,
 
     /**
      * null
      */
+    @SerialName("AC")
     AC,
 
     /**
      * null
      */
+    @SerialName("ACM")
     ACM,
 
     /**
      * null
      */
+    @SerialName("ACD")
     ACD,
 
     /**
      * null
      */
+    @SerialName("ACV")
     ACV,
 
     /**
      * null
      */
+    @SerialName("PC")
     PC,
 
     /**
      * null
      */
+    @SerialName("PCM")
     PCM,
 
     /**
      * null
      */
+    @SerialName("PCD")
     PCD,
 
     /**
      * null
      */
+    @SerialName("PCV")
     PCV;
 
     override val code: String?
@@ -1277,10 +1159,7 @@ enum class EnableWhenBehavior : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            ALL -> "http://hl7.org/fhir/questionnaire-enable-behavior"
-            ANY -> "http://hl7.org/fhir/questionnaire-enable-behavior"
-        }
+        get() = "http://hl7.org/fhir/questionnaire-enable-behavior"
 
     override val definition: String?
         get() = when (this) {
@@ -1368,17 +1247,7 @@ enum class EncounterStatus : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            PLANNED -> "http://hl7.org/fhir/encounter-status"
-            ARRIVED -> "http://hl7.org/fhir/encounter-status"
-            TRIAGED -> "http://hl7.org/fhir/encounter-status"
-            INPROGRESS -> "http://hl7.org/fhir/encounter-status"
-            ONLEAVE -> "http://hl7.org/fhir/encounter-status"
-            FINISHED -> "http://hl7.org/fhir/encounter-status"
-            CANCELLED -> "http://hl7.org/fhir/encounter-status"
-            ENTEREDINERROR -> "http://hl7.org/fhir/encounter-status"
-            UNKNOWN -> "http://hl7.org/fhir/encounter-status"
-        }
+        get() = "http://hl7.org/fhir/encounter-status"
 
 
     override val definition: String?
@@ -1455,12 +1324,7 @@ enum class EncounterLocationStatus : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            PLANNED -> "http://hl7.org/fhir/encounter-location-status"
-            ACTIVE -> "http://hl7.org/fhir/encounter-location-status"
-            RESERVED -> "http://hl7.org/fhir/encounter-location-status"
-            COMPLETED -> "http://hl7.org/fhir/encounter-location-status"
-        }
+        get() = "http://hl7.org/fhir/encounter-location-status"
 
 
     override val definition: String?
@@ -1534,14 +1398,7 @@ enum class EndpointStatus : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            ACTIVE -> "http://hl7.org/fhir/endpoint-status"
-            SUSPENDED -> "http://hl7.org/fhir/endpoint-status"
-            ERROR -> "http://hl7.org/fhir/endpoint-status"
-            OFF -> "http://hl7.org/fhir/endpoint-status"
-            ENTEREDINERROR -> "http://hl7.org/fhir/endpoint-status"
-            TEST -> "http://hl7.org/fhir/endpoint-status"
-        }
+        get() = "http://hl7.org/fhir/endpoint-status"
 
     override val definition: String?
         get() = when (this) {
@@ -1624,15 +1481,7 @@ enum class EpisodeOfCareStatus : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            PLANNED -> "http://hl7.org/fhir/episode-of-care-status"
-            WAITLIST -> "http://hl7.org/fhir/episode-of-care-status"
-            ACTIVE -> "http://hl7.org/fhir/episode-of-care-status"
-            ONHOLD -> "http://hl7.org/fhir/episode-of-care-status"
-            FINISHED -> "http://hl7.org/fhir/episode-of-care-status"
-            CANCELLED -> "http://hl7.org/fhir/episode-of-care-status"
-            ENTEREDINERROR -> "http://hl7.org/fhir/episode-of-care-status"
-        }
+        get() = "http://hl7.org/fhir/episode-of-care-status"
 
 
     override val definition: String?
@@ -1692,11 +1541,7 @@ enum class ExpressionLanguage : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            TEXT_CQL -> "http://hl7.org/fhir/expression-language"
-            TEXT_FHIRPATH -> "http://hl7.org/fhir/expression-language"
-            APPLICATION_XFHIRQUERY -> "http://hl7.org/fhir/expression-language"
-        }
+        get() = "http://hl7.org/fhir/expression-language"
 
     override val definition: String?
         get() = when (this) {
@@ -1717,6 +1562,7 @@ enum class ExpressionLanguage : CodeableEnumeration {
 
 @Serializable
 enum class FHIRSubstanceStatus : CodeableEnumeration {
+
     /**
      * The substance is considered for use or reference.
      */
@@ -1744,11 +1590,7 @@ enum class FHIRSubstanceStatus : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            ACTIVE -> "http://hl7.org/fhir/substance-status"
-            INACTIVE -> "http://hl7.org/fhir/substance-status"
-            ENTEREDINERROR -> "http://hl7.org/fhir/substance-status"
-        }
+        get() = "http://hl7.org/fhir/substance-status"
 
 
     override val definition: String?
@@ -1771,55 +1613,61 @@ enum class FHIRSubstanceStatus : CodeableEnumeration {
 
 @Serializable
 enum class FilterOperator : CodeableEnumeration {
+
     /**
      * The specified property of the code equals the provided value.
      */
+    @SerialName("=")
     EQUAL,
 
     /**
      * Includes all concept ids that have a transitive is-a relationship with the concept Id provided as the value, including the provided concept itself (include descendant codes and self).
      */
+    @SerialName("is-a")
     ISA,
 
     /**
      * Includes all concept ids that have a transitive is-a relationship with the concept Id provided as the value, excluding the provided concept itself i.e. include descendant codes only).
      */
+    @SerialName("descendent-of")
     DESCENDENTOF,
 
     /**
      * The specified property of the code does not have an is-a relationship with the provided value.
      */
+    @SerialName("is-not-a")
     ISNOTA,
 
     /**
      * The specified property of the code  matches the regex specified in the provided value.
      */
+    @SerialName("regex")
     REGEX,
 
     /**
      * The specified property of the code is in the set of codes or concepts specified in the provided value (comma separated list).
      */
+    @SerialName("in")
     IN,
 
     /**
      * The specified property of the code is not in the set of codes or concepts specified in the provided value (comma separated list).
      */
+    @SerialName("not-in")
     NOTIN,
 
     /**
      * Includes all concept ids that have a transitive is-a relationship from the concept Id provided as the value, including the provided concept itself (i.e. include ancestor codes and self).
      */
+    @SerialName("generalizes")
     GENERALIZES,
 
     /**
      * The specified property of the code has at least one value (if the specified value is true; if the specified value is false, then matches when the specified property of the code has no values).
      */
-    EXISTS,
+    @SerialName("exists")
+    EXISTS;
 
-    /**
-     * added to help the parsers with the generic types
-     */
-    NULL;
 
     override val code: String?
         get() = when (this) {
@@ -1832,23 +1680,11 @@ enum class FilterOperator : CodeableEnumeration {
             NOTIN -> "not-in"
             GENERALIZES -> "generalizes"
             EXISTS -> "exists"
-            NULL -> null
         }
 
 
     override val system: String?
-        get() = when (this) {
-            EQUAL -> "http://hl7.org/fhir/filter-operator"
-            ISA -> "http://hl7.org/fhir/filter-operator"
-            DESCENDENTOF -> "http://hl7.org/fhir/filter-operator"
-            ISNOTA -> "http://hl7.org/fhir/filter-operator"
-            REGEX -> "http://hl7.org/fhir/filter-operator"
-            IN -> "http://hl7.org/fhir/filter-operator"
-            NOTIN -> "http://hl7.org/fhir/filter-operator"
-            GENERALIZES -> "http://hl7.org/fhir/filter-operator"
-            EXISTS -> "http://hl7.org/fhir/filter-operator"
-            NULL -> null
-        }
+        get() = "http://hl7.org/fhir/filter-operator"
 
 
     override val definition: String?
@@ -1862,7 +1698,6 @@ enum class FilterOperator : CodeableEnumeration {
             NOTIN -> "The specified property of the code is not in the set of codes or concepts specified in the provided value (comma separated list)."
             GENERALIZES -> "Includes all concept ids that have a transitive is-a relationship from the concept Id provided as the value, including the provided concept itself (i.e. include ancestor codes and self)."
             EXISTS -> "The specified property of the code has at least one value (if the specified value is true; if the specified value is false, then matches when the specified property of the code has no values)."
-            NULL -> null
         }
 
 
@@ -1877,7 +1712,6 @@ enum class FilterOperator : CodeableEnumeration {
             NOTIN -> "Not in Set"
             GENERALIZES -> "Generalizes (by Subsumption)"
             EXISTS -> "Exists"
-            NULL -> null
         }
 
 
@@ -1886,6 +1720,7 @@ enum class FilterOperator : CodeableEnumeration {
 
 @Serializable
 enum class LocationStatus : CodeableEnumeration {
+
     /**
      * The location is operational.
      */
@@ -1913,11 +1748,7 @@ enum class LocationStatus : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            ACTIVE -> "http://hl7.org/fhir/location-status"
-            SUSPENDED -> "http://hl7.org/fhir/location-status"
-            INACTIVE -> "http://hl7.org/fhir/location-status"
-        }
+        get() = "http://hl7.org/fhir/location-status"
 
 
     override val definition: String?
@@ -1940,6 +1771,7 @@ enum class LocationStatus : CodeableEnumeration {
 
 @Serializable
 enum class LocationMode : CodeableEnumeration {
+
     /**
      * The Location resource represents a specific instance of a location (e.g. Operating Theatre 1A).
      */
@@ -1961,10 +1793,7 @@ enum class LocationMode : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            INSTANCE -> "http://hl7.org/fhir/location-mode"
-            KIND -> "http://hl7.org/fhir/location-mode"
-        }
+        get() = "http://hl7.org/fhir/location-mode"
 
 
     override val definition: String?
@@ -1985,6 +1814,7 @@ enum class LocationMode : CodeableEnumeration {
 
 @Serializable
 enum class NameUse : CodeableEnumeration {
+
     /**
      * Known as/conventional/the one you normally use.
      */
@@ -2040,15 +1870,7 @@ enum class NameUse : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            USUAL -> "http://hl7.org/fhir/name-use"
-            OFFICIAL -> "http://hl7.org/fhir/name-use"
-            TEMP -> "http://hl7.org/fhir/name-use"
-            NICKNAME -> "http://hl7.org/fhir/name-use"
-            ANONYMOUS -> "http://hl7.org/fhir/name-use"
-            OLD -> "http://hl7.org/fhir/name-use"
-            MAIDEN -> "http://hl7.org/fhir/name-use"
-        }
+        get() = "http://hl7.org/fhir/name-use"
     
     
     override val definition: String?
@@ -2203,6 +2025,7 @@ enum class ObservationDataType : CodeableEnumeration {
 
 @Serializable
 enum class ObservationRangeCategory : CodeableEnumeration {
+
     /**
      * Reference (Normal) Range for Ordinal and Continuous Observations.
      */
@@ -2254,54 +2077,62 @@ enum class ObservationStatus : CodeableEnumeration {
     /**
      * The existence of the observation is registered, but there is no result yet available.
      */
-    registered,
+    @SerialName("registered")
+    REGISTERED,
 
     /**
      * This is an initial or interim observation: data may be incomplete or unverified.
      */
-    preliminary,
+    @SerialName("preliminary")
+    PRELIMINARY,
 
     /**
      * The observation is complete and there are no further actions needed. Additional information such "released", "signed", etc would be represented using [Provenance](provenance.html) which provides not only the act but also the actors and dates and other related data. These act states would be associated with an observation status of `preliminary` until they are all completed and then a status of `final` would be applied.
      */
-    final,
+    @SerialName("final")
+    FINAL,
 
     /**
      * Subsequent to being Final, the observation has been modified subsequent.  This includes updates/new information and corrections.
      */
-    amended,
+    @SerialName("amended")
+    AMENDED,
 
     /**
      * Subsequent to being Final, the observation has been modified to correct an error in the test result.
      */
-    corrected,
+    @SerialName("corrected")
+    CORRECTED,
 
     /**
      * The observation is unavailable because the measurement was not started or not completed (also sometimes called "aborted").
      */
-    cancelled,
+    @SerialName("cancelled")
+    CANCELLED,
 
     /**
      * The observation has been withdrawn following previous final release.  This electronic record should never have existed, though it is possible that real-world decisions were based on it. (If real-world activity has occurred, the status should be "cancelled" rather than "entered-in-error".).
      */
-    `entered-in-error`,
+    @SerialName("entered-in-error")
+    ENTEREDINERROR,
 
     /**
      * The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which.
      */
-    unknown;
+    @SerialName("unknown")
+    UNKNOWN;
 
 
     override val code: String?
         get() = when (this) {
-            registered -> "registered"
-            preliminary -> "preliminary"
-            final -> "final"
-            amended -> "amended"
-            corrected -> "corrected"
-            cancelled -> "cancelled"
-            `entered-in-error` -> "entered-in-error"
-            unknown -> "unknown"
+            REGISTERED -> "registered"
+            PRELIMINARY -> "preliminary"
+            FINAL -> "final"
+            AMENDED -> "amended"
+            CORRECTED -> "corrected"
+            CANCELLED -> "cancelled"
+            ENTEREDINERROR -> "entered-in-error"
+            UNKNOWN -> "unknown"
         }
 
 
@@ -2311,27 +2142,27 @@ enum class ObservationStatus : CodeableEnumeration {
 
     override val definition: String?
         get() = when (this) {
-            registered -> "The existence of the observation is registered, but there is no result yet available."
-            preliminary -> "This is an initial or interim observation: data may be incomplete or unverified."
-            final -> "The observation is complete and there are no further actions needed. Additional information such \"released\", \"signed\", etc would be represented using [Provenance](provenance.html) which provides not only the act but also the actors and dates and other related data. These act states would be associated with an observation status of `preliminary` until they are all completed and then a status of `final` would be applied."
-            amended -> "Subsequent to being Final, the observation has been modified subsequent.  This includes updates/new information and corrections."
-            corrected -> "Subsequent to being Final, the observation has been modified to correct an error in the test result."
-            cancelled -> "The observation is unavailable because the measurement was not started or not completed (also sometimes called \"aborted\")."
-            `entered-in-error` -> "The observation has been withdrawn following previous final release.  This electronic record should never have existed, though it is possible that real-world decisions were based on it. (If real-world activity has occurred, the status should be \"cancelled\" rather than \"entered-in-error\".)."
-            unknown -> "The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which."
+            REGISTERED -> "The existence of the observation is registered, but there is no result yet available."
+            PRELIMINARY -> "This is an initial or interim observation: data may be incomplete or unverified."
+            FINAL -> "The observation is complete and there are no further actions needed. Additional information such \"released\", \"signed\", etc would be represented using [Provenance](provenance.html) which provides not only the act but also the actors and dates and other related data. These act states would be associated with an observation status of `preliminary` until they are all completed and then a status of `final` would be applied."
+            AMENDED -> "Subsequent to being Final, the observation has been modified subsequent.  This includes updates/new information and corrections."
+            CORRECTED -> "Subsequent to being Final, the observation has been modified to correct an error in the test result."
+            CANCELLED -> "The observation is unavailable because the measurement was not started or not completed (also sometimes called \"aborted\")."
+            ENTEREDINERROR -> "The observation has been withdrawn following previous final release.  This electronic record should never have existed, though it is possible that real-world decisions were based on it. (If real-world activity has occurred, the status should be \"cancelled\" rather than \"entered-in-error\".)."
+            UNKNOWN -> "The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which."
         }
 
 
     override val display: String?
         get() = when (this) {
-            registered -> "Registered"
-            preliminary -> "Preliminary"
-            final -> "Final"
-            amended -> "Amended"
-            corrected -> "Corrected"
-            cancelled -> "Cancelled"
-            `entered-in-error` -> "Entered in Error"
-            unknown -> "Unknown"
+            REGISTERED -> "Registered"
+            PRELIMINARY -> "Preliminary"
+            FINAL -> "Final"
+            AMENDED -> "Amended"
+            CORRECTED -> "Corrected"
+            CANCELLED -> "Cancelled"
+            ENTEREDINERROR -> "Entered in Error"
+            UNKNOWN -> "Unknown"
         }
 
 
@@ -2382,13 +2213,7 @@ enum class ProvenanceEntityRole : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            DERIVATION -> "http://hl7.org/fhir/provenance-entity-role"
-            REVISION -> "http://hl7.org/fhir/provenance-entity-role"
-            QUOTATION -> "http://hl7.org/fhir/provenance-entity-role"
-            SOURCE -> "http://hl7.org/fhir/provenance-entity-role"
-            REMOVAL -> "http://hl7.org/fhir/provenance-entity-role"
-        }
+        get() = "http://hl7.org/fhir/provenance-entity-role"
 
     override val definition: String?
         get() = when (this) {
@@ -2414,28 +2239,39 @@ enum class ProvenanceEntityRole : CodeableEnumeration {
 
 @Serializable
 enum class PublicationStatus : CodeableEnumeration {
+
     /**
      * This resource is still under development and is not yet considered to be ready for normal use.
      */
-    draft,
+    @SerialName("draft")
+    DRAFT,
 
     /**
      * This resource is ready for normal use.
      */
-    active,
+    @SerialName("active")
+    ACTIVE,
 
     /**
      * This resource has been withdrawn or superseded and should no longer be used.
      */
-    retired,
+    @SerialName("retired")
+    RETIRED,
 
     /**
      * The authoring system does not know which of the status values currently applies for this resource.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply, it's just not known which one.
      */
-    unknown;
+    @SerialName("unknown")
+    UNKNOWN;
 
 
-    override val code: String? = name
+    override val code: String?
+        get() = when (this) {
+            DRAFT -> "draft"
+            ACTIVE -> "active"
+            RETIRED -> "retired"
+            UNKNOWN -> "unknown"
+        }
 
 
     override val system: String? = "http://hl7.org/fhir/publication-status"
@@ -2443,18 +2279,18 @@ enum class PublicationStatus : CodeableEnumeration {
 
     override val definition: String?
         get() = when (this) {
-            draft -> "This resource is still under development and is not yet considered to be ready for normal use."
-            active -> "This resource is ready for normal use."
-            retired -> "This resource has been withdrawn or superseded and should no longer be used."
-            unknown -> "The authoring system does not know which of the status values currently applies for this resource.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, it's just not known which one."
+            DRAFT -> "This resource is still under development and is not yet considered to be ready for normal use."
+            ACTIVE -> "This resource is ready for normal use."
+            RETIRED -> "This resource has been withdrawn or superseded and should no longer be used."
+            UNKNOWN -> "The authoring system does not know which of the status values currently applies for this resource.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, it's just not known which one."
         }
 
     override val display: String?
         get() = when (this) {
-            draft -> "Draft"
-            active -> "Active"
-            retired -> "Retired"
-            unknown -> "Unknown"
+            DRAFT -> "Draft"
+            ACTIVE -> "Active"
+            RETIRED -> "Retired"
+            UNKNOWN -> "Unknown"
         }
     
 }
@@ -2462,6 +2298,7 @@ enum class PublicationStatus : CodeableEnumeration {
 
 @Serializable
 enum class RelatedArtifactType : CodeableEnumeration {
+
     /**
      * Additional documentation for the knowledge resource. This would include additional instructions on usage as well as additional information on clinical context or appropriateness.
      */
@@ -2524,16 +2361,7 @@ enum class RelatedArtifactType : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            DOCUMENTATION -> "http://hl7.org/fhir/related-artifact-type"
-            JUSTIFICATION -> "http://hl7.org/fhir/related-artifact-type"
-            CITATION -> "http://hl7.org/fhir/related-artifact-type"
-            PREDECESSOR -> "http://hl7.org/fhir/related-artifact-type"
-            SUCCESSOR -> "http://hl7.org/fhir/related-artifact-type"
-            DERIVEDFROM -> "http://hl7.org/fhir/related-artifact-type"
-            DEPENDSON -> "http://hl7.org/fhir/related-artifact-type"
-            COMPOSEDOF -> "http://hl7.org/fhir/related-artifact-type"
-        }
+        get() = "http://hl7.org/fhir/related-artifact-type"
 
     override val definition: String?
         get() = when (this) {
@@ -2600,12 +2428,7 @@ enum class RequestPriority : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            ROUTINE -> "http://hl7.org/fhir/request-priority"
-            URGENT -> "http://hl7.org/fhir/request-priority"
-            ASAP -> "http://hl7.org/fhir/request-priority"
-            STAT -> "http://hl7.org/fhir/request-priority"
-        }
+        get() = "http://hl7.org/fhir/request-priority"
 
     override val definition: String?
         get() {
@@ -2632,6 +2455,7 @@ enum class RequestPriority : CodeableEnumeration {
 
 @Serializable
 enum class ServiceRequestStatus : CodeableEnumeration {
+
     /**
      * The request has been created but is not yet complete or ready for action.
      */
@@ -2687,15 +2511,7 @@ enum class ServiceRequestStatus : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            DRAFT -> "http://hl7.org/fhir/request-status"
-            ACTIVE -> "http://hl7.org/fhir/request-status"
-            ONHOLD -> "http://hl7.org/fhir/request-status"
-            REVOKED -> "http://hl7.org/fhir/request-status"
-            COMPLETED -> "http://hl7.org/fhir/request-status"
-            ENTEREDINERROR -> "http://hl7.org/fhir/request-status"
-            UNKNOWN -> "http://hl7.org/fhir/request-status"
-        }
+        get() = "http://hl7.org/fhir/request-status"
 
 
     override val definition: String?
@@ -2726,6 +2542,7 @@ enum class ServiceRequestStatus : CodeableEnumeration {
 
 @Serializable
 enum class ServiceRequestIntent : CodeableEnumeration {
+
     /**
      * The request is a suggestion made by someone/something that does not have an intention to ensure it occurs and without providing an authorization to act.
      */
@@ -2795,17 +2612,7 @@ enum class ServiceRequestIntent : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            PROPOSAL -> "http://hl7.org/fhir/request-intent"
-            PLAN -> "http://hl7.org/fhir/request-intent"
-            DIRECTIVE -> "http://hl7.org/fhir/request-intent"
-            ORDER -> "http://hl7.org/fhir/request-intent"
-            ORIGINALORDER -> "http://hl7.org/fhir/request-intent"
-            REFLEXORDER -> "http://hl7.org/fhir/request-intent"
-            FILLERORDER -> "http://hl7.org/fhir/request-intent"
-            INSTANCEORDER -> "http://hl7.org/fhir/request-intent"
-            OPTION -> "http://hl7.org/fhir/request-intent"
-        }
+        get() = "http://hl7.org/fhir/request-intent"
     
 
     override val definition: String?
@@ -2841,6 +2648,7 @@ enum class ServiceRequestIntent : CodeableEnumeration {
 
 @Serializable
 enum class ServiceRequestPriority : CodeableEnumeration {
+
     /**
      * The request has normal priority.
      */
@@ -2875,12 +2683,7 @@ enum class ServiceRequestPriority : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            ROUTINE -> "http://hl7.org/fhir/request-priority"
-            URGENT -> "http://hl7.org/fhir/request-priority"
-            ASAP -> "http://hl7.org/fhir/request-priority"
-            STAT -> "http://hl7.org/fhir/request-priority"
-        }
+        get() = "http://hl7.org/fhir/request-priority"
 
 
     override val definition: String?
@@ -2927,10 +2730,7 @@ enum class SortDirection : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            ASCENDING -> "http://hl7.org/fhir/sort-direction"
-            DESCENDING -> "http://hl7.org/fhir/sort-direction"
-        }
+        get() = "http://hl7.org/fhir/sort-direction"
 
     override val definition: String?
         get() = when (this) {
@@ -2949,6 +2749,7 @@ enum class SortDirection : CodeableEnumeration {
 
 @Serializable
 enum class SpecimenStatus : CodeableEnumeration {
+
     /**
      * The physical specimen is present and in good condition.
      */
@@ -2983,12 +2784,7 @@ enum class SpecimenStatus : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            AVAILABLE -> "http://hl7.org/fhir/specimen-status"
-            UNAVAILABLE -> "http://hl7.org/fhir/specimen-status"
-            UNSATISFACTORY -> "http://hl7.org/fhir/specimen-status"
-            ENTEREDINERROR -> "http://hl7.org/fhir/specimen-status"
-        }
+        get() = "http://hl7.org/fhir/specimen-status"
 
 
     override val definition: String?
@@ -3012,6 +2808,7 @@ enum class SpecimenStatus : CodeableEnumeration {
 
 @Serializable
 enum class UnitsOfTime : CodeableEnumeration {
+
     /**
      * null
      */
@@ -3067,15 +2864,7 @@ enum class UnitsOfTime : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            S -> "http://unitsofmeasure.org"
-            MIN -> "http://unitsofmeasure.org"
-            H -> "http://unitsofmeasure.org"
-            D -> "http://unitsofmeasure.org"
-            WK -> "http://unitsofmeasure.org"
-            MO -> "http://unitsofmeasure.org"
-            A -> "http://unitsofmeasure.org"
-        }
+        get() = "http://unitsofmeasure.org"
 
     override val definition: String?
         get() = when (this) {
@@ -3168,16 +2957,7 @@ enum class TriggerType : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            NAMEDEVENT -> "http://hl7.org/fhir/trigger-type"
-            PERIODIC -> "http://hl7.org/fhir/trigger-type"
-            DATACHANGED -> "http://hl7.org/fhir/trigger-type"
-            DATAADDED -> "http://hl7.org/fhir/trigger-type"
-            DATAMODIFIED -> "http://hl7.org/fhir/trigger-type"
-            DATAREMOVED -> "http://hl7.org/fhir/trigger-type"
-            DATAACCESSED -> "http://hl7.org/fhir/trigger-type"
-            DATAACCESSENDED -> "http://hl7.org/fhir/trigger-type"
-        }
+        get() = "http://hl7.org/fhir/trigger-type"
 
     override val definition: String?
         get() = when (this) {

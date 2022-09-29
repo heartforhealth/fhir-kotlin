@@ -10,7 +10,7 @@ import kotlinx.datetime.*
 // Date/Time
 // ==========================================================================
 
-val defaultSystemTimezone = TimeZone.currentSystemDefault()
+val defaultSystemTimezone = TimeZone.UTC
 
 
 fun LocalDate.Companion.now(timeZone: TimeZone = defaultSystemTimezone)

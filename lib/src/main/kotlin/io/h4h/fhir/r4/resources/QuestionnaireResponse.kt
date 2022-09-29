@@ -3,6 +3,7 @@ package io.h4h.fhir.r4.resources
 import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.r4.serializers.InstantSerializer
 import kotlinx.datetime.Instant
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /*
@@ -208,26 +209,31 @@ enum class QuestionnaireResponseStatus : CodeableEnumeration {
     /**
      * This QuestionnaireResponse has been partially filled out with answers but changes or additions are still expected to be made to it.
      */
+    @SerialName("in-progress")
     INPROGRESS,
 
     /**
      * This QuestionnaireResponse has been filled out with answers and the current content is regarded as definitive.
      */
+    @SerialName("completed")
     COMPLETED,
 
     /**
      * This QuestionnaireResponse has been filled out with answers, then marked as complete, yet changes or additions have been made to it afterwards.
      */
+    @SerialName("amended")
     AMENDED,
 
     /**
      * This QuestionnaireResponse was entered in error and voided.
      */
+    @SerialName("entered-in-error")
     ENTEREDINERROR,
 
     /**
      * This QuestionnaireResponse has been partially filled out with answers but has been abandoned. It is unknown whether changes or additions are expected to be made to it.
      */
+    @SerialName("stopped")
     STOPPED;
 
 
@@ -242,13 +248,7 @@ enum class QuestionnaireResponseStatus : CodeableEnumeration {
 
 
     override val system: String?
-        get() = when (this) {
-            INPROGRESS -> "http://hl7.org/fhir/questionnaire-answers-status"
-            COMPLETED -> "http://hl7.org/fhir/questionnaire-answers-status"
-            AMENDED -> "http://hl7.org/fhir/questionnaire-answers-status"
-            ENTEREDINERROR -> "http://hl7.org/fhir/questionnaire-answers-status"
-            STOPPED -> "http://hl7.org/fhir/questionnaire-answers-status"
-        }
+        get() = "http://hl7.org/fhir/questionnaire-answers-status"
 
     override val definition: String?
         get() = when (this) {
