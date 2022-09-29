@@ -65,7 +65,7 @@ repositories {
 
 dependencies {
     // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.6.21"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 
     // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -79,7 +79,6 @@ dependencies {
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-
     // serialization
     testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
     testImplementation("com.github.jershell:kbson:0.4.4")
