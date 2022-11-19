@@ -8,7 +8,7 @@
 
 
 group = "io.h4h"
-version = "0.1.14"
+version = "0.1.15"
 
 
 
@@ -23,9 +23,6 @@ plugins {
     `java-library`
     // Publish to Maven repository
     `maven-publish`
-
-    // Publish to GCP Artifact Registry repository
-    id("com.google.cloud.artifactregistry.gradle-plugin") version "2.1.4"
 
     // Kotlinx Serialization
     kotlin("plugin.serialization") version "1.7.10"
@@ -43,12 +40,18 @@ publishing {
         }
     }
 
-    // publish on GCP Artifact Registry
     repositories {
+        // publish on GitHub Packages
         maven {
-            url = uri("artifactregistry://europe-west4-maven.pkg.dev/ehealth-development/java-repository-1")
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/heartforhealth/fhir-kotlin")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+            }
         }
     }
+
 }
 
 
@@ -59,8 +62,13 @@ repositories {
 
     // GCP Artifact Registry
     maven {
-        url = uri("artifactregistry://europe-west4-maven.pkg.dev/ehealth-development/java-repository-1")
+        url = uri("https://maven.pkg.github.com/heartforhealth/fhir-kotlin")
+        credentials {
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+        }
     }
+
 }
 
 dependencies {
