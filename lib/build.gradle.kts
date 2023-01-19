@@ -8,7 +8,7 @@
 
 
 group = "io.h4h"
-version = "0.1.15"
+version = "0.1.16"
 
 
 
@@ -79,7 +79,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // base definitions of FHIR data structures
-    api("io.h4h:fhir-base-kotlin:0.1.4")
+    api("io.h4h:fhir-base-kotlin:0.1.5")
 
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm
