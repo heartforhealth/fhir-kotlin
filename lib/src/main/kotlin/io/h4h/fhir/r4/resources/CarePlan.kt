@@ -1,6 +1,7 @@
 package io.h4h.fhir.r4.resources
 
 
+import io.h4h.fhir.r4.base.Annotation
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

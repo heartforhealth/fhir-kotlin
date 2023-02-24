@@ -1,7 +1,6 @@
 package io.h4h.fhir.r4.base
 
 import kotlinx.serialization.Serializable
-import kotlin.Annotation
 
 
 /*

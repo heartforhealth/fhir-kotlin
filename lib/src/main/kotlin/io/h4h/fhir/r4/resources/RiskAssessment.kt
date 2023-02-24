@@ -1,5 +1,6 @@
 package io.h4h.fhir.r4.resources
 
+import io.h4h.fhir.r4.base.Annotation
 import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.r4.serializers.InstantSerializer
 import kotlinx.datetime.Instant
