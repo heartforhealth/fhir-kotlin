@@ -27,7 +27,7 @@ class BsonConverter {
 /**
  * Make sure that we can serialize FHIR Resources to BSON
  * */
-private fun <T : DomainResource> T.toBsonDocument(serializer: KSerializer<T>): BsonDocument {
+fun <T : DomainResource> T.toBsonDocument(serializer: KSerializer<T>): BsonDocument {
     // model -> BsonDocument
     return BsonConverter.kBson.stringify(serializer = serializer, obj = this)
 }
@@ -35,7 +35,7 @@ private fun <T : DomainResource> T.toBsonDocument(serializer: KSerializer<T>): B
 /**
  * Make sure that we can serialize CDS Objects to BSON
  * */
-private fun <T : Resource> T.toBsonDocument(serializer: KSerializer<T>): BsonDocument {
+fun <T : Resource> T.toBsonDocument(serializer: KSerializer<T>): BsonDocument {
     // model -> BsonDocument
     return BsonConverter.kBson.stringify(serializer = serializer, obj = this)
 }

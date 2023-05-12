@@ -1,0 +1,107 @@
+{
+  "id": "c7788047-58b0-459b-94f8-9c292bfbf28f",
+  "resourceType": "ObservationDefinition",
+  "name": "BloodPressurePanel",
+  "title": "Short blood pressure panel",
+  "publisher": "Heart for Health ICT B.V.",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/ValueSet/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ],
+      "text": "Vital Signs"
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "55417-0",
+        "display": "Short blood pressure panel"
+      }
+    ],
+    "text": "Short blood pressure panel"
+  },
+  "method": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "466086009",
+        "display": "Automatic-inflation electronic sphygmomanometer, portable, arm/wrist (physical object)"
+      }
+    ],
+    "text": "Automatic-inflation electronic sphygmomanometer, portable, arm/wrist (physical object)"
+  },
+  "component": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8480-6",
+            "display": "Systolic blood pressure"
+          }
+        ],
+        "text": "Systolic blood pressure"
+      },
+      "permittedDataType": [
+        "Quantity"
+      ],
+      "permittedUnit": [
+        {
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]",
+          "display": "mmHg"
+        }
+      ]
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8462-4",
+            "display": "Diastolic blood pressure"
+          }
+        ],
+        "text": "Diastolic blood pressure"
+      },
+      "permittedDataType": [
+        "Quantity"
+      ],
+      "permittedUnit": [
+        {
+          "system": "http://unitsofmeasure.org",
+          "code": "mm[Hg]",
+          "display": "mmHg"
+        }
+      ]
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8867-4",
+            "display": "Heart rate"
+          }
+        ],
+        "text": "Heart rate"
+      },
+      "permittedDataType": [
+        "Quantity"
+      ],
+      "permittedUnit": [
+        {
+          "system": "http://unitsofmeasure.org",
+          "code": "/min",
+          "display": "beats/minute"
+        }
+      ]
+    }
+  ]
+}

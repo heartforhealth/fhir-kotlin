@@ -1,9 +1,16 @@
 package io.h4h.fhir
 
 
+import io.h4h.fhir.r4.base.Resource
+import io.h4h.fhir.r4.resources.Location
+import io.h4h.fhir.r4.resources.Patient
+import io.h4h.fhir.r4.resources.Practitioner
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.*
+import kotlinx.serialization.modules.SerializersModule
+import kotlinx.serialization.modules.polymorphic
+import kotlinx.serialization.modules.subclass
 import kotlin.test.fail
 
 
@@ -19,12 +26,25 @@ open class SerializerTest {
     // Kotlinx.serialization
     // ==========================================================================
 
+    /// TODO: find a way to use polymorphic for 'contained' property
+    private val module = SerializersModule {
+        polymorphic(Resource::class) {
+            subclass(Location::class)
+            subclass(Patient::class)
+            subclass(Practitioner::class)
+        }
+    }
+
     val json = Json {
         prettyPrint = true
         explicitNulls = false
         ignoreUnknownKeys = true
         encodeDefaults = true
+        // serializersModule = module
+        // classDiscriminator = "resourceType"
     }
+
+
 
 
     inline fun <reified T: Any> T.kotlinxSerializationTest(): String {

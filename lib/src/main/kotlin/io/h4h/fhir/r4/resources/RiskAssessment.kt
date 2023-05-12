@@ -271,7 +271,7 @@ data class RiskAssessmentPredictionComponent(
     /**
      * Indicates how likely the outcome is (in the specified timeframe).
      */
-    val probabilityDecimalType: Double? = null,
+    val probabilityDecimal: Double? = null,
     val probabilityRange: Range? = null,
 
     /**

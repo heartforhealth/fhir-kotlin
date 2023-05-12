@@ -90,8 +90,8 @@ data class Questionnaire(
 
     /**
      * The types of subjects that can be the subject of responses created for the questionnaire.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/resource-types")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/resource-types")
     val subjectType: List<String>? = null,
 
     /**
@@ -121,8 +121,8 @@ data class Questionnaire(
 
     /**
      * An identifier for this question or group of questions in a particular terminology such as LOINC.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-questions")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-questions")
     val code: List<Coding>? = null,
 
     /**
@@ -166,8 +166,8 @@ data class QuestionnaireItemComponent(
 
     /**
      * A terminology code that corresponds to this group or question (e.g. a code from LOINC, which defines many questions and answers).
+     * @Binding(valueSet="http://hl7.org/fhir/ValueSet/questionnaire-questions")
      */
-    // @Binding(valueSet="http://hl7.org/fhir/ValueSet/questionnaire-questions")
     val code: List<Coding>? = null,
 
     /**
@@ -182,8 +182,8 @@ data class QuestionnaireItemComponent(
 
     /**
      * The type of questionnaire item this is - whether text for display, a grouping of other items or a particular type of data to be captured (string, integer, coded choice, etc.).
+     * @Binding(valueSet="http://hl7.org/fhir/ValueSet/item-type")
      */
-    // @Binding(valueSet="http://hl7.org/fhir/ValueSet/item-type")
     val type: QuestionnaireItemType? = null,
 
     /**
@@ -193,8 +193,8 @@ data class QuestionnaireItemComponent(
 
     /**
      * Controls how multiple enableWhen values are interpreted -  whether all or any must be true.
+     * @Binding(valueSet="http://hl7.org/fhir/ValueSet/questionnaire-enable-behavior")
      */
-    // @Binding(valueSet="http://hl7.org/fhir/ValueSet/questionnaire-enable-behavior")
     val enableBehavior: EnableWhenBehavior? = null,
 
     /**
@@ -240,6 +240,7 @@ data class QuestionnaireItemComponent(
 ) : BackboneElement
 
 
+
 @Serializable
 data class QuestionnaireItemEnableWhenComponent(
 
@@ -259,14 +260,14 @@ data class QuestionnaireItemEnableWhenComponent(
 
     /**
      * Specifies the criteria by which the question is enabled.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-enable-operator")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-enable-operator")
     val operator: QuestionnaireItemOperator? = null,
 
     /**
      * A value that the referenced question is tested using the specified operator in order for the item to be enabled.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers")
     val answerBoolean: Boolean? = null,
     val answerDecimal: Double? = null,
     val answerInteger: Int? = null,
@@ -295,8 +296,8 @@ data class QuestionnaireItemAnswerOptionComponent(
 
     /**
      * A potential answer that's allowed as the answer to this question.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers")
     val valueInteger: Int? = null,
     val valueDate: String? = null,
     val valueTime: String? = null,
@@ -326,8 +327,8 @@ data class QuestionnaireItemInitialComponent(
 
     /**
      * The actual value to for an initial answer.
+     * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers")
      */
-    // @Binding(valueSet = "http://hl7.org/fhir/ValueSet/questionnaire-answers")
     val valueBoolean: Boolean? = null,
     val valueDecimal: Double? = null,
     val valueInteger: Int? = null,

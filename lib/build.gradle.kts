@@ -8,7 +8,7 @@
 
 
 group = "io.h4h"
-version = "0.1.17"
+version = "0.2.0-rc1"
 
 
 
@@ -83,14 +83,15 @@ dependencies {
 
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm
-    api("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.4.0")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.5.1")
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     // serialization
-    testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
-    testImplementation("com.github.jershell:kbson:0.4.4")
-    testImplementation("org.mongodb:bson:4.5.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    testImplementation("com.github.jershell:kbson:0.5.0")
+    testImplementation("org.mongodb:bson:4.9.0")
+    testImplementation("io.h4h:terminology:0.1.4")
 }
 
 

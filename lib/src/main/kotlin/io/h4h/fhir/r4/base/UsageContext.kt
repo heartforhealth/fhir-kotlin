@@ -50,6 +50,9 @@ data class UsageContext(
      * A value that defines the context specified in this context of use. The interpretation of the value is defined by the code.
      * @Binding(valueSet = "http://hl7.org/fhir/ValueSet/use-context")
      */
-    val value: Element? = null
+    val valueCodeableConcept: CodeableConcept? = null,
+    val valueQuantity: Quantity? = null,
+    val valueRange: Range? = null,
+    val valueReference: Reference? = null,
 
 )
