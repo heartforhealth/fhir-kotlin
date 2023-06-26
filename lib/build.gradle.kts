@@ -8,7 +8,7 @@
 
 
 group = "io.h4h"
-version = "0.2.0-rc2"
+version = "0.2.1"
 
 
 
@@ -91,7 +91,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     testImplementation("com.github.jershell:kbson:0.5.0")
     testImplementation("org.mongodb:bson:4.9.0")
-    testImplementation("io.h4h:terminology:0.1.4")
+    testImplementation("io.h4h:terminology:0.1.6-test3")
 }
 
 
