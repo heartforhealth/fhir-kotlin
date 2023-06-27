@@ -40,6 +40,7 @@ import kotlinx.serialization.Serializable
 /**
  * A type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.
  */
+@Serializable
 data class Device(
 
     // ============================================================
