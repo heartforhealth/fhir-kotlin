@@ -10,6 +10,7 @@ import org.bson.BsonDateTime
 import org.bson.BsonDocument
 import org.bson.BsonInt32
 import org.bson.BsonString
+import java.time.ZoneId
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -39,6 +40,13 @@ class DateTest {
         println("parsedLocalDateTime: ${Instant.parse(dateString).toLocalDateTime(TimeZone.UTC)}")
         println("localDate:           ${LocalDate.parse("1965-04-30")}")
 
+        val adjustedLocalDate = Instant
+            .parse(dateString)
+            .toLocalDateTime(TimeZone.of("Europe/Amsterdam"))
+            .date
+
+        println("localDateAdjusted:   ${adjustedLocalDate}")
+
         assertEquals(
             "1965-04-30",
             Instant.parse(dateString).toLocalDate().toString()
@@ -46,6 +54,10 @@ class DateTest {
         assertEquals(
             "1965-04-30",
             Instant.parse(dateString).toLocalDateTime(TimeZone.UTC).date.toString()
+        )
+        assertEquals(
+            "1965-05-01",
+            adjustedLocalDate.toString()
         )
     }
 
