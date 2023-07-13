@@ -2,6 +2,9 @@ package io.h4h.fhir.r4.resources
 
 import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.r4.codesystems.AdministrativeGender
+import io.h4h.fhir.r4.serializers.InstantSerializer
+import io.h4h.fhir.r4.serializers.LocalDateSerializer
+import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -100,7 +103,8 @@ data class Patient(
     /**
      * The date of birth for the individual.
      */
-    val birthDate: String? = null,
+    @Serializable(with = LocalDateSerializer::class)
+    val birthDate: LocalDate? = null,
 
     /**
      * Indicates if the individual is deceased or not.

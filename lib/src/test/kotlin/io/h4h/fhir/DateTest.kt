@@ -3,14 +3,15 @@ package io.h4h.fhir
 
 
 import io.h4h.fhir.r4.base.Quantity
+import io.h4h.fhir.r4.extensions.toLocalDate
 import io.h4h.fhir.utils.BsonConverter
-import kotlinx.datetime.Instant
+import kotlinx.datetime.*
 import org.bson.BsonDateTime
 import org.bson.BsonDocument
 import org.bson.BsonInt32
 import org.bson.BsonString
 import kotlin.test.Test
-
+import kotlin.test.assertEquals
 
 
 class DateTest {
@@ -19,12 +20,33 @@ class DateTest {
     @Test
     fun test_parsing_ISO() {
         // val now = Clock.System.now()
-        // println("Now: $now")``
+        // println("Now: $now")
         val dateString = "2022-05-18T09:36:38.629+02:00"
 
         println("instant:       $dateString")
         val parsedInstant = Instant.parse(dateString)
         println("parsedInstant: $parsedInstant")
+    }
+
+
+    @Test
+    fun test_localDate_parsing() {
+        val dateString = "1965-05-01T00:00:00+01:00"
+
+        println("dateString:          $dateString")
+        println("parsedInstant:       ${Instant.parse(dateString)}")
+        println("parsedLocalDate:     ${Instant.parse(dateString).toLocalDate()}")
+        println("parsedLocalDateTime: ${Instant.parse(dateString).toLocalDateTime(TimeZone.UTC)}")
+        println("localDate:           ${LocalDate.parse("1965-04-30")}")
+
+        assertEquals(
+            "1965-04-30",
+            Instant.parse(dateString).toLocalDate().toString()
+        )
+        assertEquals(
+            "1965-04-30",
+            Instant.parse(dateString).toLocalDateTime(TimeZone.UTC).date.toString()
+        )
     }
 
 

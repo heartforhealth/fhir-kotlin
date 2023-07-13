@@ -1,15 +1,14 @@
 package io.h4h.fhir
 
 import io.h4h.fhir.mocks.ObservationMocks
-import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.r4.resources.Observation
-import io.h4h.fhir.r4.resources.ObservationComponent
-import io.h4h.fhir.utils.*
-import kotlinx.serialization.decodeFromString
+import io.h4h.fhir.utils.asDomainResource
+import io.h4h.fhir.utils.preDeserialize
+import io.h4h.fhir.utils.toBsonDocument
 import kotlinx.serialization.encodeToString
-import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.fail
+
 
 class ObservationTest : SerializerTest() {
 
