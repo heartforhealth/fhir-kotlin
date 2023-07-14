@@ -453,7 +453,7 @@ enum class QuestionnaireItemType : CodeableEnumeration {
 
     
     
-    override val code: String?
+    override val code: String
         get() = when (this) {
             GROUP -> "group"
             DISPLAY -> "display"
@@ -475,7 +475,8 @@ enum class QuestionnaireItemType : CodeableEnumeration {
         }
 
 
-    override val system: String? = "http://hl7.org/fhir/item-type"
+    override val system: String
+        get() = "http://hl7.org/fhir/item-type"
 
     override val definition: String?
         get() = when (this) {
@@ -568,7 +569,7 @@ enum class QuestionnaireItemOperator : CodeableEnumeration {
     LESS_OR_EQUAL;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             EXISTS -> "exists"
             EQUAL -> "="
@@ -580,7 +581,7 @@ enum class QuestionnaireItemOperator : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/questionnaire-enable-operator"
 
     override val definition: String?

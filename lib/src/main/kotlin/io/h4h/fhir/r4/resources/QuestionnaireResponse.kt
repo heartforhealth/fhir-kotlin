@@ -237,7 +237,7 @@ enum class QuestionnaireResponseStatus : CodeableEnumeration {
     STOPPED;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             INPROGRESS -> "in-progress"
             COMPLETED -> "completed"
@@ -247,7 +247,7 @@ enum class QuestionnaireResponseStatus : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/questionnaire-answers-status"
 
     override val definition: String?

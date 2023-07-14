@@ -253,7 +253,7 @@ enum class CommunicationRequestStatus : CodeableEnumeration {
     UNKNOWN;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             DRAFT -> "draft"
             ACTIVE -> "active"
@@ -264,7 +264,7 @@ enum class CommunicationRequestStatus : CodeableEnumeration {
             UNKNOWN -> "unknown"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/request-status"
 
     override val definition: String?

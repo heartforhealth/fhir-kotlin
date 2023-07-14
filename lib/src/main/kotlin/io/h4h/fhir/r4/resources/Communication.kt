@@ -263,7 +263,7 @@ enum class CommunicationStatus : CodeableEnumeration {
     UNKNOWN;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             PREPARATION -> "preparation"
             INPROGRESS -> "in-progress"
@@ -275,7 +275,7 @@ enum class CommunicationStatus : CodeableEnumeration {
             UNKNOWN -> "unknown"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/event-status"
 
     override val definition: String?
@@ -333,7 +333,7 @@ enum class CommunicationPriority : CodeableEnumeration {
     STAT;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ROUTINE -> "routine"
             URGENT -> "urgent"
@@ -341,7 +341,7 @@ enum class CommunicationPriority : CodeableEnumeration {
             STAT -> "stat"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/request-priority"
 
     override val definition: String?

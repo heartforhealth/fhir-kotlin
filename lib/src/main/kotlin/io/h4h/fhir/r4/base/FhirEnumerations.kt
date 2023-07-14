@@ -27,7 +27,7 @@ enum class ActionConditionKind : CodeableEnumeration {
     STOP;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             APPLICABILITY -> "applicability"
             START -> "start"
@@ -35,7 +35,7 @@ enum class ActionConditionKind : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/action-condition-kind"
 
     override val definition: String?
@@ -116,7 +116,7 @@ enum class ActionRelationshipType : CodeableEnumeration {
     @SerialName("after-end")
     AFTEREND;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             BEFORESTART -> "before-start"
             BEFORE -> "before"
@@ -129,7 +129,7 @@ enum class ActionRelationshipType : CodeableEnumeration {
             AFTEREND -> "after-end"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/action-relationship-type"
 
     override val definition: String?
@@ -192,7 +192,7 @@ enum class ActionParticipantType : CodeableEnumeration {
     @SerialName("device")
     DEVICE;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             PATIENT -> "patient"
             PRACTITIONER -> "practitioner"
@@ -200,7 +200,7 @@ enum class ActionParticipantType : CodeableEnumeration {
             DEVICE -> "device"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/action-participant-type"
 
     override val definition: String?
@@ -247,14 +247,14 @@ enum class ActionGroupingBehavior : CodeableEnumeration {
     @SerialName("sentence-group")
     SENTENCEGROUP;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             VISUALGROUP -> "visual-group"
             LOGICALGROUP -> "logical-group"
             SENTENCEGROUP -> "sentence-group"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/action-grouping-behavior"
 
     override val definition: String?
@@ -317,7 +317,7 @@ enum class ActionSelectionBehavior : CodeableEnumeration {
     @SerialName("one-or-more")
     ONEORMORE;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ANY -> "any"
             ALL -> "all"
@@ -327,7 +327,7 @@ enum class ActionSelectionBehavior : CodeableEnumeration {
             ONEORMORE -> "one-or-more"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/action-selection-behavior"
 
 
@@ -379,14 +379,14 @@ enum class ActionRequiredBehavior : CodeableEnumeration {
     @SerialName("must-unless-documented")
     MUSTUNLESSDOCUMENTED;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             MUST -> "must"
             COULD -> "could"
             MUSTUNLESSDOCUMENTED -> "must-unless-documented"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/action-required-behavior"
 
     override val definition: String?
@@ -425,13 +425,13 @@ enum class ActionPrecheckBehavior : CodeableEnumeration {
     @SerialName("no")
     NO;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             YES -> "yes"
             NO -> "no"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/action-precheck-behavior"
 
     override val definition: String?
@@ -468,13 +468,13 @@ enum class ActionCardinalityBehavior : CodeableEnumeration {
     @SerialName("multiple")
     MULTIPLE;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             SINGLE -> "single"
             MULTIPLE -> "multiple"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/action-cardinality-behavior"
 
     override val definition: String?
@@ -530,7 +530,7 @@ enum class AddressUse : CodeableEnumeration {
     BILLING;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             HOME -> "home"
             WORK -> "work"
@@ -539,7 +539,8 @@ enum class AddressUse : CodeableEnumeration {
             BILLING -> "billing"
         }
 
-    override val system: String? = "http://hl7.org/fhir/address-use"
+    override val system: String
+        get() = "http://hl7.org/fhir/address-use"
 
     override val definition: String?
         get() = when (this) {
@@ -583,7 +584,7 @@ enum class AddressType : CodeableEnumeration {
     @SerialName("both")
     BOTH;
     
-    override val code: String?
+    override val code: String
         get() = when (this) {
             POSTAL -> "postal"
             PHYSICAL -> "physical"
@@ -591,7 +592,7 @@ enum class AddressType : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/address-type"
 
     override val definition: String?
@@ -657,7 +658,7 @@ enum class ContactPointSystem : CodeableEnumeration {
     @SerialName("other")
     OTHER;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             PHONE -> "phone"
             FAX -> "fax"
@@ -668,7 +669,7 @@ enum class ContactPointSystem : CodeableEnumeration {
             OTHER -> "other"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/contact-point-system"
 
     override val definition: String?
@@ -729,7 +730,7 @@ enum class ContactPointUse : CodeableEnumeration {
     @SerialName("mobile")
     MOBILE;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             HOME -> "home"
             WORK -> "work"
@@ -807,7 +808,7 @@ enum class DayOfWeek : CodeableEnumeration {
     @SerialName("sun")
     SUN;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             MON -> "mon"
             TUE -> "tue"
@@ -1008,7 +1009,7 @@ enum class EventTiming : CodeableEnumeration {
     @SerialName("PCV")
     PCV;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             MORN -> "MORN"
             MORN_EARLY -> "MORN.early"
@@ -1039,7 +1040,7 @@ enum class EventTiming : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = when (this) {
             MORN -> "http://hl7.org/fhir/event-timing"
             MORN_EARLY -> "http://hl7.org/fhir/event-timing"
@@ -1151,14 +1152,14 @@ enum class EnableWhenBehavior : CodeableEnumeration {
     ANY;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ALL -> "all"
             ANY -> "any"
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/questionnaire-enable-behavior"
 
     override val definition: String?
@@ -1232,7 +1233,7 @@ enum class EncounterStatus : CodeableEnumeration {
     @SerialName("unknown")
     UNKNOWN;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             PLANNED -> "planned"
             ARRIVED -> "arrived"
@@ -1246,7 +1247,7 @@ enum class EncounterStatus : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/encounter-status"
 
 
@@ -1313,7 +1314,7 @@ enum class EncounterLocationStatus : CodeableEnumeration {
     COMPLETED;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             PLANNED -> "planned"
             ACTIVE -> "active"
@@ -1323,7 +1324,7 @@ enum class EncounterLocationStatus : CodeableEnumeration {
 
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/encounter-location-status"
 
 
@@ -1386,7 +1387,7 @@ enum class EndpointStatus : CodeableEnumeration {
     @SerialName("test")
     TEST;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ACTIVE -> "active"
             SUSPENDED -> "suspended"
@@ -1397,7 +1398,7 @@ enum class EndpointStatus : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/endpoint-status"
 
     override val definition: String?
@@ -1468,7 +1469,7 @@ enum class EpisodeOfCareStatus : CodeableEnumeration {
     @SerialName("entered-in-error")
     ENTEREDINERROR;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             PLANNED -> "planned"
             WAITLIST -> "waitlist"
@@ -1480,7 +1481,7 @@ enum class EpisodeOfCareStatus : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/episode-of-care-status"
 
 
@@ -1532,7 +1533,7 @@ enum class ExpressionLanguage : CodeableEnumeration {
     @SerialName("application/x-fhir-query")
     APPLICATION_XFHIRQUERY;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             TEXT_CQL -> "text/cql"
             TEXT_FHIRPATH -> "text/fhirpath"
@@ -1540,7 +1541,7 @@ enum class ExpressionLanguage : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/expression-language"
 
     override val definition: String?
@@ -1581,7 +1582,7 @@ enum class FHIRSubstanceStatus : CodeableEnumeration {
     @SerialName("entered-in-error")
     ENTEREDINERROR;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ACTIVE -> "active"
             INACTIVE -> "inactive"
@@ -1589,7 +1590,7 @@ enum class FHIRSubstanceStatus : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/substance-status"
 
 
@@ -1669,7 +1670,7 @@ enum class FilterOperator : CodeableEnumeration {
     EXISTS;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             EQUAL -> "="
             ISA -> "is-a"
@@ -1683,7 +1684,7 @@ enum class FilterOperator : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/filter-operator"
 
 
@@ -1739,7 +1740,7 @@ enum class LocationStatus : CodeableEnumeration {
     @SerialName("inactive")
     INACTIVE;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ACTIVE -> "active"
             SUSPENDED -> "suspended"
@@ -1747,7 +1748,7 @@ enum class LocationStatus : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/location-status"
 
 
@@ -1785,14 +1786,14 @@ enum class LocationMode : CodeableEnumeration {
     KIND;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             INSTANCE -> "instance"
             KIND -> "kind"
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/location-mode"
 
 
@@ -1857,7 +1858,7 @@ enum class NameUse : CodeableEnumeration {
     @SerialName("maiden")
     MAIDEN;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             USUAL -> "usual"
             OFFICIAL -> "official"
@@ -1869,7 +1870,7 @@ enum class NameUse : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/name-use"
     
     
@@ -1969,7 +1970,7 @@ enum class ObservationDataType : CodeableEnumeration {
     PERIOD;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             QUANTITY -> "Quantity"
             CODEABLECONCEPT -> "CodeableConcept"
@@ -2044,7 +2045,7 @@ enum class ObservationRangeCategory : CodeableEnumeration {
     @SerialName("absolute")
     ABSOLUTE;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             REFERENCE -> "reference"
             CRITICAL -> "critical"
@@ -2123,7 +2124,7 @@ enum class ObservationStatus : CodeableEnumeration {
     UNKNOWN;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             REGISTERED -> "registered"
             PRELIMINARY -> "preliminary"
@@ -2137,7 +2138,8 @@ enum class ObservationStatus : CodeableEnumeration {
 
 
 
-    override val system: String? = "http://hl7.org/fhir/observation-status"
+    override val system: String
+        get() = "http://hl7.org/fhir/observation-status"
 
 
     override val definition: String?
@@ -2202,7 +2204,7 @@ enum class ProvenanceEntityRole : CodeableEnumeration {
     @SerialName("removal")
     REMOVAL;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             DERIVATION -> "derivation"
             REVISION -> "revision"
@@ -2212,7 +2214,7 @@ enum class ProvenanceEntityRole : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/provenance-entity-role"
 
     override val definition: String?
@@ -2265,7 +2267,7 @@ enum class PublicationStatus : CodeableEnumeration {
     UNKNOWN;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             DRAFT -> "draft"
             ACTIVE -> "active"
@@ -2274,7 +2276,8 @@ enum class PublicationStatus : CodeableEnumeration {
         }
 
 
-    override val system: String? = "http://hl7.org/fhir/publication-status"
+    override val system: String
+        get() = "http://hl7.org/fhir/publication-status"
 
 
     override val definition: String?
@@ -2347,7 +2350,7 @@ enum class RelatedArtifactType : CodeableEnumeration {
     @SerialName("composed-of")
     COMPOSEDOF;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             DOCUMENTATION -> "documentation"
             JUSTIFICATION -> "justification"
@@ -2360,7 +2363,7 @@ enum class RelatedArtifactType : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/related-artifact-type"
 
     override val definition: String?
@@ -2418,7 +2421,7 @@ enum class RequestPriority : CodeableEnumeration {
     STAT;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ROUTINE -> "routine"
             URGENT -> "urgent"
@@ -2427,7 +2430,7 @@ enum class RequestPriority : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/request-priority"
 
     override val definition: String?
@@ -2498,7 +2501,7 @@ enum class ServiceRequestStatus : CodeableEnumeration {
     @SerialName("unknown")
     UNKNOWN;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             DRAFT -> "draft"
             ACTIVE -> "active"
@@ -2510,7 +2513,7 @@ enum class ServiceRequestStatus : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/request-status"
 
 
@@ -2597,7 +2600,7 @@ enum class ServiceRequestIntent : CodeableEnumeration {
     @SerialName("option")
     OPTION;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             PROPOSAL -> "proposal"
             PLAN -> "plan"
@@ -2611,7 +2614,7 @@ enum class ServiceRequestIntent : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/request-intent"
     
 
@@ -2673,7 +2676,7 @@ enum class ServiceRequestPriority : CodeableEnumeration {
     @SerialName("stat")
     STAT;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ROUTINE -> "routine"
             URGENT -> "urgent"
@@ -2682,7 +2685,7 @@ enum class ServiceRequestPriority : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/request-priority"
 
 
@@ -2722,14 +2725,14 @@ enum class SortDirection : CodeableEnumeration {
     DESCENDING;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ASCENDING -> "ascending"
             DESCENDING -> "descending"
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/sort-direction"
 
     override val definition: String?
@@ -2774,7 +2777,7 @@ enum class SpecimenStatus : CodeableEnumeration {
     @SerialName("entered-in-error")
     ENTEREDINERROR;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             AVAILABLE -> "available"
             UNAVAILABLE -> "unavailable"
@@ -2783,7 +2786,7 @@ enum class SpecimenStatus : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/specimen-status"
 
 
@@ -2851,7 +2854,7 @@ enum class UnitsOfTime : CodeableEnumeration {
     @SerialName("a")
     A;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             S -> "s"
             MIN -> "min"
@@ -2863,7 +2866,7 @@ enum class UnitsOfTime : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://unitsofmeasure.org"
 
     override val definition: String?
@@ -2943,7 +2946,7 @@ enum class TriggerType : CodeableEnumeration {
     DATAACCESSENDED;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             NAMEDEVENT -> "named-event"
             PERIODIC -> "periodic"
@@ -2956,7 +2959,7 @@ enum class TriggerType : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/trigger-type"
 
     override val definition: String?

@@ -207,7 +207,7 @@ enum class RiskAssessmentStatus : CodeableEnumeration {
     UNKNOWN;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             REGISTERED -> "registered"
             PRELIMINARY -> "preliminary"
@@ -220,7 +220,8 @@ enum class RiskAssessmentStatus : CodeableEnumeration {
         }
 
 
-    override val system: String? = "http://hl7.org/fhir/observation-status"
+    override val system: String
+        get() = "http://hl7.org/fhir/observation-status"
 
 
     override val definition: String?

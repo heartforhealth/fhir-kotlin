@@ -434,7 +434,7 @@ enum class MedicationRequestIntent : CodeableEnumeration {
 
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             PROPOSAL -> "proposal"
             PLAN -> "plan"
@@ -447,7 +447,7 @@ enum class MedicationRequestIntent : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/CodeSystem/medicationrequest-intent"
 
 
@@ -532,7 +532,7 @@ enum class MedicationRequestStatus : CodeableEnumeration {
 
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ACTIVE -> "active"
             ONHOLD -> "on-hold"
@@ -545,7 +545,7 @@ enum class MedicationRequestStatus : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/CodeSystem/medicationrequest-status"
 
 

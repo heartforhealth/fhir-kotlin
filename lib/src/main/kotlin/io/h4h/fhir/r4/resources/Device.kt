@@ -451,7 +451,7 @@ enum class UDIEntryType: CodeableEnumeration {
     UNKNOWN;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             BARCODE -> "barcode"
             RFID -> "rfid"
@@ -462,7 +462,7 @@ enum class UDIEntryType: CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/udi-entry-type"
 
 
@@ -518,7 +518,7 @@ enum class FHIRDeviceStatus: CodeableEnumeration {
     UNKNOWN;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             ACTIVE -> "active"
             INACTIVE -> "inactive"
@@ -527,7 +527,7 @@ enum class FHIRDeviceStatus: CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/device-status"
 
 
@@ -592,7 +592,7 @@ enum class DeviceNameType : CodeableEnumeration {
 
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             UDILABELNAME -> "udi-label-name"
             USERFRIENDLYNAME -> "user-friendly-name"
@@ -603,7 +603,7 @@ enum class DeviceNameType : CodeableEnumeration {
         }
 
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/device-nametype"
 
 

@@ -37,6 +37,7 @@
   "prediction": [
     {
       "outcome": {
+        "coding": [],
         "text": "Heart Attack"
       },
       "probabilityDecimal": 0.02,

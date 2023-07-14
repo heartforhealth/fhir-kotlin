@@ -382,7 +382,7 @@ enum class CarePlanStatus : CodeableEnumeration {
 
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             DRAFT -> "draft"
             ACTIVE -> "active"
@@ -393,7 +393,8 @@ enum class CarePlanStatus : CodeableEnumeration {
             UNKNOWN -> "unknown"
         }
 
-    override val system: String? = "http://hl7.org/fhir/request-status"
+    override val system: String
+        get() = "http://hl7.org/fhir/request-status"
 
     override val definition: String?
         get() = when (this) {
@@ -449,7 +450,7 @@ enum class CarePlanIntent : CodeableEnumeration {
     OPTION;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             PROPOSAL -> "proposal"
             PLAN -> "plan"
@@ -457,7 +458,8 @@ enum class CarePlanIntent : CodeableEnumeration {
             OPTION -> "option"
         }
 
-    override val system: String? = "http://hl7.org/fhir/request-intent"
+    override val system: String
+        get() = "http://hl7.org/fhir/request-intent"
 
     override val definition: String? = null
 
@@ -524,7 +526,7 @@ enum class CarePlanActivityKind : CodeableEnumeration {
     @SerialName("VisionPrescription")
     VISIONPRESCRIPTION;
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             APPOINTMENT -> "Appointment"
             COMMUNICATIONREQUEST -> "CommunicationRequest"
@@ -536,7 +538,8 @@ enum class CarePlanActivityKind : CodeableEnumeration {
             VISIONPRESCRIPTION -> "VisionPrescription"
         }
 
-    override val system: String? = "http://hl7.org/fhir/resource-types"
+    override val system: String
+        get() = "http://hl7.org/fhir/resource-types"
 
     override val definition: String? = null
 
@@ -614,7 +617,7 @@ enum class CarePlanActivityStatus : CodeableEnumeration {
     ENTEREDINERROR;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             NOTSTARTED -> "not-started"
             SCHEDULED -> "scheduled"
@@ -627,7 +630,8 @@ enum class CarePlanActivityStatus : CodeableEnumeration {
             ENTEREDINERROR -> "entered-in-error"
         }
 
-    override val system: String? = "http://hl7.org/fhir/care-plan-activity-status"
+    override val system: String
+        get() = "http://hl7.org/fhir/care-plan-activity-status"
 
     override val definition: String?
         get() = when (this) {

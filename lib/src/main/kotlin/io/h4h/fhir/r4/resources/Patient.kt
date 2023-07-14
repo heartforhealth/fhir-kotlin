@@ -194,7 +194,7 @@ enum class LinkType : CodeableEnumeration {
     SEEALSO;
 
 
-    override val code: String?
+    override val code: String
         get() = when (this) {
             REPLACEDBY -> "replaced-by"
             REPLACES -> "replaces"
@@ -202,7 +202,7 @@ enum class LinkType : CodeableEnumeration {
             SEEALSO -> "seealso"
         }
 
-    override val system: String?
+    override val system: String
         get() = "http://hl7.org/fhir/link-type"
 
 
