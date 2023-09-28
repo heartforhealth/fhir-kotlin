@@ -43,8 +43,8 @@ val java.time.DayOfWeek.FHIRDayOfWeek: DayOfWeek
 // ==========================================================================
 
 fun Period.contains(currentDate: LocalDate): Boolean {
-    val start = start?.let { Instant.parse(it).toLocalDate() }
-    val end = end?.let { Instant.parse(it).toLocalDate() }
+    val start = start?.toLocalDate()
+    val end = end?.toLocalDate()
 
     return when {
         (start != null && end != null) -> (currentDate >= start) && (currentDate <= end)

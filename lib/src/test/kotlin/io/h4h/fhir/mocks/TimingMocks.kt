@@ -47,8 +47,8 @@ object TimingMocks {
     )
 
     fun everyTwoWeeks_threeEachTime(
-        periodStart: String,
-        periodEnd: String
+        periodStart: Instant,
+        periodEnd: Instant
     ) = Timing(
         repeat = TimingRepeatComponent(
             boundsPeriod = Period(periodStart, periodEnd),
@@ -61,8 +61,8 @@ object TimingMocks {
     )
 
     fun threeTimesPerWeek_oneEachTime(
-        periodStart: String,
-        periodEnd: String
+        periodStart: Instant,
+        periodEnd: Instant
     ) = Timing(
         repeat = TimingRepeatComponent(
             boundsPeriod = Period(periodStart, periodEnd),
@@ -77,8 +77,8 @@ object TimingMocks {
     )
 
     fun threeTimesPerWeek_fourEachTime(
-        periodStart: String,
-        periodEnd: String
+        periodStart: Instant,
+        periodEnd: Instant
     ) = Timing(
         repeat = TimingRepeatComponent(
             boundsPeriod = Period(periodStart, periodEnd),
@@ -93,8 +93,8 @@ object TimingMocks {
     )
 
     fun everyFourDays_twoEachTime(
-        periodStart: String,
-        periodEnd: String
+        periodStart: Instant,
+        periodEnd: Instant
     ) = Timing(
         repeat = TimingRepeatComponent(
             boundsPeriod = Period(periodStart, periodEnd),
@@ -107,8 +107,8 @@ object TimingMocks {
     )
 
     fun everySevenHours_twoEachTime(
-        periodStart: String,
-        periodEnd: String
+        periodStart: Instant,
+        periodEnd: Instant
     ) = Timing(
         repeat = TimingRepeatComponent(
             boundsPeriod = Period(periodStart, periodEnd),
@@ -136,8 +136,8 @@ object TimingMocks {
     )
 
     fun specificDaysEveryMonthAt10And20(
-        periodStart: String,
-        periodEnd: String
+        periodStart: Instant,
+        periodEnd: Instant
     ): Timing {
         val timing = Timing(
             repeat = TimingRepeatComponent(
@@ -161,8 +161,8 @@ object TimingMocks {
     }
 
     fun specificWeekMonthAndDayEveryMonth(
-        periodStart: String,
-        periodEnd: String
+        periodStart: Instant,
+        periodEnd: Instant
     ) : Timing {
         // every May, July, September, the second week of the month, on Wednesdays, at 10 and 20
         val timing = Timing(
@@ -192,8 +192,8 @@ object TimingMocks {
     }
 
     fun onlyTuesdaysFromBeginningOfEachMonth(
-        periodStart: String,
-        periodEnd: String
+        periodStart: Instant,
+        periodEnd: Instant
     ) : Timing {
         val timing = Timing(
             repeat = TimingRepeatComponent(
@@ -217,8 +217,8 @@ object TimingMocks {
     }
 
     fun onlyTuesdaysFromFirstTwoWeeksOfEachMonth(
-        periodStart: String,
-        periodEnd: String
+        periodStart: Instant,
+        periodEnd: Instant
     ) : Timing {
         val timing = Timing(
             repeat = TimingRepeatComponent(
@@ -242,8 +242,8 @@ object TimingMocks {
     }
 
     fun first15DaysOfTheMonth(
-        periodStart: String,
-        periodEnd: String
+        periodStart: Instant,
+        periodEnd: Instant
     ): Timing {
         val timing = Timing(
             repeat = TimingRepeatComponent(

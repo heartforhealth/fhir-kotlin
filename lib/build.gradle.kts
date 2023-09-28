@@ -8,7 +8,7 @@
 
 
 group = "io.h4h"
-version = "0.2.3"
+version = "0.2.4-RC1"
 
 
 
@@ -79,7 +79,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // base definitions of FHIR data structures
-    api("io.h4h:fhir-base-kotlin:0.1.7")
+    api("io.h4h:fhir-base-kotlin:0.1.8-RC1")
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
