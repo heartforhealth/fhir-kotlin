@@ -26,7 +26,7 @@ fun periodThatIncludesDate(date: Instant = now()): Period {
     val minusDays = Random.nextInt(10, 30)
     val plusDays = Random.nextInt(10, 30)
     return Period(
-        date.minus(minusDays, DateTimeUnit.DAY, TimeZone.currentSystemDefault()).toString(),
-        date.plus(plusDays, DateTimeUnit.DAY, TimeZone.currentSystemDefault()).toString()
+        date.minus(minusDays, DateTimeUnit.DAY, TimeZone.currentSystemDefault()),
+        date.plus(plusDays, DateTimeUnit.DAY, TimeZone.currentSystemDefault())
     )
 }

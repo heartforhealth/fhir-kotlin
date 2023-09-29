@@ -161,7 +161,10 @@ class TimingTest : SerializerTest() {
 
         val timingWithBoundsPeriod = Timing(
             repeat = TimingRepeatComponent(
-                boundsPeriod = Period("2022-07-06", "2022-08-30"),
+                boundsPeriod = Period(
+                    Instant.parse("2022-07-06T00:00:00.000Z"),
+                    Instant.parse("2022-08-30T00:00:00.000Z")
+                ),
                 frequency = 1
             )
         )
@@ -329,8 +332,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'every 2 weeks' and currentDate is WITHIN BOUNDS and valid`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everyTwoWeeks_threeEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -344,8 +347,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns FALSE when Timing is 'every 2 weeks' and currentDate is WITHIN BOUNDS but NOT valid`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everyTwoWeeks_threeEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -359,8 +362,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns FALSE when Timing is 'every 2 weeks' and currentDate valid but OUTSIDE BOUNDS`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everyTwoWeeks_threeEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -371,8 +374,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is '3 times per Week MON, WED or FRI' and currentDate is either MON, WED or FRI and WITHIN BOUNDS`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.threeTimesPerWeek_oneEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -386,8 +389,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns FALSE when Timing is '3 times per Week MON, WED or FRI' and currentDate is either MON, WED or FRI but OUTSIDE BOUNDS`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.threeTimesPerWeek_oneEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -398,8 +401,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns FALSE when Timing is '3 times per Week MON, WED or FRI' and currentDate is WITHIN BOUNDS but not MON, WED or FRI`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.threeTimesPerWeek_oneEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -410,8 +413,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'every 4 days' and currentDate is valid and WITHIN BOUNDS`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everyFourDays_twoEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -425,8 +428,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns FALSE when Timing is 'every 4 days' and currentDate is WITHIN BOUNDS but NOT valid`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everyFourDays_twoEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -440,8 +443,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns FALSE when Timing is 'every 4 days' and currentDate is valid but OUTSIDE BOUNDS`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everyFourDays_twoEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -455,8 +458,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'every 7 hours' and currentDate is WITHIN BOUNDS`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everySevenHours_twoEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -470,8 +473,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns FALSE when Timing is 'every 7 hours' and currentDate is OUTSIDE BOUNDS`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everySevenHours_twoEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -482,8 +485,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'every 3rd, 10th and 18th of each month at 10 and 22' and currentDate is WITHIN BOUNDS`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-10-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-10-27T05:00:00.287542Z")
 
         val timing = TimingMocks.specificDaysEveryMonthAt10And20(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -497,8 +500,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'every 3rd, 10th and 18th of each month at 10 and 22' and currentDate is OUTSIDE BOUNDS`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-10-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-10-27T05:00:00.287542Z")
 
         val timing = TimingMocks.specificDaysEveryMonthAt10And20(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -509,8 +512,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'every May, July, September, the second week of the month, on Wednesdays, at 10 and 22' and currentDate is WITHIN BOUNDS`() {
-        val periodStart = "2022-04-06T05:00:00.287542Z"
-        val periodEnd = "2022-10-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-04-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-10-27T05:00:00.287542Z")
 
         val timing = TimingMocks.specificWeekMonthAndDayEveryMonth(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -524,8 +527,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'every May, July, September, the second week of the month, on Wednesdays, at 10 and 22' and currentDate is OUTSIDE BOUNDS`() {
-        val periodStart = "2022-04-06T05:00:00.287542Z"
-        val periodEnd = "2022-10-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-04-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-10-27T05:00:00.287542Z")
 
         val timing = TimingMocks.specificWeekMonthAndDayEveryMonth(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -550,8 +553,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'only Tuesdays from the beginning of each month' and currentDate is WITHIN BOUNDS`() {
-        val periodStart = "2022-04-06T05:00:00.287542Z"
-        val periodEnd = "2022-10-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-04-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-10-27T05:00:00.287542Z")
 
         val timing = TimingMocks.onlyTuesdaysFromBeginningOfEachMonth(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -565,8 +568,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'only Tuesdays from the beginning of each month' and currentDate is OUTSIDE BOUNDS`() {
-        val periodStart = "2022-04-06T05:00:00.287542Z"
-        val periodEnd = "2022-10-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-04-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-10-27T05:00:00.287542Z")
 
         val timing = TimingMocks.onlyTuesdaysFromBeginningOfEachMonth(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -580,8 +583,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'only Tuesdays from the first 2 weeks of each month' and currentDate is WITHIN BOUNDS`() {
-        val periodStart = "2022-04-06T05:00:00.287542Z"
-        val periodEnd = "2022-10-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-04-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-10-27T05:00:00.287542Z")
 
         val timing = TimingMocks.onlyTuesdaysFromFirstTwoWeeksOfEachMonth(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -595,8 +598,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'only Tuesdays from the first 2 weeks of each month' and currentDate is OUTSIDE BOUNDS`() {
-        val periodStart = "2022-04-06T05:00:00.287542Z"
-        val periodEnd = "2022-10-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-04-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-10-27T05:00:00.287542Z")
 
         val timing = TimingMocks.onlyTuesdaysFromFirstTwoWeeksOfEachMonth(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -610,8 +613,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'first 15 days of the month' and currentDate is WITHIN BOUNDS`() {
-        val periodStart = "2022-04-06T05:00:00.287542Z"
-        val periodEnd = "2022-10-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-04-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-10-27T05:00:00.287542Z")
 
         val timing = TimingMocks.first15DaysOfTheMonth(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -625,8 +628,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `includesDate() returns TRUE when Timing is 'first 15 days of the month' and currentDate is OUTSIDE BOUNDS`() {
-        val periodStart = "2022-04-06T05:00:00.287542Z"
-        val periodEnd = "2022-10-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-04-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-10-27T05:00:00.287542Z")
 
         val timing = TimingMocks.first15DaysOfTheMonth(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -665,8 +668,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `getDailyFrequency() returns 1 when Timing is '3 times per Week MON, WED or FRI, 1 each time'`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.threeTimesPerWeek_oneEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -676,8 +679,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `getDailyFrequency() returns 4 when Timing is '3 times per Week MON, WED or FRI, 4 each time'`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.threeTimesPerWeek_fourEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -687,8 +690,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `getDailyFrequency() returns 3 when Timing is 'every 2 weeks, 2 each time'`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everyTwoWeeks_threeEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -698,8 +701,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `getDailyFrequency() returns 2 when Timing is 'every 4 days, 2 each time'`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everyFourDays_twoEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }
@@ -709,8 +712,8 @@ class TimingTest : SerializerTest() {
 
     @Test
     fun `getDailyFrequency() returns 6 when Timing is 'every 7 hours, 2 each time'`() {
-        val periodStart = "2022-07-06T05:00:00.287542Z"
-        val periodEnd = "2022-07-27T05:00:00.287542Z"
+        val periodStart = Instant.parse("2022-07-06T05:00:00.287542Z")
+        val periodEnd = Instant.parse("2022-07-27T05:00:00.287542Z")
 
         val timing = TimingMocks.everySevenHours_twoEachTime(periodStart, periodEnd)
         assertDoesNotThrow { timing.validate() }

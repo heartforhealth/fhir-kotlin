@@ -150,7 +150,7 @@ fun Timing.includesDate(date: LocalDate): Boolean {
     // 6) if we have bounds: either both 'start' and 'end', or just 'start'
     boundsPeriod?.let { period ->
         // if we have start, proceed analyzing period, frequency, bounds
-        period.start?.let { Instant.parse(it).toLocalDate() }?.let { start ->
+        period.start?.toLocalDate()?.let { start ->
             return@includesDate repeat.checkMainRepeatConfig(start, date)
         }
     }
