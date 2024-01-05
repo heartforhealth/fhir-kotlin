@@ -1,5 +1,6 @@
 package io.h4h.fhir.r4.base
 
+import io.h4h.fhir.r4.serializers.DoubleSerializer
 import kotlinx.serialization.Serializable
 
 
@@ -64,6 +65,8 @@ data class Extension(
     val valueDataRequirement: DataRequirement? = null,
     val valueDate: String? = null,
     val valueDateTime: String? = null,
+
+    @Serializable(with= DoubleSerializer::class)
     val valueDecimal: Double? = null,
     // val valueDosage: Dosage? = null,
     // val valueDistance: Distance? = null,

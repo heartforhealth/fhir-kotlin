@@ -1,5 +1,6 @@
 package io.h4h.fhir.r4.base
 
+import io.h4h.fhir.r4.serializers.DoubleSerializer
 import kotlinx.serialization.Serializable
 
 
@@ -56,21 +57,25 @@ data class SampledData(
     /**
      * The length of time between sampling times, measured in milliseconds.
      */
+    @Serializable(with= DoubleSerializer::class)
     val period: Double? = null,
 
     /**
      * A correction factor that is applied to the sampled data points before they are added to the origin.
      */
+    @Serializable(with=DoubleSerializer::class)
     val factor: Double? = null,
 
     /**
      * The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).
      */
+    @Serializable(with=DoubleSerializer::class)
     val lowerLimit: Double? = null,
 
     /**
      * The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).
      */
+    @Serializable(with=DoubleSerializer::class)
     val upperLimit: Double? = null,
 
     /**
