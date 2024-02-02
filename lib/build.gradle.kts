@@ -1,6 +1,6 @@
 
 group = "io.h4h"
-version = "0.3.1"
+version = "0.3.2"
 
 
 plugins {
@@ -67,14 +67,14 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // base definitions of FHIR data structures
-    api("io.h4h:fhir-base-kotlin:0.2.0")
+    api("io.h4h:fhir-base-kotlin:0.2.1")
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
     testImplementation("com.github.jershell:kbson:0.5.0")
     testImplementation("org.mongodb:bson:4.11.0")
-    testImplementation("io.h4h:terminology:0.2.0")
+    testImplementation("io.h4h:terminology:0.2.2")
 }
 
 
