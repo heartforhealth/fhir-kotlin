@@ -51,7 +51,7 @@ data class Practitioner(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.Practitioner,
+    override val resourceType: String = ResourceType.Practitioner.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

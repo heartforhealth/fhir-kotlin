@@ -51,7 +51,7 @@ data class Observation(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.Observation,
+    override val resourceType: String = ResourceType.Observation.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

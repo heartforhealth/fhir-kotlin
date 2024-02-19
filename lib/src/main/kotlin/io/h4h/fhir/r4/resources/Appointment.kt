@@ -52,7 +52,7 @@ data class Appointment(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.Appointment,
+    override val resourceType: String = ResourceType.Appointment.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

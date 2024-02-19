@@ -49,7 +49,7 @@ data class Organization(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.Organization,
+    override val resourceType: String = ResourceType.Organization.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

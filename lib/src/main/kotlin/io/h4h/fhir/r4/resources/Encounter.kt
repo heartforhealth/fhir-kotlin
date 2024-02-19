@@ -49,7 +49,7 @@ data class Encounter(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.Encounter,
+    override val resourceType: String = ResourceType.Encounter.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

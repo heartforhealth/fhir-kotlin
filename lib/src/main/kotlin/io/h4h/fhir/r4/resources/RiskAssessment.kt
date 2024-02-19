@@ -52,7 +52,7 @@ data class RiskAssessment(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.RiskAssessment,
+    override val resourceType: String = ResourceType.RiskAssessment.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

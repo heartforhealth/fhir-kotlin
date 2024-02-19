@@ -51,7 +51,7 @@ data class CarePlan(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.CarePlan,
+    override val resourceType: String = ResourceType.CarePlan.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

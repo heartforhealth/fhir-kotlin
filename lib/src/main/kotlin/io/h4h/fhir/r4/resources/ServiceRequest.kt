@@ -49,7 +49,7 @@ data class ServiceRequest(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.ServiceRequest,
+    override val resourceType: String = ResourceType.ServiceRequest.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

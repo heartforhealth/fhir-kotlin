@@ -56,7 +56,7 @@ data class Patient(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.Patient,
+    override val resourceType: String = ResourceType.Patient.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

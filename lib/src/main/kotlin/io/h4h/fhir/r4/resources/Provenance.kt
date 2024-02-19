@@ -48,7 +48,7 @@ data class Provenance(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.Provenance,
+    override val resourceType: String = ResourceType.Provenance.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

@@ -48,7 +48,7 @@ data class EpisodeOfCare(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.EpisodeOfCare,
+    override val resourceType: String = ResourceType.EpisodeOfCare.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,

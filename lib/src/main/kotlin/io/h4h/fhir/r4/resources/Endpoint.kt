@@ -49,7 +49,7 @@ data class Endpoint(
      * These are required for all resources
      */
     override val id: String,
-    override val resourceType: ResourceType = ResourceType.Endpoint,
+    override val resourceType: String = ResourceType.Endpoint.name,
     override val meta: Meta? = null,
     override val implicitRules: String? = null,
     override val language: String? = null,
