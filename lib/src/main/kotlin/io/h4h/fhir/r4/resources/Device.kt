@@ -1,6 +1,7 @@
 package io.h4h.fhir.r4.resources
 
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -418,36 +419,42 @@ enum class UDIEntryType: CodeableEnumeration {
      * a barcodescanner captured the data from the device label.
      */
     @SerialName("barcode")
+    @JsonProperty("barcode")
     BARCODE,
 
     /**
      * An RFID chip reader captured the data from the device label.
      */
     @SerialName("rfid")
+    @JsonProperty("rfid")
     RFID,
 
     /**
      * The data was read from the label by a person and manually entered. (e.g.  via a keyboard).
      */
     @SerialName("manual")
+    @JsonProperty("manual")
     MANUAL,
 
     /**
      * The data originated from a patient's implant card and was read by an operator.
      */
     @SerialName("card")
+    @JsonProperty("card")
     CARD,
 
     /**
      * The data originated from a patient source and was not directly scanned or read from a label or card.
      */
     @SerialName("self-reported")
+    @JsonProperty("self-reported")
     SELFREPORTED,
 
     /**
      * The method of data capture has not been determined.
      */
     @SerialName("unknown")
+    @JsonProperty("unknown")
     UNKNOWN;
 
 
@@ -497,24 +504,28 @@ enum class FHIRDeviceStatus: CodeableEnumeration {
      * The device is available for use.  Note: For *implanted devices*  this means that the device is implanted in the patient.
      */
     @SerialName("active")
+    @JsonProperty("active")
     ACTIVE,
 
     /**
      * The device is no longer available for use (e.g. lost, expired, damaged).  Note: For *implanted devices*  this means that the device has been removed from the patient.
      */
     @SerialName("inactive")
+    @JsonProperty("inactive")
     INACTIVE,
 
     /**
      * The device was entered in error and voided.
      */
     @SerialName("entered-in-error")
+    @JsonProperty("entered-in-error")
     ENTEREDINERROR,
 
     /**
      * The status of the device has not been determined.
      */
     @SerialName("unknown")
+    @JsonProperty("unknown")
     UNKNOWN;
 
 
@@ -558,36 +569,42 @@ enum class DeviceNameType : CodeableEnumeration {
      * UDI Label name.
      */
     @SerialName("udi-label-name")
+    @JsonProperty("udi-label-name")
     UDILABELNAME,
 
     /**
      * User Friendly name.
      */
     @SerialName("user-friendly-name")
+    @JsonProperty("user-friendly-name")
     USERFRIENDLYNAME,
 
     /**
      * Patient Reported name.
      */
     @SerialName("patient-reported-name")
+    @JsonProperty("patient-reported-name")
     PATIENTREPORTEDNAME,
 
     /**
      * Manufacturer name.
      */
     @SerialName("manufacturer-name")
+    @JsonProperty("manufacturer-name")
     MANUFACTURERNAME,
 
     /**
      * Model name.
      */
     @SerialName("model-name")
+    @JsonProperty("model-name")
     MODELNAME,
 
     /**
      * other.
      */
     @SerialName("other")
+    @JsonProperty("other")
     OTHER;
 
 

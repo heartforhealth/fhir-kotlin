@@ -1,6 +1,7 @@
 package io.h4h.fhir.r4.resources
 
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import io.h4h.fhir.r4.base.Annotation
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.SerialName
@@ -342,42 +343,49 @@ enum class CarePlanStatus : CodeableEnumeration {
      * The request has been created but is not yet complete or ready for action.
      */
     @SerialName("draft")
+    @JsonProperty("draft")
     DRAFT,
 
     /**
      * The request is in force and ready to be acted upon.
      */
     @SerialName("active")
+    @JsonProperty("active")
     ACTIVE,
 
     /**
      * The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future.
      */
     @SerialName("on-hold")
+    @JsonProperty("on-hold")
     ONHOLD,
 
     /**
      * The request (and any implicit authorization to act) has been terminated prior to the known full completion of the intended actions.  No further activity should occur.
      */
     @SerialName("revoked")
+    @JsonProperty("revoked")
     REVOKED,
 
     /**
      * The activity described by the request has been fully performed.  No further activity will occur.
      */
     @SerialName("completed")
+    @JsonProperty("completed")
     COMPLETED,
 
     /**
      * This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be "revoked" rather than "entered-in-error".).
      */
     @SerialName("entered-in-error")
+    @JsonProperty("entered-in-error")
     ENTEREDINERROR,
 
     /**
      * The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which.
      */
     @SerialName("unknown")
+    @JsonProperty("unknown")
     UNKNOWN;
 
 
@@ -426,27 +434,31 @@ enum class CarePlanStatus : CodeableEnumeration {
 enum class CarePlanIntent : CodeableEnumeration {
 
     /**
-     * null
+     * proposal
      */
     @SerialName("proposal")
+    @JsonProperty("proposal")
     PROPOSAL,
 
     /**
-     * null
+     * plan
      */
     @SerialName("plan")
+    @JsonProperty("plan")
     PLAN,
 
     /**
-     * null
+     * order
      */
     @SerialName("order")
+    @JsonProperty("order")
     ORDER,
 
     /**
-     * null
+     * option
      */
     @SerialName("option")
+    @JsonProperty("option")
     OPTION;
 
 
@@ -479,51 +491,59 @@ enum class CarePlanIntent : CodeableEnumeration {
 enum class CarePlanActivityKind : CodeableEnumeration {
 
     /**
-     * null
+     * Appointment
      */
     @SerialName("Appointment")
+    @JsonProperty("Appointment")
     APPOINTMENT,
 
     /**
-     * null
+     * CommunicationRequest
      */
     @SerialName("CommunicationRequest")
+    @JsonProperty("CommunicationRequest")
     COMMUNICATIONREQUEST,
 
     /**
-     * null
+     * DeviceRequest
      */
     @SerialName("DeviceRequest")
+    @JsonProperty("DeviceRequest")
     DEVICEREQUEST,
 
     /**
-     * null
+     * MedicationRequest
      */
     @SerialName("MedicationRequest")
+    @JsonProperty("MedicationRequest")
     MEDICATIONREQUEST,
 
     /**
-     * null
+     * NutritionOrder
      */
     @SerialName("NutritionOrder")
+    @JsonProperty("NutritionOrder")
     NUTRITIONORDER,
 
     /**
-     * null
+     * Task
      */
     @SerialName("Task")
+    @JsonProperty("Task")
     TASK,
 
     /**
-     * null
+     * ServiceRequest
      */
     @SerialName("ServiceRequest")
+    @JsonProperty("ServiceRequest")
     SERVICEREQUEST,
 
     /**
-     * null
+     * VisionPrescription
      */
     @SerialName("VisionPrescription")
+    @JsonProperty("VisionPrescription")
     VISIONPRESCRIPTION;
 
     override val code: String
@@ -566,54 +586,63 @@ enum class CarePlanActivityStatus : CodeableEnumeration {
      * Care plan activity is planned but no action has yet been taken.
      */
     @SerialName("not-started")
+    @JsonProperty("not-started")
     NOTSTARTED,
 
     /**
      * Appointment or other booking has occurred but activity has not yet begun.
      */
     @SerialName("scheduled")
+    @JsonProperty("scheduled")
     SCHEDULED,
 
     /**
      * Care plan activity has been started but is not yet complete.
      */
     @SerialName("in-progress")
+    @JsonProperty("in-progress")
     INPROGRESS,
 
     /**
      * Care plan activity was started but has temporarily ceased with an expectation of resumption at a future time.
      */
     @SerialName("on-hold")
+    @JsonProperty("on-hold")
     ONHOLD,
 
     /**
      * Care plan activity has been completed (more or less) as planned.
      */
     @SerialName("completed")
+    @JsonProperty("completed")
     COMPLETED,
 
     /**
      * The planned care plan activity has been withdrawn.
      */
     @SerialName("cancelled")
+    @JsonProperty("cancelled")
     CANCELLED,
 
     /**
      * The planned care plan activity has been ended prior to completion after the activity was started.
      */
     @SerialName("stopped")
+    @JsonProperty("stopped")
     STOPPED,
 
     /**
      * The current state of the care plan activity is not known.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which one.
      */
     @SerialName("unknown")
+    @JsonProperty("unknown")
     UNKNOWN,
 
     /**
      * Care plan activity was entered in error and voided.
      */
     @SerialName("entered-in-error")
+    @JsonProperty("entered-in-error")
     ENTEREDINERROR;
 
 

@@ -1,5 +1,6 @@
 package io.h4h.fhir.r4.resources
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import io.h4h.fhir.r4.base.Annotation
 import kotlinx.serialization.Serializable
 import io.h4h.fhir.r4.base.*
@@ -218,48 +219,56 @@ enum class CommunicationStatus : CodeableEnumeration {
      * The core event has not started yet, but some staging activities have begun (e.g. surgical suite preparation).  Preparation stages may be tracked for billing purposes.
      */
     @SerialName("preparation")
+    @JsonProperty("preparation")
     PREPARATION,
 
     /**
      * The event is currently occurring.
      */
     @SerialName("in-progress")
+    @JsonProperty("in-progress")
     INPROGRESS,
 
     /**
      * The event was terminated prior to any activity beyond preparation.  I.e. The 'main' activity has not yet begun.  The boundary between preparatory and the 'main' activity is context-specific.
      */
     @SerialName("not-done")
+    @JsonProperty("not-done")
     NOTDONE,
 
     /**
      * The event has been temporarily stopped but is expected to resume in the future.
      */
     @SerialName("on-hold")
+    @JsonProperty("on-hold")
     ONHOLD,
 
     /**
      * The event was terminated prior to the full completion of the intended activity but after at least some of the 'main' activity (beyond preparation) has occurred.
      */
     @SerialName("stopped")
+    @JsonProperty("stopped")
     STOPPED,
 
     /**
      * The event has now concluded.
      */
     @SerialName("completed")
+    @JsonProperty("completed")
     COMPLETED,
 
     /**
      * This electronic record should never have existed, though it is possible that real-world decisions were based on it.  (If real-world activity has occurred, the status should be "stopped" rather than "entered-in-error".).
      */
     @SerialName("entered-in-error")
+    @JsonProperty("entered-in-error")
     ENTEREDINERROR,
 
     /**
      * The authoring/source system does not know which of the status values currently applies for this event.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which.
      */
     @SerialName("unknown")
+    @JsonProperty("unknown")
     UNKNOWN;
 
 
@@ -312,24 +321,28 @@ enum class CommunicationPriority : CodeableEnumeration {
      * The request has normal priority.
      */
     @SerialName("routine")
+    @JsonProperty("routine")
     ROUTINE,
 
     /**
      * The request should be actioned promptly - higher priority than routine.
      */
     @SerialName("urgent")
+    @JsonProperty("urgent")
     URGENT,
 
     /**
      * The request should be actioned as soon as possible - higher priority than urgent.
      */
     @SerialName("asap")
+    @JsonProperty("asap")
     ASAP,
 
     /**
      * The request should be actioned immediately - highest possible priority.  E.g. an emergency.
      */
     @SerialName("stat")
+    @JsonProperty("stat")
     STAT;
 
 

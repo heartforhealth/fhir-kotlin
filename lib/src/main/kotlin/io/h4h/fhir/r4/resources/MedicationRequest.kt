@@ -1,5 +1,6 @@
 package io.h4h.fhir.r4.resources
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.r4.serializers.InstantSerializer
 import kotlinx.datetime.Instant
@@ -388,48 +389,56 @@ enum class MedicationRequestIntent : CodeableEnumeration {
      * The request is a suggestion made by someone/something that doesn't have an intention to ensure it occurs and without providing an authorization to act
      */
     @SerialName("proposal")
+    @JsonProperty("proposal")
     PROPOSAL,
 
     /**
      * The request represents an intention to ensure something occurs without providing an authorization for others to act.
      */
     @SerialName("plan")
+    @JsonProperty("plan")
     PLAN,
 
     /**
      * The request represents a request/demand and authorization for action
      */
     @SerialName("order")
+    @JsonProperty("order")
     ORDER,
 
     /**
      * The request represents the original authorization for the medication request.
      */
     @SerialName("original-order")
+    @JsonProperty("original-order")
     ORIGINALORDER,
 
     /**
      * The request represents an automatically generated supplemental authorization for action based on a parent authorization together with initial results of the action taken against that parent authorization..
      */
     @SerialName("reflex-order")
+    @JsonProperty("reflex-order")
     REFLEXORDER,
 
     /**
      * The request represents the view of an authorization instantiated by a fulfilling system representing the details of the fulfiller's intention to act upon a submitted order.
      */
     @SerialName("filler-order")
+    @JsonProperty("filler-order")
     FILLERORDER,
 
     /**
      * The request represents an instance for the particular order, for example a medication administration record.
      */
     @SerialName("instance-order")
+    @JsonProperty("instance-order")
     INSTANCEORDER,
 
     /**
      * The request represents a component or option for a RequestGroup that establishes timing, conditionality and/or  other constraints among a set of requests.
      */
     @SerialName("option")
+    @JsonProperty("option")
     OPTION;
 
 
@@ -486,48 +495,56 @@ enum class MedicationRequestStatus : CodeableEnumeration {
      * The prescription is 'actionable', but not all actions that are implied by it have occurred yet.
      */
     @SerialName("active")
+    @JsonProperty("active")
     ACTIVE,
 
     /**
      * Actions implied by the prescription are to be temporarily halted, but are expected to continue later.  May also be called 'suspended'.
      */
     @SerialName("on-hold")
+    @JsonProperty("on-hold")
     ONHOLD,
 
     /**
      * The prescription has been withdrawn before any administrations have occurred
      */
     @SerialName("cancelled")
+    @JsonProperty("cancelled")
     CANCELLED,
 
     /**
      * All actions that are implied by the prescription have occurred.
      */
     @SerialName("completed")
+    @JsonProperty("completed")
     COMPLETED,
 
     /**
      * Some of the actions that are implied by the medication request may have occurred.  For example, the medication may have been dispensed and the patient may have taken some of the medication.  Clinical decision support systems should take this status into account
      */
     @SerialName("entered-in-error")
+    @JsonProperty("entered-in-error")
     ENTEREDINERROR,
 
     /**
      * Actions implied by the prescription are to be permanently halted, before all of the administrations occurred. This should not be used if the original order was entered in error
      */
     @SerialName("stopped")
+    @JsonProperty("stopped")
     STOPPED,
 
     /**
      * The prescription is not yet 'actionable', e.g. it is a work in progress, requires sign-off, verification or needs to be run through decision support process.
      */
     @SerialName("draft")
+    @JsonProperty("draft")
     DRAFT,
 
     /**
      * The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for 'other' - one of the listed statuses is presumed to apply, but the authoring/source system does not know which.
      */
     @SerialName("unknown")
+    @JsonProperty("unknown")
     UNKNOWN;
 
 

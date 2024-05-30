@@ -1,6 +1,6 @@
 
 group = "io.h4h"
-version = "0.3.3"
+version = "0.3.4"
 
 
 plugins {
@@ -68,6 +68,9 @@ dependencies {
 
     // base definitions of FHIR data structures
     api("io.h4h:fhir-base-kotlin:0.2.2")
+
+    // Jackson annocations
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.16.1")
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")

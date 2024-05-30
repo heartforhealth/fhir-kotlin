@@ -1,5 +1,6 @@
 package io.h4h.fhir.r4.resources
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.r4.serializers.InstantSerializer
 import kotlinx.datetime.Instant
@@ -239,54 +240,63 @@ enum class AppointmentStatus {
      * None of the participant(s) have finalized their acceptance of the appointment request, and the start/end time might not be set yet.
      */
     @SerialName("proposed")
+    @JsonProperty("proposed")
     PROPOSED,
 
     /**
      * Some or all of the participant(s) have not finalized their acceptance of the appointment request.
      */
     @SerialName("pending")
+    @JsonProperty("pending")
     PENDING,
 
     /**
      * All participant(s) have been considered and the appointment is confirmed to go ahead at the date/times specified.
      */
     @SerialName("booked")
+    @JsonProperty("booked")
     BOOKED,
 
     /**
      * The patient/patients has/have arrived and is/are waiting to be seen.
      */
     @SerialName("arrived")
+    @JsonProperty("arrived")
     ARRIVED,
 
     /**
      * The planning stages of the appointment are now complete, the encounter resource will exist and will track further status changes. Note that an encounter may exist before the appointment status is fulfilled for many reasons.
      */
     @SerialName("fulfilled")
+    @JsonProperty("fulfilled")
     FULFILLED,
 
     /**
      * The appointment has been cancelled.
      */
     @SerialName("cancelled")
+    @JsonProperty("cancelled")
     CANCELLED,
 
     /**
      * Some or all of the participant(s) have not/did not appear for the appointment (usually the patient).
      */
     @SerialName("noshow")
+    @JsonProperty("noshow")
     NOSHOW,
 
     /**
      * This instance should not have been part of this patient's medical record.
      */
     @SerialName("entered-in-error")
+    @JsonProperty("entered-in-error")
     ENTEREDINERROR,
 
     /**
      * When checked in, all pre-encounter administrative work is complete, and the encounter may begin. (where multiple patients are involved, they are all present).
      */
     @SerialName("checked-in")
+    @JsonProperty("checked-in")
     CHECKEDIN,
 
     /**
@@ -294,6 +304,7 @@ enum class AppointmentStatus {
      * A specific time might or might not be pre-allocated.
      */
     @SerialName("waitlist")
+    @JsonProperty("waitlist")
     WAITLIST;
 
 
@@ -353,18 +364,21 @@ enum class ParticipantRequired {
      * The participant is required to attend the appointment.
      */
     @SerialName("required")
+    @JsonProperty("required")
     REQUIRED,
 
     /**
      * The participant may optionally attend the appointment.
      */
     @SerialName("optional")
+    @JsonProperty("optional")
     OPTIONAL,
 
     /**
      * The participant is excluded from the appointment, and might not be informed of the appointment taking place. (Appointment is about them, not for them - such as 2 doctors discussing results about a patient's test).
      */
     @SerialName("information-only")
+    @JsonProperty("information-only")
     INFORMATIONONLY;
 
 
@@ -403,24 +417,28 @@ enum class ParticipationStatus {
      * The participant has accepted the appointment.
      */
     @SerialName("accepted")
+    @JsonProperty("accepted")
     ACCEPTED,
 
     /**
      * The participant has declined the appointment and will not participate in the appointment.
      */
     @SerialName("declined")
+    @JsonProperty("declined")
     DECLINED,
 
     /**
      * The participant has  tentatively accepted the appointment. This could be automatically created by a system and requires further processing before it can be accepted. There is no commitment that attendance will occur.
      */
     @SerialName("tentative")
+    @JsonProperty("tentative")
     TENTATIVE,
 
     /**
      * The participant needs to indicate if they accept the appointment by changing this status to one of the other statuses.
      */
     @SerialName("needs-action")
+    @JsonProperty("needs-action")
     NEEDSACTION;
 
 

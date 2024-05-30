@@ -1,5 +1,6 @@
 package io.h4h.fhir.r4.resources
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import io.h4h.fhir.r4.base.*
 import io.h4h.fhir.r4.serializers.InstantSerializer
 import kotlinx.datetime.Instant
@@ -210,30 +211,35 @@ enum class QuestionnaireResponseStatus : CodeableEnumeration {
      * This QuestionnaireResponse has been partially filled out with answers but changes or additions are still expected to be made to it.
      */
     @SerialName("in-progress")
+    @JsonProperty("in-progress")
     INPROGRESS,
 
     /**
      * This QuestionnaireResponse has been filled out with answers and the current content is regarded as definitive.
      */
     @SerialName("completed")
+    @JsonProperty("completed")
     COMPLETED,
 
     /**
      * This QuestionnaireResponse has been filled out with answers, then marked as complete, yet changes or additions have been made to it afterwards.
      */
     @SerialName("amended")
+    @JsonProperty("amended")
     AMENDED,
 
     /**
      * This QuestionnaireResponse was entered in error and voided.
      */
     @SerialName("entered-in-error")
+    @JsonProperty("entered-in-error")
     ENTEREDINERROR,
 
     /**
      * This QuestionnaireResponse has been partially filled out with answers but has been abandoned. It is unknown whether changes or additions are expected to be made to it.
      */
     @SerialName("stopped")
+    @JsonProperty("stopped")
     STOPPED;
 
 

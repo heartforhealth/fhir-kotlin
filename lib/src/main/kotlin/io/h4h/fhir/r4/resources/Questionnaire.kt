@@ -1,5 +1,6 @@
 package io.h4h.fhir.r4.resources
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import io.h4h.fhir.r4.base.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -353,102 +354,119 @@ enum class QuestionnaireItemType : CodeableEnumeration {
      * An item with no direct answer but should have at least one child item.
      */
     @SerialName("group")
+    @JsonProperty("group")
     GROUP,
 
     /**
      * Text for display that will not capture an answer or have child items.
      */
     @SerialName("display")
+    @JsonProperty("display")
     DISPLAY,
 
     /**
      * An item that defines a specific answer to be captured, and which may have child items. (the answer provided in the QuestionnaireResponse should be of the defined datatype).
      */
     @SerialName("question")
+    @JsonProperty("question")
     QUESTION,
 
     /**
      * Question with a yes/no answer (valueBoolean).
      */
     @SerialName("boolean")
+    @JsonProperty("boolean")
     BOOLEAN,
 
     /**
      * Question with is a real number answer (valueDecimal).
      */
     @SerialName("decimal")
+    @JsonProperty("decimal")
     DECIMAL,
 
     /**
      * Question with an integer answer (valueInteger).
      */
     @SerialName("integer")
+    @JsonProperty("integer")
     INTEGER,
 
     /**
      * Question with a date answer (valueDate).
      */
     @SerialName("date")
+    @JsonProperty("date")
     DATE,
 
     /**
      * Question with a date and time answer (valueDateTime).
      */
     @SerialName("dateTime")
+    @JsonProperty("dateTime")
     DATETIME,
 
     /**
      * Question with a time (hour:minute:second) answer independent of date. (valueTime).
      */
     @SerialName("time")
+    @JsonProperty("time")
     TIME,
 
     /**
      * Question with a short (few words to short sentence) free-text entry answer (valueString).
      */
     @SerialName("string")
+    @JsonProperty("string")
     STRING,
 
     /**
      * Question with a long (potentially multi-paragraph) free-text entry answer (valueString).
      */
     @SerialName("text")
+    @JsonProperty("text")
     TEXT,
 
     /**
      * Question with a URL (website, FTP site, etc.) answer (valueUri).
      */
     @SerialName("url")
+    @JsonProperty("url")
     URL,
 
     /**
      * Question with a Coding drawn from a list of possible answers (specified in either the answerOption property, or via the valueset referenced in the answerValueSet property) as an answer (valueCoding).
      */
     @SerialName("choice")
+    @JsonProperty("choice")
     CHOICE,
 
     /**
      * Answer is a Coding drawn from a list of possible answers (as with the choice type) or a free-text entry in a string (valueCoding or valueString).
      */
     @SerialName("open-choice")
+    @JsonProperty("open-choice")
     OPENCHOICE,
 
     /**
      * Question with binary content such as an image, PDF, etc. as an answer (valueAttachment).
      */
     @SerialName("attachment")
+    @JsonProperty("attachment")
     ATTACHMENT,
 
     /**
      * Question with a reference to another resource (practitioner, organization, etc.) as an answer (valueReference).
      */
     @SerialName("reference")
+    @JsonProperty("reference")
     REFERENCE,
 
     /**
      * Question with a combination of a numeric value and unit, potentially with a comparator (<, >, etc.) as an answer. (valueQuantity) There is an extension 'http://hl7.org/fhir/StructureDefinition/questionnaire-unit' that can be used to define what unit should be captured (or the unit that has a ucum conversion from the provided unit).
      */
     @SerialName("quantity")
+    @JsonProperty("quantity")
     QUANTITY;
 
     
@@ -530,42 +548,49 @@ enum class QuestionnaireItemOperator : CodeableEnumeration {
      * True if whether an answer exists is equal to the enableWhen answer (which must be a boolean).
      */
     @SerialName("exists")
+    @JsonProperty("exists")
     EXISTS,
 
     /**
      * True if whether at least one answer has a value that is equal to the enableWhen answer.
      */
     @SerialName("=")
+    @JsonProperty("=")
     EQUAL,
 
     /**
      * True if whether at least no answer has a value that is equal to the enableWhen answer.
      */
     @SerialName("!=")
+    @JsonProperty("!=")
     NOT_EQUAL,
 
     /**
      * True if whether at least no answer has a value that is greater than the enableWhen answer.
      */
     @SerialName(">")
+    @JsonProperty(">")
     GREATER_THAN,
 
     /**
      * True if whether at least no answer has a value that is less than the enableWhen answer.
      */
     @SerialName("<")
+    @JsonProperty("<")
     LESS_THAN,
 
     /**
      * True if whether at least no answer has a value that is greater or equal to the enableWhen answer.
      */
     @SerialName(">=")
+    @JsonProperty(">=")
     GREATER_OR_EQUAL,
 
     /**
      * True if whether at least no answer has a value that is less or equal to the enableWhen answer.
      */
     @SerialName("<=")
+    @JsonProperty("<=")
     LESS_OR_EQUAL;
 
 
