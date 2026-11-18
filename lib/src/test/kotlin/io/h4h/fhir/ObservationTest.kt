@@ -7,6 +7,7 @@ import io.h4h.fhir.utils.preDeserialize
 import io.h4h.fhir.utils.toBsonDocument
 import kotlinx.serialization.encodeToString
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.fail
 
 
@@ -15,6 +16,19 @@ class ObservationTest : SerializerTest() {
     @Test
     fun deserializeSerializeObservation1() =
         kotlinxDeserializeSerializeResource<Observation>("observation1.json")
+
+
+    // practitioners annotate Observations through an extension; this used to fail because
+    // Extension.valueAnnotation resolved to kotlin.Annotation instead of the FHIR Annotation
+    @Test
+    fun deserializeObservationWithAnnotationExtension() {
+        val observation = loadResource("observationAnnotated.json")
+            ?.kotlinxDeserializationTest<Observation>()
+            ?: fail("Missing observationAnnotated.json")
+
+        assertEquals("Practitioner", observation.extension?.single()?.valueAnnotation?.authorReference?.type)
+        assertEquals("Checked with patient", observation.note?.single()?.text)
+    }
 
 
     @Test fun testMongoSerialization() {
