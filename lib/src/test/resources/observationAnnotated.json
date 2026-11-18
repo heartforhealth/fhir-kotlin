@@ -1,0 +1,17 @@
+{
+  "id": "0d2f4c3e-5b6a-4f7e-9c1d-2a3b4c5d6e7f",
+  "resourceType": "Observation",
+  "status": "final",
+  "code": { "coding": [ { "system": "http://loinc.org", "code": "8480-6" } ] },
+  "valueQuantity": { "value": 124.0, "unit": "mmHg" },
+  "extension": [
+    {
+      "url": "https://heartforhealth.com/fhir/StructureDefinition/annotation",
+      "valueAnnotation": {
+        "authorReference": { "type": "Practitioner", "display": "Jane Doe" },
+        "time": "2026-11-18T14:43:07.175Z"
+      }
+    }
+  ],
+  "note": [ { "authorString": "Jane Doe", "text": "Checked with patient" } ]
+}
